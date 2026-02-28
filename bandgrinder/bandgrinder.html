@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rMQR Reader</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #e8ff47;
+    --text: #e0e0e0;
+    --muted: #555;
+    --error: #ff5c5c;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .container { width: 100%; max-width: 480px; }
+  header { margin-bottom: 3rem; }
+
+  .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  h1 span { color: var(--accent); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  #capture-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent);
+    color: #0f0f0f;
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+  #capture-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+  #capture-btn:active:not(:disabled) { transform: translateY(0); }
+  #capture-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  #file-input { display: none; }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .dot.spinning { background: var(--accent); animation: pulse 1.2s ease-in-out infinite; }
+  .dot.ok       { background: var(--accent); }
+  .dot.error    { background: var(--error); }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.25; }
+  }
+
+  #status-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+  #status-text.ok    { color: var(--accent); }
+  #status-text.error { color: var(--error); }
+
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    padding: 1.5rem 2rem;
+    display: none;
+  }
+  .result-card.visible { display: block; }
+
+  .result-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  #uuid-display {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-all;
+    letter-spacing: 0.03em;
+  }
+
+  footer {
+    margin-top: 2.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <p class="label">Barcode Scanner</p>
+    <h1>r<span>MQR</span> Reader</h1>
+  </header>
+
+  <div class="card">
+    <input type="file" id="file-input" accept="image/*" capture="environment">
+    <button id="capture-btn" disabled>Take Picture</button>
+    <div class="status-row">
+      <div class="dot spinning" id="status-dot"></div>
+      <span id="status-text">Initialising…</span>
+    </div>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <p class="result-label">Decoded UUID</p>
+    <p id="uuid-display"></p>
+  </div>
+
+  <footer>zxing-wasm &middot; client-side &middot; no data leaves your device</footer>
+</div>
+
+<!-- zxing-wasm v1 IIFE — exposes ZXingWASM global with:
+     setZXingModuleOverrides(), getZXingModule(), readBarcodesFromImageFile() -->
+<script src="https://cdn.jsdelivr.net/npm/zxing-wasm@1/dist/iife/reader/index.js"></script>
+
+<script>
+  const btn         = document.getElementById('capture-btn');
+  const fileInput   = document.getElementById('file-input');
+  const dot         = document.getElementById('status-dot');
+  const statusTxt   = document.getElementById('status-text');
+  const resultCard  = document.getElementById('result-card');
+  const uuidDisplay = document.getElementById('uuid-display');
+
+  function setStatus(state, message) {
+    dot.className = 'dot ' + (state || '');
+    statusTxt.className = (state === 'ok' || state === 'error') ? state : '';
+    statusTxt.textContent = message;
+  }
+
+  // v1 API: use setZXingModuleOverrides + getZXingModule to pre-warm,
+  // with unpkg as fallback for the .wasm binary.
+  async function initWasm() {
+    const cdnBases = [
+      'https://fastly.jsdelivr.net/npm/zxing-wasm@1/dist/reader/',
+      'https://unpkg.com/zxing-wasm@1/dist/reader/',
+    ];
+
+    for (const base of cdnBases) {
+      try {
+        ZXingWASM.setZXingModuleOverrides({
+          locateFile: (path, prefix) => {
+            if (path.endsWith('.wasm')) return base + path;
+            return prefix + path;
+          },
+        });
+        await ZXingWASM.getZXingModule();
+        return; // success
+      } catch (e) {
+        console.warn('WASM load failed from', base, e);
+      }
+    }
+    throw new Error('All CDN sources failed');
+  }
+
+  initWasm()
+    .then(() => {
+      setStatus('ok', 'Ready');
+      btn.disabled = false;
+    })
+    .catch((e) => {
+      setStatus('error', 'Failed to load scanner');
+      console.error(e);
+    });
+
+  btn.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    btn.disabled = true;
+    resultCard.classList.remove('visible');
+    setStatus('spinning', 'Reading…');
+
+    try {
+      const results = await ZXingWASM.readBarcodesFromImageFile(file, {
+        tryHarder: true,
+        formats: ['rMQRCode'],
+      });
+
+      if (results && results.length > 0 && results[0].isValid) {
+        const r = results[0];
+        // The rMQR code stores the UUID as 16 raw binary bytes.
+        // Convert to standard UUID string format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        const b = r.bytes;
+        const hex = Array.from(b).map(x => x.toString(16).padStart(2, '0')).join('');
+        const uuidStr = `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20,32)}`;
+        uuidDisplay.textContent = uuidStr;
+        resultCard.classList.add('visible');
+        setStatus('ok', 'Decoded successfully');
+      } else {
+        setStatus('error', 'No rMQR code found');
+      }
+    } catch (e) {
+      console.error(e);
+      setStatus('error', 'Error: ' + (e.message || e));
+    }
+
+    btn.disabled = false;
+    fileInput.value = '';
+  });
+</script>
+</body>
+</html>
