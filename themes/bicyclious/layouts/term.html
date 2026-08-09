@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="topics-grid">
+  <header class="section-header">
+    <h1 class="section-title">// {{ .Title | upper }}</h1>
+  </header>
+  <div class="card-grid">
+    {{ range .Pages.ByDate.Reverse }}
+      <article class="bike-card">
+        <a href="{{ .RelPermalink }}" class="card-link">
+          <div class="card-body">
+            <h2 class="card-title">{{ .Title }}</h2>
+            <span class="card-cta">READ →</span>
+          </div>
+        </a>
+      </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

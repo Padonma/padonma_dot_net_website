@@ -1,0 +1,34 @@
+- slug: loro_piana
+  image: Pier-Luigi-Loro-Piana.jpg
+  title: Pier Luigi Loro Piana
+  focal:
+    x: 0.5
+    y: 0.5
+
+- slug: loro_piana
+  image: loro_pianan_jacket_detail.jpg
+  title: Loro Piana Lotus Jacket Detail
+  focal:
+    x: 0.5
+    y: 0.5
+
+- slug: loro_piana
+  image: loro_pianan_jacket_full.jpg
+  title: Loro Piana Lotus Jacket
+  focal:
+    x: 0.5
+    y: 0.5
+
+- slug: loro_piana
+  image: lotus_jacket.jpg
+  title: Lotus Jacket
+  focal:
+    x: 0.5
+    y: 0.5
+
+- slug: loro_piana
+  image: sneakers.jpg
+  title: Loro Piana Lotus Sneakers
+  focal:
+    x: 0.5
+    y: 0.5

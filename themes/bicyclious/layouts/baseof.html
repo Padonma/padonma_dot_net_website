@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;0,7..72,900;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ "/" | relURL }}" class="site-logo">
+        {{ with site.Params.logo }}
+          <div class="logo-lockup">
+            {{ $logo := resources.Get . }}
+            {{ $logo = $logo.Resize "360x" | fingerprint }}
+            <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" class="logo-img">
+          </div>
+        {{ else }}
+        <span class="logo-bracket">[</span><span class="logo-text">{{ site.Title | upper }}</span><span class="logo-bracket">]</span>
+        {{ end }}
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        {{ range site.Menus.main }}
+          <a href="{{ .URL | relURL }}" class="{{ if $.IsMenuCurrent "main" . }}nav-active{{ end }}">{{ .Name }}</a>
+        {{ end }}
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer class="site-footer">
+    {{ if .IsHome }}
+      {{ with site.Params.footerImage }}
+        {{ $footerImage := resources.Get . }}
+        {{ with $footerImage }}
+          {{ $footerImage1600 := .Resize "1600x webp q80" }}
+          {{ $footerImage2400 := .Resize "2400x webp q80" }}
+          <div class="footer-bg">
+            <img
+              src="{{ $footerImage1600.RelPermalink }}"
+              srcset="{{ $footerImage1600.RelPermalink }} 1600w, {{ $footerImage2400.RelPermalink }} 2400w"
+              sizes="100vw"
+              width="{{ $footerImage2400.Width }}"
+              height="{{ $footerImage2400.Height }}"
+              alt=""
+              class="footer-bg-img"
+              loading="lazy">
+          </div>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <div class="footer-inner">
+      <span class="footer-logo">{{ site.Title | upper }}<span class="footer-subtitle">: {{ site.Params.subtitle }}</span></span>
+      <span class="footer-copy">© {{ now.Year }}</span>
+    </div>
+  </footer>
+  <script src="{{ "js/swiper.min.js?v=12.1.4" | relURL }}"></script>
+  <script>
+    document.querySelectorAll('.bike-carousel').forEach(function (carousel) {
+      if (carousel.swiper) return;
+      var slides = carousel.querySelectorAll('.swiper-slide');
+      var many = slides.length > 1;
+      new Swiper(carousel, {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 0,
+        loop: many,
+        loopAdditionalSlides: 3,
+        grabCursor: many,
+        autoplay: many ? { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
+        pagination: many ? { el: carousel.querySelector('.swiper-pagination'), clickable: true } : false,
+        navigation: many ? {
+          nextEl: carousel.querySelector('.swiper-button-next'),
+          prevEl: carousel.querySelector('.swiper-button-prev')
+        } : false,
+        keyboard: { enabled: true, onlyInViewport: true, preserveFocus: true }
+      });
+    });
+
+    (function initTopicGallery() {
+      var mainEl = document.querySelector('.topic-gallery-main');
+      var thumbsEl = document.querySelector('.topic-gallery-thumbs');
+      var lightboxEl = document.getElementById('topic-lightbox');
+
+      if (!mainEl || !thumbsEl || !lightboxEl) return;
+
+      var many = mainEl.querySelectorAll('.swiper-slide').length > 1;
+      var thumbsSwiper = new Swiper(thumbsEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+        freeMode: true,
+        watchSlidesProgress: true
+      });
+      var mainSwiper = new Swiper(mainEl, {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 0,
+        loop: many,
+        keyboard: { enabled: true, onlyInViewport: true },
+        navigation: many ? {
+          nextEl: mainEl.querySelector('.swiper-button-next'),
+          prevEl: mainEl.querySelector('.swiper-button-prev')
+        } : false,
+        thumbs: { swiper: thumbsSwiper }
+      });
+      var lightboxSwiperEl = lightboxEl.querySelector('.topic-lightbox-swiper');
+      var lightboxSwiper = new Swiper(lightboxSwiperEl, {
+        slidesPerView: 1,
+        loop: many,
+        keyboard: { enabled: true },
+        navigation: many ? {
+          nextEl: lightboxSwiperEl.querySelector('.swiper-button-next'),
+          prevEl: lightboxSwiperEl.querySelector('.swiper-button-prev')
+        } : false
+      });
+
+      mainSwiper.on('click', function () {
+        lightboxEl.classList.add('open');
+        lightboxSwiper.slideToLoop(mainSwiper.realIndex, 0);
+      });
+      lightboxEl.addEventListener('click', function (event) {
+        if (event.target === lightboxEl) lightboxEl.classList.remove('open');
+      });
+      document.getElementById('topic-lightbox-close').addEventListener('click', function () {
+        lightboxEl.classList.remove('open');
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') lightboxEl.classList.remove('open');
+      });
+    })();
+  </script>
+</body>
+</html>

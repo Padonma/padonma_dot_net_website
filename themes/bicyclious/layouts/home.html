@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ partial "carousel.html" . }}
+
+{{ $background := resources.Get site.Params.billboardImage }}
+<section class="billboard"{{ with $background }} style="background-image: url('{{ (.Resize "1600x").RelPermalink }}');"{{ end }}>
+  <div class="billboard-text">
+    {{ with resources.Get "temp/padonma_logo.png" }}
+      {{ $mark240 := .Resize "240x" }}
+      {{ $mark480 := .Resize "480x" }}
+      <img
+        src="{{ $mark240.RelPermalink }}"
+        srcset="{{ $mark240.RelPermalink }} 240w,
+                {{ $mark480.RelPermalink }} 480w"
+        sizes="(max-width: 600px) 40vw, 240px"
+        alt=""
+        class="billboard-logo-mark">
+    {{ end }}
+    <h1 class="billboard-wordmark">
+      <span>Padonma</span>
+      <span>Network</span>
+    </h1>
+    {{ with site.Params.subtitle }}<p class="section-subtitle">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+{{ $pages := where site.RegularPages "Section" "topics" }}
+{{ if $pages }}
+  <section class="topics-grid">
+    <header class="section-header">
+      <h2 class="section-title">Introduction</h2>
+    </header>
+    <div class="card-grid">
+      {{ range $pages.ByWeight }}
+        {{ partial "topic-card.html" . }}
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+{{ end }}

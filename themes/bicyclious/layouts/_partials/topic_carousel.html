@@ -1,0 +1,91 @@
+{{ $page := .page | default . }}
+{{ $meta := .meta | default dict }}
+{{ $images := where ($page.Resources.ByType "image") "MediaType.SubType" "ne" "avif" }}
+{{ if $images }}
+  {{ $focalMap := dict }}
+  {{ range $page.Params.images }}
+    {{ $focalMap = merge $focalMap (dict .file .focal) }}
+  {{ end }}
+  <div class="topic-gallery">
+    <div class="swiper topic-gallery-main">
+      <div class="swiper-wrapper">
+        {{ range $images }}
+          {{ $focal := index $focalMap .Name }}
+          {{ $x := 0.5 }}
+          {{ $y := 0.5 }}
+          {{ if $focal }}
+            {{ $x = float $focal.x }}
+            {{ $y = float $focal.y }}
+          {{ end }}
+          <div class="swiper-slide" style="aspect-ratio: {{ .Width }} / {{ .Height }};">
+            <img
+              src="{{ .RelPermalink }}"
+              alt="{{ $page.Title }}"
+              loading="lazy"
+              class="topic-gallery-img"
+              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+            >
+          </div>
+        {{ end }}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <div class="topic-gallery-dock">
+        <div class="topic-gallery-meta">
+          <div class="topic-gallery-title">{{ $meta.title }}</div>
+        </div>
+        <div class="swiper topic-gallery-thumbs">
+          <div class="swiper-wrapper">
+            {{ range $images }}
+              {{ $focal := index $focalMap .Name }}
+              {{ $x := 0.5 }}
+              {{ $y := 0.5 }}
+              {{ if $focal }}
+                {{ $x = float $focal.x }}
+                {{ $y = float $focal.y }}
+              {{ end }}
+              <div class="swiper-slide">
+                <img
+                  src="{{ .RelPermalink }}"
+                  alt=""
+                  loading="lazy"
+                  class="topic-gallery-thumb-img"
+                  style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+                >
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-lightbox" id="topic-lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+      <button class="topic-lightbox-close" id="topic-lightbox-close" aria-label="Close lightbox">CLOSE ✕</button>
+      <div class="swiper topic-lightbox-swiper">
+        <div class="swiper-wrapper">
+          {{ range $images }}
+            {{ $focal := index $focalMap .Name }}
+            {{ $x := 0.5 }}
+            {{ $y := 0.5 }}
+            {{ if $focal }}
+              {{ $x = float $focal.x }}
+              {{ $y = float $focal.y }}
+            {{ end }}
+            <div class="swiper-slide">
+              <img
+                src="{{ .RelPermalink }}"
+                alt="{{ $page.Title }}"
+                loading="lazy"
+                class="topic-lightbox-img"
+                style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+              >
+            </div>
+          {{ end }}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </div>
+{{ end }}
