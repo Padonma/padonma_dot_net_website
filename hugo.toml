@@ -1,16 +1,10 @@
 baseURL = "https://padonma.net/"
 languageCode = "en-us"
 title = "Padonma"
-theme = "bicyclious"
+theme = "cardhouse"
 assetDir = "assets"
 
 enableRobotsTXT = true
-
-# The borrowed theme includes sample content for its original site. Keep that
-# content out of this site's build; Padonma content lives only in /content.
-ignoreFiles = [
-  "themes/bicyclious/content/.*"
-]
 
 [params]
   subtitle = "Bootstrapping a global supply network for lotus fiber"
@@ -18,6 +12,9 @@ ignoreFiles = [
   author = "Padonma Network"
   logo = "brand/padonma_wordmark.png"
   billboardImage = "temp/redit_visited_2017.cropped.webp"
+  billboardLogo = "temp/padonma_logo.png"
+  billboardTitle = ["Padonma", "Network"]
+  topicsHeading = "Introduction"
   footerImage = "fluff/women_in_hat_and_thanaka.jpg"
 
 [menus]

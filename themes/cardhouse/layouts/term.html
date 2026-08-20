@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="topics-grid">
+  <header class="section-header">
+    <h1 class="section-title">// {{ .Title | upper }}</h1>
+  </header>
+  <div class="card-grid">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "topic-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

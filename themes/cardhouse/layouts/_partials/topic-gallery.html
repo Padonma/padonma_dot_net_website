@@ -1,6 +1,10 @@
 {{ $page := .page | default . }}
 {{ $meta := .meta | default dict }}
 {{ $images := where ($page.Resources.ByType "image") "MediaType.SubType" "ne" "avif" }}
+{{ $hero := partial "hero-resource.html" $page }}
+{{ with $hero }}
+  {{ $images = where $images "Name" "ne" .Name }}
+{{ end }}
 {{ if $images }}
   {{ $focalMap := dict }}
   {{ range $page.Params.images }}

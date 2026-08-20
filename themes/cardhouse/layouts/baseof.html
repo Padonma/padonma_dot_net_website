@@ -17,11 +17,14 @@
     <div class="header-inner">
       <a href="{{ "/" | relURL }}" class="site-logo">
         {{ with site.Params.logo }}
-          <div class="logo-lockup">
-            {{ $logo := resources.Get . }}
-            {{ $logo = $logo.Resize "360x" | fingerprint }}
-            <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" class="logo-img">
-          </div>
+          {{ with resources.Get . }}
+            <div class="logo-lockup">
+              {{ $logo := .Resize "360x" | fingerprint }}
+              <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" class="logo-img">
+            </div>
+          {{ else }}
+            <span class="logo-text">{{ site.Title }}</span>
+          {{ end }}
         {{ else }}
         <span class="logo-bracket">[</span><span class="logo-text">{{ site.Title | upper }}</span><span class="logo-bracket">]</span>
         {{ end }}
@@ -66,7 +69,7 @@
   </footer>
   <script src="{{ "js/swiper.min.js?v=12.1.4" | relURL }}"></script>
   <script>
-    document.querySelectorAll('.bike-carousel').forEach(function (carousel) {
+    document.querySelectorAll('.hero-carousel').forEach(function (carousel) {
       if (carousel.swiper) return;
       var slides = carousel.querySelectorAll('.swiper-slide');
       var many = slides.length > 1;

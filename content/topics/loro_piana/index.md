@@ -5,6 +5,12 @@ specs: "Loro Piana was the first fashion maison to work with lotus thread"
 weight: 4
 summary: "A Specialized Hardrock pulled from obscurity, sanded down, and painted jade green. Rides honest."
 social_image: "lotus_jacket.jpg"
+hero:
+  image: "lotus_jacket.jpg"
+  focal:
+    x: 0.5
+    y: 0.5
+  alt: "A cream lotus-fiber jacket by Loro Piana"
 ---
 
 ## Loro Piana family
@@ -14,13 +20,13 @@ social_image: "lotus_jacket.jpg"
 Loro Piana is a [storied](https://muslindhaka.com/loro-piana-review/#elementor-toc__heading-anchor-7) Italian fashion maison, that began as a
 textile mill in 1924 and later expanded to producint their own luxury
 garments. The founding family remains involved, even though the
-company is now majority-owned by LVMH. 
+company is now majority-owned by LVMH.
 
 With regards to lotus fiber, Pier Luigi Loro Piana
 
 - their site text: Pier Luigi Loro Piana himself forged direct ties with Burmese
   artisans to honor and preserve this century-old heritage.
-  
+
 
 - 2010: https://www.wsj.com/articles/SB10001424052748703506904575592441000440092
   - $5,600 Lotus Jacket
@@ -35,7 +41,7 @@ In their own words:
 
 They describe three materials as their excellences:
 - Lotus fiber
-- Vicuña 
+- Vicuña
 - Baby cashmere
 
 
@@ -87,4 +93,3 @@ They describe three materials as their excellences:
 - $4,800.00
 - Composition: 48% Cashmere, 35% Lotus Flower, 17% Silk
 - Out of stock
-

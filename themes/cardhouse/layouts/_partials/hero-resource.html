@@ -1,0 +1,26 @@
+{{- $page := . -}}
+{{- $resource := false -}}
+{{- $imageName := "" -}}
+
+{{- with $page.Params.hero -}}
+  {{- with .image -}}
+    {{- $imageName = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and (not $imageName) $page.Params.social_image -}}
+  {{- $imageName = $page.Params.social_image -}}
+{{- end -}}
+
+{{- with $imageName -}}
+  {{- $resource = $page.Resources.GetMatch . -}}
+{{- end -}}
+
+{{- if not $resource -}}
+  {{- $images := where ($page.Resources.ByType "image") "MediaType.SubType" "ne" "avif" -}}
+  {{- if gt (len $images) 0 -}}
+    {{- $resource = index $images 0 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $resource -}}

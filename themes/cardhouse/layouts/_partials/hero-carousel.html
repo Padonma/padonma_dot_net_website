@@ -1,0 +1,70 @@
+{{- $slides := site.Data.carousel -}}
+{{- if $slides -}}
+  <div class="swiper hero-carousel" aria-label="Featured images">
+    <div class="swiper-wrapper">
+      {{- range $index, $item := $slides -}}
+        {{- $page := site.GetPage (printf "/topics/%s" $item.slug) -}}
+        {{- if not $page -}}
+          {{- warnf "hero-carousel.html: no topic found for slug %q" $item.slug -}}
+        {{- else -}}
+          {{- $image := false -}}
+          {{- with $item.image -}}
+            {{- $image = $page.Resources.GetMatch . -}}
+            {{- if not $image -}}
+              {{- warnf "hero-carousel.html: image %q not found in topic %q" . $item.slug -}}
+            {{- end -}}
+          {{- else -}}
+            {{- $image = partial "hero-resource.html" $page -}}
+          {{- end -}}
+
+          {{- with $image -}}
+            {{- $x := 0.5 -}}
+            {{- $y := 0.5 -}}
+            {{- with $item.focal -}}
+              {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
+              {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
+            {{- else -}}
+              {{- if not $item.image -}}
+                {{- with $page.Params.hero.focal -}}
+                  {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
+                  {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+
+            {{- $small := false -}}
+            {{- $medium := false -}}
+            {{- $large := false -}}
+            {{- if ge .Width 640 }}{{ $small = .Resize "640x webp q82" }}{{ end -}}
+            {{- if ge .Width 1000 }}{{ $medium = .Resize "1000x webp q82" }}{{ end -}}
+            {{- if ge .Width 1600 }}{{ $large = .Resize "1600x webp q82" }}{{ end -}}
+            {{- $fallback := . -}}
+            {{- if $medium }}{{ $fallback = $medium }}{{ else if $small }}{{ $fallback = $small }}{{ end -}}
+            {{- $alt := $item.alt | default $page.Title -}}
+
+            <a class="swiper-slide" href="{{ $page.RelPermalink }}">
+              <img
+                src="{{ $fallback.RelPermalink }}"
+                {{- if $small }}
+                srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 1000w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1600w{{ end }}"
+                sizes="100vw"
+                {{- end }}
+                width="{{ $fallback.Width }}"
+                height="{{ $fallback.Height }}"
+                alt="{{ $alt }}"
+                loading="{{ cond (lt $index 2) "eager" "lazy" }}"
+                class="hero-carousel-image"
+                style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+              >
+            </a>
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    </div>
+    {{ if gt (len $slides) 1 }}
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    {{ end }}
+  </div>
+{{- end -}}

@@ -1,0 +1,46 @@
+{{- $page := .page -}}
+{{- $variant := .variant | default "card" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $sizes := .sizes | default "(max-width: 720px) 100vw, 33vw" -}}
+{{- $image := partial "hero-resource.html" $page -}}
+{{- $x := 0.5 -}}
+{{- $y := 0.5 -}}
+{{- $alt := $page.Title -}}
+
+{{- with $page.Params.hero -}}
+  {{- with .focal -}}
+    {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
+    {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
+  {{- end -}}
+  {{- with .alt }}{{ $alt = . }}{{ end -}}
+{{- end -}}
+
+<div
+  class="hero-media hero-media--{{ $variant }}{{ if not $image }} hero-media--missing{{ end }}"
+  data-topic-id="{{ $page.RelPermalink }}"
+>
+  {{- with $image -}}
+    {{- $small := false -}}
+    {{- $medium := false -}}
+    {{- $large := false -}}
+    {{- if ge .Width 640 }}{{ $small = .Resize "640x webp q82" }}{{ end -}}
+    {{- if ge .Width 960 }}{{ $medium = .Resize "960x webp q82" }}{{ end -}}
+    {{- if ge .Width 1440 }}{{ $large = .Resize "1440x webp q82" }}{{ end -}}
+    {{- $fallback := . -}}
+    {{- if $medium }}{{ $fallback = $medium }}{{ else if $small }}{{ $fallback = $small }}{{ end -}}
+    <img
+      src="{{ $fallback.RelPermalink }}"
+      {{- if $small }}
+      srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 960w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1440w{{ end }}"
+      sizes="{{ $sizes }}"
+      {{- end }}
+      width="{{ $fallback.Width }}"
+      height="{{ $fallback.Height }}"
+      alt="{{ $alt }}"
+      loading="{{ $loading }}"
+      style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+    >
+  {{- else -}}
+    <span class="hero-media-placeholder" aria-hidden="true">NO IMAGE</span>
+  {{- end -}}
+</div>
