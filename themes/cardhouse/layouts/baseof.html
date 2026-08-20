@@ -74,10 +74,10 @@
       var slides = carousel.querySelectorAll('.swiper-slide');
       var many = slides.length > 1;
       new Swiper(carousel, {
-        slidesPerView: 'auto',
+        slidesPerView: 2.5,
         centeredSlides: true,
         spaceBetween: 0,
-        rewind: many,
+        loop: many,
         grabCursor: many,
         autoplay: many ? { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
         pagination: many ? { el: carousel.querySelector('.swiper-pagination'), clickable: true } : false,
