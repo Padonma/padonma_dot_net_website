@@ -43,15 +43,15 @@
       {{ with site.Params.footerImage }}
         {{ $footerImage := resources.Get . }}
         {{ with $footerImage }}
-          {{ $footerImage1600 := .Resize "1600x webp q80" }}
-          {{ $footerImage2400 := .Resize "2400x webp q80" }}
+          {{ $footerImage600 := .Resize "600x webp q80" }}
+          {{ $footerImage960 := .Resize "960x webp q80" }}
           <div class="footer-bg">
             <img
-              src="{{ $footerImage1600.RelPermalink }}"
-              srcset="{{ $footerImage1600.RelPermalink }} 1600w, {{ $footerImage2400.RelPermalink }} 2400w"
+              src="{{ $footerImage960.RelPermalink }}"
+              srcset="{{ $footerImage600.RelPermalink }} 600w, {{ $footerImage960.RelPermalink }} 960w"
               sizes="100vw"
-              width="{{ $footerImage2400.Width }}"
-              height="{{ $footerImage2400.Height }}"
+              width="{{ $footerImage960.Width }}"
+              height="{{ $footerImage960.Height }}"
               alt=""
               class="footer-bg-img"
               loading="lazy">
@@ -74,8 +74,7 @@
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        loop: many,
-        loopAdditionalSlides: 3,
+        rewind: many,
         grabCursor: many,
         autoplay: many ? { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
         pagination: many ? { el: carousel.querySelector('.swiper-pagination'), clickable: true } : false,

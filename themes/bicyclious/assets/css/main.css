@@ -1725,6 +1725,7 @@ a { color: inherit; }
 
 /* ── Site Footer ────────────────────────────────────────────── */
 .site-footer {
+    margin-top: 3rem;  
   position: relative;
   height: 500px;
   overflow: hidden;
