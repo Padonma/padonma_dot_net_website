@@ -1,37 +1,21 @@
 {{ define "main" }}
 <article class="standard-page topic-page">
-  {{ $hero := partial "hero-resource.html" . }}
-  {{ if $hero }}
-    <header class="topic-hero">
-      {{ partial "hero-image.html" (dict
-        "page" .
-        "variant" "detail"
-        "loading" "eager"
-        "sizes" "100vw"
-      ) }}
-      <div class="topic-hero-overlay glass">
-        <h1 class="topic-hero-title">{{ .Title }}</h1>
-        {{ with .Date }}<p class="topic-hero-date">{{ . | time.Format "January 2, 2006" }}</p>{{ end }}
-      </div>
-    </header>
-  {{ else }}
-    <header class="page-header">
-      <div class="post-header-inner">
-        <h1 class="page-title">{{ .Title }}</h1>
-        {{ with .Date }}<p class="post-date">{{ . | time.Format "January 2, 2006" }}</p>{{ end }}
-      </div>
-    </header>
-  {{ end }}
-  <div class="post-body">
-    {{ .Content }}
-  </div>
-  {{ if gt (len (.Resources.ByType "image")) 1 }}
-    <section class="gallery" aria-label="Supporting images">
+  {{ if .Resources.ByType "image" }}
+    <div class="gallery">
       {{ partial "topic-gallery.html" (dict
         "page" .
         "meta" (dict "title" .Title)
       ) }}
-    </section>
+    </div>
   {{ end }}
+  <header class="page-header">
+    <div class="post-header-inner">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ with .Date }}<p class="post-date">{{ . | time.Format "January 2, 2006" }}</p>{{ end }}
+    </div>
+  </header>
+  <div class="post-body">
+    {{ .Content }}
+  </div>
 </article>
 {{ end }}

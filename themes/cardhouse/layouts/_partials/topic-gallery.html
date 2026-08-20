@@ -3,7 +3,8 @@
 {{ $images := where ($page.Resources.ByType "image") "MediaType.SubType" "ne" "avif" }}
 {{ $hero := partial "hero-resource.html" $page }}
 {{ with $hero }}
-  {{ $images = where $images "Name" "ne" .Name }}
+  {{ $supporting := where $images "Name" "ne" .Name }}
+  {{ $images = append $supporting (slice .) }}
 {{ end }}
 {{ if $images }}
   {{ $focalMap := dict }}
@@ -13,8 +14,8 @@
   <div class="topic-gallery">
     <div class="swiper topic-gallery-main">
       <div class="swiper-wrapper">
-        {{ range $i, $image := $images }}
-          {{ $focal := index $focalMap $image.Name }}
+        {{ range $images }}
+          {{ $focal := index $focalMap .Name }}
           {{ $x := 0.5 }}
           {{ $y := 0.5 }}
           {{ if $focal }}
@@ -23,11 +24,11 @@
           {{ end }}
           <div class="swiper-slide" style="aspect-ratio: {{ .Width }} / {{ .Height }};">
             <img
-              src="{{ $image.RelPermalink }}"
+              src="{{ .RelPermalink }}"
               alt="{{ $page.Title }}"
               loading="lazy"
               class="topic-gallery-img"
-              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;{{ if eq $i 0 }} view-transition-name: {{ partial "view-transition-name.html" (dict "page" $page "image" $image) }};{{ end }}"
+              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;{{ if and $hero (eq .Name $hero.Name) }} view-transition-name: {{ partial "view-transition-name.html" (dict "page" $page "image" .) }};{{ end }}"
             >
           </div>
         {{ end }}
