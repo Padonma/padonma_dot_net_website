@@ -127,8 +127,11 @@
       });
 
       mainSwiper.on('click', function () {
+        var clickedSlide = mainSwiper.clickedSlide;
+        var clickedIndex = clickedSlide && clickedSlide.getAttribute('data-swiper-slide-index');
+        if (clickedIndex === null || clickedIndex === undefined) return;
         lightboxEl.classList.add('open');
-        lightboxSwiper.slideToLoop(mainSwiper.realIndex, 0);
+        lightboxSwiper.slideToLoop(Number(clickedIndex), 0);
       });
       lightboxEl.addEventListener('click', function (event) {
         if (event.target === lightboxEl) lightboxEl.classList.remove('open');
