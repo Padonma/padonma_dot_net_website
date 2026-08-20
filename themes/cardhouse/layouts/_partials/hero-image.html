@@ -6,6 +6,10 @@
 {{- $x := 0.5 -}}
 {{- $y := 0.5 -}}
 {{- $alt := $page.Title -}}
+{{- $transitionName := "" -}}
+{{- if and $image (or (eq $variant "card") (eq $variant "detail")) -}}
+  {{- $transitionName = partial "view-transition-name.html" (dict "page" $page "image" $image) -}}
+{{- end -}}
 
 {{- with $page.Params.hero -}}
   {{- with .focal -}}
@@ -38,7 +42,7 @@
       height="{{ $fallback.Height }}"
       alt="{{ $alt }}"
       loading="{{ $loading }}"
-      style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+      style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;{{ with $transitionName }} view-transition-name: {{ . }};{{ end }}"
     >
   {{- else -}}
     <span class="hero-media-placeholder" aria-hidden="true">NO IMAGE</span>
