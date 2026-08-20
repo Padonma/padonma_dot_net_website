@@ -96,7 +96,7 @@
 
       if (!mainEl || !thumbsEl || !lightboxEl) return;
 
-      var many = mainEl.querySelectorAll('.swiper-slide').length > 1;
+      var many = mainEl.querySelectorAll(':scope > .swiper-wrapper > .swiper-slide').length > 1;
       var thumbsSwiper = new Swiper(thumbsEl, {
         slidesPerView: 'auto',
         spaceBetween: 8,
@@ -104,10 +104,10 @@
         watchSlidesProgress: true
       });
       var mainSwiper = new Swiper(mainEl, {
-        slidesPerView: 'auto',
+        slidesPerView: 2.5,
         centeredSlides: true,
         spaceBetween: 0,
-        rewind: many,
+        loop: many,
         keyboard: { enabled: true, onlyInViewport: true },
         navigation: many ? {
           nextEl: mainEl.querySelector('.swiper-button-next'),
@@ -127,10 +127,11 @@
       });
 
       mainSwiper.on('click', function () {
-        var clickedIndex = mainSwiper.clickedIndex;
-        if (clickedIndex === undefined) return;
+        var clickedSlide = mainSwiper.clickedSlide;
+        var clickedIndex = clickedSlide && clickedSlide.getAttribute('data-swiper-slide-index');
+        if (clickedIndex === null || clickedIndex === undefined) return;
         lightboxEl.classList.add('open');
-        lightboxSwiper.slideTo(clickedIndex, 0);
+        lightboxSwiper.slideTo(Number(clickedIndex), 0);
       });
       lightboxEl.addEventListener('click', function (event) {
         if (event.target === lightboxEl) lightboxEl.classList.remove('open');
