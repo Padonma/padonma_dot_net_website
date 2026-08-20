@@ -107,7 +107,7 @@
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        loop: many,
+        rewind: many,
         keyboard: { enabled: true, onlyInViewport: true },
         navigation: many ? {
           nextEl: mainEl.querySelector('.swiper-button-next'),
@@ -118,7 +118,7 @@
       var lightboxSwiperEl = lightboxEl.querySelector('.topic-lightbox-swiper');
       var lightboxSwiper = new Swiper(lightboxSwiperEl, {
         slidesPerView: 1,
-        loop: many,
+        rewind: many,
         keyboard: { enabled: true },
         navigation: many ? {
           nextEl: lightboxSwiperEl.querySelector('.swiper-button-next'),
@@ -127,11 +127,10 @@
       });
 
       mainSwiper.on('click', function () {
-        var clickedSlide = mainSwiper.clickedSlide;
-        var clickedIndex = clickedSlide && clickedSlide.getAttribute('data-swiper-slide-index');
-        if (clickedIndex === null || clickedIndex === undefined) return;
+        var clickedIndex = mainSwiper.clickedIndex;
+        if (clickedIndex === undefined) return;
         lightboxEl.classList.add('open');
-        lightboxSwiper.slideToLoop(Number(clickedIndex), 0);
+        lightboxSwiper.slideTo(clickedIndex, 0);
       });
       lightboxEl.addEventListener('click', function (event) {
         if (event.target === lightboxEl) lightboxEl.classList.remove('open');
