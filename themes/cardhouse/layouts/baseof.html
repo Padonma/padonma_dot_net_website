@@ -118,7 +118,7 @@
       var lightboxSwiperEl = lightboxEl.querySelector('.topic-lightbox-swiper');
       var lightboxSwiper = new Swiper(lightboxSwiperEl, {
         slidesPerView: 1,
-        rewind: many,
+        loop: many,
         keyboard: { enabled: true },
         navigation: many ? {
           nextEl: lightboxSwiperEl.querySelector('.swiper-button-next'),
@@ -131,7 +131,7 @@
         var clickedIndex = clickedSlide && clickedSlide.getAttribute('data-swiper-slide-index');
         if (clickedIndex === null || clickedIndex === undefined) return;
         lightboxEl.classList.add('open');
-        lightboxSwiper.slideTo(Number(clickedIndex), 0);
+        lightboxSwiper.slideToLoop(Number(clickedIndex), 0);
       });
       lightboxEl.addEventListener('click', function (event) {
         if (event.target === lightboxEl) lightboxEl.classList.remove('open');
