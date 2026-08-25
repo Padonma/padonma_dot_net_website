@@ -82,9 +82,15 @@ topic title. Optional secondary labeling must remain subordinate and must not
 turn the card into a conventional text-summary box.
 
 The same topic identity is preserved across homepage cards, topic indexes,
-taxonomy results, and topic-page heroes. This prepares the theme for a later
-View Transitions implementation in which navigation reads as zooming into the
-topic rather than replacing one unrelated layout with another.
+taxonomy results, and the canonical image at the start of each topic gallery.
+CardHouse assigns a matching, filename-safe `view-transition-name` to those
+images and opts into cross-document navigation with `@view-transition`. The
+named image expands over 750ms while the old and new page roots fade. Reduced
+motion preferences reduce that animation to effectively instantaneous.
+
+Arbitrary homepage hero-carousel slides remain outside the named transition
+identity. Homepage topic cards still participate because they use the canonical
+topic hero.
 
 ## Page behavior
 
@@ -106,10 +112,12 @@ tablet, and one on mobile.
 
 ### Topic detail
 
-A topic page begins with the canonical topic hero when one is available, with
-its title presented as part of the hero treatment. Long-form wiki content
-follows. Supporting page-bundle images may continue to appear in the topic
-gallery, but the canonical hero remains the topic's stable visual identity.
+An image-bearing topic begins with the full page-bundle image gallery. The
+canonical hero is ordered first, starts active, and carries the transition name
+that matches the topic card. Supporting images follow in the same carousel.
+Clicking any visible slide opens that exact image in the lightbox; the main
+gallery and lightbox loop continuously in both directions. The conventional
+topic title and long-form wiki content follow the gallery.
 
 ### Blog posts
 
@@ -139,11 +147,15 @@ contents have been migrated. Git history retains the original source.
 3. Add the canonical focal-aware hero-image partial.
 4. Rebuild topic cards, section/taxonomy results, and responsive grids around
    the shared renderer.
-5. Add the shared canonical hero to topic detail pages without disrupting
-   their long-form content and supporting galleries.
-6. Update the former Bicyclious design specification and roadmap to describe
+5. Place the shared canonical hero first in each full topic gallery without
+   disrupting long-form content or supporting images.
+6. Assign matching cross-document View Transition names to canonical card and
+   topic-gallery images, including reduced-motion behavior.
+7. Restore the full topic image carousel with the canonical hero first and
+   preserve exact-image lightbox targeting and continuous looping.
+8. Update the former Bicyclious design specification and roadmap to describe
    CardHouse topics rather than bicycles and builds.
-7. Run Hugo's production build, inspect warnings and generated routes, and
+9. Run Hugo's production build, inspect warnings and generated routes, and
    review the final branch diff for bicycle-specific remnants.
 
 ## Validation criteria
@@ -157,4 +169,10 @@ contents have been migrated. Git history retains the original source.
 - Existing topics without explicit hero data continue to render gracefully.
 - Homepage, topic lists, taxonomies, and terms share one card system.
 - The desktop, tablet, and mobile card layouts remain usable.
+- Canonical topic cards and the first topic-gallery image receive identical,
+  valid `view-transition-name` values.
+- Cross-document transitions use the implemented 750ms animation and honor
+  `prefers-reduced-motion`.
+- Topic galleries start on the canonical image, open the exact clicked image,
+  and loop continuously without blank gaps.
 - The old Bicyclious theme directory is absent from the completed branch.

@@ -8,11 +8,12 @@ results, and topic detail pages around one focal-aware image identity and one
 image-first card system, while retaining a separate editorial homepage hero
 carousel that can select arbitrary page-bundle images.
 
-## Current implementation phase
+## Current implementation status
 
-The initial modularization is being developed in `.worktrees/cardhouse` on the
-`codex/cardhouse-theme` branch. The Padonma repository is the first consumer and
-build fixture. The module lives at `themes/cardhouse/`.
+The initial modularization and View Transition implementation are complete in
+`.worktrees/cardhouse` on the `codex/cardhouse-theme` branch. The Padonma
+repository is the first consumer and build fixture. The module lives at
+`themes/cardhouse/`.
 
 Primary implementation locations:
 
@@ -20,11 +21,15 @@ Primary implementation locations:
   resolution and migration fallbacks.
 - `themes/cardhouse/layouts/_partials/hero-image.html` — focal-aware responsive
   image renderer and stable identity hook.
+- `themes/cardhouse/layouts/_partials/view-transition-name.html` — matching,
+  filename-safe CSS transition identifiers.
 - `themes/cardhouse/layouts/_partials/topic-card.html` — shared image-first card.
 - `themes/cardhouse/layouts/_partials/hero-carousel.html` — homepage editorial
   carousel with per-slide image and focal selection.
-- `themes/cardhouse/layouts/topics/single.html` — expanded topic hero and wiki
-  content.
+- `themes/cardhouse/layouts/_partials/topic-gallery.html` — full topic image
+  carousel, canonical transition destination, thumbnails, and lightbox.
+- `themes/cardhouse/layouts/topics/single.html` — full topic gallery followed
+  by the topic heading and wiki content.
 - `themes/cardhouse/assets/css/main.css` — card, hero, glass, gallery, and
   responsive rules.
 - `themes/cardhouse/layouts/home.html` — parameterized consumer homepage.
@@ -56,7 +61,7 @@ without bicycle-commerce or Padonma context.
 5. Emit the same stable `data-topic-id` in every topic-image context.
 
 **Exit criterion:** one topic image and focal decision render predictably in
-cards and topic detail heroes.
+cards and as the canonical first image in topic galleries.
 
 ## Phase 3 — shared cards and list migration
 
@@ -69,16 +74,19 @@ cards and topic detail heroes.
 **Exit criterion:** all topic-like lists share one card structure and one CSS
 system, including useful missing-image behavior.
 
-## Phase 4 — topic detail and supporting imagery
+## Phase 4 — topic detail and full image gallery
 
-1. Start image-bearing topic pages with the same canonical image used by their
-   cards.
+1. Start image-bearing topic pages with a full gallery whose first active image
+   is the same canonical image used by their cards.
 2. Preserve long-form Markdown as the topic's primary knowledge content.
-3. Keep supporting image galleries distinct from the canonical topic identity.
-4. Avoid requiring images for text-first topics.
+3. Keep supporting images in the same gallery after the canonical image.
+4. Open the exact clicked gallery image in the lightbox.
+5. Loop the main gallery and lightbox continuously without endpoint jumps or
+   blank regions.
+6. Avoid requiring images for text-first topics.
 
-**Exit criterion:** navigating from a card to a topic expands the same visual
-object and then reveals the wiki content.
+**Exit criterion:** a topic begins on its canonical image, supports stable
+continuous browsing through every image, and then reveals the wiki content.
 
 ## Phase 5 — blog integration
 
@@ -91,15 +99,27 @@ object and then reveals the wiki content.
 **Exit criterion:** the blog can visually participate in CardHouse while topics
 remain the durable information architecture.
 
-## Phase 6 — transition and extraction readiness
+## Phase 6 — cross-document View Transitions (complete)
 
-1. Add View Transition names once duplicate canonical topic representations on
-   a single page can be assigned safely.
-2. Validate card-to-detail transitions with progressive enhancement; arbitrary
-   hero-carousel slides remain outside the canonical transition identity.
-3. Add module installation documentation once the eventual standalone Git
+1. Generate one matching, filename-safe `view-transition-name` for each
+   canonical topic card and canonical first topic-gallery image.
+2. Opt into cross-document navigation with `@view-transition`.
+3. Animate named groups over 750ms while fading page roots.
+4. Honor `prefers-reduced-motion` with an effectively instant transition and no
+   root fades.
+5. Keep arbitrary homepage hero-carousel slides outside the canonical
+   transition identity.
+6. Validate the served HTML, generated names, animation rules, and live
+   card-to-topic behavior.
+
+**Exit criterion:** canonical card-to-topic navigation expands the matching
+image with progressive enhancement and reduced-motion support.
+
+## Phase 7 — standalone extraction (optional future work)
+
+1. Add module installation documentation once the eventual standalone Git
    repository path is known.
-4. Extract or subtree the `themes/cardhouse` directory into that repository,
+2. Extract or subtree the `themes/cardhouse` directory into that repository,
    then consume it from Padonma as a Hugo Module or Git submodule.
 
 **Exit criterion:** CardHouse can be versioned and consumed independently
@@ -115,6 +135,12 @@ without copying Padonma-specific files.
       points independently of canonical topic heroes.
 - [x] Section, taxonomy, and term lists use the shared topic card.
 - [x] Topic detail pages use canonical heroes when images exist.
+- [x] Topic pages restore the full image gallery with the canonical hero first.
+- [x] Main topic galleries and lightboxes loop continuously and open the exact
+      clicked image.
+- [x] Canonical cards and topic galleries use matching View Transition names.
+- [x] Cross-document transition animation and reduced-motion behavior are
+      implemented and browser-verified.
 - [x] Padonma homepage identity moved to consumer parameters.
 - [x] Hugo production build passes after final cleanup.
 - [x] Generated homepage, topic list, and representative topic pages receive
