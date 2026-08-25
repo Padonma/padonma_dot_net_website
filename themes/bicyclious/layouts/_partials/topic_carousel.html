@@ -9,8 +9,8 @@
   <div class="topic-gallery">
     <div class="swiper topic-gallery-main">
       <div class="swiper-wrapper">
-        {{ range $images }}
-          {{ $focal := index $focalMap .Name }}
+        {{ range $i, $image := $images }}
+          {{ $focal := index $focalMap $image.Name }}
           {{ $x := 0.5 }}
           {{ $y := 0.5 }}
           {{ if $focal }}
@@ -19,11 +19,11 @@
           {{ end }}
           <div class="swiper-slide" style="aspect-ratio: {{ .Width }} / {{ .Height }};">
             <img
-              src="{{ .RelPermalink }}"
+              src="{{ $image.RelPermalink }}"
               alt="{{ $page.Title }}"
               loading="lazy"
               class="topic-gallery-img"
-              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;{{ if eq $i 0 }} view-transition-name: {{ partial "view-transition-name.html" (dict "page" $page "image" $image) }};{{ end }}"
             >
           </div>
         {{ end }}

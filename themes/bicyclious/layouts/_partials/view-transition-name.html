@@ -1,0 +1,9 @@
+{{- /*
+  A stable, page-scoped name for an image that appears in more than one view.
+  Keep it limited to CSS identifier-safe URL slugs so it can be used directly
+  as a view-transition-name.
+*/ -}}
+{{- $pageSlug := .page.File.ContentBaseName | urlize -}}
+{{- $imageBase := path.Base .image.Name -}}
+{{- $imageSlug := strings.Replace $imageBase "." "-" | urlize -}}
+topic-{{ $pageSlug }}-{{ $imageSlug -}}

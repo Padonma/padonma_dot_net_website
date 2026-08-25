@@ -4,7 +4,12 @@
     <div class="card-img-wrap{{ if not $images }} card-no-img{{ end }}">
       {{ if $images }}
         {{ $cover := index $images 0 }}
-        <img src="{{ $cover.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+        <img
+          src="{{ $cover.RelPermalink }}"
+          alt="{{ .Title }}"
+          loading="lazy"
+          style="view-transition-name: {{ partial "view-transition-name.html" (dict "page" . "image" $cover) }};"
+        >
       {{ else }}
         <span>NO IMAGE</span>
       {{ end }}
