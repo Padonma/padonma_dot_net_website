@@ -29,7 +29,8 @@
   </div>
 </section>
 
-{{ $pages := where site.RegularPages "Section" "topics" }}
+{{ $topics := site.GetPage "/topics" }}
+{{ $pages := $topics.Pages }}
 {{ if $pages }}
   <section class="topics-grid">
     <header class="section-header">
