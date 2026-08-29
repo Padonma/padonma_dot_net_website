@@ -4,9 +4,9 @@ date: 2026-08-06
 specs: "Sweedish for band weaving"
 weight: 4
 summary: ""
-social_image: "lotus_jacket.jpg"
+social_image: "bandgrind_cover.jpeg"
 ---
 
-## Loro Piana family
+## Bandgrinding
 
 
