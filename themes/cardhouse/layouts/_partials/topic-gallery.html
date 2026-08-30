@@ -15,6 +15,11 @@
     <div class="swiper topic-gallery-main">
       <div class="swiper-wrapper">
         {{ range $images }}
+          {{ $variants := partial "responsive-image-resources.html" . }}
+          {{ $small := $variants.small }}
+          {{ $medium := $variants.medium }}
+          {{ $large := $variants.large }}
+          {{ $fallback := $variants.fallback }}
           {{ $focal := index $focalMap .Name }}
           {{ $x := 0.5 }}
           {{ $y := 0.5 }}
@@ -24,7 +29,13 @@
           {{ end }}
           <div class="swiper-slide" style="aspect-ratio: {{ .Width }} / {{ .Height }};">
             <img
-              src="{{ .RelPermalink }}"
+              src="{{ $fallback.RelPermalink }}"
+              {{ if $small }}
+              srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 1000w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1600w{{ end }}"
+              sizes="100vw"
+              {{ end }}
+              width="{{ $fallback.Width }}"
+              height="{{ $fallback.Height }}"
               alt="{{ $page.Title }}"
               loading="lazy"
               class="topic-gallery-img"
@@ -43,6 +54,9 @@
         <div class="swiper topic-gallery-thumbs">
           <div class="swiper-wrapper">
             {{ range $images }}
+              {{ $variants := partial "responsive-image-resources.html" . }}
+              {{ $thumbnail := $variants.fallback }}
+              {{ with $variants.small }}{{ $thumbnail = . }}{{ end }}
               {{ $focal := index $focalMap .Name }}
               {{ $x := 0.5 }}
               {{ $y := 0.5 }}
@@ -52,7 +66,9 @@
               {{ end }}
               <div class="swiper-slide">
                 <img
-                  src="{{ .RelPermalink }}"
+                  src="{{ $thumbnail.RelPermalink }}"
+                  width="{{ $thumbnail.Width }}"
+                  height="{{ $thumbnail.Height }}"
                   alt=""
                   loading="lazy"
                   class="topic-gallery-thumb-img"
@@ -70,6 +86,11 @@
       <div class="swiper topic-lightbox-swiper">
         <div class="swiper-wrapper">
           {{ range $images }}
+            {{ $variants := partial "responsive-image-resources.html" . }}
+            {{ $small := $variants.small }}
+            {{ $medium := $variants.medium }}
+            {{ $large := $variants.large }}
+            {{ $fallback := $variants.fallback }}
             {{ $focal := index $focalMap .Name }}
             {{ $x := 0.5 }}
             {{ $y := 0.5 }}
@@ -79,7 +100,13 @@
             {{ end }}
             <div class="swiper-slide">
               <img
-                src="{{ .RelPermalink }}"
+                src="{{ $fallback.RelPermalink }}"
+                {{ if $small }}
+                srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 1000w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1600w{{ end }}"
+                sizes="100vw"
+                {{ end }}
+                width="{{ $fallback.Width }}"
+                height="{{ $fallback.Height }}"
                 alt="{{ $page.Title }}"
                 loading="lazy"
                 class="topic-lightbox-img"
