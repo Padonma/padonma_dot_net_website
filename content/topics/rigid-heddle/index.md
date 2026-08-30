@@ -1,6 +1,7 @@
 ---
-title: Introduction
-weight: 20
+title: Ridig Heddle Weaving
+summary: "Heddles a.k.a. combs are ancient textile tech that can be used to weave QR codes."
+weight: 5
 ---
 
 Bandweaving is an ancient weaving technology.

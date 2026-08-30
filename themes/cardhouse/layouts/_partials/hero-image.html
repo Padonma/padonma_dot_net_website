@@ -11,12 +11,17 @@
   {{- $transitionName = partial "view-transition-name.html" (dict "page" $page "image" $image) -}}
 {{- end -}}
 
-{{- with $page.Params.hero -}}
-  {{- with .focal -}}
-    {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
-    {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
+{{- with index $page.Params "hero" -}}
+  {{- with index . "focal" -}}
+    {{- if isset . "x" }}{{ $x = float (index . "x") }}{{ end -}}
+    {{- if isset . "y" -}}
+      {{- $y = float (index . "y") -}}
+    {{- else if isset . "true" -}}
+      {{- /* YAML 1.1 parses an unquoted `y` key as the boolean `true`. */ -}}
+      {{- $y = float (index . "true") -}}
+    {{- end -}}
   {{- end -}}
-  {{- with .alt }}{{ $alt = . }}{{ end -}}
+  {{- with index . "alt" }}{{ $alt = . }}{{ end -}}
 {{- end -}}
 
 <div

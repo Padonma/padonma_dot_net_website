@@ -1,6 +1,10 @@
 ---
-title: Padonma Network
-weight: 10
+title: Padonma Network Intro
+summary: "QR tech for artisan textiles"
+weight: 1
+hero:
+  image: "r7_wide_band.png"
+
 ---
 
 The Padonma Network is exploring the possibility of tracking cottage

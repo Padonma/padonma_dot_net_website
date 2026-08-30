@@ -1,12 +1,11 @@
 ---
 title: "Loro Piana"
 date: 2026-08-06
-specs: "Loro Piana was the first fashion maison to work with lotus thread"
-weight: 4
-summary: "A Specialized Hardrock pulled from obscurity, sanded down, and painted jade green. Rides honest."
+weight: 10
+summary: "Loro Piana was the first fashion house to work with lotus fiber."
 social_image: "lotus_jacket.jpg"
 hero:
-  image: "lotus_jacket.jpg"
+  image: "loro_pianan_jacket_full.jpg"
   focal:
     x: 0.5
     y: 0.5
