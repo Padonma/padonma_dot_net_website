@@ -1,9 +1,10 @@
 ---
 title: Padonma Network Intro
-summary: "QR tech for artisan textiles"
+summary: "Handwoven QR tech for artisan textiles"
 weight: 1
 hero:
-  image: "r7_wide_band.png"
+  image: "dotted-p-icon-r7.png"
+  not: "r7_wide_band.png"
 
 ---
 

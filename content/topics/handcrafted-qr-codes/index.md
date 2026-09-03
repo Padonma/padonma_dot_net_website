@@ -1,5 +1,6 @@
 ---
-title: Handcrafted QR codes
+title: Prior art handcrafted QRs
+summary: Folks have crafted QRs codes with tablet weaving, crocheting, etc.
 weight: 70
 ---
 

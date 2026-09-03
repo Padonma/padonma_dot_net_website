@@ -1,5 +1,6 @@
 ---
-title: Lotus thread industry research reports
+title: Lotus fiber research
+summary: Several studies of the lotus fiber industy have been published
 weight: 100
 ---
 

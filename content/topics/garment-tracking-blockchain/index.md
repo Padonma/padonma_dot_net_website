@@ -1,5 +1,6 @@
 ---
-title: Tracking garment rMQRs on a blockchain
+title: Blockchain for Fashion
+summary: India is already blockchain tracking handloomed sarees with embedded QRs
 weight: 50
 ---
 

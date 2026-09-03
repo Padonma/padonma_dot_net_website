@@ -1,6 +1,7 @@
 ---
 title: Proposal
 weight: 30
+summary: 5 para fractional topic
 ---
 
 This proposal has a hardware part and a software part.
