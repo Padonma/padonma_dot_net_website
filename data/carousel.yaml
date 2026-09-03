@@ -1,34 +1,66 @@
-- slug: loro_piana
-  image: Pier-Luigi-Loro-Piana.jpg
-  alt: Pier Luigi Loro Piana
+- slug: bandgrind/bandgrind-session-13
+  image: hero-13.png
+  alt: Weaving experiment session #13
   focal:
     x: 0.5
-    y: 0.5
+    "y": 0.5
 
-- slug: loro_piana
-  image: loro_pianan_jacket_detail.jpg
-  alt: Loro Piana Lotus Jacket Detail
+- slug: lotus-weaving
+  image: fiber-extraction.png
+  alt: Fiber extraction close up
   focal:
     x: 0.5
-    y: 0.5
+    "y": 0.0
 
 - slug: loro_piana
   image: loro_pianan_jacket_full.jpg
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
-    y: 0.5
+    "y": 0.0
+
+- slug: rmqr-codes
+  image: six_rmqr_43s.png
+  alt: rMQRs come in various sizes
+  focal:
+    x: 0.5
+    "y": 0.0
+
+- slug: lotus-weaving
+  image: inle-workshop_1.jpg
+  alt: Lotus weaver on Inle
+  focal:
+    x: 0.5
+    "y": 0.0
+
+- slug: loro_piana
+  image: loro_pianan_jacket_detail.jpg
+  alt: Loro Piana Lotus Jacket
+  focal:
+    x: 0.5
+    "y": 0.0
 
 - slug: loro_piana
   image: lotus_jacket.jpg
   alt: Lotus Jacket
   focal:
     x: 0.5
-    y: 0.5
+    "y": 0.0
 
-- slug: loro_piana
-  image: sneakers.jpg
-  alt: Loro Piana Lotus Sneakers
+- slug: samatoa
+  image: short-dress-close-up.png
+  alt: A short dress by Samatoa
   focal:
     x: 0.5
-    y: 0.5
+    "y": 0.0
+
+- slug: weaving-burma
+  image: nan_yite_backstrap_weaving.jpg
+  alt: A short dress by Samatoa
+  focal:
+    x: 0.5
+    "y": 0.0
+    
+
+
+
