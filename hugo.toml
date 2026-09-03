@@ -7,15 +7,19 @@ assetDir = "assets"
 enableRobotsTXT = true
 
 [params]
-  subtitle = "Bootstrapping a global supply network for lotus fiber"
+  subtitle = "Burmese lotus fiber workshop"
+  networkSubtitle = "Bootstrapping a global supply network for lotus fiber"
   description = "Padonma Network"
   author = "Padonma Network"
-  logo = "brand/padonma_wordmark.png"
+  logo = "brand/padonma_wordmark_and_rmqr.png"
   billboardImage = "temp/redit_visited_2017.cropped.webp"
   billboardLogo = "temp/padonma_logo.png"
-  billboardTitle = ["Padonma", "Network"]
+  billboardTitle = ["Atelier", "Padonma"]
   topicsHeading = "Introduction"
   footerImage = "fluff/women_in_hat_and_thanaka.jpg"
+
+  [params.cardhouse]
+    customStylesheet = "css/padonma.css"
 
 [menus]
   [[menus.main]]

@@ -1,12 +1,20 @@
 ---
-title: India uses QR codes to identify artisanal handloom goods
+title: Indian QRs for handloom authentication
+summary: The Indian government has established a blockchain-base garment authentication system involving weaving QR codes into sarees.
 weight: 80
 ---
 
 QR codes are already being used to track all manner of handicraft
-products. For example handmade carpets: [QR Codes Seen as Key to Reviving the Fading Glory of Kashmiri Carpets](https://www.voanews.com/a/qr-codes-seen-as-key-to-reviving-the-fading-glory-of-kashmiri-carpets-/6487753.html). The closest prior art
+products. For example handmade carpets: [QR Codes Seen as Key to Reviving the Fading Glory of Kashmiri Carpets](https://www.voanews.com/a/qr-codes-seen-as-key-to-reviving-the-fading-glory-of-kashmiri-carpets-/6487753.html). 
+
+
+The closest prior art
 to Padonma is what the Indian government is doing with woven
-products. The following articles serve to illustrate the goings on in India.
+products. 
+
+[A 3 minute short on Facebook about NEHHDC's QR & blockchain authenticator of handloom items](https://www.facebook.com/MdonerIndia/videos/the-nehhdc-north-eastern-handicrafts-and-handlooms-development-corporation-scann/1823727242369001/)
+
+The following articles serve to illustrate the goings on in India.
 
 [NEHHDC-textiles department collab to encompass over 10,000 looms](https://themeghalayan.com/nehhdc-textiles-department-collab-to-encompass-over-10000-looms/) (2023-10)
 

@@ -4,6 +4,7 @@ aliases:
   - /banggrinding.html
 title: Bandgrind experiments
 weight: 140
+social_image: "02-bandgrind-heddle.png"
 ---
 
 The [Padonma Network](/topics/padonma-network/) project seeks to encode UUIDs in QR codes

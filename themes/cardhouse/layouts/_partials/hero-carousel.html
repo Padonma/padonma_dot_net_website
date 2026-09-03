@@ -32,14 +32,11 @@
               {{- end -}}
             {{- end -}}
 
-            {{- $small := false -}}
-            {{- $medium := false -}}
-            {{- $large := false -}}
-            {{- if ge .Width 640 }}{{ $small = .Resize "640x webp q82" }}{{ end -}}
-            {{- if ge .Width 1000 }}{{ $medium = .Resize "1000x webp q82" }}{{ end -}}
-            {{- if ge .Width 1600 }}{{ $large = .Resize "1600x webp q82" }}{{ end -}}
-            {{- $fallback := . -}}
-            {{- if $medium }}{{ $fallback = $medium }}{{ else if $small }}{{ $fallback = $small }}{{ end -}}
+            {{- $variants := partial "responsive-image-resources.html" . -}}
+            {{- $small := $variants.small -}}
+            {{- $medium := $variants.medium -}}
+            {{- $large := $variants.large -}}
+            {{- $fallback := $variants.fallback -}}
             {{- $alt := $item.alt | default $page.Title -}}
 
             <a class="swiper-slide" href="{{ $page.RelPermalink }}">

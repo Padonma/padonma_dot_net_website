@@ -5,7 +5,7 @@
     <p class="section-sub">{{ len .RegularPages }} item{{ if ne (len .RegularPages) 1 }}s{{ end }}</p>
   </header>
   <div class="card-grid">
-    {{ range .RegularPages.ByDate.Reverse }}
+    {{ range .RegularPages.ByWeight }}
       {{ partial "topic-card.html" . }}
     {{ end }}
   </div>

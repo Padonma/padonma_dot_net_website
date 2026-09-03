@@ -1,6 +1,9 @@
 ---
 title: Handweaving rMQR codes
+summary: Since rMQR codes can be narrow, they can be woven into bands easier that the original square QR codes.
 weight: 40
+hero:
+  image: veving.png
 ---
 
 [![](00-two-module-band.jpg)](https://norwegiantextileletter.com/article-categories/band-weaving/)

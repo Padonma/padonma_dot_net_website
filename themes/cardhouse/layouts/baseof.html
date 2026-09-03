@@ -5,21 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;0,7..72,900;1,7..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">
-  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  {{ $styles := slice
+    (resources.Get "css/tokens.css")
+    (resources.Get "css/base.css")
+    (resources.Get "css/layout.css")
+    (resources.Get "css/components.css")
+  }}
+  {{ $css := $styles | resources.Concat "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ with site.Params.cardhouse.customStylesheet }}
+    {{ with resources.Get . }}
+      {{ $customCSS := . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+    {{ else }}
+      {{ warnf "Cardhouse custom stylesheet %q was not found in assets" . }}
+    {{ end }}
+  {{ end }}
 </head>
 <body>
-  <header class="site-header">
+  {{ with resources.Get "brand/checkerboard.png" }}
+    {{ $checkerboard := . | fingerprint }}
+    <header class="site-header" style="" > <!-- background-image: url('{{ $checkerboard.RelPermalink }}');"> -->
+  {{ end }}
     <div class="header-inner">
       <a href="{{ "/" | relURL }}" class="site-logo">
         {{ with site.Params.logo }}
           {{ with resources.Get . }}
             <div class="logo-lockup">
-              {{ $logo := .Resize "360x" | fingerprint }}
+              {{ $logo := .Resize "720x" | fingerprint }}
               <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" class="logo-img">
             </div>
           {{ else }}
@@ -35,7 +49,7 @@
         {{ end }}
       </nav>
     </div>
-  </header>
+    </header>
 
   <main class="site-main" id="main">
     {{ block "main" . }}{{ end }}

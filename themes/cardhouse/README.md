@@ -70,8 +70,41 @@ All parameters are optional unless the consuming layout depends on them:
   footerImage = "brand/footer.jpg"
 ```
 
-Image values resolve through Hugo's global `assets/` directory. Consumers can
-override CardHouse's semantic CSS custom properties to adapt the palette.
+Image values resolve through Hugo's global `assets/` directory.
+
+## Styling and brand overrides
+
+CardHouse keeps its CSS in four responsibility-based source files:
+
+- `assets/css/tokens.css` provides neutral semantic defaults.
+- `assets/css/base.css` provides the reset and global document behavior.
+- `assets/css/layout.css` arranges the site shell and major page regions.
+- `assets/css/components.css` styles cards, prose, galleries, and controls.
+
+The base template concatenates those sources, in that order, into the
+fingerprinted `css/main.css` served to browsers.
+
+A consuming site can add an optional site-owned stylesheet under its global
+`assets/` directory:
+
+```toml
+[params.cardhouse]
+  customStylesheet = "css/brand.css"
+```
+
+CardHouse processes and links that stylesheet after its own bundle. Define
+brand values there as ordinary CSS custom-property overrides:
+
+```css
+:root {
+  --accent: #8b1e3f;
+  --primary: var(--accent);
+  --font-display: Georgia, serif;
+}
+```
+
+The configuration contains only the optional stylesheet path; colors, fonts,
+and other design values remain in CSS and follow the normal cascade.
 
 ## Reusable source
 
@@ -79,6 +112,6 @@ override CardHouse's semantic CSS custom properties to adapt the palette.
 - `layouts/_partials/hero-image.html` renders focal-aware responsive imagery.
 - `layouts/_partials/topic-card.html` renders the shared card.
 - `layouts/topics/single.html` renders the topic detail hero and wiki content.
-- `assets/css/main.css` contains the shared responsive design system.
+- `assets/css/` contains the shared, bundled responsive design system.
 
 CardHouse intentionally has no product, price, inventory, or purchasing model.

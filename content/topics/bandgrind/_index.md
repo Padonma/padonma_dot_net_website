@@ -1,12 +1,11 @@
 ---
-title: "Bandgrinding"
+title: "Bandgrinding rMQRs"
 date: 2026-08-06
-specs: "Sweedish for band weaving"
 weight: 4
-summary: ""
-social_image: "lotus_jacket.jpg"
+summary: "Bands are arguable the earliest woven textiles. Bandgrind is the Swedish word for a band weaving tool. We logged our rmQR bandgrinding experiments."
+social_image: "bandgrind_cover.jpeg"
 ---
 
-## Loro Piana family
+## Bandgrinding
 
 

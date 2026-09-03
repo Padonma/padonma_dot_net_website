@@ -1,5 +1,8 @@
 ---
-title: "Bandweaving: an ancient minimalist weaving technology"
+title: Bandweaving
+summary: Weaving bands is one of the simpliest textile technologies
+hero:
+  image: r7_wide_band_kinda.png
 weight: 110
 ---
 

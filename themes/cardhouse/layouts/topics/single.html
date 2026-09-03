@@ -1,6 +1,7 @@
 {{ define "main" }}
-<article class="standard-page topic-page">
-  {{ if .Resources.ByType "image" }}
+{{ $images := .Resources.ByType "image" }}
+<article class="standard-page topic-page{{ if $images }} topic-page--with-gallery{{ end }}">
+  {{ if $images }}
     <div class="gallery">
       {{ partial "topic-gallery.html" (dict
         "page" .

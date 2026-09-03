@@ -7,7 +7,10 @@
       "sizes" "(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
     ) }}
     <div class="card-overlay glass">
-      <h2 class="card-title">{{ .Title }}</h2>
+      <div class="card-copy">
+        <h2 class="card-title">{{ .Title }}</h2>
+        {{ with .Summary }}<p class="card-summary">{{ . }}</p>{{ end }}
+      </div>
       {{ with .Params.topic_type }}<span class="card-label">{{ . }}</span>{{ end }}
     </div>
   </a>

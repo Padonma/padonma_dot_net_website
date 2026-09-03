@@ -1,5 +1,6 @@
 ---
-title: Weaving techniques in Burma
+title: Burmese Weaving
+summary: Burmese culture is rich in textile skills from domestic to commercial contexts
 weight: 120
 ---
 
@@ -14,3 +15,8 @@ Manual pattern picking [Weaving a longyi at a shop near Mandalay - YouTube](http
 ![Silk patterning, done entirely by hand](https://thumbs.dreamstime.com/b/silk-textile-production-mandalay-myanmar-woman-loom-weaving-city-188964384.jpg)
 
 [![](mandalay_weaver.png)](https://www.youtube.com/watch?v=O8aakfoU-TE)
+
+
+
+## Sources
+- [Nan Yite backstrap weaving with lotus colored headdress](https://cabanamagazine.com/blogs/atlas-of-craftsmanship/craft-stories-turquoise-mountain-myanmar-weaving)
