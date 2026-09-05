@@ -32,14 +32,16 @@
 {{ $topics := site.GetPage "/topics" }}
 {{ $pages := $topics.Pages }}
 {{ if $pages }}
-  <section class="topics-grid">
-    <header class="section-header">
-      <h2 class="section-title">{{ site.Params.topicsHeading | default "Topics" }}</h2>
-    </header>
-    <div class="card-grid">
-      {{ range $pages.ByWeight }}
-        {{ partial "topic-card.html" . }}
-      {{ end }}
+  <section class="topics-section">
+    <div class="topics-grid">
+      <header class="section-header">
+        <h2 class="section-title">{{ site.Params.topicsHeading | default "Topics" }}</h2>
+      </header>
+      <div class="card-grid">
+        {{ range $pages.ByWeight }}
+          {{ partial "topic-card.html" . }}
+        {{ end }}
+      </div>
     </div>
   </section>
 {{ end }}

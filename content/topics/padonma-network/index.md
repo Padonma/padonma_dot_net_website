@@ -3,9 +3,7 @@ title: Padonma Network Intro
 summary: "Handwoven QR tech for artisan textiles"
 weight: 1
 hero:
-  image: "dotted-p-icon-r7.png"
-  not: "r7_wide_band.png"
-
+  image: "dotted-p-icon-r7-pinked-bigged.png"
 ---
 
 The Padonma Network is exploring the possibility of tracking cottage

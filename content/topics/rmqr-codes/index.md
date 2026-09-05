@@ -3,10 +3,10 @@ title: rMQR codes
 summary: "2022 brought a new fashion to QR codes. Now they can can be narrow and or long."
 weight: 60
 hero:
-  image: six_rmqr_43s.png
+  image: three_rmqr_43s.png
   focal:
-    x: 0.5
-    y: 0.0
+    x: 0.0
+    y: 0.5
 ---
 
 <figure width="75%">

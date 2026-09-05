@@ -49,3 +49,18 @@
 .card-title {
     color: var(--primary);
 }
+
+.topics-section {
+  background-image: url("/temp/lotus-flower-full-frontal.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.topics-grid {
+  padding-bottom: 3rem;
+}
+
+.site-footer {
+  margin-top: 0;
+}

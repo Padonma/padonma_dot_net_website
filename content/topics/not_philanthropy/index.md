@@ -1,6 +1,6 @@
 ---
-title: Philanthropy? Not so much.
-summary: "The goal of the Padonma project is to bootstrap a self-sustaining commercial network."
+title: OSS not philanthropy
+summary: "The Padonma project is bootstrapping a self-sustaining commercial network via open source software (OSS) and QR tags"
 weight: 7
 hero:
   image: "no_philanthropy.gemini_generated.png"
