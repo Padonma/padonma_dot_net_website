@@ -161,7 +161,9 @@
     (function initHomepageOpeningSnap() {
       var root = document.documentElement;
       var billboard = document.querySelector('.homepage .billboard');
+      var topics = document.querySelector('.homepage .topics-section');
       if (!billboard) return;
+      var lastSnapTarget = topics || billboard;
 
       var isUpdating = false;
       function setOpeningSnap(enabled) {
@@ -170,15 +172,15 @@
 
       function updateForPosition() {
         isUpdating = false;
-        // Once a reader has moved below the billboard, the rest of the page
+        // Once a reader has moved below the final landing point, the rest of the page
         // deliberately returns to normal document scrolling.
-        setOpeningSnap(window.scrollY <= billboard.offsetTop + 1);
+        setOpeningSnap(window.scrollY <= lastSnapTarget.offsetTop + 1);
       }
 
       window.addEventListener('scroll', function () {
         // Turn snapping off as soon as a downward gesture carries past the
         // last panel. This keeps the topics and following content free-flowing.
-        if (window.scrollY > billboard.offsetTop + 16) {
+        if (window.scrollY > lastSnapTarget.offsetTop + 16) {
           setOpeningSnap(false);
         }
         if (!isUpdating) {
@@ -186,6 +188,14 @@
           window.requestAnimationFrame(updateForPosition);
         }
       }, { passive: true });
+
+      window.addEventListener('scrollend', function () {
+        // The topics heading is the final snap landing point. Disable snapping
+        // only after arriving there so the grid itself remains ordinary page flow.
+        if (topics && Math.abs(window.scrollY - topics.offsetTop) <= 1) {
+          setOpeningSnap(false);
+        }
+      });
     })();
   </script>
 </body>

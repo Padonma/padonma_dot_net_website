@@ -32,7 +32,7 @@
 {{ $topics := site.GetPage "/topics" }}
 {{ $pages := $topics.Pages }}
 {{ if $pages }}
-  <section class="topics-section">
+  <section class="topics-section" id="topics">
     <div class="topics-grid">
       <header class="section-header">
         <h2 class="section-title">{{ site.Params.topicsHeading | default "Topics" }}</h2>

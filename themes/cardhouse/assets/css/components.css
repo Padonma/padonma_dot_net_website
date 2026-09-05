@@ -1074,7 +1074,8 @@
 }
 
 .homepage .hero-carousel,
-.homepage .billboard {
+.homepage .billboard,
+.homepage .topics-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
