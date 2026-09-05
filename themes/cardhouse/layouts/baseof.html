@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode | default "en" }}">
+<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ end }}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,6 +156,36 @@
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') lightboxEl.classList.remove('open');
       });
+    })();
+
+    (function initHomepageOpeningSnap() {
+      var root = document.documentElement;
+      var billboard = document.querySelector('.homepage .billboard');
+      if (!billboard) return;
+
+      var isUpdating = false;
+      function setOpeningSnap(enabled) {
+        root.classList.toggle('homepage-opening-snap', enabled);
+      }
+
+      function updateForPosition() {
+        isUpdating = false;
+        // Once a reader has moved below the billboard, the rest of the page
+        // deliberately returns to normal document scrolling.
+        setOpeningSnap(window.scrollY <= billboard.offsetTop + 1);
+      }
+
+      window.addEventListener('scroll', function () {
+        // Turn snapping off as soon as a downward gesture carries past the
+        // last panel. This keeps the topics and following content free-flowing.
+        if (window.scrollY > billboard.offsetTop + 16) {
+          setOpeningSnap(false);
+        }
+        if (!isUpdating) {
+          isUpdating = true;
+          window.requestAnimationFrame(updateForPosition);
+        }
+      }, { passive: true });
     })();
   </script>
 </body>

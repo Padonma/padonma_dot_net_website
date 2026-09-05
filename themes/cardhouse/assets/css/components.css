@@ -1069,6 +1069,21 @@
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
 
 /* ── Homepage hero carousel ────────────────────────────────── */
+.homepage-opening-snap {
+  scroll-snap-type: y mandatory;
+}
+
+.homepage .hero-carousel,
+.homepage .billboard {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* The header remains in the opening view when the first panel is selected. */
+.homepage .hero-carousel {
+  scroll-margin-top: var(--header-height);
+}
+
 .hero-carousel {
   width: 100%;
   height: calc(100vh - var(--header-height));
@@ -1175,6 +1190,12 @@
 .swiper-pagination-bullet-active {
   opacity: 1 !important;
   background: var(--primary) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homepage-opening-snap {
+    scroll-snap-type: none;
+  }
 }
 
 
