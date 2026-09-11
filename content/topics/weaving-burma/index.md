@@ -3,7 +3,7 @@ title: Burmese Weaving
 summary: Burmese culture is rich in textile skills from domestic to commercial contexts
 weight: 120
 hero:
-  image: weaver-in-red-jacket.jpg
+  image: nan_yite_backstrap_weaving
 ---
 
 Near Mandalay in Burma, they weave silkworm silk on looms and hand
