@@ -14,12 +14,12 @@
   }}
   {{ $css := $styles | resources.Concat "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  {{ with site.Params.cardhouse.customStylesheet }}
+  {{ with site.Params.cardhaus.customStylesheet }}
     {{ with resources.Get . }}
       {{ $customCSS := . | minify | fingerprint }}
       <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
     {{ else }}
-      {{ warnf "Cardhouse custom stylesheet %q was not found in assets" . }}
+      {{ warnf "Cardhaus custom stylesheet %q was not found in assets" . }}
     {{ end }}
   {{ end }}
 </head>

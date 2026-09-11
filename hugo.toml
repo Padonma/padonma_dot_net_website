@@ -1,7 +1,7 @@
 baseURL = "https://padonma.net/"
 languageCode = "en-us"
 title = "Padonma"
-theme = "cardhouse"
+theme = "cardhaus"
 assetDir = "assets"
 
 enableRobotsTXT = true
@@ -18,7 +18,7 @@ enableRobotsTXT = true
   topicsHeading = "Introduction"
   footerImage = "fluff/women_in_hat_and_thanaka.jpg"
 
-  [params.cardhouse]
+  [params.cardhaus]
     customStylesheet = "css/padonma.css"
 
 [menus]

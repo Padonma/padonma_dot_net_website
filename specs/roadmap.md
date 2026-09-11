@@ -1,8 +1,8 @@
-# CardHouse roadmap
+# Cardhaus roadmap
 
 ## Goal
 
-Turn the former Bicyclious implementation into a reusable CardHouse Hugo theme
+Turn the former Bicyclious implementation into a reusable Cardhaus Hugo theme
 for wiki-like topics and supporting blog posts. Unify topic lists, taxonomy
 results, and topic detail pages around one focal-aware image identity and one
 image-first card system, while retaining a separate editorial homepage hero
@@ -11,38 +11,38 @@ carousel that can select arbitrary page-bundle images.
 ## Current implementation status
 
 The initial modularization and View Transition implementation are complete in
-`.worktrees/cardhouse` on the `codex/cardhouse-theme` branch. The Padonma
+`.worktrees/cardhaus` on the `codex/cardhaus-theme` branch. The Padonma
 repository is the first consumer and build fixture. The module lives at
-`themes/cardhouse/`.
+`themes/cardhaus/`.
 
 Primary implementation locations:
 
-- `themes/cardhouse/layouts/_partials/hero-resource.html` — canonical resource
+- `themes/cardhaus/layouts/_partials/hero-resource.html` — canonical resource
   resolution and migration fallbacks.
-- `themes/cardhouse/layouts/_partials/hero-image.html` — focal-aware responsive
+- `themes/cardhaus/layouts/_partials/hero-image.html` — focal-aware responsive
   image renderer and stable identity hook.
-- `themes/cardhouse/layouts/_partials/view-transition-name.html` — matching,
+- `themes/cardhaus/layouts/_partials/view-transition-name.html` — matching,
   filename-safe CSS transition identifiers.
-- `themes/cardhouse/layouts/_partials/topic-card.html` — shared image-first card.
-- `themes/cardhouse/layouts/_partials/hero-carousel.html` — homepage editorial
+- `themes/cardhaus/layouts/_partials/topic-card.html` — shared image-first card.
+- `themes/cardhaus/layouts/_partials/hero-carousel.html` — homepage editorial
   carousel with per-slide image and focal selection.
-- `themes/cardhouse/layouts/_partials/topic-gallery.html` — full topic image
+- `themes/cardhaus/layouts/_partials/topic-gallery.html` — full topic image
   carousel, canonical transition destination, thumbnails, and lightbox.
-- `themes/cardhouse/layouts/topics/single.html` — full topic gallery followed
+- `themes/cardhaus/layouts/topics/single.html` — full topic gallery followed
   by the topic heading and wiki content.
-- `themes/cardhouse/assets/css/main.css` — card, hero, glass, gallery, and
+- `themes/cardhaus/assets/css/main.css` — card, hero, glass, gallery, and
   responsive rules.
-- `themes/cardhouse/layouts/home.html` — parameterized consumer homepage.
-- `themes/cardhouse/layouts/section.html`, `taxonomy.html`, and `term.html` —
+- `themes/cardhaus/layouts/home.html` — parameterized consumer homepage.
+- `themes/cardhaus/layouts/section.html`, `taxonomy.html`, and `term.html` —
   generated shared-card lists.
 
 ## Phase 1 — module and language migration
 
-1. Rename `themes/bicyclious` to `themes/cardhouse` and update the consumer's
+1. Rename `themes/bicyclious` to `themes/cardhaus` and update the consumer's
    Hugo configuration.
 2. Remove bicycle, build, price, sold-state, inventory, and purchase concepts
    from active templates and styles.
-3. Replace project-specific CSS tokens and selectors with semantic CardHouse
+3. Replace project-specific CSS tokens and selectors with semantic Cardhaus
    names.
 4. Parameterize Padonma-specific homepage identity so the theme does not
    contain consumer names or asset paths.
@@ -95,7 +95,7 @@ continuous browsing through every image, and then reveals the wiki content.
 4. Establish explicit links from posts into the topic knowledge base without
    conflating the two content types.
 
-**Exit criterion:** the blog can visually participate in CardHouse while topics
+**Exit criterion:** the blog can visually participate in Cardhaus while topics
 remain the durable information architecture.
 
 ## Phase 6 — cross-document View Transitions (complete)
@@ -118,15 +118,15 @@ image with progressive enhancement and reduced-motion support.
 
 1. Add module installation documentation once the eventual standalone Git
    repository path is known.
-2. Extract or subtree the `themes/cardhouse` directory into that repository,
+2. Extract or subtree the `themes/cardhaus` directory into that repository,
    then consume it from Padonma as a Hugo Module or Git submodule.
 
-**Exit criterion:** CardHouse can be versioned and consumed independently
+**Exit criterion:** Cardhaus can be versioned and consumed independently
 without copying Padonma-specific files.
 
 ## Completion checklist for this branch
 
-- [x] CardHouse modularization plan documented before source changes.
+- [x] Cardhaus modularization plan documented before source changes.
 - [x] Theme renamed and consumer configuration updated.
 - [x] Commerce and bicycle assumptions removed from active theme source.
 - [x] Canonical hero resolver and renderer added.
