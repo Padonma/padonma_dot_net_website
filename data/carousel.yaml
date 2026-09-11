@@ -12,14 +12,14 @@
     x: 0.5
     "y": 0.0
 
-- slug: loro_piana
+- slug: companies/loro-piana
   image: loro_pianan_jacket_full.jpg
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: samatoa
+- slug: companies/samatoa
   image: fiber-extraction.jpg
   alt: Cambodian woman extracting lotus fiber
   focal:
@@ -40,34 +40,32 @@
     x: 1.0
     "y": 0.0
 
-- slug: loro_piana
+- slug: companies/loro-piana
   image: loro_pianan_jacket_detail.jpg
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: samatoa
+- slug: companies/turquoise-mountain
+  image: ma-su.jpg
+  alt: Ma Su weaving
+  focal:
+    x: 0.5
+    "y": 0.0
+
+- slug: companies/samatoa
   image: short-dress-close-up.png
   alt: A short dress by Samatoa
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: loro_piana
+- slug: companies/loro-piana
   image: lotus_jacket.jpg
   alt: Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: weaving-burma
-  image: nan_yite_backstrap_weaving.jpg
-  alt: A short dress by Samatoa
-  focal:
-    x: 0.5
-    "y": 0.0
     
-
-
-

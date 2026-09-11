@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{ if .RegularPages }}
+  <section class="topics-grid">
+    <header class="section-header">
+      <h1 class="section-title">// {{ .Title | upper }}</h1>
+      <p class="section-sub">{{ len .RegularPages }} item{{ if ne (len .RegularPages) 1 }}s{{ end }}</p>
+    </header>
+    <div class="card-grid">
+      {{ range .RegularPages.ByWeight }}
+        {{ partial "topic-card.html" . }}
+      {{ end }}
+    </div>
+  </section>
+{{ else }}
+  {{ $images := .Resources.ByType "image" }}
+  <article class="standard-page topic-page{{ if $images }} topic-page--with-gallery{{ end }}">
+    {{ if $images }}
+      <div class="gallery">
+        {{ partial "topic-gallery.html" (dict
+          "page" .
+          "meta" (dict "title" .Title)
+        ) }}
+      </div>
+    {{ end }}
+    <header class="page-header">
+      <div class="post-header-inner">
+        <h1 class="page-title">{{ .Title }}</h1>
+        {{ with .Date }}<p class="post-date">{{ . | time.Format "January 2, 2006" }}</p>{{ end }}
+      </div>
+    </header>
+    <div class="post-body">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
+{{ end }}
