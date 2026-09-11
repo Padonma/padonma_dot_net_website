@@ -1,14 +1,11 @@
 ---
 title: "Loro Piana"
-date: 2026-08-06
-weight: 10
 summary: "Loro Piana was the first fashion house to work with lotus fiber."
-social_image: "lotus_jacket.jpg"
 hero:
-  image: "loro_pianan_jacket_full.jpg"
+  image: "Pier-Luigi-Loro-Piana.jpg"
   focal:
     x: 0.5
-    y: 0.5
+    y: 0.0
   alt: "A cream lotus-fiber jacket by Loro Piana"
 ---
 
