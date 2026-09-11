@@ -85,21 +85,110 @@
   <script>
     document.querySelectorAll('.hero-carousel').forEach(function (carousel) {
       if (carousel.swiper) return;
-      var slides = carousel.querySelectorAll('.swiper-slide');
+      var slides = Array.prototype.slice.call(carousel.querySelectorAll(':scope > .swiper-wrapper > .swiper-slide'));
       var many = slides.length > 1;
-      new Swiper(carousel, {
-        slidesPerView: 2.5,
+      var previous = carousel.querySelector('.swiper-button-prev');
+      var next = carousel.querySelector('.swiper-button-next');
+      var bullets = Array.prototype.slice.call(carousel.querySelectorAll('[data-carousel-target]'));
+      var delay = 3000;
+      var timer = null;
+      var hovered = false;
+      var transition = 0;
+      var manualNavigation = false;
+      var heroPreloads = [];
+
+      function realIndex(swiper) {
+        return Number.isFinite(swiper.realIndex) ? swiper.realIndex : swiper.activeIndex % slides.length;
+      }
+
+      function preload(swiper) {
+        if (!many) return;
+        var active = realIndex(swiper);
+        [active, (active + 1) % slides.length, (active - 1 + slides.length) % slides.length].forEach(function (index) {
+          var image = slides[index].querySelector('img');
+          if (!image) return;
+          image.loading = 'eager';
+          var warm = new Image();
+          warm.srcset = image.srcset;
+          warm.sizes = image.sizes;
+          warm.src = image.currentSrc || image.src;
+          heroPreloads.push(warm);
+        });
+      }
+
+      function updateBullets(swiper) {
+        var active = realIndex(swiper);
+        bullets.forEach(function (bullet, index) {
+          var selected = index === active;
+          bullet.classList.toggle('swiper-pagination-bullet-active', selected);
+          bullet.setAttribute('aria-current', selected ? 'true' : 'false');
+        });
+      }
+
+      var swiper = new Swiper(carousel, {
+        slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
         loop: many,
         grabCursor: many,
-        autoplay: many ? { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true } : false,
-        pagination: many ? { el: carousel.querySelector('.swiper-pagination'), clickable: true } : false,
-        navigation: many ? {
-          nextEl: carousel.querySelector('.swiper-button-next'),
-          prevEl: carousel.querySelector('.swiper-button-prev')
-        } : false,
-        keyboard: { enabled: true, onlyInViewport: true, preserveFocus: true }
+        speed: 450,
+        keyboard: false,
+        a11y: { enabled: true }
+      });
+
+      function stopTimer() {
+        if (timer !== null) { window.clearTimeout(timer); timer = null; }
+      }
+
+      function schedule(expectedTransition) {
+        stopTimer();
+        if (!many || hovered || manualNavigation || expectedTransition !== transition) return;
+        timer = window.setTimeout(function () {
+          if (hovered || expectedTransition !== transition) return;
+          transition += 1;
+          var id = transition;
+          swiper.slideToLoop((realIndex(swiper) + 1) % slides.length);
+          swiper.once('slideChangeTransitionEnd', function () { schedule(id); });
+        }, delay);
+      }
+
+      function moveTo(index) {
+        if (!many || swiper.animating) return;
+        manualNavigation = true;
+        stopTimer();
+        transition += 1;
+        var target = (index + slides.length) % slides.length;
+        var current = realIndex(swiper);
+        /* Native adjacent moves preserve direction and let Swiper maintain
+           its loop copies at the physical boundary. */
+        if (target === (current + 1) % slides.length) {
+          swiper.slideNext();
+        } else if (target === (current + slides.length - 1) % slides.length) {
+          swiper.slidePrev();
+        } else {
+          swiper.slideToLoop(target);
+        }
+      }
+
+      swiper.on('slideChange', function () { preload(swiper); });
+      swiper.on('slideChangeTransitionEnd', function () { updateBullets(swiper); });
+      preload(swiper);
+      updateBullets(swiper);
+      if (many) schedule(transition);
+
+      carousel.addEventListener('mouseenter', function () { hovered = true; stopTimer(); });
+      carousel.addEventListener('mouseleave', function () { hovered = false; schedule(transition); });
+      if (previous) previous.addEventListener('click', function () { moveTo(realIndex(swiper) - 1); });
+      if (next) next.addEventListener('click', function () { moveTo(realIndex(swiper) + 1); });
+      bullets.forEach(function (bullet) {
+        bullet.addEventListener('click', function () { moveTo(Number(bullet.getAttribute('data-carousel-target'))); });
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        var rect = carousel.getBoundingClientRect();
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        event.preventDefault();
+        moveTo(realIndex(swiper) + (event.key === 'ArrowRight' ? 1 : -1));
       });
     });
 

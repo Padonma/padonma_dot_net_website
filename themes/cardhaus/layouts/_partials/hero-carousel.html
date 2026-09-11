@@ -39,7 +39,9 @@
             {{- $fallback := $variants.fallback -}}
             {{- $alt := $item.alt | default $page.Title -}}
 
-            <a class="swiper-slide" href="{{ $page.RelPermalink }}">
+            {{- $ratio := div (float .Width) (float .Height) -}}
+            {{- $wide := ge $ratio 1 -}}
+            <a class="swiper-slide hero-carousel-slide{{ if $wide }} hero-carousel-slide--wide{{ end }}" href="{{ $page.RelPermalink }}" style="--hero-aspect: {{ printf "%.6f" $ratio }}; --hero-focal-x: {{ mul $x 100 }}%; --hero-focal-y: {{ mul $y 100 }}%;" data-carousel-index="{{ $index }}">
               <img
                 src="{{ $fallback.RelPermalink }}"
                 {{- if $small }}
@@ -49,7 +51,7 @@
                 width="{{ $fallback.Width }}"
                 height="{{ $fallback.Height }}"
                 alt="{{ $alt }}"
-                loading="{{ cond (lt $index 2) "eager" "lazy" }}"
+                loading="eager"
                 class="hero-carousel-image"
                 style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
               >
@@ -59,9 +61,13 @@
       {{- end -}}
     </div>
     {{ if gt (len $slides) 1 }}
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal hero-carousel-pagination" aria-label="Choose featured image">
+        {{ range $index, $item := $slides }}
+          <button class="swiper-pagination-bullet{{ if eq $index 0 }} swiper-pagination-bullet-active{{ end }}" type="button" aria-label="Go to featured image {{ add $index 1 }}" aria-current="{{ if eq $index 0 }}true{{ else }}false{{ end }}" data-carousel-target="{{ $index }}"></button>
+        {{ end }}
+      </div>
+      <button class="swiper-button-prev" type="button" aria-label="Previous featured image"></button>
+      <button class="swiper-button-next" type="button" aria-label="Next featured image"></button>
     {{ end }}
   </div>
 {{- end -}}
