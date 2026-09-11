@@ -38,9 +38,9 @@ hero:
 accepts a value from 0 through 1, and defaults independently to `0.5`.
 `hero.alt` defaults to the topic title.
 
-During migration, `social_image` and then the first compatible page-bundle
-image may be used as fallbacks. A missing image produces an intentional neutral
-placeholder, never a broken image.
+When `hero.image` is absent, the first compatible page-bundle image may be
+used as a fallback. A missing image produces an intentional neutral placeholder,
+never a broken image.
 
 All cards render through `layouts/_partials/hero-image.html`. That partial
 resolves the canonical resource, generates responsive derivatives, applies the

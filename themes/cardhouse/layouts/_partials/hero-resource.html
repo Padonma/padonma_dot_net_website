@@ -8,10 +8,6 @@
   {{- end -}}
 {{- end -}}
 
-{{- if and (not $imageName) $page.Params.social_image -}}
-  {{- $imageName = $page.Params.social_image -}}
-{{- end -}}
-
 {{- with $imageName -}}
   {{- $resource = $page.Resources.GetMatch . -}}
 {{- end -}}

@@ -54,8 +54,7 @@ without bicycle-commerce or Padonma context.
 ## Phase 2 — canonical topic image foundation
 
 1. Implement the `hero` frontmatter contract.
-2. Resolve explicit `hero.image`, then migration-compatible `social_image`,
-   then a first-image fallback.
+2. Resolve explicit `hero.image`, then a first-image fallback.
 3. Apply independently defaulted focal coordinates and accessible alt text.
 4. Generate responsive WebP derivatives without enlarging source images.
 5. Emit the same stable `data-topic-id` in every topic-image context.

@@ -4,7 +4,8 @@ aliases:
   - /banggrinding.html
 title: Bandgrind experiments
 weight: 140
-social_image: "02-bandgrind-heddle.png"
+hero:
+  image: "02-bandgrind-heddle.png"
 ---
 
 The [Padonma Network](/topics/padonma-network/) project seeks to encode UUIDs in QR codes
@@ -18,6 +19,10 @@ The goal of these bandgrinding sessions is to do a full write and
 subsequent read test of rMQR ID bands. The "write" part of the test
 is the weaving of the bands. The "read" part is QR reader software
 successfully scanning the woven rMQR codes.
+
+Early handwoven rMQR band experiments:
+
+![Early handwoven black-and-white rMQR band experiments](../qr_ bands.5_of_earlies.jpeg)
 
 Success is pretty much guaranteed as there are many examples on the
 web of previously handwaven square QR codes, and rMQRs are simply a

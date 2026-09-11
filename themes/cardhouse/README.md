@@ -31,8 +31,8 @@ hero:
   alt: "Description of the image"
 ```
 
-If `hero.image` is absent, CardHouse temporarily falls back to `social_image`
-and then the first compatible bundle image. Explicit hero data is recommended.
+If `hero.image` is absent, CardHouse falls back to the first compatible bundle
+image. Explicit hero data is recommended.
 
 An optional `topic_type` value appears as a small secondary card label.
 
