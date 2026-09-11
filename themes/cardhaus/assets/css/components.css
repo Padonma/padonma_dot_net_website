@@ -1150,13 +1150,20 @@
 }
 
 .hero-carousel .swiper-slide {
-  width: auto;
+  /* Each selected carousel resource supplies this intrinsic ratio at build time. */
+  width: min(calc((100dvh - var(--header-height)) * var(--hero-aspect)), 70vw);
   height: 100%;
   position: relative;
   cursor: pointer;
   overflow: hidden;
   color: inherit;
   text-decoration: none;
+}
+
+/* Landscape editorial images deliberately share the same centered, capped frame. */
+.hero-carousel .hero-carousel-slide--wide {
+  width: 70vw;
+  max-width: 70vw;
 }
 
 @media (max-width: 1000px) {
@@ -1175,7 +1182,20 @@
   transition: object-position 0.2s ease-out;
 }
 
+/* Only a centered wide image pans its horizontal crop; Y always retains the editor focal. */
+.hero-carousel .hero-carousel-slide--wide.swiper-slide-active .hero-carousel-image {
+  animation: hero-carousel-pan 9s ease-in-out infinite alternate;
+}
+
+@keyframes hero-carousel-pan {
+  from { object-position: 0% var(--hero-focal-y); }
+  to { object-position: 100% var(--hero-focal-y); }
+}
+
 .swiper-pagination {
+  left: 0 !important;
+  width: 100% !important;
+  text-align: center !important;
   bottom: 2rem !important;
   z-index: 20;
 }
@@ -1196,6 +1216,11 @@
 @media (prefers-reduced-motion: reduce) {
   .homepage-opening-snap {
     scroll-snap-type: none;
+  }
+
+  .hero-carousel .hero-carousel-slide--wide.swiper-slide-active .hero-carousel-image {
+    animation: none;
+    object-position: var(--hero-focal-x) var(--hero-focal-y);
   }
 }
 
