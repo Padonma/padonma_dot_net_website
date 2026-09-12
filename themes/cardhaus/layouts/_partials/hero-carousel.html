@@ -61,13 +61,11 @@
       {{- end -}}
     </div>
     {{ if gt (len $slides) 1 }}
-      <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal hero-carousel-pagination" aria-label="Choose featured image">
-        {{ range $index, $item := $slides }}
-          <button class="swiper-pagination-bullet{{ if eq $index 0 }} swiper-pagination-bullet-active{{ end }}" type="button" aria-label="Go to featured image {{ add $index 1 }}" aria-current="{{ if eq $index 0 }}true{{ else }}false{{ end }}" data-carousel-target="{{ $index }}"></button>
-        {{ end }}
-      </div>
-      <button class="swiper-button-prev" type="button" aria-label="Previous featured image"></button>
-      <button class="swiper-button-next" type="button" aria-label="Next featured image"></button>
+      <nav class="hero-carousel-controls" aria-label="Featured image controls">
+        <button class="swiper-button-prev" type="button" aria-label="Previous featured image"></button>
+        <div class="hero-carousel-pagination" aria-label="Choose featured image"></div>
+        <button class="swiper-button-next" type="button" aria-label="Next featured image"></button>
+      </nav>
     {{ end }}
   </div>
 {{- end -}}

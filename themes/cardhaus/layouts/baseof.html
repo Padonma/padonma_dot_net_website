@@ -89,7 +89,7 @@
       var many = slides.length > 1;
       var previous = carousel.querySelector('.swiper-button-prev');
       var next = carousel.querySelector('.swiper-button-next');
-      var bullets = Array.prototype.slice.call(carousel.querySelectorAll('[data-carousel-target]'));
+      var pagination = carousel.querySelector('.hero-carousel-pagination');
       var delay = 3000;
       var timer = null;
       var hovered = false;
@@ -116,15 +116,6 @@
         });
       }
 
-      function updateBullets(swiper) {
-        var active = realIndex(swiper);
-        bullets.forEach(function (bullet, index) {
-          var selected = index === active;
-          bullet.classList.toggle('swiper-pagination-bullet-active', selected);
-          bullet.setAttribute('aria-current', selected ? 'true' : 'false');
-        });
-      }
-
       var swiper = new Swiper(carousel, {
         slidesPerView: 'auto',
         centeredSlides: true,
@@ -133,6 +124,11 @@
         grabCursor: many,
         speed: 450,
         keyboard: false,
+        pagination: many ? {
+          el: pagination,
+          bulletElement: 'button',
+          clickable: true
+        } : false,
         a11y: { enabled: true }
       });
 
@@ -171,18 +167,13 @@
       }
 
       swiper.on('slideChange', function () { preload(swiper); });
-      swiper.on('slideChangeTransitionEnd', function () { updateBullets(swiper); });
       preload(swiper);
-      updateBullets(swiper);
       if (many) schedule(transition);
 
       carousel.addEventListener('mouseenter', function () { hovered = true; stopTimer(); });
       carousel.addEventListener('mouseleave', function () { hovered = false; schedule(transition); });
       if (previous) previous.addEventListener('click', function () { moveTo(realIndex(swiper) - 1); });
       if (next) next.addEventListener('click', function () { moveTo(realIndex(swiper) + 1); });
-      bullets.forEach(function (bullet) {
-        bullet.addEventListener('click', function () { moveTo(Number(bullet.getAttribute('data-carousel-target'))); });
-      });
       document.addEventListener('keydown', function (event) {
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
         var rect = carousel.getBoundingClientRect();
