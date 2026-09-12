@@ -143,7 +143,10 @@
           if (hovered || expectedTransition !== transition) return;
           transition += 1;
           var id = transition;
-          swiper.slideToLoop((realIndex(swiper) + 1) % slides.length);
+          /* This is always the next physical slide.  slideToLoop() selects the
+             closest matching loop position, which can be behind a wide slide
+             and makes a forward auto-play transition animate backwards. */
+          swiper.slideNext();
           swiper.once('slideChangeTransitionEnd', function () { schedule(id); });
         }, delay);
       }
