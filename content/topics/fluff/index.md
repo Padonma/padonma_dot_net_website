@@ -1,6 +1,8 @@
 ---
 title: Fluff
 summary: Pretty pics
+_build:
+  list: never
 ---
 
 
