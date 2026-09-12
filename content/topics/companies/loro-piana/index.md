@@ -54,7 +54,7 @@ They describe three materials as their excellences:
   <img src="loro_pianan_jacket_full.jpg" alt="Lotus fiber sport coat" class="examples">
 </a>
 
-- $5,600 (2010 price)
+- $5,600 [WSJ, 2010](https://www.wsj.com/articles/SB10001424052748703506904575592441000440092)
 - Composition: 100% lotus fiber?
 
 ### Women's Lotus Jacket

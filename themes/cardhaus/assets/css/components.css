@@ -1142,11 +1142,13 @@
 .hero-carousel .swiper-button-prev::after,
 .hero-carousel .swiper-button-next::after {
   display: block !important;
-  width: 0;
-  height: 0;
+  position: relative;
+  width: 0.85rem;
+  height: 1.1rem;
   content: "" !important;
-  border-top: 0.55rem solid transparent;
-  border-bottom: 0.55rem solid transparent;
+  background: rgba(225, 239, 242, 0.42);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(0 0 0.04rem rgba(255, 255, 255, 0.7));
 }
 
 .hero-carousel .swiper-button-prev {
@@ -1164,11 +1166,11 @@
 }
 
 .hero-carousel .swiper-button-prev::after {
-  border-right: 0.85rem solid rgba(238, 249, 252, 0.88);
+  transform: rotate(180deg);
 }
 
 .hero-carousel .swiper-button-next::after {
-  border-left: 0.85rem solid rgba(238, 249, 252, 0.88);
+  transform: none;
 }
 
 .hero-carousel .swiper-button-prev:focus-visible,
