@@ -1,5 +1,5 @@
 ---
-title: Blockchain and luxury fashion
+title: Luxury and blockchain
 summary: The fashion world is aready using QR codes for authentication, and experiments with blockchain for supply chain is already a thing
 weight: 90
 ---

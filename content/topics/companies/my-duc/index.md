@@ -1,5 +1,5 @@
 ---
-title: "Mỹ Đức Silk and Sericulture Co. (SILK4WORLD)"
+title: "Mỹ Đức"
 summary: "Vietnamese lotus-silk producer led by artisan Phan Thị Thuận in Phùng Xá, Mỹ Đức."
 hero:
   image: "my_duc_vietnam_.jpg"

@@ -2,6 +2,8 @@
 title: Lotus fiber research
 summary: Several studies of the lotus fiber industy have been published
 weight: 100
+hero:
+  image: electron-microscopy.jpg
 ---
 
 Over the last decade or so, there have been multiple parties who have
@@ -33,13 +35,30 @@ that lotus fiber is a natural microfiber.
 - [Lampoon article](https://lampoonmagazine.com/lotus-fiber-natural-microfiber-samatoa-cambodia/)
   > In 2016, samples were sent to the French Institute of Textile and Clothing for analysis. The results identified lotus fiber as the first known natural microfiber in the world. Microfibers are defined as fibers with a linear density below one dtex—less than one gram per ten thousand meters of yarn. Conventionally, microfibers are synthetic, typically made from polyester or polyamide. Lotus fiber, by contrast, is entirely natural.
 
-### Chinese experiments
+### Research
 
 - [Extraction of lotus fibres from lotus stems under microwave irradiation](https://www.researchgate.net/publication/319577027_Extraction_of_lotus_fibres_from_lotus_stems_under_microwave_irradiation)
   - Royal Society Open Science
   - September 20174(9):170747
   - DOI:10.1098/rsos.170747
   - "The effect of the treatment time with hydrogen peroxide under microwave irradiation"
+
+- [Effect of Alkaline Degumming on Structure and Properties of Lotus Fibers at Different Growth Period](https://www.semanticscholar.org/paper/Effect-of-Alkaline-Degumming-on-Structure-and-of-at-Li-Fu/de07b990a3611572206bd13df7ad71eca1c3bf1f) 
+  - DOI:10.1177/155892501501000114Corpus ID: 54898108
+  - Fengyan Li, Hong-jun Fu
+  - Published 1 March 2015
+  - Journal of Engineered Fibers and Fabrics
+
+- [Preparation of lotus fibre nonwoven composite fabrics by spunlacing process](https://www.sciencedirect.com/science/article/abs/pii/S0167577X22012939)
+  - Hong Wang, Jianjin Guo, Liuyan Xie
+  - Key Laboratory of Textile Science & Technology, Ministry of Education, Donghua University, Shanghai 201620, China
+  - Available online 8 August 2022
+
+- [Study on structure and thermal stability properties of cellulose fibers derived from Nelumbo nucifera rhizome](https://link.springer.com/article/10.1007/s13196-024-00363-0)
+  - Mehvish Shah & Najeeb ud din Hakim
+  - Published: 22 January 2025
+  - Volume 22, pages 85–96 (2025)
+  - Journal of the Indian Academy of Wood Science
 
 ## Flood mitigation
 

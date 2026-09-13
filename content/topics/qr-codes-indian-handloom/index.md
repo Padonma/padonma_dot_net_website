@@ -1,5 +1,5 @@
 ---
-title: Indian QRs for handloom authentication
+title: Handloomed QRs in India
 summary: The Indian government has established a blockchain-base garment authentication system involving weaving QR codes into sarees.
 weight: 80
 ---
