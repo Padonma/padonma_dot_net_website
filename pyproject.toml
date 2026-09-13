@@ -1,0 +1,11 @@
+[project]
+name = "padonma-network"
+version = "0.1.0"
+description = "Development utilities for the Padonma.net site"
+requires-python = ">=3.10"
+dependencies = [
+  "rmqrcode",
+]
+
+[tool.uv]
+package = false
