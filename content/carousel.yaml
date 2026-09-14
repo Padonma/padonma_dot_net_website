@@ -1,67 +1,67 @@
-- slug: bandgrind/bandgrind-session-13
+- slug: qr-codes/bandgrind/bandgrind-session-13
   image: hero-13.png
   alt: Weaving experiment session #13
   focal:
     x: 0.5
     "y": 0.5
 
-- slug: lotus-weaving
+- slug: lotus-fiber/lotus-weaving
   image: fiber-extraction.png
   alt: Fiber extraction close up
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: companies/loro-piana
+- slug: lotus-fiber/companies/loro-piana
   image: loro_pianan_jacket_full.jpg
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: companies/samatoa
+- slug: lotus-fiber/companies/samatoa
   image: fiber-extraction.jpg
   alt: Cambodian woman extracting lotus fiber
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: bandgrind
+- slug: qr-codes/bandgrind
   image: six-bands.png
   alt: Six woven bands experimenting with rMQRs
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: lotus-weaving
+- slug: lotus-fiber/lotus-weaving
   image: weaver-at-loom-in-inle.jpg
   alt: Lotus weaver on Inle
   focal:
     x: 1.0
     "y": 0.0
 
-- slug: companies/loro-piana
+- slug: lotus-fiber/companies/loro-piana
   image: loro_pianan_jacket_detail.jpg
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: companies/turquoise-mountain
+- slug: lotus-fiber/companies/turquoise-mountain
   image: ma-su.jpg
   alt: Ma Su weaving
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: companies/loro-piana
+- slug: lotus-fiber/companies/loro-piana
   image: lotus_jacket.jpg
   alt: Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
-- slug: companies/samatoa
+- slug: lotus-fiber/companies/samatoa
   image: short-dress-close-up.png
   alt: A short dress by Samatoa
   focal:
