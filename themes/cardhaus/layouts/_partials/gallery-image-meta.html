@@ -1,0 +1,36 @@
+{{- $page := .page -}}
+{{- $image := .image -}}
+{{- $hero := .hero -}}
+{{- $focalMap := .focalMap | default dict -}}
+{{- $x := 0.5 -}}
+{{- $y := 0.5 -}}
+{{- $alt := $page.Title -}}
+
+{{- /* The canonical gallery image inherits the same topic hero defaults used
+      by cards and by carousel slides that omit their own image metadata. */ -}}
+{{- if and $hero (eq $image.Name $hero.Name) -}}
+  {{- with index $page.Params "hero" -}}
+    {{- with index . "focal" -}}
+      {{- if isset . "x" }}{{ $x = float (index . "x") }}{{ end -}}
+      {{- if isset . "y" -}}
+        {{- $y = float (index . "y") -}}
+      {{- else if isset . "true" -}}
+        {{- /* YAML 1.1 parses an unquoted `y` key as boolean `true`. */ -}}
+        {{- $y = float (index . "true") -}}
+      {{- end -}}
+    {{- end -}}
+    {{- with index . "alt" }}{{ $alt = . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Per-image gallery metadata wins coordinate by coordinate. */ -}}
+{{- with index $focalMap $image.Name -}}
+  {{- if isset . "x" }}{{ $x = float (index . "x") }}{{ end -}}
+  {{- if isset . "y" -}}
+    {{- $y = float (index . "y") -}}
+  {{- else if isset . "true" -}}
+    {{- $y = float (index . "true") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict "x" $x "y" $y "alt" $alt) -}}

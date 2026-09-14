@@ -20,13 +20,7 @@
           {{ $medium := $variants.medium }}
           {{ $large := $variants.large }}
           {{ $fallback := $variants.fallback }}
-          {{ $focal := index $focalMap .Name }}
-          {{ $x := 0.5 }}
-          {{ $y := 0.5 }}
-          {{ if $focal }}
-            {{ $x = float $focal.x }}
-            {{ $y = float $focal.y }}
-          {{ end }}
+          {{ $imageMeta := partial "gallery-image-meta.html" (dict "page" $page "image" . "hero" $hero "focalMap" $focalMap) }}
           <div class="swiper-slide" style="aspect-ratio: {{ .Width }} / {{ .Height }};">
             <img
               src="{{ $fallback.RelPermalink }}"
@@ -36,10 +30,10 @@
               {{ end }}
               width="{{ $fallback.Width }}"
               height="{{ $fallback.Height }}"
-              alt="{{ $page.Title }}"
+              alt="{{ $imageMeta.alt }}"
               loading="lazy"
               class="topic-gallery-img"
-              style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;{{ if and $hero (eq .Name $hero.Name) }} view-transition-name: {{ partial "view-transition-name.html" (dict "page" $page "image" .) }};{{ end }}"
+              style="object-position: {{ mul $imageMeta.x 100 }}% {{ mul $imageMeta.y 100 }}%;{{ if and $hero (eq .Name $hero.Name) }} view-transition-name: {{ partial "view-transition-name.html" (dict "page" $page "image" .) }};{{ end }}"
             >
           </div>
         {{ end }}
@@ -57,13 +51,7 @@
               {{ $variants := partial "responsive-image-resources.html" . }}
               {{ $thumbnail := $variants.fallback }}
               {{ with $variants.small }}{{ $thumbnail = . }}{{ end }}
-              {{ $focal := index $focalMap .Name }}
-              {{ $x := 0.5 }}
-              {{ $y := 0.5 }}
-              {{ if $focal }}
-                {{ $x = float $focal.x }}
-                {{ $y = float $focal.y }}
-              {{ end }}
+              {{ $imageMeta := partial "gallery-image-meta.html" (dict "page" $page "image" . "hero" $hero "focalMap" $focalMap) }}
               <div class="swiper-slide">
                 <img
                   src="{{ $thumbnail.RelPermalink }}"
@@ -72,7 +60,7 @@
                   alt=""
                   loading="lazy"
                   class="topic-gallery-thumb-img"
-                  style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+                  style="object-position: {{ mul $imageMeta.x 100 }}% {{ mul $imageMeta.y 100 }}%;"
                 >
               </div>
             {{ end }}
@@ -91,13 +79,7 @@
             {{ $medium := $variants.medium }}
             {{ $large := $variants.large }}
             {{ $fallback := $variants.fallback }}
-            {{ $focal := index $focalMap .Name }}
-            {{ $x := 0.5 }}
-            {{ $y := 0.5 }}
-            {{ if $focal }}
-              {{ $x = float $focal.x }}
-              {{ $y = float $focal.y }}
-            {{ end }}
+            {{ $imageMeta := partial "gallery-image-meta.html" (dict "page" $page "image" . "hero" $hero "focalMap" $focalMap) }}
             <div class="swiper-slide">
               <img
                 src="{{ $fallback.RelPermalink }}"
@@ -107,10 +89,10 @@
                 {{ end }}
                 width="{{ $fallback.Width }}"
                 height="{{ $fallback.Height }}"
-                alt="{{ $page.Title }}"
+                alt="{{ $imageMeta.alt }}"
                 loading="lazy"
                 class="topic-lightbox-img"
-                style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
+                style="object-position: {{ mul $imageMeta.x 100 }}% {{ mul $imageMeta.y 100 }}%;"
               >
             </div>
           {{ end }}
