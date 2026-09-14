@@ -2,7 +2,8 @@
 
 Cardhaus is an image-first Hugo theme for topic-centered knowledge sites. It
 treats each topic as a durable wiki-like page with one canonical image across
-featured slides, list cards, and detail heroes.
+list cards and the first image in its detail gallery. Homepage carousel slides
+are an editorial exception and may select a different bundle image.
 
 ## Use in a Hugo site
 
@@ -34,7 +35,43 @@ hero:
 If `hero.image` is absent, Cardhaus falls back to the first compatible bundle
 image. Explicit hero data is recommended.
 
-An optional `topic_type` value appears as a small secondary card label.
+The shared card renderer and canonical first gallery image apply `hero.focal`
+and `hero.alt`. Supporting gallery images may use entries in the page's
+`images` frontmatter array for individual focal points. Per-image focal
+coordinates take precedence; a missing coordinate on the canonical image falls
+back independently to its topic hero coordinate.
+
+An optional `topic_type` value appears as a small secondary card label. Hugo's
+page summary appears beneath the title when one is available.
+
+## Topic-card shortcodes
+
+Use `topic-card` to place the existing canonical card in Markdown content:
+
+```go-html-template
+{{</* topic-card ref="/topics/example-topic" */>}}
+```
+
+Use the paired `topic-card-grid` shortcode for a curated responsive group. Its
+optional `heading` appears first. Markdown before the first nested card is
+rendered below the heading and above the cards:
+
+```go-html-template
+{{</* topic-card-grid heading="Related topics" */>}}
+
+These topics provide useful context for this page.
+
+{{</* topic-card ref="/topics/example-topic" */>}}
+{{</* topic-card ref="/topics/another-topic" */>}}
+
+{{</* /topic-card-grid */>}}
+```
+
+Use absolute content references beginning with `/`. Missing `ref` values and
+references that do not resolve fail the build. Do not repeat the same topic on
+one rendered page: canonical cards carry named View Transitions, whose names
+must be unique within a document. A grid requires at least one nested card;
+place all introductory Markdown before the first card.
 
 ## Bundle hero carousel
 
@@ -115,8 +152,19 @@ and other design values remain in CSS and follow the normal cascade.
 
 - `layouts/_partials/hero-resource.html` resolves canonical images.
 - `layouts/_partials/hero-image.html` renders focal-aware responsive imagery.
+- `layouts/_partials/gallery-image-meta.html` applies per-image focal data and
+  canonical hero fallbacks consistently across gallery views.
 - `layouts/_partials/topic-card.html` renders the shared card.
+- `layouts/shortcodes/topic-card.html` embeds one shared card in Markdown.
+- `layouts/shortcodes/topic-card-grid.html` renders curated cards with optional
+  introductory Markdown.
 - `layouts/topics/single.html` renders the topic detail hero and wiki content.
 - `assets/css/` contains the shared, bundled responsive design system.
 
 Cardhaus intentionally has no product, price, inventory, or purchasing model.
+
+## Current validation status
+
+The Padonma consumer builds successfully with Hugo. The remaining cleanup queue
+is documented in `specs/roadmap.md`: removal of one legacy header asset lookup
+and an in-content shortcode fixture for validation.

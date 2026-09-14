@@ -10,10 +10,11 @@ carousel that can select arbitrary page-bundle images.
 
 ## Current implementation status
 
-The initial modularization and View Transition implementation are complete in
-`.worktrees/cardhaus` on the `codex/cardhaus-theme` branch. The Padonma
-repository is the first consumer and build fixture. The module lives at
-`themes/cardhaus/`.
+The initial modularization, gallery, shortcode, and View Transition work is
+integrated on `master`. The Padonma repository is the first consumer and build
+fixture, and the module lives at `themes/cardhaus/`. A production build passes;
+the remaining work is a small conformance pass plus intentionally deferred blog
+and extraction work.
 
 Primary implementation locations:
 
@@ -30,8 +31,8 @@ Primary implementation locations:
   carousel, canonical transition destination, thumbnails, and lightbox.
 - `themes/cardhaus/layouts/topics/single.html` — full topic gallery followed
   by the topic heading and wiki content.
-- `themes/cardhaus/assets/css/main.css` — card, hero, glass, gallery, and
-  responsive rules.
+- `themes/cardhaus/assets/css/` — responsibility-based card, hero, glass,
+  gallery, and responsive rules bundled by the base template.
 - `themes/cardhaus/layouts/home.html` — parameterized consumer homepage.
 - `themes/cardhaus/layouts/section.html`, `taxonomy.html`, and `term.html` —
   generated shared-card lists.
@@ -65,7 +66,8 @@ cards and as the canonical first image in topic galleries.
 ## Phase 3 — shared cards and list migration
 
 1. Rebuild `topic-card.html` around `hero-image.html`.
-2. Limit overlays to a title and optional short topic classification.
+2. Limit overlays to a title, optional short summary, and optional topic
+   classification.
 3. Standardize the dark glass treatment.
 4. Route section, topic, taxonomy, and term results through the shared card.
 5. Validate the authoritative three/two/one-column responsive grid.
@@ -114,7 +116,22 @@ remain the durable information architecture.
 **Exit criterion:** canonical card-to-topic navigation expands the matching
 image with progressive enhancement and reduced-motion support.
 
-## Phase 7 — standalone extraction (optional future work)
+## Phase 7 — embedded topic cards (complete)
+
+1. Add a `topic-card` shortcode that resolves an absolute content reference
+   and delegates to the shared card partial.
+2. Add a paired `topic-card-grid` shortcode with an optional heading and
+   Markdown introduction.
+3. Keep shortcode cards on the canonical image, summary, metadata, and View
+   Transition contract without adding per-embed overrides.
+4. Make embedded grids responsive to their content width and isolate card
+   presentation from broad Markdown prose styles.
+5. Fail the Hugo build for missing or unresolved topic references.
+
+**Exit criterion:** authors can place one canonical topic card or a curated,
+responsive group in Markdown without creating a second card implementation.
+
+## Phase 8 — standalone extraction (optional future work)
 
 1. Add module installation documentation once the eventual standalone Git
    repository path is known.
@@ -124,7 +141,34 @@ image with progressive enhancement and reduced-motion support.
 **Exit criterion:** Cardhaus can be versioned and consumed independently
 without copying Padonma-specific files.
 
-## Completion checklist for this branch
+## Phase 9 — conformance cleanup (in progress)
+
+1. [x] Apply `hero.focal` to the canonical first gallery image and use
+   `hero.alt` for its alternative text.
+2. [x] Preserve optional focal metadata for supporting gallery images without
+   creating a second canonical-image contract. Explicit per-image coordinates
+   take precedence; missing canonical coordinates fall back independently to
+   the topic hero values.
+3. Remove the hard-coded `brand/checkerboard.png` lookup from `baseof.html` and
+   ensure the header element is always opened and closed correctly.
+4. Add a representative shortcode use to content or a build fixture so Hugo's
+   unused-template report exercises both shortcode templates.
+5. [x] Re-run the production build and verify the generated canonical crop on a
+   topic whose `hero.focal` is not centered.
+
+**Exit criterion:** the implementation fully matches the documented hero and
+module-boundary contracts, and the build exercises the author-facing shortcode
+surface.
+
+## Recommended plan
+
+Do not reopen the migration or prioritize standalone extraction yet. Complete
+Phase 9 as a narrow hardening pass. Then choose between content work and Phase
+5 based on whether posts have become a real editorial need. Extract Cardhaus
+only after its repository path, versioning policy, and consumption mechanism
+are known.
+
+## Implementation checklist
 
 - [x] Cardhaus modularization plan documented before source changes.
 - [x] Theme renamed and consumer configuration updated.
@@ -141,7 +185,13 @@ without copying Padonma-specific files.
 - [x] Cross-document transition animation and reduced-motion behavior are
       implemented and browser-verified.
 - [x] Padonma homepage identity moved to consumer parameters.
-- [x] Hugo production build passes after final cleanup.
+- [x] Hugo production build passes with the current implementation.
 - [x] Generated homepage, topic list, and representative topic pages receive
       visual review at desktop and mobile widths.
-- [x] Final active-source audit finds no old theme/domain vocabulary.
+- [ ] Final module-boundary audit is clean; the remaining hard-coded
+      `brand/checkerboard.png` lookup must be removed.
+- [x] Markdown content can embed shared topic cards individually or in a
+      curated responsive grid with introductory prose.
+- [x] Canonical gallery imagery consumes the same `hero.focal` and `hero.alt`
+      values as cards.
+- [ ] A content fixture exercises both topic-card shortcodes during validation.

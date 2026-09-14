@@ -8,17 +8,19 @@ combine a canonical hero image, supporting images, and long-form reference
 content. Blog posts can extend and point into that topic collection, but they
 do not define the theme's information model.
 
-This work begins with the existing Bicyclious theme, removes its bicycle shop
-and build-specific assumptions, and develops the result as the independent
-`themes/cardhaus` module. The Padonma site is the first consumer and the
+This work began with the existing Bicyclious theme, removed its bicycle shop
+and build-specific assumptions, and produced the independent
+`themes/cardhaus` module. The Padonma site remains the first consumer and the
 integration test for the module.
 
 ## Repository and branch strategy
 
-Development happens in the isolated worktree at `.worktrees/cardhaus` on the
-`codex/cardhaus-theme` branch. The worktree starts from commit `df3fd4b`, which
-contains the latest committed Bicyclious theme updates. Existing uncommitted
-work in the main Padonma worktree is intentionally not copied into this branch.
+The original migration was developed in an isolated worktree on the
+`codex/cardhaus-theme` branch, starting from commit `df3fd4b`. That history is
+no longer the location of the active work: Cardhaus is now integrated on the
+repository's `master` branch at `themes/cardhaus/`. Future work should be
+described relative to the current checkout, not the retired migration
+worktree.
 
 ## Module boundary
 
@@ -27,6 +29,7 @@ The reusable module lives entirely under `themes/cardhaus/`. It owns:
 - shared Hugo layouts and partials;
 - the focal-aware hero-image renderer;
 - topic cards and responsive card grids;
+- Markdown shortcodes for individual and curated topic cards;
 - topic detail presentation and image galleries;
 - shared site chrome and Cardhaus design tokens;
 - theme-provided static assets.
@@ -36,7 +39,7 @@ The consuming site continues to own:
 - content under `content/`;
 - site identity and navigation in `hugo.toml`;
 - site-specific images under `assets/` and page bundles;
-- homepage hero-carousel data in `data/carousel.yaml`;
+- bundle-owned hero-carousel data in `content/.../carousel.yaml`;
 - Padonma-specific copy and branding.
 
 Cardhaus must not hard-code Padonma, bicycle, build, price, inventory, or
@@ -78,8 +81,14 @@ rendering the missing-image state.
 
 `layouts/_partials/topic-card.html` provides the shared image-first card. The
 card contains the canonical topic image and a restrained glass overlay with the
-topic title. Optional secondary labeling must remain subordinate and must not
-turn the card into a conventional text-summary box.
+topic title, optional short summary, and optional secondary label. Supporting
+copy must remain subordinate and must not turn the card into a conventional
+text-summary box.
+
+Markdown authors may reuse that exact renderer through the `topic-card`
+shortcode or group references in a paired `topic-card-grid` shortcode. The grid
+may provide a heading and introductory Markdown but does not override a topic's
+canonical image or card metadata.
 
 The same topic identity is preserved across homepage cards, topic indexes,
 taxonomy results, and the canonical image at the start of each topic gallery.
@@ -98,11 +107,12 @@ topic hero.
 
 The homepage `hero-carousel.html` component is an editorial exception to the
 canonical topic-image rule. Each slide may choose any image from the linked
-topic's page bundle, with its own focal point and alt text in
-`data/carousel.yaml`. Slides display only the image—no title, caption, or glass
-overlay. The slide still links to the topic, but it does not claim to be that
-topic's canonical visual identity. Homepage topic previews below it use the
-shared card grid and canonical topic-card partial.
+topic's page bundle, with its own focal point and alt text in the current
+branch bundle's `carousel.yaml` page resource (`content/carousel.yaml` for the
+homepage). Slides display only the image—no title, caption, or glass overlay.
+The slide still links to the topic, but it does not claim to be that topic's
+canonical visual identity. Homepage topic previews below it use the shared card
+grid and canonical topic-card partial.
 
 ### Topic indexes and taxonomies
 
@@ -114,10 +124,13 @@ tablet, and one on mobile.
 
 An image-bearing topic begins with the full page-bundle image gallery. The
 canonical hero is ordered first, starts active, and carries the transition name
-that matches the topic card. Supporting images follow in the same carousel.
-Clicking any visible slide opens that exact image in the lightbox; the main
-gallery and lightbox loop continuously in both directions. The conventional
-topic title and long-form wiki content follow the gallery.
+that matches the topic card. Per-image focal coordinates take precedence; each
+missing coordinate on the canonical image falls back independently to
+`hero.focal` and then to the centered default. Its alt text likewise uses
+`hero.alt` before the topic title. Supporting images follow in the same
+carousel. Clicking any visible slide opens that exact image in the lightbox;
+the main gallery and lightbox loop continuously in both directions. The
+conventional topic title and long-form wiki content follow the gallery.
 
 ### Blog posts
 
@@ -176,3 +189,20 @@ contents have been migrated. Git history retains the original source.
 - Topic galleries start on the canonical image, open the exact clicked image,
   and loop continuously without blank gaps.
 - The old Bicyclious theme directory is absent from the completed branch.
+
+## Post-migration status
+
+Phases 1–4 and 6–7 are implemented, and the production build currently
+succeeds. Phase 5 remains intentionally deferred until the site has a
+substantive post collection. Standalone extraction also remains optional.
+
+The final module-boundary and hero-contract audit identified two cleanup items.
+The gallery item is now complete:
+
+- [x] Make the canonical gallery image consume `hero.focal` and `hero.alt`,
+  while retaining per-supporting-image focal data where needed.
+- [ ] Remove the hard-coded `brand/checkerboard.png` lookup from `baseof.html` and
+  make the header markup unconditional and structurally valid.
+
+These are focused conformance fixes, not reasons to reopen the completed
+migration or change the topic-centered plan.

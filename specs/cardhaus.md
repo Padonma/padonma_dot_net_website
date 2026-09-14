@@ -5,8 +5,8 @@
 Cardhaus is a cinematic, image-first Hugo theme for topic-centered knowledge
 sites. A topic is a persistent wiki-like object rather than a product or a
 marketing card. Its canonical image gives it a stable visual identity; its
-title, optional classification, supporting gallery, and long-form reference
-content provide the surrounding context.
+title, optional short summary and classification, supporting gallery, and
+long-form reference content provide the surrounding context.
 
 The topic index, taxonomy results, and topic detail page are different views of
 the same object:
@@ -54,26 +54,60 @@ resource first, then assign its matching transition name through
 `layouts/_partials/topic-card.html` is the only topic-list card. It contains:
 
 - the canonical topic image or missing-image state;
-- the topic title in a restrained dark glass overlay;
+- the topic title and optional summary in a restrained dark glass overlay;
 - an optional short `topic_type` label.
 
-It does not contain a description body, commerce state, price, inventory,
-purchase control, or other product metadata. The image remains the primary
-presentation.
+The summary is short supporting context sourced from Hugo's page summary. It
+does not turn the card into a general description body. Cards do not contain
+commerce state, price, inventory, purchase controls, or other product metadata.
+The image remains the primary presentation.
 
 ```gohtml
 {{ partial "topic-card.html" . }}
 ```
 
+## Embedded topic-card shortcodes
+
+Markdown content may reuse the canonical card renderer through two shortcodes.
+The single-card shortcode resolves an absolute content reference and delegates
+directly to `topic-card.html`:
+
+```go-html-template
+{{</* topic-card ref="/topics/example-topic" */>}}
+```
+
+The paired grid shortcode groups curated cards and may add a heading. Markdown
+placed before the first card is rendered below that heading and spans the grid:
+
+```go-html-template
+{{</* topic-card-grid heading="Related topics" */>}}
+
+These topics provide useful context for the discussion above.
+
+{{</* topic-card ref="/topics/example-topic" */>}}
+{{</* topic-card ref="/topics/another-topic" */>}}
+
+{{</* /topic-card-grid */>}}
+```
+
+`ref` is required and unresolved references fail the Hugo build. Each referenced
+topic should appear at most once on a rendered page so its canonical View
+Transition name remains unique in that document. The grid does not provide
+image, title, summary, or styling overrides; those remain properties of the
+referenced topic and the shared card renderer. A grid requires at least one
+nested card, and any introductory Markdown must precede all of its cards.
+
 ## Page patterns
 
 ### Homepage
 
-The hero carousel reads `data/carousel.yaml`. Each slide resolves `slug` to a
-topic destination and may choose any image from that topic's page bundle using
-`image`. It also supports an independent `focal` and accessible `alt` text. If
-`image` is omitted, the canonical topic hero is used as a fallback. Slides are
-plain images with no visible title, caption, or glass overlay.
+The homepage hero carousel reads `content/carousel.yaml`, the root branch
+bundle's page resource. A topics branch may provide its own `carousel.yaml`
+beside `_index.md`. Each slide resolves `slug` to a topic destination and may
+choose any image from that topic's page bundle using `image`. It also supports
+an independent `focal` and accessible `alt` text. If `image` is omitted, the
+canonical topic hero is used as a fallback. Slides are plain images with no
+visible title, caption, or glass overlay.
 
 ```yaml
 - slug: example-topic
@@ -99,8 +133,11 @@ grid uses three columns on desktop, two on tablet, and one on mobile.
 
 An image-bearing topic begins with a full carousel of its page-bundle images.
 The canonical hero is ordered first, starts active, and carries the matching
-View Transition name. Supporting images follow in the same carousel. The topic
-title, optional date, and long-form wiki content appear below the gallery.
+View Transition name. Explicit per-image focal coordinates take precedence;
+each missing coordinate on the canonical image falls back independently to its
+`hero.focal` value and then to `0.5`. Its alternative text uses `hero.alt`, with
+the topic title as fallback. Supporting images follow in the same carousel. The
+topic title, optional date, and long-form wiki content appear below the gallery.
 
 The main gallery shows a centered 2.5-slide composition and loops continuously.
 Its thumbnail strip remains synchronized. Clicking any visible image opens that
@@ -138,10 +175,10 @@ Image overlays use one subtle dark glass treatment: translucent charcoal,
 moderate blur and saturation, a fine light border, and restrained shadow. Text
 must maintain useful contrast over both light and dark imagery.
 
-Card images use a consistent `4 / 3` crop. Topic-gallery slides preserve each
-source image's aspect ratio within the centered carousel. Canonical source
-identity and focal coordinates remain stable across the card and gallery even
-where their responsive presentation differs.
+Card images use a consistent `3 / 4` portrait crop. Topic-gallery slides
+preserve each source image's aspect ratio within the centered carousel.
+Canonical source identity and focal coordinates remain stable across the card
+and gallery even where their responsive presentation differs.
 
 ## Module boundary
 
@@ -159,10 +196,29 @@ site terminology rather than project-specific names.
 1. One topic has one canonical image identity across list cards and detail
    views; the homepage hero carousel is an explicit editorial exception.
 2. Do not create separate card and detail image contracts.
-3. Route shared topic imagery through `hero-image.html`.
-4. Keep topic cards image-first and overlay metadata minimal.
+3. Route canonical image selection through `hero-resource.html`, and route all
+   topic cards through `hero-image.html`.
+4. Keep topic cards image-first and overlay metadata limited to the title,
+   optional short summary, and optional classification.
 5. Do not introduce commerce or inventory assumptions into Cardhaus.
 6. Keep focal cropping predictable and missing images graceful.
 7. Keep the theme independent of any one consuming site.
 8. Preserve matching View Transition names between canonical cards and the
    canonical first topic-gallery image.
+
+## Current conformance notes
+
+The implementation conforms to the central image identity, shared-card,
+responsive-grid, bundle-carousel, gallery/lightbox, shortcode, and View
+Transition contracts. A production Hugo build succeeds.
+
+One implementation gap remains and is tracked in the roadmap rather than being
+accepted as a change to this specification:
+
+- `baseof.html` still conditionally looks up `brand/checkerboard.png` while
+  opening the site header. The theme must render valid header markup without
+  relying on that consumer asset or path.
+
+The topic-detail gallery now gives per-image focal coordinates precedence and
+falls back to `hero.focal` and `hero.alt` for its canonical first image,
+matching the shared hero contract.
