@@ -1,0 +1,19 @@
+{{- $heading := .Get "heading" -}}
+{{- $parts := strings.Split .Inner "::CARDHAUS-TOPIC-CARD::" -}}
+{{- if lt (len $parts) 2 -}}
+  {{- errorf "topic-card-grid shortcode requires at least one nested topic-card (%s)" .Position -}}
+{{- end -}}
+<section class="topic-card-grid">
+  {{ with $heading }}<h2 class="topic-card-grid-title">{{ . }}</h2>{{ end }}
+  {{- $intro := strings.TrimSpace (index $parts 0) -}}
+  {{ with $intro }}
+    <div class="topic-card-grid-intro">
+      {{ $.Page.RenderString (dict "display" "block") . }}
+    </div>
+  {{ end }}
+  <div class="card-grid card-grid--embedded">
+    {{- range after 1 $parts -}}
+      {{- . | safeHTML -}}
+    {{- end -}}
+  </div>
+</section>

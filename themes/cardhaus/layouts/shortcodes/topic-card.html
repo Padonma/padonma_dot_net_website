@@ -1,0 +1,16 @@
+{{- $ref := .Get "ref" -}}
+{{- if not $ref -}}
+  {{- errorf "topic-card shortcode requires a ref parameter (%s)" .Position -}}
+{{- else if not (strings.HasPrefix $ref "/") -}}
+  {{- errorf "topic-card shortcode ref must begin with /, got %q (%s)" $ref .Position -}}
+{{- else -}}
+  {{- $topic := site.GetPage $ref -}}
+  {{- if not $topic -}}
+    {{- errorf "topic-card shortcode could not resolve ref %q (%s)" $ref .Position -}}
+  {{- else -}}
+    {{- with .Parent -}}
+      {{- if eq .Name "topic-card-grid" -}}::CARDHAUS-TOPIC-CARD::{{- end -}}
+    {{- end -}}
+    {{- partial "topic-card.html" $topic -}}
+  {{- end -}}
+{{- end -}}
