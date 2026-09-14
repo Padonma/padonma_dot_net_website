@@ -1,9 +1,10 @@
 ---
-title: "Bandgrind session #13"
+title: "Session #13"
+summary: "The first full QR completed unfortutely proved unscannable"
 weight: 142
 ---
 
-This is actually three mini-sessions that spanned two days, ending on \[2023-12-26 Tue\]
+This was actually three mini-sessions that spanned two days, ending on [2023-12-26 Tue].
 
 <figure height="400px" data-align="center">
 <img src="00-session-13.jpg" />

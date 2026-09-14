@@ -1,10 +1,11 @@
 ---
-title: "Bandgrind session #8"
+title: "Session #8"
+summary: "Time came to adopt weft faced techniques"
 weight: 147
 ---
 
-By Session \#8, the basics of what theads to work with had been solved
-well enough. Since Session \#1 though \#8, the same warping pattern was
+By Session #8, the basics of what theads to work with had been solved
+well enough. Since Session #1 though #8, the same warping pattern was
 used (double black, white, white, repeat) as taken from Baltic band
 weaving technique for pattern weaving. That warping pattern naturally
 exposes parts of the weft, which in the end is simply a design

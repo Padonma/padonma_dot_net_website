@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  {{ partial "hero-carousel-preloads.html" . }}
   <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">
   {{ $styles := slice
     (resources.Get "css/tokens.css")
@@ -86,7 +87,24 @@
     document.querySelectorAll('.hero-carousel').forEach(function (carousel) {
       if (carousel.swiper) return;
       var slides = Array.prototype.slice.call(carousel.querySelectorAll(':scope > .swiper-wrapper > .swiper-slide'));
+
+      /* The centred opening frame needs three decoded images: its left neighbour,
+         the active image, and its right neighbour.  Head preloads start their
+         downloads early; this gate prevents Swiper's first layout from racing
+         their decode and briefly painting an empty track slot. */
+      var openingImages = slides.slice(0, 3).map(function (slide) {
+        var image = slide.querySelector('img');
+        if (!image || (image.complete && image.naturalWidth)) return Promise.resolve();
+        if (image.decode) return image.decode().catch(function () {});
+        return new Promise(function (resolve) {
+          image.addEventListener('load', resolve, { once: true });
+          image.addEventListener('error', resolve, { once: true });
+        });
+      });
+
+      Promise.all(openingImages).then(function () {
       var many = slides.length > 1;
+      var wrapper = carousel.querySelector(':scope > .swiper-wrapper');
       var previous = carousel.querySelector('.swiper-button-prev');
       var next = carousel.querySelector('.swiper-button-next');
       var pagination = carousel.querySelector('.hero-carousel-pagination');
@@ -98,7 +116,8 @@
       var heroPreloads = [];
 
       function realIndex(swiper) {
-        return Number.isFinite(swiper.realIndex) ? swiper.realIndex : swiper.activeIndex % slides.length;
+        var active = swiper.slides[swiper.activeIndex];
+        return active ? Number(active.getAttribute('data-carousel-index')) : 0;
       }
 
       function preload(swiper) {
@@ -116,24 +135,45 @@
         });
       }
 
+      if (many) {
+        var before = document.createDocumentFragment();
+        var after = document.createDocumentFragment();
+        slides.forEach(function (slide) {
+          var beforeClone = slide.cloneNode(true);
+          var afterClone = slide.cloneNode(true);
+          [beforeClone, afterClone].forEach(function (clone) {
+            clone.setAttribute('aria-hidden', 'true');
+            clone.setAttribute('tabindex', '-1');
+          });
+          before.appendChild(beforeClone);
+          after.appendChild(afterClone);
+        });
+        wrapper.insertBefore(before, wrapper.firstChild);
+        wrapper.appendChild(after);
+      }
+
       var swiper = new Swiper(carousel, {
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 0,
-        loop: many,
+        loop: false,
+        initialSlide: many ? slides.length : 0,
         grabCursor: many,
         speed: 450,
         keyboard: false,
-        pagination: many ? {
-          el: pagination,
-          bulletElement: 'button',
-          clickable: true
-        } : false,
-        a11y: { enabled: true }
+        pagination: false,
+        // Keep the partial's bespoke button labels untouched.
+        a11y: { enabled: false }
       });
 
       function stopTimer() {
         if (timer !== null) { window.clearTimeout(timer); timer = null; }
+      }
+
+      function markManualNavigation() {
+        manualNavigation = true;
+        stopTimer();
+        transition += 1;
       }
 
       function schedule(expectedTransition) {
@@ -151,38 +191,72 @@
         }, delay);
       }
 
-      function moveTo(index) {
+      function movePrevious() {
         if (!many || swiper.animating) return;
-        manualNavigation = true;
-        stopTimer();
-        transition += 1;
-        var target = (index + slides.length) % slides.length;
-        var current = realIndex(swiper);
-        /* Native adjacent moves preserve direction and let Swiper maintain
-           its loop copies at the physical boundary. */
-        if (target === (current + 1) % slides.length) {
-          swiper.slideNext();
-        } else if (target === (current + slides.length - 1) % slides.length) {
-          swiper.slidePrev();
-        } else {
-          swiper.slideToLoop(target);
-        }
+        markManualNavigation();
+        swiper.slidePrev();
       }
 
-      swiper.on('slideChange', function () { preload(swiper); });
+      function moveNext() {
+        if (!many || swiper.animating) return;
+        markManualNavigation();
+        swiper.slideNext();
+      }
+
+      function moveTo(index) {
+        if (!many || swiper.animating) return;
+        markManualNavigation();
+        swiper.slideTo(index + slides.length);
+      }
+
+      function updatePagination() {
+        if (!pagination) return;
+        var active = realIndex(swiper);
+        pagination.querySelectorAll('.swiper-pagination-bullet').forEach(function (bullet, index) {
+          var selected = index === active;
+          bullet.classList.toggle('swiper-pagination-bullet-active', selected);
+          bullet.setAttribute('aria-current', selected ? 'true' : 'false');
+        });
+      }
+
+      function normalizeEdge() {
+        if (swiper.activeIndex < slides.length) {
+          swiper.slideTo(swiper.activeIndex + slides.length, 0, false);
+        } else if (swiper.activeIndex >= slides.length * 2) {
+          swiper.slideTo(swiper.activeIndex - slides.length, 0, false);
+        }
+        updatePagination();
+      }
+
+      if (many && pagination) {
+        slides.forEach(function (_, index) {
+          var bullet = document.createElement('button');
+          bullet.type = 'button';
+          bullet.className = 'swiper-pagination-bullet';
+          bullet.setAttribute('aria-label', 'Go to featured image ' + (index + 1));
+          bullet.addEventListener('click', function () { moveTo(index); });
+          pagination.appendChild(bullet);
+        });
+      }
+
+      swiper.on('slideChange', function () { preload(swiper); updatePagination(); });
+      swiper.on('slideChangeTransitionEnd', normalizeEdge);
       preload(swiper);
+      updatePagination();
       if (many) schedule(transition);
 
       carousel.addEventListener('mouseenter', function () { hovered = true; stopTimer(); });
       carousel.addEventListener('mouseleave', function () { hovered = false; schedule(transition); });
-      if (previous) previous.addEventListener('click', function () { moveTo(realIndex(swiper) - 1); });
-      if (next) next.addEventListener('click', function () { moveTo(realIndex(swiper) + 1); });
+      if (previous) previous.addEventListener('click', movePrevious);
+      if (next) next.addEventListener('click', moveNext);
       document.addEventListener('keydown', function (event) {
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
         var rect = carousel.getBoundingClientRect();
         if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
         event.preventDefault();
-        moveTo(realIndex(swiper) + (event.key === 'ArrowRight' ? 1 : -1));
+        if (event.key === 'ArrowRight') moveNext();
+        else movePrevious();
+      });
       });
     });
 

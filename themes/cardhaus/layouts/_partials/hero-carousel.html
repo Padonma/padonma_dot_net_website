@@ -1,4 +1,9 @@
-{{- $slides := site.Data.carousel -}}
+{{- $pageContext := . -}}
+{{- /* A carousel belongs to the current branch bundle as carousel.yaml. */ -}}
+{{- $slides := slice -}}
+{{- with $pageContext.Resources.GetMatch "carousel.yaml" -}}
+  {{- $slides = . | transform.Unmarshal -}}
+{{- end -}}
 {{- if $slides -}}
   <div class="swiper hero-carousel" aria-label="Featured images">
     <div class="swiper-wrapper">
@@ -52,6 +57,7 @@
                 height="{{ $fallback.Height }}"
                 alt="{{ $alt }}"
                 loading="eager"
+                fetchpriority="high"
                 class="hero-carousel-image"
                 style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
               >

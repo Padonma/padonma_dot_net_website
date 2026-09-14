@@ -1,7 +1,12 @@
 ---
-title: "Band #6"
+title: "Session #14"
+summary: "Sixth time's a charm, it seems"
 weight: 141
 ---
+
+Band Six was the first one that actually proved to be scannable.
+
+It started with Session #14 and then continued on over the next few days.
 
 - Novelty
   - First time full band

@@ -36,9 +36,14 @@ image. Explicit hero data is recommended.
 
 An optional `topic_type` value appears as a small secondary card label.
 
-## Homepage hero carousel
+## Bundle hero carousel
 
-The homepage carousel reads `data/carousel.yaml`:
+Place a `carousel.yaml` beside a bundle's `_index.md` to show the carousel on
+that bundle's page. The root bundle uses `content/carousel.yaml`; branch
+bundles use the same filename in their own directory. Bundles without this
+file simply omit the carousel.
+
+Each file contains slides in this form:
 
 ```yaml
 - slug: example-topic

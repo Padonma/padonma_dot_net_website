@@ -1,5 +1,6 @@
 ---
-title: "Bandgrind session #5"
+title: "Session #5"
+summary: "A second attempt at a QR big finder"
 weight: 150
 ---
 

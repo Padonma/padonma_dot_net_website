@@ -1,5 +1,6 @@
 ---
-title: "Bandgrind session #4"
+title: "Session #4"
+summary: "Semi-square but misaligned pixels start getting assembled into QR structural components"
 weight: 151
 ---
 

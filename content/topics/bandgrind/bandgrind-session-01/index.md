@@ -1,9 +1,10 @@
 ---
-title: "Bandgrind session #1"
+title: "Session #1"
+summary: "Band One starts: first thing we tried was wool, which was way too stretchy"
 weight: 154
 ---
 
-Wool thread. Way too stretchy.
+Randomly we acquired some black and white wool and started learning how to backstrap weave bands.
 
 [\$9 on Amazon](https://www.amazon.com/dp/B0B6M7Z82H?psc=1&ref=ppx_yo2ov_dt_b_product_details)
 

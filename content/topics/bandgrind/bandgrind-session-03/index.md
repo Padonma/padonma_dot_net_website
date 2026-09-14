@@ -1,5 +1,6 @@
 ---
-title: "Bandgrind session #3"
+title: "Session #3"
+summary: "Pixel aspect ratio experiment"
 weight: 152
 ---
 

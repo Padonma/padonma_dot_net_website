@@ -1,11 +1,12 @@
 ---
+title: rMQR experiments
+summary: We needed to prove that handwoven rMQRs codes would actually be scannable
 aliases:
   - /bandgrinding.html
   - /banggrinding.html
-title: Bandgrind experiments
 weight: 140
 hero:
-  image: "02-bandgrind-heddle.png"
+  image: "qr_bands.5_of_earlies.jpeg"
 ---
 
 The [Padonma Network](/topics/padonma-network/) project seeks to encode UUIDs in QR codes
