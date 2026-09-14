@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixel editor</title>
+  <style>
+    :root { color-scheme: light; }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #fff;
+      color: #000;
+      font-family: system-ui, sans-serif;
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      place-content: center;
+      gap: 1.25rem;
+      padding: 1.5rem;
+    }
+
+    .grid-viewport {
+      max-width: calc(100vw - 3rem);
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+    }
+
+    #pixel-grid {
+      display: grid;
+      grid-template-columns: repeat(40, 40px);
+      gap: 0;
+      width: max-content;
+      border: 1px solid #000;
+      background: #fff;
+    }
+
+    .pixel {
+      appearance: none;
+      display: block;
+      min-width: 0;
+      min-height: 0;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .pixel.is-black { background: #000; }
+
+    .pixel:focus-visible {
+      position: relative;
+      z-index: 1;
+      outline: 2px solid #0066ff;
+      outline-offset: -2px;
+    }
+
+    #controls {
+      justify-self: center;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    #controls button {
+      padding: 0.6rem 1rem;
+      border: 1px solid #000;
+      border-radius: 0;
+      background: #fff;
+      color: #000;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    #controls button:hover,
+    #controls button:focus-visible {
+      background: #000;
+      color: #fff;
+    }
+
+    #import-file { display: none; }
+
+    #status {
+      min-height: 1.25rem;
+      margin: 0;
+      text-align: center;
+    }
+
+    #status.is-error { color: #b00020; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="grid-viewport">
+      <div id="pixel-grid" role="grid" aria-label="Nine by forty pixel editor"></div>
+    </div>
+    <div id="controls">
+      <button id="import" type="button">Import</button>
+      <button id="export" type="button">Export</button>
+      <input id="import-file" type="file" accept="application/json,.json">
+    </div>
+    <p id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    const rows = 9;
+    const columns = 40;
+
+    // Initial 9 × 40 bitmap from padonma_wordmark_r7.big_dot.json.
+    const initialPixels = [
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, true, true, true, true, true, false, false, true, true, true, true, true, false, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, false, false, false],
+      [false, false, true, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+      [false, false, true, false, true, true, false, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, true, false, false, true, true, true, true, false, false, true, true, true, false, false, false, false, false, false],
+      [false, false, true, false, true, true, false, true, false, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false, false, true, false, false, false, false, false, false],
+      [false, false, true, false, false, false, false, true, false, true, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true, true, false, false, false, false, false, false],
+      [false, false, true, true, true, true, true, false, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, false, false, false, false, false],
+      [false, false, true, true, false, false, false, false, false, true, true, true, false, true, true, true, false, true, true, true, false, true, false, true, false, true, false, true, false, true, false, true, true, true, false, false, false, false, false, false],
+      [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    ];
+
+    let pixels = initialPixels.map((row) => [...row]);
+
+    const grid = document.querySelector('#pixel-grid');
+    const cellButtons = [];
+    const status = document.querySelector('#status');
+
+    function renderPixel(button, isBlack) {
+      button.classList.toggle('is-black', isBlack);
+      button.setAttribute('aria-pressed', String(isBlack));
+    }
+
+    function renderGrid() {
+      pixels.forEach((row, rowIndex) => {
+        row.forEach((isBlack, columnIndex) => {
+          renderPixel(cellButtons[rowIndex][columnIndex], isBlack);
+        });
+      });
+    }
+
+    function setStatus(message, isError = false) {
+      status.textContent = message;
+      status.classList.toggle('is-error', isError);
+    }
+
+    function validateImportedPixels(candidate) {
+      if (!Array.isArray(candidate) || candidate.length !== rows) {
+        throw new Error(`Expected ${rows} rows.`);
+      }
+
+      return candidate.map((row, rowIndex) => {
+        if (!Array.isArray(row) || row.length !== columns) {
+          throw new Error(`Row ${rowIndex + 1} must contain ${columns} values.`);
+        }
+
+        return row.map((value, columnIndex) => {
+          if (value !== 0 && value !== 1) {
+            throw new Error(`Row ${rowIndex + 1}, column ${columnIndex + 1} must be 0 or 1.`);
+          }
+          return value === 1;
+        });
+      });
+    }
+
+    pixels.forEach((row, rowIndex) => {
+      cellButtons[rowIndex] = [];
+      row.forEach((isBlack, columnIndex) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'pixel';
+        button.setAttribute('role', 'gridcell');
+        button.setAttribute('aria-label', `Row ${rowIndex + 1}, column ${columnIndex + 1}`);
+        renderPixel(button, isBlack);
+        button.addEventListener('click', () => {
+          pixels[rowIndex][columnIndex] = !pixels[rowIndex][columnIndex];
+          renderPixel(button, pixels[rowIndex][columnIndex]);
+        });
+        cellButtons[rowIndex][columnIndex] = button;
+        grid.append(button);
+      });
+    });
+
+    document.querySelector('#export').addEventListener('click', () => {
+      const json = `[\n${pixels.map((row) => `  [${row.map((isBlack) => isBlack ? 1 : 0).join(', ')}]`).join(',\n')}\n]\n`;
+      const blob = new Blob([json], { type: 'application/json' });
+      const download = document.createElement('a');
+      download.href = URL.createObjectURL(blob);
+      download.download = 'pixel-pattern.json';
+      download.click();
+      URL.revokeObjectURL(download.href);
+      setStatus('Exported 9 × 40 pixels as 0 and 1.');
+    });
+
+    const importFile = document.querySelector('#import-file');
+    document.querySelector('#import').addEventListener('click', () => importFile.click());
+    importFile.addEventListener('change', async () => {
+      const [file] = importFile.files;
+      if (!file) return;
+
+      try {
+        pixels = validateImportedPixels(JSON.parse(await file.text()));
+        renderGrid();
+        setStatus('Imported 9 × 40 pixels.');
+      } catch (error) {
+        setStatus(`Import failed: ${error.message}`, true);
+      } finally {
+        importFile.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
