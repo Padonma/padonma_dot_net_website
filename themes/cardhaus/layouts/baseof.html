@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ end }}>
+{{- $hasTopicSectionCarousel := and .IsSection (eq .Section "topics") (.Resources.GetMatch "carousel.yaml") -}}
+<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ else if $hasTopicSectionCarousel }} class="topic-section-page topic-section-opening-snap"{{ end }}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -315,16 +316,21 @@
       });
     })();
 
-    (function initHomepageOpeningSnap() {
+    (function initOpeningSnap() {
       var root = document.documentElement;
-      var billboard = document.querySelector('.homepage .billboard');
-      var topics = document.querySelector('.homepage .topics-section');
-      if (!billboard) return;
-      var lastSnapTarget = topics || billboard;
+      var homepage = root.classList.contains('homepage');
+      var firstPanel = homepage
+        ? document.querySelector('.homepage .billboard')
+        : document.querySelector('.topic-section-page .hero-carousel');
+      var finalPanel = homepage
+        ? document.querySelector('.homepage .topics-section')
+        : document.querySelector('.topic-section-page .topics-grid');
+      if (!firstPanel) return;
+      var lastSnapTarget = finalPanel || firstPanel;
 
       var isUpdating = false;
       function setOpeningSnap(enabled) {
-        root.classList.toggle('homepage-opening-snap', enabled);
+        root.classList.toggle(homepage ? 'homepage-opening-snap' : 'topic-section-opening-snap', enabled);
       }
 
       function updateForPosition() {
@@ -349,7 +355,7 @@
       window.addEventListener('scrollend', function () {
         // The topics heading is the final snap landing point. Disable snapping
         // only after arriving there so the grid itself remains ordinary page flow.
-        if (topics && Math.abs(window.scrollY - topics.offsetTop) <= 1) {
+        if (finalPanel && Math.abs(window.scrollY - finalPanel.offsetTop) <= 1) {
           setOpeningSnap(false);
         }
       });
