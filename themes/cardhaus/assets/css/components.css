@@ -192,15 +192,92 @@
 
 .topic-card:hover .hero-media img { transform: scale(1.035); }
 
+/* One material, with per-surface tint and frost. Filters never touch text. */
+.glass-filter-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glass,
+.hero-carousel-controls,
+.topic-card {
+  --glass-rim: inset 1px 1px 1px rgba(255, 255, 255, .88),
+    inset -1px -1px 1px rgba(255, 255, 255, .44),
+    inset 0 0 5px rgba(255, 255, 255, .33);
+  --glass-tint: rgba(255, 255, 255, .18);
+  --glass-frost: .65px;
+}
+
 .glass {
-  background: rgba(20, 20, 20, 0.56);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  background: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+}
+
+.glass::before,
+.hero-carousel-controls::before,
+.topic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: var(--glass-tint);
+  -webkit-backdrop-filter: blur(var(--glass-frost)) saturate(115%);
+  backdrop-filter: blur(var(--glass-frost)) saturate(115%);
+}
+
+@supports (backdrop-filter: url("#cardhaus-soft-reflection") blur(1px)) {
+  .glass::before,
+  .hero-carousel-controls::before,
+  .topic-card::before {
+    -webkit-backdrop-filter: url("#cardhaus-soft-reflection") blur(var(--glass-frost)) saturate(115%);
+    backdrop-filter: url("#cardhaus-soft-reflection") blur(var(--glass-frost)) saturate(115%);
+  }
+}
+
+.glass::after,
+.hero-carousel-controls::after,
+.topic-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .52);
+  border-radius: inherit;
+  box-shadow: var(--glass-rim);
+  pointer-events: none;
+}
+
+.glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* A narrow card rim keeps the reflective edge from framing the image heavily. */
+.topic-card {
+  --glass-rim: inset 1px 1px 0 rgba(255, 255, 255, .72),
+    inset -1px -1px 0 rgba(255, 255, 255, .36),
+    inset 0 0 2px rgba(255, 255, 255, .22);
+}
+
+.topic-card::before {
+  z-index: 11;
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.topic-card::after {
+  z-index: 12;
 }
 
 .card-overlay {
+  --glass-tint: rgba(255, 255, 255, .76);
+  --glass-frost: 20px;
   position: absolute;
   left: 1rem;
   right: 1rem;
@@ -213,7 +290,15 @@
   z-index: 10;
   pointer-events: none;
   border-radius: var(--radius-sm);
-  color: rgba(255, 255, 255, 0.96);
+  color: #000;
+}
+
+/* Blend the overlay edge into its frosted face instead of adding a raised rim. */
+.card-overlay::after {
+  border-color: rgba(255, 255, 255, .22);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, .38),
+    inset 0 -1px 2px rgba(255, 255, 255, .12);
 }
 
 .card-title {
@@ -233,7 +318,7 @@
   margin: 0.35rem 0 0;
   font-size: 0.8rem;
   line-height: 1.35;
-  color: rgba(255, 255, 255, 0.78);
+  color: #000;
 }
 
 /* ── Embedded Topic Cards (shortcodes) ─────────────────────── */
@@ -280,7 +365,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #000;
 }
 
 /* ── Posts List ─────────────────────────────────────────────── */
@@ -1147,6 +1232,7 @@
 
 .hero-carousel-controls {
   --control-height: 4.5rem;
+  --glass-tint: rgba(32, 47, 52, .20);
   position: absolute;
   z-index: 20;
   left: 50%;
@@ -1158,12 +1244,10 @@
   max-width: calc(100% - 2rem);
   min-height: var(--control-height);
   padding-inline: 0.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: linear-gradient(105deg, #647b84, #59656a 46%, #756d68);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.72),
-    0 0.5rem 1.25rem rgba(6, 22, 34, 0.24);
+  background: transparent;
+  box-shadow: 0 0.5rem 1.25rem rgba(6, 22, 34, 0.24);
 }
 
 .hero-carousel .swiper-button-prev,
@@ -1283,8 +1367,9 @@
 }
 
 .hero-carousel .hero-carousel-pagination {
+  z-index: 1;
   --hero-dot-size: clamp(0.9rem, 2vw, 1.25rem);
-  --hero-dot-gap: clamp(0.12rem, 0.8vw, 0.65rem);
+  --hero-dot-gap: clamp(0.5rem, 2vw, 1rem);
   position: relative;
   inset: auto !important;
   display: flex;
@@ -1328,7 +1413,9 @@
   }
 
   .hero-carousel .hero-carousel-pagination {
-    gap: 0;
+    /* Keep eleven indicators separated even on a 320px screen. */
+    --hero-dot-size: clamp(0.75rem, 3.2vw, 0.9rem);
+    --hero-dot-gap: clamp(0.25rem, calc(3vw - 6px), 0.5rem);
   }
 }
 

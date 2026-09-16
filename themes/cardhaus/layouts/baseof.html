@@ -26,6 +26,7 @@
   {{ end }}
 </head>
 <body>
+  {{ partial "glass-filters.html" . }}
   {{ with resources.Get "brand/checkerboard.png" }}
     {{ $checkerboard := . | fingerprint }}
     <header class="site-header" style="" > <!-- background-image: url('{{ $checkerboard.RelPermalink }}');"> -->
