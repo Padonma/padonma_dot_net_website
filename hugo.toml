@@ -21,6 +21,9 @@ enableRobotsTXT = true
   [params.cardhaus]
     customStylesheet = "css/padonma.css"
 
+    [params.cardhaus.social]
+      image = "temp/thailand-lotus-lake.jpg"
+
 [menus]
   [[menus.main]]
     name = "HOME"

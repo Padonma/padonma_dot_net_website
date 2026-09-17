@@ -28,12 +28,90 @@ hero:
   image: "filename.jpg"
   focal:
     x: 0.5
-    y: 0.35
+    "y": 0.35
   alt: "Description of the image"
 ```
 
 If `hero.image` is absent, Cardhaus falls back to the first compatible bundle
 image. Explicit hero data is recommended.
+
+## Descriptions and social sharing
+
+Cardhaus emits canonical, Open Graph, Twitter card, and RSS discovery metadata.
+Descriptions use the first nonempty value from the page description, explicit
+summary, generated summary, and site description.
+
+The canonical hero is also the default social image. Its `hero.alt` and
+`hero.focal` values carry through to the social preview, so the on-page image
+and generated 1200-by-630 crop keep the same subject:
+
+```yaml
+hero:
+  image: loom.jpg
+  alt: Artisan weaving lotus fiber
+  focal:
+    x: 0.7
+    "y": 0.3
+```
+
+Coordinates are normalized values from `0.0` to `1.0` and must remain in that
+range. Quote the `"y"` key in YAML because YAML 1.1 otherwise interprets an
+unquoted `y` as a boolean. Cardhaus calculates the crop rectangle around the
+focal point, constrains it to the source bounds, and does not enlarge small
+images.
+
+Pages only need a `social` block when the preview should differ from the hero:
+
+```yaml
+social:
+  image: loom-social.jpg
+  alt: Lotus-fiber weaving on Inle Lake
+  focal:
+    x: 0.55
+    "y": 0.25
+```
+
+Each social property is optional. `social.focal` and `social.alt` inherit from
+the hero only when the social preview uses that same image; a distinct social
+image defaults to the page title and a centered crop. Explicit image names that
+do not resolve fail the build. SVG, GIF, and other unprocessable formats are
+linked without generating a crop.
+
+Social metadata resolves values in this order:
+
+| Value | Precedence |
+| --- | --- |
+| Image | `social.image`, canonical hero, site social image, none |
+| Focal point | `social.focal`, matching `hero.focal`, site social focal, center |
+| Alt text | `social.alt`, matching `hero.alt`, site social alt, page title |
+
+The site-level focal point and alt text apply only to the site-level fallback
+image. Likewise, hero metadata is inherited only while the social preview uses
+the same resource as the canonical hero. This prevents coordinates or text for
+one photograph from being applied accidentally to another.
+
+For processable images, Cardhaus computes the largest 40:21 rectangle that fits
+within the source, positions it around the normalized focal coordinates, and
+clamps it to the source edges. It then reduces crops large enough to
+1200-by-630 pixels using Lanczos resampling; smaller crops retain their native
+resolution and are never enlarged. The emitted Open Graph metadata reports the
+generated resource's actual MIME type, width, and height.
+
+Sites may provide a global asset for pages without a canonical hero:
+
+```toml
+[params.cardhaus.social]
+  image = "images/social-default.jpg"
+  alt = "Site name"
+
+  [params.cardhaus.social.focal]
+    x = 0.5
+    y = 0.5
+```
+
+Pages whose output configuration includes RSS receive a discovery link in the
+document head. Cardhaus obtains that URL from the page output format instead of
+assuming a fixed feed path.
 
 The shared card renderer and canonical first gallery image apply `hero.focal`
 and `hero.alt`. Supporting gallery images may use entries in the page's

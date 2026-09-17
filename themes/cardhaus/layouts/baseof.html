@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  {{- $description := partial "page-description.html" . }}
+  <meta name="description" content="{{ $description }}">
+  {{ partial "social-metadata.html" . }}
   {{ partial "hero-carousel-preloads.html" . }}
   <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">
   {{ $styles := slice

@@ -2,26 +2,14 @@
 {{- $variant := .variant | default "card" -}}
 {{- $loading := .loading | default "lazy" -}}
 {{- $sizes := .sizes | default "(max-width: 720px) 100vw, 33vw" -}}
-{{- $image := partial "hero-resource.html" $page -}}
-{{- $x := 0.5 -}}
-{{- $y := 0.5 -}}
-{{- $alt := $page.Title -}}
+{{- $imageContext := partial "page-image-context.html" (dict "page" $page "purpose" "hero") -}}
+{{- $image := $imageContext.resource -}}
+{{- $x := $imageContext.focal.x -}}
+{{- $y := $imageContext.focal.y -}}
+{{- $alt := $imageContext.alt -}}
 {{- $transitionName := "" -}}
 {{- if and $image (or (eq $variant "card") (eq $variant "detail")) -}}
   {{- $transitionName = partial "view-transition-name.html" (dict "page" $page "image" $image) -}}
-{{- end -}}
-
-{{- with index $page.Params "hero" -}}
-  {{- with index . "focal" -}}
-    {{- if isset . "x" }}{{ $x = float (index . "x") }}{{ end -}}
-    {{- if isset . "y" -}}
-      {{- $y = float (index . "y") -}}
-    {{- else if isset . "true" -}}
-      {{- /* YAML 1.1 parses an unquoted `y` key as the boolean `true`. */ -}}
-      {{- $y = float (index . "true") -}}
-    {{- end -}}
-  {{- end -}}
-  {{- with index . "alt" }}{{ $alt = . }}{{ end -}}
 {{- end -}}
 
 <div
