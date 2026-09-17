@@ -6,6 +6,9 @@ hero:
   image: "dotted-p-icon-r7-pinked-bigged.png"
 ---
 
+once have uuid, can do all manner of fancy stuff, like write it on a piece of paper, put that tame alpanumeric character sequence on a web page that google crawls, blockchain, etc
+
+
 The Padonma Network is exploring the possibility of tracking cottage
 industry garments via handwoven QR codes. The goal is to design the
 easiest on-ramp imaginable by which a single artisan could make their
