@@ -59,10 +59,10 @@ require_aws_target() {
 sync_assets() {
   local dry_run=("$@")
   aws s3 sync "$build_dir/" "s3://$S3_BUCKET/" --delete --only-show-errors \
-    --exclude '.DS_Store' --cache-control "$assets_cache" "${dry_run[@]}"
+    --exclude '.DS_Store' --cache-control "$assets_cache" ${dry_run[@]+"${dry_run[@]}"}
   aws s3 cp "$build_dir/" "s3://$S3_BUCKET/" --recursive --only-show-errors \
     --exclude '*' --include '*.html' --include '*.xml' --include '*.json' --include 'robots.txt' \
-    --cache-control "$documents_cache" "${dry_run[@]}"
+    --cache-control "$documents_cache" ${dry_run[@]+"${dry_run[@]}"}
 }
 
 verify_live() {
