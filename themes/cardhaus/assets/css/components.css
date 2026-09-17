@@ -1434,12 +1434,6 @@
   max-width: 70vw;
 }
 
-@media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
-  .hero-carousel .swiper-slide {
-    width: 100% !important;
-  }
-}
-
 .hero-carousel-image {
   width: 100%;
   height: 100%;
