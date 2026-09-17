@@ -13,14 +13,6 @@ and build-specific assumptions, and produced the independent
 `themes/cardhaus` module. The Padonma site remains the first consumer and the
 integration test for the module.
 
-## Repository and branch strategy
-
-The original migration was developed in an isolated worktree on the
-`codex/cardhaus-theme` branch, starting from commit `df3fd4b`. That history is
-no longer the location of the active work: Cardhaus is now integrated on the
-repository's `master` branch at `themes/cardhaus/`. Future work should be
-described relative to the current checkout, not the retired migration
-worktree.
 
 ## Module boundary
 
@@ -42,10 +34,6 @@ The consuming site continues to own:
 - bundle-owned hero-carousel data in `content/.../carousel.yaml`;
 - Padonma-specific copy and branding.
 
-Cardhaus must not hard-code Padonma, bicycle, build, price, inventory, or
-`SOLD` semantics into its reusable templates. A consumer may add those concepts
-through content data or later extension points, but they are not part of the
-core topic model.
 
 ## Topic image contract
 
@@ -56,7 +44,7 @@ hero:
   image: "filename.jpg"
   focal:
     x: 0.5
-    y: 0.35
+    "y": 0.35
   alt: "A useful description of the image"
 ```
 
@@ -67,9 +55,6 @@ hero:
 - Topics without a configured or available image receive a deliberate
   image-missing state rather than a broken image.
 
-During migration, the renderer may fall back to the first page-bundle image so
-existing topics remain usable. New and updated content should use explicit
-`hero` data because filesystem ordering is not a durable editorial decision.
 
 ## Shared rendering model
 

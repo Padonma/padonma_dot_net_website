@@ -126,6 +126,19 @@ Cardhaus keeps its CSS in four responsibility-based source files:
 The base template concatenates those sources, in that order, into the
 fingerprinted `css/main.css` served to browsers.
 
+The responsive system has two build-time breakpoint parameters. Cardhaus
+defaults to tablet at `1200` and mobile at `850`; override them in the site's
+configuration to apply new values to every matching theme media query:
+
+```toml
+[params.cardhaus.breakpoints]
+  tablet = 1200
+  mobile = 850
+```
+
+These are Hugo template values rather than CSS custom properties, because CSS
+custom properties cannot be used as media-query conditions in browsers.
+
 A consuming site can add an optional site-owned stylesheet under its global
 `assets/` directory:
 
@@ -162,6 +175,69 @@ and other design values remain in CSS and follow the normal cascade.
 - `assets/css/` contains the shared, bundled responsive design system.
 
 Cardhaus intentionally has no product, price, inventory, or purchasing model.
+
+## Automatic child cards
+
+Use `topic-card-children` to list a branch's immediate children with the same
+heading, padded container, responsive grid, and cards as the homepage listing:
+
+```go-html-template
+{{< topic-card-children ref="/topics" heading="Introduction" >}}
+```
+
+### No arguments required
+
+In a branch's `_index.md`, use this shortcode exactly as written:
+
+```go-html-template
+{{< topic-card-children >}}
+```
+
+It lists the current branch's immediate child cards and uses the branch title
+as its heading. Neither `ref` nor `heading` is required.
+
+A minimal complete `_index.md` looks like this:
+
+```markdown
+---
+title: "Lotus fiber"
+---
+
+{{< topic-card-children >}}
+```
+
+The default is the current section (the containing branch on a regular page,
+or the site root on the homepage). Explicit references must start with `/` and
+resolve to a branch, not a leaf page. The heading defaults to the branch title.
+Empty branches render nothing. Children use `.Pages.ByWeight`, matching the
+existing homepage ordering; deeper descendants are not included. Each card
+uses the child page's title, summary, topic type, and existing hero-image
+resolution, whether the child uses `index.md` or `_index.md`.
+
+Only bundles with an authored index file exactly one directory below the
+selected branch are included. Loose Markdown files and deeper bundles in
+unsectioned folders are excluded. This controls listing, not access to URLs.
+
+Hugo's page collection handles drafts, future/expired pages and `build.list`
+(including inherited settings). Preview build flags keep their normal meaning.
+`list: local` is included in this local collection; `list: never` is not.
+Pages without a permalink (`render: never`) are skipped. `render: link` retains
+Hugo's supplied permalink: Hugo does not generate that destination, so use it
+only when the route is supplied separately. No custom URL or build policy is
+introduced. See [Hugo build options](https://gohugo.io/content-management/build-options/).
+
+For a page containing this listing shortcode, set `summary` in front matter if
+you want summary text on its card. Automatic summaries are omitted for those
+pages to avoid recursively rendering a listing while building its own card.
+
+The shortcode and homepage share `layouts/_partials/topic-card-children.html`,
+which accepts `branch`, optional `heading`, and optional `id`. Curated
+`topic-card-grid` and `topic-card` shortcodes remain available for hand-picked
+groups.
+
+Section templates render a branch's shortcode content instead of adding a
+second automatic listing when `topic-card-children` is present. Other section
+pages keep their existing behavior.
 
 ## Current validation status
 
