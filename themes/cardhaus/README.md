@@ -1,182 +1,26 @@
 # Cardhaus
 
-Cardhaus is an image-first Hugo theme for topic-centered knowledge sites. It
-treats each topic as a durable wiki-like page with one canonical image across
-list cards and the first image in its detail gallery. Homepage carousel slides
-are an editorial exception and may select a different bundle image.
+Cardhaus is an image-first Hugo theme for topic-centered knowledge sites. Its
+stable rendering contracts are defined in `SPEC.md`; this file covers current
+installation, configuration, and authoring usage. Unfinished theme work is in
+`ROADMAP.md`.
 
-## Use in a Hugo site
+## Install
 
-Place this directory at `themes/cardhaus` and select it in the consuming
-site's configuration:
+Place this directory at `themes/cardhaus` and select it in the consumer's Hugo
+configuration:
 
 ```toml
 theme = "cardhaus"
 ```
 
-The directory is self-contained and can be moved into a standalone repository
-later. A Hugo Module import path should be added only after that repository has
-a stable public or private module URL.
+The directory is self-contained for local theme use. There is not yet a stable
+standalone repository or Hugo Module import path.
 
-## Topic contract
+## Configure the consumer
 
-Topics are page bundles under `content/topics/`. A topic may select its
-canonical bundle image and crop:
-
-```yaml
-hero:
-  image: "filename.jpg"
-  focal:
-    x: 0.5
-    "y": 0.35
-  alt: "Description of the image"
-```
-
-If `hero.image` is absent, Cardhaus falls back to the first compatible bundle
-image. Explicit hero data is recommended.
-
-## Descriptions and social sharing
-
-Cardhaus emits canonical, Open Graph, Twitter card, and RSS discovery metadata.
-Descriptions use the first nonempty value from the page description, explicit
-summary, generated summary, and site description.
-
-The canonical hero is also the default social image. Its `hero.alt` and
-`hero.focal` values carry through to the social preview, so the on-page image
-and generated 1200-by-630 crop keep the same subject:
-
-```yaml
-hero:
-  image: loom.jpg
-  alt: Artisan weaving lotus fiber
-  focal:
-    x: 0.7
-    "y": 0.3
-```
-
-Coordinates are normalized values from `0.0` to `1.0` and must remain in that
-range. Quote the `"y"` key in YAML because YAML 1.1 otherwise interprets an
-unquoted `y` as a boolean. Cardhaus calculates the crop rectangle around the
-focal point, constrains it to the source bounds, and does not enlarge small
-images.
-
-Pages only need a `social` block when the preview should differ from the hero:
-
-```yaml
-social:
-  image: loom-social.jpg
-  alt: Lotus-fiber weaving on Inle Lake
-  focal:
-    x: 0.55
-    "y": 0.25
-```
-
-Each social property is optional. `social.focal` and `social.alt` inherit from
-the hero only when the social preview uses that same image; a distinct social
-image defaults to the page title and a centered crop. Explicit image names that
-do not resolve fail the build. SVG, GIF, and other unprocessable formats are
-linked without generating a crop.
-
-Social metadata resolves values in this order:
-
-| Value | Precedence |
-| --- | --- |
-| Image | `social.image`, canonical hero, site social image, none |
-| Focal point | `social.focal`, matching `hero.focal`, site social focal, center |
-| Alt text | `social.alt`, matching `hero.alt`, site social alt, page title |
-
-The site-level focal point and alt text apply only to the site-level fallback
-image. Likewise, hero metadata is inherited only while the social preview uses
-the same resource as the canonical hero. This prevents coordinates or text for
-one photograph from being applied accidentally to another.
-
-For processable images, Cardhaus computes the largest 40:21 rectangle that fits
-within the source, positions it around the normalized focal coordinates, and
-clamps it to the source edges. It then reduces crops large enough to
-1200-by-630 pixels using Lanczos resampling; smaller crops retain their native
-resolution and are never enlarged. The emitted Open Graph metadata reports the
-generated resource's actual MIME type, width, and height.
-
-Sites may provide a global asset for pages without a canonical hero:
-
-```toml
-[params.cardhaus.social]
-  image = "images/social-default.jpg"
-  alt = "Site name"
-
-  [params.cardhaus.social.focal]
-    x = 0.5
-    y = 0.5
-```
-
-Pages whose output configuration includes RSS receive a discovery link in the
-document head. Cardhaus obtains that URL from the page output format instead of
-assuming a fixed feed path.
-
-The shared card renderer and canonical first gallery image apply `hero.focal`
-and `hero.alt`. Supporting gallery images may use entries in the page's
-`images` frontmatter array for individual focal points. Per-image focal
-coordinates take precedence; a missing coordinate on the canonical image falls
-back independently to its topic hero coordinate.
-
-An optional `topic_type` value appears as a small secondary card label. Hugo's
-page summary appears beneath the title when one is available.
-
-## Topic-card shortcodes
-
-Use `topic-card` to place the existing canonical card in Markdown content:
-
-```go-html-template
-{{</* topic-card ref="/topics/example-topic" */>}}
-```
-
-Use the paired `topic-card-grid` shortcode for a curated responsive group. Its
-optional `heading` appears first. Markdown before the first nested card is
-rendered below the heading and above the cards:
-
-```go-html-template
-{{</* topic-card-grid heading="Related topics" */>}}
-
-These topics provide useful context for this page.
-
-{{</* topic-card ref="/topics/example-topic" */>}}
-{{</* topic-card ref="/topics/another-topic" */>}}
-
-{{</* /topic-card-grid */>}}
-```
-
-Use absolute content references beginning with `/`. Missing `ref` values and
-references that do not resolve fail the build. Do not repeat the same topic on
-one rendered page: canonical cards carry named View Transitions, whose names
-must be unique within a document. A grid requires at least one nested card;
-place all introductory Markdown before the first card.
-
-## Bundle hero carousel
-
-Place a `carousel.yaml` beside a bundle's `_index.md` to show the carousel on
-that bundle's page. The root bundle uses `content/carousel.yaml`; branch
-bundles use the same filename in their own directory. Bundles without this
-file simply omit the carousel.
-
-Each file contains slides in this form:
-
-```yaml
-- slug: example-topic
-  image: supporting-image.jpg
-  alt: Description of the selected image
-  focal:
-    x: 0.4
-    y: 0.6
-```
-
-`image` may select any image from the linked topic's page bundle. The focal
-point and alt text belong to that slide and do not change the topic's canonical
-hero. Slides contain no visible title or caption. If `image` is omitted,
-Cardhaus falls back to the canonical topic image.
-
-## Consumer parameters
-
-All parameters are optional unless the consuming layout depends on them:
+All identity parameters are optional unless the chosen consumer layout depends
+on them:
 
 ```toml
 [params]
@@ -188,137 +32,157 @@ All parameters are optional unless the consuming layout depends on them:
   billboardTitle = ["Site", "Name"]
   topicsHeading = "Topics"
   footerImage = "brand/footer.jpg"
+
+  [params.cardhaus]
+    customStylesheet = "css/brand.css"
+
+    [params.cardhaus.breakpoints]
+      tablet = 1200
+      mobile = 850
 ```
 
-Image values resolve through Hugo's global `assets/` directory.
+Image paths resolve through the consumer's global `assets/` directory. The
+custom stylesheet is processed and fingerprinted after the theme bundle; use it
+to override semantic CSS properties such as `--accent`, `--primary`, and
+`--font-display`. Breakpoints are unitless pixel values compiled into media
+queries.
 
-## Styling and brand overrides
+## Author a topic
 
-Cardhaus keeps its CSS in four responsibility-based source files:
+Topics are normally page bundles below `content/topics/`. Select a canonical
+bundle image and crop in front matter:
 
-- `assets/css/tokens.css` provides neutral semantic defaults.
-- `assets/css/base.css` provides the reset and global document behavior.
-- `assets/css/layout.css` arranges the site shell and major page regions.
-- `assets/css/components.css` styles cards, prose, galleries, and controls.
+```yaml
+hero:
+  image: "filename.jpg"
+  focal:
+    x: 0.5
+    "y": 0.35
+  alt: "Description of the image"
+topic_type: "Optional classification"
+```
 
-The base template concatenates those sources, in that order, into the
-fingerprinted `css/main.css` served to browsers.
+Coordinates range from `0.0` to `1.0`. Quote `"y"` because YAML 1.1 may
+otherwise interpret it as a boolean. If `hero.image` is omitted, Cardhaus uses
+the first compatible bundle image when available. The Hugo summary supplies
+optional card copy.
 
-The responsive system has two build-time breakpoint parameters. Cardhaus
-defaults to tablet at `1200` and mobile at `850`; override them in the site's
-configuration to apply new values to every matching theme media query:
+Supporting gallery images may use entries in the page's `images` front matter
+array for focal data. Per-image coordinates take precedence; missing coordinates
+on the canonical image inherit from `hero.focal`.
+
+## Configure social previews
+
+The canonical hero is the default page social image. Add a `social` block only
+when the preview should differ:
+
+```yaml
+social:
+  image: "social-preview.jpg"
+  alt: "Description for the social preview"
+  focal:
+    x: 0.55
+    "y": 0.25
+```
+
+Each property is optional. Hero alt and focal data are inherited only when the
+selected social resource is the hero. A distinct image defaults to the title
+and a centered crop. Explicit unresolved social images fail the build.
+
+Consumers may provide a global fallback:
 
 ```toml
-[params.cardhaus.breakpoints]
-  tablet = 1200
-  mobile = 850
+[params.cardhaus.social]
+  image = "images/social-default.jpg"
+  alt = "Site name"
+
+  [params.cardhaus.social.focal]
+    x = 0.5
+    y = 0.5
 ```
 
-These are Hugo template values rather than CSS custom properties, because CSS
-custom properties cannot be used as media-query conditions in browsers.
+## Embed topic cards
 
-A consuming site can add an optional site-owned stylesheet under its global
-`assets/` directory:
+Embed one existing canonical card with an absolute content reference:
 
-```toml
-[params.cardhaus]
-  customStylesheet = "css/brand.css"
+```go-html-template
+{{</* topic-card ref="/topics/example-topic" */>}}
 ```
 
-Cardhaus processes and links that stylesheet after its own bundle. Define
-brand values there as ordinary CSS custom-property overrides:
+Group curated cards with an optional heading and introductory Markdown:
 
-```css
-:root {
-  --accent: #8b1e3f;
-  --primary: var(--accent);
-  --font-display: Georgia, serif;
-}
+```go-html-template
+{{</* topic-card-grid heading="Related topics" */>}}
+
+These topics provide useful context.
+
+{{</* topic-card ref="/topics/example-topic" */>}}
+{{</* topic-card ref="/topics/another-topic" */>}}
+
+{{</* /topic-card-grid */>}}
 ```
 
-The configuration contains only the optional stylesheet path; colors, fonts,
-and other design values remain in CSS and follow the normal cascade.
+A grid requires a nested card. Put all introductory Markdown before its first
+card. Missing or relative references fail the build. Do not repeat one topic on
+a rendered page because canonical cards carry document-unique transition names.
 
-## Reusable source
+## List immediate children
+
+In a branch bundle, list immediate authored children using the branch title:
+
+```go-html-template
+{{</* topic-card-children */>}}
+```
+
+Or select a branch and heading explicitly:
+
+```go-html-template
+{{</* topic-card-children ref="/topics" heading="Introduction" */>}}
+```
+
+The reference must resolve to a branch bundle. Children use `.Pages.ByWeight`;
+deeper descendants and loose Markdown files are excluded. Empty branches render
+nothing. Hugo's draft, future, expiry, `build.list`, and `build.render` behavior
+still applies. `render: link` requires the destination to be supplied elsewhere.
+
+For a page that contains this listing, set an explicit front-matter `summary`
+when its own card needs copy. Cardhaus omits automatic summaries for such pages
+to avoid recursively rendering the listing inside the card.
+
+## Add a branch carousel
+
+Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
+`content/carousel.yaml`. Bundles without the file omit the carousel.
+
+```yaml
+- slug: example-topic
+  image: supporting-image.jpg
+  alt: Description of the selected image
+  focal:
+    x: 0.4
+    y: 0.6
+```
+
+`slug` identifies the linked topic. `image` may select any image from that
+topic's bundle and falls back to its canonical hero when omitted. Slide focal
+and alt values belong to the carousel selection and do not change the topic's
+canonical identity.
+
+## Source map and validation
+
+Key reusable source:
 
 - `layouts/_partials/hero-resource.html` resolves canonical images.
-- `layouts/_partials/hero-image.html` renders focal-aware responsive imagery.
-- `layouts/_partials/gallery-image-meta.html` applies per-image focal data and
-  canonical hero fallbacks consistently across gallery views.
-- `layouts/_partials/topic-card.html` renders the shared card.
-- `layouts/shortcodes/topic-card.html` embeds one shared card in Markdown.
-- `layouts/shortcodes/topic-card-grid.html` renders curated cards with optional
-  introductory Markdown.
-- `layouts/topics/single.html` renders the topic detail hero and wiki content.
-- `assets/css/` contains the shared, bundled responsive design system.
+- `layouts/_partials/hero-image.html` renders responsive canonical imagery.
+- `layouts/_partials/topic-card.html` renders every shared card.
+- `layouts/_partials/topic-gallery.html` renders galleries and lightboxes.
+- `layouts/_partials/social-metadata.html` emits sharing metadata.
+- `layouts/shortcodes/` contains the author-facing card APIs.
+- `assets/css/` contains tokens, base rules, layouts, and components.
 
-Cardhaus intentionally has no product, price, inventory, or purchasing model.
+From the Padonma consumer repository, run its production build and validation:
 
-## Automatic child cards
-
-Use `topic-card-children` to list a branch's immediate children with the same
-heading, padded container, responsive grid, and cards as the homepage listing:
-
-```go-html-template
-{{< topic-card-children ref="/topics" heading="Introduction" >}}
+```sh
+scripts/deploy.sh build
+git diff --check
 ```
-
-### No arguments required
-
-In a branch's `_index.md`, use this shortcode exactly as written:
-
-```go-html-template
-{{< topic-card-children >}}
-```
-
-It lists the current branch's immediate child cards and uses the branch title
-as its heading. Neither `ref` nor `heading` is required.
-
-A minimal complete `_index.md` looks like this:
-
-```markdown
----
-title: "Lotus fiber"
----
-
-{{< topic-card-children >}}
-```
-
-The default is the current section (the containing branch on a regular page,
-or the site root on the homepage). Explicit references must start with `/` and
-resolve to a branch, not a leaf page. The heading defaults to the branch title.
-Empty branches render nothing. Children use `.Pages.ByWeight`, matching the
-existing homepage ordering; deeper descendants are not included. Each card
-uses the child page's title, summary, topic type, and existing hero-image
-resolution, whether the child uses `index.md` or `_index.md`.
-
-Only bundles with an authored index file exactly one directory below the
-selected branch are included. Loose Markdown files and deeper bundles in
-unsectioned folders are excluded. This controls listing, not access to URLs.
-
-Hugo's page collection handles drafts, future/expired pages and `build.list`
-(including inherited settings). Preview build flags keep their normal meaning.
-`list: local` is included in this local collection; `list: never` is not.
-Pages without a permalink (`render: never`) are skipped. `render: link` retains
-Hugo's supplied permalink: Hugo does not generate that destination, so use it
-only when the route is supplied separately. No custom URL or build policy is
-introduced. See [Hugo build options](https://gohugo.io/content-management/build-options/).
-
-For a page containing this listing shortcode, set `summary` in front matter if
-you want summary text on its card. Automatic summaries are omitted for those
-pages to avoid recursively rendering a listing while building its own card.
-
-The shortcode and homepage share `layouts/_partials/topic-card-children.html`,
-which accepts `branch`, optional `heading`, and optional `id`. Curated
-`topic-card-grid` and `topic-card` shortcodes remain available for hand-picked
-groups.
-
-Section templates render a branch's shortcode content instead of adding a
-second automatic listing when `topic-card-children` is present. Other section
-pages keep their existing behavior.
-
-## Current validation status
-
-The Padonma consumer builds successfully with Hugo. The remaining cleanup queue
-is documented in `specs/roadmap.md`: removal of one legacy header asset lookup
-and an in-content shortcode fixture for validation.
