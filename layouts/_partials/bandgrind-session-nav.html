@@ -1,0 +1,35 @@
+{{- with .Params.sequence }}
+  {{- $currentPage := $ -}}
+  {{- $sessions := where $currentPage.Parent.RegularPages "Params.sequence" "ne" nil -}}
+  {{- $sessions = $sessions.ByParam "sequence" -}}
+  {{- $currentIndex := -1 -}}
+  {{- range $index, $page := $sessions -}}
+    {{- if eq $page $currentPage -}}
+      {{- $currentIndex = $index -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if ge $currentIndex 0 }}
+    {{- $previous := false -}}
+    {{- $next := false -}}
+    {{- if gt $currentIndex 0 -}}
+      {{- $previous = index $sessions (sub $currentIndex 1) -}}
+    {{- end -}}
+    {{- if lt (add $currentIndex 1) (len $sessions) -}}
+      {{- $next = index $sessions (add $currentIndex 1) -}}
+    {{- end -}}
+    <nav class="bandgrind-session-nav" aria-label="Bandgrind session navigation">
+      {{ with $previous }}
+        <a class="bandgrind-session-nav-link bandgrind-session-nav-link--previous" href="{{ .RelPermalink }}" aria-label="Previous Bandgrind session: {{ .LinkTitle }}">
+          <span class="bandgrind-session-nav-direction">Previous session</span>
+          <span class="bandgrind-session-nav-title">← {{ .LinkTitle }}</span>
+        </a>
+      {{ end }}
+      {{ with $next }}
+        <a class="bandgrind-session-nav-link bandgrind-session-nav-link--next" href="{{ .RelPermalink }}" aria-label="Next Bandgrind session: {{ .LinkTitle }}">
+          <span class="bandgrind-session-nav-direction">Next session</span>
+          <span class="bandgrind-session-nav-title">{{ .LinkTitle }} →</span>
+        </a>
+      {{ end }}
+    </nav>
+  {{- end }}
+{{- end }}

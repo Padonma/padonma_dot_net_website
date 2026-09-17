@@ -76,3 +76,66 @@
 .billboard-logo-mark {
   margin: 0 auto 2rem;
 }
+
+/* Bandgrind-specific sequential session navigation. */
+.bandgrind-session-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--outline-variant);
+}
+
+.bandgrind-session-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  border-radius: var(--radius);
+}
+
+.bandgrind-session-nav-link--next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.bandgrind-session-nav-link:hover {
+  text-decoration: underline;
+}
+
+.bandgrind-session-nav-link:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.bandgrind-session-nav-direction {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+.bandgrind-session-nav-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 850px) {
+  .bandgrind-session-nav {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    margin-top: 3rem;
+  }
+
+  .bandgrind-session-nav-link--next {
+    grid-column: auto;
+  }
+}
