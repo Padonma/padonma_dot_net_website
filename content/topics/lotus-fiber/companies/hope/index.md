@@ -4,6 +4,7 @@ summary: Burmese Brand with concept store in Bangcock
 ---
 
 - Website: [The Hope](https://www.thehope-global.com/)
+- [About page](https://www.thehope-global.com/about)
 
 ## Sources
 

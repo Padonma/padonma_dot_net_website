@@ -40,8 +40,8 @@ some Western attire.
 [The bush jacket](https://sallyantiques.co.uk/product/british-ww2-era-royal-navy-khaki-drill-bush-shirt-tropical-tunic/)
 is sort of like a sport coat. Both came from the
 British of a certain period. Take a bush jacket, lose the chest
-pockets and labels and we are getting close to the original sport coat
-of 1800s England.
+pockets, belt, and epaulette and we are getting close to the original sport coat
+of 1800s England. Absolutely [no apaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ?t=160&feature=share) allowed.
 
 [The white tropical jacket of the British Navy](https://www.awm.gov.au/collection/C109623?image=1)
 demonstrates the pattern design of an unstructured coat. Check the inside picture.
@@ -55,5 +55,6 @@ demonstrates the pattern design of an unstructured coat. Check the inside pictur
 - Indigo dyed option?
 
 No
-- No peaked label
+- No peaked lapel
 - No double breast
+- No [epaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ)
