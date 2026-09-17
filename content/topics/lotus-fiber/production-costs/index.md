@@ -4,7 +4,7 @@ summary: Thread spinning represents the dominant bulk of the labor value. Anyone
 hero:
   image: lotus-silk-production-timeline.png
   focal:
-    x: 0.3
+    x: 0.05
     "y": 0.0
 ---
 

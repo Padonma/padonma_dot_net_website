@@ -16,8 +16,16 @@ thread accounts for 60% - 90% of the labor cost and explains why this
 fabric is so expensive. Nevermind that the next step, handlooming, is
 not the fastest technology either.
 
+**The cost is in the spinning, 10 seconds:**
+
 {{< youtube L2V3kBvHddE >}}
 
+
+<br />
+
+**60 seconds:**
+
+{{< youtube ntCwJx4rLRU >}}
 
 ## Backgrounders
 
@@ -45,8 +53,20 @@ fiber production in Vietnam in 2017.
 - 4 minutes
 - 2020
 
+
 {{< youtube UUXi-dOmDVU >}}
 
+<br />
+
+**3 minutes:**
+
+{{< youtube p9vGfTPTIDw >}}
+
+<br />
+
+**6 minutes:**
+
+{{< youtube S9F-u4T7leQ >}}
 
 ## Burma 
 
