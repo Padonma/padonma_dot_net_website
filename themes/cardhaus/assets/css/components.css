@@ -105,12 +105,50 @@
   color: var(--primary);
 }
 
+/* Topic-card-grid headings may be branded independently of other section titles. */
+.topic-card-grid .section-title,
+.topic-card-grid-title {
+  font-family: var(--font-topic-card-grid-heading, var(--font-display));
+}
+
 .section-sub {
   font-family: var(--font);
   font-size: 1rem;
   font-weight: 400;
   color: var(--on-surface-variant);
   padding-top: 1rem;
+}
+
+/* ── Breadcrumbs ───────────────────────────────────────────── */
+.breadcrumbs {
+  padding-top: 2rem;
+  font-family: var(--font);
+  font-size: 0.875rem;
+  color: var(--on-surface-variant);
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.35rem;
+  color: var(--outline);
+}
+
+.breadcrumbs a {
+  color: var(--primary);
+  text-underline-offset: 3px;
+}
+
+.breadcrumbs [aria-current="page"] {
+  font-weight: 600;
 }
 
 /* ── Homepage Sections ──────────────────────────────────────── */
@@ -282,6 +320,7 @@
   left: 1rem;
   right: 1rem;
   bottom: 1rem;
+  height: 8rem;
   padding: 0.9rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -312,6 +351,7 @@
 .card-copy {
   flex: 1;
   min-width: 0;
+  align-self: flex-start;
 }
 
 .card-summary {
@@ -319,11 +359,48 @@
   font-size: 0.8rem;
   line-height: 1.35;
   color: #000;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
 }
 
 /* ── Embedded Topic Cards (shortcodes) ─────────────────────── */
 .topic-card-grid {
   margin-block: 3rem;
+}
+
+.topic-card-grid--home {
+  margin-block: 0;
+}
+
+.topic-card-grid--home .topic-card-grid-intro {
+  margin-bottom: 3rem;
+}
+
+.topic-card-grid-intro p,
+.homepage-content > p {
+  margin-block: 0;
+}
+
+.topic-card-grid-intro p + p,
+.homepage-content > p + p {
+  margin-top: 1.5rem;
+}
+
+.topic-card-grid-intro ul,
+.topic-card-grid-intro ol,
+.homepage-content > ul,
+.homepage-content > ol {
+  margin-block: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.topic-card-grid-intro li + li,
+.homepage-content > ul li + li,
+.homepage-content > ol li + li {
+  margin-top: 0.5rem;
 }
 
 .card-grid--embedded {
@@ -705,6 +782,18 @@
 }
 
 .post-body strong { font-weight: 700; }
+
+.section-intro {
+  padding-bottom: 2rem;
+}
+
+.section-intro + .section-children {
+  padding-top: 0;
+}
+
+.section-intro + .section-children .section-header {
+  padding-top: 2rem;
+}
 
 /* ── Tables ────────────────────────────────────────────────── */
 .post-body .table-wrapper {
@@ -1107,7 +1196,7 @@
 }
 
 /* ── Responsive ───────────────────────────────────────────────── */
-@media (max-width: 850px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.mobile | default 850 }}px) {
   .topic-gallery-main {
     height: calc(100vh - var(--margin));
     min-height: 320px;
@@ -1201,11 +1290,16 @@
 
 .homepage .hero-carousel,
 .homepage .billboard,
-.homepage .topics-section,
+.homepage .homepage-content,
 .topic-section-page .hero-carousel,
 .topic-section-page .topics-grid {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.homepage-content {
+  display: flow-root;
+  padding-block: 3rem;
 }
 
 /* The header remains in the opening view when the first panel is selected. */
@@ -1340,7 +1434,7 @@
   max-width: 70vw;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
   .hero-carousel .swiper-slide {
     width: 100% !important;
   }
@@ -1406,10 +1500,9 @@
   box-shadow: none !important;
 }
 
-@media (max-width: 520px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.mobile | default 850 }}px) {
   .hero-carousel-controls {
     --control-height: 3.5rem;
-    width: calc(100% - 1rem);
   }
 
   .hero-carousel .hero-carousel-pagination {
@@ -1478,24 +1571,24 @@
 }
 
 .footer-logo {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--paper);
+  color: var(--primary);
 }
 
 .footer-copy {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  color: var(--paper);
+  color: var(--primary);
 }
 
 
 
 /* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 1200px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
   .billboard-title { font-size: 48px; }
   .site-logo,
   .logo-img { width: 360px; }
@@ -1512,7 +1605,7 @@
 
 
 
-@media (max-width: 850px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.mobile | default 850 }}px) {
   .billboard-title { font-size: 36px; }
 
   .post-title,

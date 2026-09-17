@@ -1,5 +1,10 @@
 {{ define "main" }}
 {{ partial "hero-carousel.html" . }}
+{{ if .HasShortcode "topic-card-children" }}
+<article class="standard-page">
+  <div class="post-body">{{ .Content }}</div>
+</article>
+{{ else }}
 <section class="topics-grid">
   <header class="section-header">
     <h1 class="section-title">// {{ .Title | upper }}</h1>
@@ -11,4 +16,5 @@
     {{ end }}
   </div>
 </section>
+{{ end }}
 {{ end }}

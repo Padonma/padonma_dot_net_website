@@ -23,26 +23,28 @@
         {{ range . }}<span>{{ . }}</span>{{ end }}
       {{ else }}
         <span>{{ site.Title }}</span>
-      {{ end }}
+        {{ end }}
     </h1>
     {{ with site.Params.subtitle }}<p class="section-subtitle">{{ . }}</p>{{ end }}
   </div>
 </section>
 
-{{ $topics := site.GetPage "/topics" }}
-{{ $pages := $topics.Pages }}
-{{ if $pages }}
-  <section class="topics-section" id="topics">
-    <div class="topics-grid">
-      <header class="section-header">
-        <h2 class="section-title">{{ site.Params.topicsHeading | default "Topics" }}</h2>
-      </header>
-      <div class="card-grid">
-        {{ range $pages.ByWeight }}
-          {{ partial "topic-card.html" . }}
-        {{ end }}
-      </div>
-    </div>
-  </section>
-{{ end }}
+
+
+<section class="homepage-content">
+    {{ .Content }}
+</section>
+
+
+
+<!-- 
+     {{ with site.GetPage "/topics" }}
+     {{ partial "topic-card-children.html" (dict
+     "branch" .
+     "heading" (site.Params.topicsHeading | default "Topics")
+     "id" "topics"
+     ) }}
+     {{ end }}
+-->
+
 {{ end }}

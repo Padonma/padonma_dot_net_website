@@ -1,0 +1,28 @@
+{{- $branch := .branch -}}
+{{- $heading := .heading | default $branch.Title -}}
+{{- $branchDir := path.Clean (strings.TrimPrefix "/" $branch.Path) -}}
+{{- with $branch.File -}}{{- $branchDir = path.Clean .Dir -}}{{- end -}}
+{{- $children := slice -}}
+{{- range $child := $branch.Pages.ByWeight -}}
+  {{- with .File -}}
+    {{/* Hugo sections may include pages from deeper, unsectioned folders. */}}
+    {{- $parentDir := path.Dir (path.Clean .Dir) -}}
+    {{- if and (in (slice "index.md" "_index.md") .LogicalName) (eq $parentDir $branchDir) $child.RelPermalink -}}
+      {{- $children = $children | append $child -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $children -}}
+<section class="topics-section"{{ with $.id }} id="{{ . }}"{{ end }}>
+  <div class="topics-grid">
+    <header class="section-header">
+      <h2 class="section-title">{{ $heading }}</h2>
+    </header>
+    <div class="card-grid">
+      {{ range . }}
+        {{ partial "topic-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{- end -}}

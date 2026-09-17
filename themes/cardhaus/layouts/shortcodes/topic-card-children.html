@@ -1,0 +1,15 @@
+{{- $branch := .Page.CurrentSection -}}
+{{- if .Page.IsHome -}}{{- $branch = .Page -}}{{- end -}}
+{{- with .Get "ref" -}}
+  {{- if not (strings.HasPrefix . "/") -}}
+    {{- errorf "topic-card-children ref must begin with /, got %q (%s)" . $.Position -}}
+  {{- end -}}
+  {{- $branch = site.GetPage . -}}
+{{- end -}}
+{{- if not $branch -}}
+  {{- errorf "topic-card-children could not resolve branch %q (%s)" (.Get "ref") .Position -}}
+{{- else if not (or $branch.IsSection $branch.IsHome) -}}
+  {{- errorf "topic-card-children requires a branch (_index.md), got %q (%s)" (.Get "ref") .Position -}}
+{{- else -}}
+  {{- partial "topic-card-children.html" (dict "branch" $branch "heading" (.Get "heading")) -}}
+{{- end -}}

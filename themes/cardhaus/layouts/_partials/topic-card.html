@@ -9,7 +9,13 @@
     <div class="card-overlay glass">
       <div class="card-copy">
         <h2 class="card-title">{{ .Title }}</h2>
-        {{ with .Summary }}<p class="card-summary">{{ . }}</p>{{ end }}
+        {{/* Listing shortcodes can include this page: avoid evaluating their
+             content recursively just to obtain an automatic summary. */}}
+        {{ if .HasShortcode "topic-card-children" }}
+          {{ with .Params.summary }}<p class="card-summary">{{ $.RenderString . }}</p>{{ end }}
+        {{ else }}
+          {{ with .Summary }}<p class="card-summary">{{ . }}</p>{{ end }}
+        {{ end }}
       </div>
       {{ with .Params.topic_type }}<span class="card-label">{{ . }}</span>{{ end }}
     </div>

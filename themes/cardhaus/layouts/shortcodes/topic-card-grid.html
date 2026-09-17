@@ -3,17 +3,27 @@
 {{- if lt (len $parts) 2 -}}
   {{- errorf "topic-card-grid shortcode requires at least one nested topic-card (%s)" .Position -}}
 {{- end -}}
-<section class="topic-card-grid">
-  {{ with $heading }}<h2 class="topic-card-grid-title">{{ . }}</h2>{{ end }}
+<section class="topic-card-grid{{ if .Page.IsHome }} topic-card-grid--home{{ end }}">
+  <div{{ if .Page.IsHome }} class="topics-grid"{{ end }}>
+  {{ with $heading }}
+    {{ if $.Page.IsHome }}
+      <header class="section-header">
+        <h2 class="section-title">{{ . }}</h2>
+      </header>
+    {{ else }}
+      <h2 class="topic-card-grid-title">{{ . }}</h2>
+    {{ end }}
+  {{ end }}
   {{- $intro := strings.TrimSpace (index $parts 0) -}}
   {{ with $intro }}
     <div class="topic-card-grid-intro">
       {{ $.Page.RenderString (dict "display" "block") . }}
     </div>
   {{ end }}
-  <div class="card-grid card-grid--embedded">
+  <div class="card-grid{{ if not .Page.IsHome }} card-grid--embedded{{ end }}">
     {{- range after 1 $parts -}}
       {{- . | safeHTML -}}
     {{- end -}}
+  </div>
   </div>
 </section>
