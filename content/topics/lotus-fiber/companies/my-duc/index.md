@@ -14,4 +14,4 @@ lotus-silk textiles.
 
 - [Vietnam News: From local silk to national OCOP 5-star products](https://vietnamnews.vn/society/1799148/from-local-silk-to-national-ocop-5-star-products.html)
 - [SILK4WORLD product story](https://silk4world.com.vn/cau-chuyen-san-pham-hong-thu-khan-lua-to-tam-ve-tay/)
-- [Research on Phan Thị Thuận's lotus-thread weaving](/topics/lotus-thread-research/)
+- [Research on Phan Thị Thuận's lotus-thread weaving](/topics/lotus-fiber/lotus-thread-research/)

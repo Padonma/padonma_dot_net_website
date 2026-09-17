@@ -10,7 +10,7 @@ hero:
 
 **We need to test this idea and actually weave some rMQR codes; see
 what can actually be scanned.** For a primer on backstrap rigid heddle
-weaving, see [Bandweaving: an ancient minimalist weaving technology](/topics/bandweaving/).
+weaving, see [Bandweaving: an ancient minimalist weaving technology](/topics/weaving/bandweaving/).
 
 [![](rmqr_r7_43_structure.png)](https://cdn.standards.iteh.ai/samples/77404/e103bf2d1f0d4162b34ca493efdaf9c4/ISO-IEC-23941-2022.pdf)
 
