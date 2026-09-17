@@ -129,6 +129,14 @@ as every other topic list.
 All generated lists use the shared topic card. The authoritative responsive
 grid uses three columns on desktop, two on tablet, and one on mobile.
 
+Cardhaus has two configurable build-time structural breakpoints under
+`[params.cardhaus.breakpoints]`: `tablet` defaults to `1200px` and `mobile`
+defaults to `850px`. The grid has three columns above the tablet breakpoint,
+two columns at and below tablet until mobile, and one column at mobile. A
+consuming site may override either value; Hugo compiles the values into the
+theme's media queries. Narrower component-level rules may adjust typography or
+spacing for fit, but do not alter this structural grid contract.
+
 ### Topic detail
 
 An image-bearing topic begins with a full carousel of its page-bundle images.
