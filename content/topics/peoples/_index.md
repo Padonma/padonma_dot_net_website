@@ -1,7 +1,7 @@
 ---
 title: Peoples of the land of lotus fiber
 summary: Amazingly diverse 
-_build:
+build:
   render: never
   list: never
 ---

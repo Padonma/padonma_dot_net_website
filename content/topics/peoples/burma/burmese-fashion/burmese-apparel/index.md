@@ -38,9 +38,21 @@ crowd behaving completely organicly, grassroots.
 Longyi around the waiste and thanaka on the face? You're in Burma.
 
 {{< youtube rKub7QH1L0w >}}
+
+
+
 <br/>
 
-Notice how in@2m45 they compare the traditional tubural style to the modern wrap which they like less:
+**2 minutes**:
+
+{{< youtube Yj_msDVntdY >}}
+
+
+<br/>
+
+Notice how in@2m45 when they compare the traditional tubural style to
+the modern wrap and that they explain why the traditional is better:
+
 {{< youtube 1ZLrE6Cf0Xc >}}
 
 
