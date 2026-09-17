@@ -2,6 +2,12 @@
   name = "Cardhaus"
   description = "An image-first Hugo theme for topic-centered knowledge sites"
 
+  # These are build-time values used by the theme's responsive CSS. A site may
+  # override either value under [params.cardhaus.breakpoints].
+  [params.cardhaus.breakpoints]
+    tablet = 1200
+    mobile = 850
+
 [module]
   [module.hugoVersion]
     extended = false

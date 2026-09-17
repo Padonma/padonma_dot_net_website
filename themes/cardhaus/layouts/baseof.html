@@ -9,10 +9,10 @@
   {{ partial "hero-carousel-preloads.html" . }}
   <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">
   {{ $styles := slice
-    (resources.Get "css/tokens.css")
+    (resources.Get "css/tokens.css" | resources.ExecuteAsTemplate "css/tokens.css" .)
     (resources.Get "css/base.css")
-    (resources.Get "css/layout.css")
-    (resources.Get "css/components.css")
+    (resources.Get "css/layout.css" | resources.ExecuteAsTemplate "css/layout.css" .)
+    (resources.Get "css/components.css" | resources.ExecuteAsTemplate "css/components.css" .)
   }}
   {{ $css := $styles | resources.Concat "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
@@ -48,7 +48,9 @@
       </a>
       <nav class="site-nav" aria-label="Main navigation">
         {{ range site.Menus.main }}
-          <a href="{{ .URL | relURL }}" class="{{ if $.IsMenuCurrent "main" . }}nav-active{{ end }}">{{ .Name }}</a>
+          {{ $isCurrent := $.IsMenuCurrent "main" . }}
+          {{ $isAncestor := $.HasMenuCurrent "main" . }}
+          <a href="{{ .URL | relURL }}"{{ if or $isCurrent $isAncestor }} class="nav-active"{{ end }}{{ if $isCurrent }} aria-current="page"{{ else if $isAncestor }} aria-current="true"{{ end }}>{{ .Name }}</a>
         {{ end }}
       </nav>
     </div>
@@ -80,7 +82,7 @@
       {{ end }}
     {{ end }}
     <div class="footer-inner">
-      <span class="footer-logo">{{ site.Title | upper }}<span class="footer-subtitle">: {{ site.Params.subtitle }}</span></span>
+      <span class="footer-logo">{{ site.Title }}</span>
       <span class="footer-copy">© {{ now.Year }}</span>
     </div>
   </footer>
@@ -252,9 +254,23 @@
       if (previous) previous.addEventListener('click', movePrevious);
       if (next) next.addEventListener('click', moveNext);
       document.addEventListener('keydown', function (event) {
-        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key !== 'Enter') return;
         var rect = carousel.getBoundingClientRect();
         if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        if (event.key === 'Enter') {
+          // Let focused controls and editable fields keep their normal Enter behavior.
+          if (event.defaultPrevented || event.repeat || event.isComposing ||
+              event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+          var target = event.target;
+          if (target instanceof Element &&
+              (target.isContentEditable || target.closest('a, button, input, textarea, select, [role="button"], [role="link"]'))) return;
+          var activeSlide = swiper.slides[swiper.activeIndex];
+          if (activeSlide) {
+            event.preventDefault();
+            activeSlide.click();
+          }
+          return;
+        }
         event.preventDefault();
         if (event.key === 'ArrowRight') moveNext();
         else movePrevious();
@@ -324,7 +340,7 @@
         ? document.querySelector('.homepage .billboard')
         : document.querySelector('.topic-section-page .hero-carousel');
       var finalPanel = homepage
-        ? document.querySelector('.homepage .topics-section')
+        ? document.querySelector('.homepage .homepage-content')
         : document.querySelector('.topic-section-page .topics-grid');
       if (!firstPanel) return;
       var lastSnapTarget = finalPanel || firstPanel;
@@ -343,7 +359,7 @@
 
       window.addEventListener('scroll', function () {
         // Turn snapping off as soon as a downward gesture carries past the
-        // last panel. This keeps the topics and following content free-flowing.
+        // last panel. This keeps the content below it free-flowing.
         if (window.scrollY > lastSnapTarget.offsetTop + 16) {
           setOpeningSnap(false);
         }
@@ -354,8 +370,8 @@
       }, { passive: true });
 
       window.addEventListener('scrollend', function () {
-        // The topics heading is the final snap landing point. Disable snapping
-        // only after arriving there so the grid itself remains ordinary page flow.
+        // Disable snapping after reaching the final landing point so the
+        // remaining content stays in ordinary page flow.
         if (finalPanel && Math.abs(window.scrollY - finalPanel.offsetTop) <= 1) {
           setOpeningSnap(false);
         }

@@ -64,13 +64,13 @@
   --header-height: 101px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
   :root {
     --header-height: 51px;
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: {{ site.Params.cardhaus.breakpoints.mobile | default 850 }}px) {
   :root {
     --margin: 16px;
     --gutter: 16px;
