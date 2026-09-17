@@ -2,6 +2,8 @@
 title: "Session #9"
 summary: "Band Four starts: experimented with complimentary warp pick-up and pixels being 3 warps wide"
 weight: 146
+sequence: 9
+url: /topics/bandgrind-session-09/
 ---
 
 Woven [2023-12-10 Sun]

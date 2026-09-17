@@ -2,6 +2,8 @@
 title: "Session #2"
 summary: "Band One continued while attempting to make pixels a.k.a. modules"
 weight: 153
+sequence: 2
+url: /topics/bandgrind-session-02/
 ---
 
 The black splotch at the start of the band is Session #1 :(

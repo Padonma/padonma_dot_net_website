@@ -2,6 +2,8 @@
 title: "Session #3"
 summary: "Pixel aspect ratio experiment"
 weight: 152
+sequence: 3
+url: /topics/bandgrind-session-03/
 ---
 
 Addressing the "narrow" warp of Session \#2, Session \#3 saw a monotonic

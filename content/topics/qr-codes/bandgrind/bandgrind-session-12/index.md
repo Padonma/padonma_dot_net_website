@@ -2,6 +2,8 @@
 title: "Session #12"
 summary: "Basic techniques seemed good enough so we started working on a full rMQR code"
 weight: 143
+sequence: 12
+url: /topics/bandgrind-session-12/
 ---
 
 [2023-12-27 Wed]

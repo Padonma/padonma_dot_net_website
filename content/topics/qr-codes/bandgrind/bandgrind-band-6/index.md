@@ -2,6 +2,8 @@
 title: "Session #14"
 summary: "Sixth time's a charm, it seems"
 weight: 141
+sequence: 14
+url: /topics/bandgrind-band-6/
 ---
 
 Band Six was the first one that actually proved to be scannable.

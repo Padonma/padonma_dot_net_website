@@ -2,6 +2,8 @@
 title: "Session #10"
 summary: "Gear has been getting sorted out so time to improve technique"
 weight: 145
+sequence: 10
+url: /topics/bandgrind-session-10/
 ---
 
 Session #10 produced the bottom half of Band #4, the band started in
