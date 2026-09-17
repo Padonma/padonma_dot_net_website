@@ -19,7 +19,7 @@ ateliers. After photoshoots showing off the few garments that Atelier
 Padonma actually produces, the products end up in the hands of
 customers who want the garments but realize that what the reason they
 are paying haute couture prices is that they are actually funding the
-bootstrapping of the Padonma Network. 
+bootstrapping of the Padonma Network.
 
 
 Or at least that is the plan; if things work out well perhaps Atelier

@@ -71,13 +71,13 @@ connect the scanner dirrectly back to the artisan, no intermediaries
 wetting their beaks along the social connection.
 
 places the identifying
-of an object fully within controls of the artisan. 
+of an object fully within controls of the artisan.
 
 The Padonma Network is the sort of inventory system that would have
 made Luddites in the English cottage industry into enthusiastic early
 adoptors, because this technology enables the solo artisan to be on
 the same playing field as the other capitalists. Technology evolved
-back to decentralized means of production and distribution. 
+back to decentralized means of production and distribution.
 
 Specific to the handlooming sector is the need to authenticate an item
 as hand-loomed versus machine-woven, something the unique ID QR bands can enable
@@ -112,14 +112,9 @@ goal of Atelier Padonma; garments are produced with the main goal of
 getting artists in the luxury fashion world to have their first
 hands-on experiences with lotus fiber fashion. If Atelier Padonma
 finds an audience within the haute couture world, that will be a nice
-bonus serving to motivate the real lotus fiber suppliers. 
+bonus serving to motivate the real lotus fiber suppliers.
 
 {{< topic-card ref="/topics/atelier-padonma" >}}
 {{< topic-card ref="/topics/peoples/burma/burmese-fashion/fisherman-trousers" >}}
 
 {{< /topic-card-grid >}}
-
-
-
-
-
