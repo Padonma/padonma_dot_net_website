@@ -3,6 +3,9 @@ title: Pochi Silk
 summary: Pochi is a grassroots collective of passionate women in Myanmar, producing hand-loomed lotus silk from Shan State
 hero:
   image: pochi-weaver.png
+  focal:
+    x: 0.5
+    "y": 0.0
 ---
 
 - [Facebook](https://www.facebook.com/pochisilk)
