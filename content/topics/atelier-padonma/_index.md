@@ -3,6 +3,8 @@ title: Atelier Padonma
 summary: A lotus fiber house focused on modern casual fashion rooted in Burmese history
 hero:
   image: padonma_logo.padded.png
+social:
+  image: atelier-social.png
 ---
 
 The Atelier serves primarily as a connector of small lotus fiber
