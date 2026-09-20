@@ -32,12 +32,11 @@
   <section class="topics-grid section-children" aria-labelledby="section-children-title">
     <header class="section-header">
       {{ if $hasIntro }}
-        <h2 class="section-title" id="section-children-title">// TOPICS</h2>
+        <h2 class="section-title" id="section-children-title">Topics</h2>
       {{ else }}
         {{ partial "breadcrumbs.html" $ }}
-        <h1 class="section-title" id="section-children-title">// {{ $.Title | upper }}</h1>
+        <h1 class="section-title" id="section-children-title">{{ $.Title | upper }}</h1>
       {{ end }}
-      <p class="section-sub">{{ len . }} item{{ if ne (len .) 1 }}s{{ end }}</p>
     </header>
     <div class="card-grid">
       {{ range . }}
