@@ -62,12 +62,12 @@
 
   /* Layout */
   --max-width: 1280px;
-  --header-height: 101px;
+  --header-height: 100px;
 }
 
 @media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
   :root {
-    --header-height: 51px;
+    --header-height: 75px;
   }
 }
 
@@ -75,6 +75,6 @@
   :root {
     --margin: 16px;
     --gutter: 16px;
-    --header-height: clamp(25.2px, 4.2vw, 33.6px);
+    --header-height: 50px;
   }
 }

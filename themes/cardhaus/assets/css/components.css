@@ -1592,7 +1592,7 @@
 @media (max-width: {{ site.Params.cardhaus.breakpoints.tablet | default 1200 }}px) {
   .billboard-title { font-size: 48px; }
   .site-logo,
-  .logo-img { width: 360px; }
+  .logo-img { width: 540px; }
 
   .site-nav {
     gap: 12px;
@@ -1617,7 +1617,7 @@
   }
   .topic-page .post-title { font-size: 28px; }
   .site-logo,
-  .logo-img { width: clamp(180px, 30vw, 240px); }
+  .logo-img { width: min(360px, calc(100vw - 32px)); }
 
   .site-tagline { display: none; }
 
