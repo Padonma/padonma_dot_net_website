@@ -72,9 +72,11 @@ and one at mobile widths. Consumers may override `tablet` and `mobile` under
 ## Carousels and galleries
 
 A branch bundle may supply `carousel.yaml`; the root bundle uses
-`content/carousel.yaml`. Each slide resolves `slug` to a topic and may select
-any image in its bundle, plus slide-specific `focal` and `alt` values. Omitting
-`image` falls back to the canonical topic image. Slides contain no visible title
+`content/carousel.yaml`. Each slide resolves `slug` to a page and may select any
+image in its bundle, plus slide-specific `focal` and `alt` values. Absolute page
+references resolve directly; relative references resolve below
+`params.cardhaus.carousel.pageRefPrefix`, which defaults to `/`. Omitting
+`image` falls back to the canonical page image. Slides contain no visible title
 or caption.
 
 The editorial carousel is an explicit exception to canonical image identity:

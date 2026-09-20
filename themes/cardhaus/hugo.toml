@@ -8,6 +8,12 @@
     tablet = 1200
     mobile = 850
 
+  # Relative carousel slugs resolve below this content path. Consumers with a
+  # dedicated topic branch should override it; absolute page references work
+  # independently of this setting.
+  [params.cardhaus.carousel]
+    pageRefPrefix = "/"
+
 [module]
   [module.hugoVersion]
     extended = false

@@ -8,15 +8,19 @@
   <div class="swiper hero-carousel" aria-label="Featured images">
     <div class="swiper-wrapper">
       {{- range $index, $item := $slides -}}
-        {{- $page := site.GetPage (printf "/topics/%s" $item.slug) -}}
+        {{- $pageRef := $item.slug -}}
+        {{- if not (hasPrefix $pageRef "/") -}}
+          {{- $pageRef = path.Join (site.Params.cardhaus.carousel.pageRefPrefix | default "/") $pageRef -}}
+        {{- end -}}
+        {{- $page := site.GetPage $pageRef -}}
         {{- if not $page -}}
-          {{- warnf "hero-carousel.html: no topic found for slug %q" $item.slug -}}
+          {{- warnf "hero-carousel.html: no page found for reference %q" $pageRef -}}
         {{- else -}}
           {{- $image := false -}}
           {{- with $item.image -}}
             {{- $image = $page.Resources.GetMatch . -}}
             {{- if not $image -}}
-              {{- warnf "hero-carousel.html: image %q not found in topic %q" . $item.slug -}}
+              {{- warnf "hero-carousel.html: image %q not found on page %q" . $pageRef -}}
             {{- end -}}
           {{- else -}}
             {{- $image = partial "hero-resource.html" $page -}}

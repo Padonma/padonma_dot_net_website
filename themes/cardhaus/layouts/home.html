@@ -35,16 +35,4 @@
     {{ .Content }}
 </section>
 
-
-
-<!--
-     {{ with site.GetPage "/topics" }}
-     {{ partial "topic-card-children.html" (dict
-     "branch" .
-     "heading" (site.Params.topicsHeading | default "Topics")
-     "id" "topics"
-     ) }}
-     {{ end }}
--->
-
 {{ end }}

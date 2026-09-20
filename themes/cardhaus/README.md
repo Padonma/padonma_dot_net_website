@@ -7,15 +7,31 @@ installation, configuration, and authoring usage. Unfinished theme work is in
 
 ## Install
 
-Place this directory at `themes/cardhaus` and select it in the consumer's Hugo
-configuration:
+For local development, place this directory at `themes/cardhaus` and select it
+in the consumer's Hugo configuration:
 
 ```toml
 theme = "cardhaus"
 ```
 
-The directory is self-contained for local theme use. There is not yet a stable
-standalone repository or Hugo Module import path.
+The directory is also a self-contained Hugo Module. After Cardhaus is extracted
+and published at the module path declared in `go.mod`, a consumer can install it
+from its own module-enabled site:
+
+```sh
+hugo mod init example.com/my-site
+hugo mod get github.com/Padonma/cardhaus
+```
+
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/Padonma/cardhaus"
+```
+
+The import path is extraction scaffolding and will resolve only after that
+standalone repository is published. The embedded Padonma consumer continues to
+use the local `theme = "cardhaus"` setting.
 
 ## Configure the consumer
 
@@ -39,6 +55,9 @@ on them:
     [params.cardhaus.breakpoints]
       tablet = 1200
       mobile = 850
+
+    [params.cardhaus.carousel]
+      pageRefPrefix = "/knowledge"
 ```
 
 Image paths resolve through the consumer's global `assets/` directory. The
@@ -163,10 +182,12 @@ Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
     y: 0.6
 ```
 
-`slug` identifies the linked topic. `image` may select any image from that
-topic's bundle and falls back to its canonical hero when omitted. Slide focal
-and alt values belong to the carousel selection and do not change the topic's
-canonical identity.
+`slug` identifies the linked page. An absolute value such as
+`/knowledge/example-topic` is resolved directly. A relative value is resolved
+below `params.cardhaus.carousel.pageRefPrefix`, which defaults to `/`. `image`
+may select any image from the linked page's bundle and falls back to its
+canonical hero when omitted. Slide focal and alt values belong to the carousel
+selection and do not change the page's canonical identity.
 
 The focused carousel slide is capped at `70vw` by default, leaving about
 `15vw` of each neighboring slide visible for capped landscape images. At the

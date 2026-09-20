@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{{- $hasTopicSectionCarousel := and .IsSection (eq .Section "topics") (.Resources.GetMatch "carousel.yaml") -}}
-<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ else if $hasTopicSectionCarousel }} class="topic-section-page topic-section-opening-snap"{{ end }}>
+{{- $hasSectionCarousel := and .IsSection (.Resources.GetMatch "carousel.yaml") -}}
+<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ else if $hasSectionCarousel }} class="topic-section-page topic-section-opening-snap"{{ end }}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

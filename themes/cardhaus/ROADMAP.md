@@ -26,6 +26,6 @@ in `SPEC.md`; current installation and authoring instructions are in `README.md`
 - Add dedicated post-list presentation if a consumer develops a substantive
   post collection. Posts may opt into the hero and card contracts without
   changing topic semantics.
-- Extract Cardhaus to a standalone versioned repository only when a second
-  consumer or distribution requirement establishes the module URL and release
-  policy. Add Hugo Module installation instructions at that time.
+- Extract Cardhaus to its declared standalone module repository and establish a
+  release policy when a second consumer or distribution requirement justifies
+  the operational overhead.

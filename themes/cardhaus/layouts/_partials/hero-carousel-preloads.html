@@ -6,7 +6,11 @@
       Preload the full, deliberately short editorial carousel before CSS/JS. */ -}}
 {{- range $slides -}}
   {{- $item := . -}}
-  {{- $page := site.GetPage (printf "/topics/%s" $item.slug) -}}
+  {{- $pageRef := $item.slug -}}
+  {{- if not (hasPrefix $pageRef "/") -}}
+    {{- $pageRef = path.Join (site.Params.cardhaus.carousel.pageRefPrefix | default "/") $pageRef -}}
+  {{- end -}}
+  {{- $page := site.GetPage $pageRef -}}
   {{- with $page -}}
     {{- $image := false -}}
     {{- with $item.image -}}
