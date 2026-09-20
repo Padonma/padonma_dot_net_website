@@ -8,6 +8,18 @@ hero:
 
 once have uuid, can do all manner of fancy stuff, like write it on a piece of paper, put that tame alpanumeric character sequence on a web page that google crawls, blockchain, etc
 
+## Who defines a garments native ID
+
+If two businesses interact, they will have a mapping between both of
+their internal systems (which ID all entities). If artisans do not
+declare an ID for a garment, then that will be defined by the first
+business to pick up the item. The Padonma Network can be looked at
+as the absolute minimal technology for a textile artist to bridge
+between the physical and the digital in an economic system. What
+would be the absolute minimal "back office" for an artisan. Something
+along the lines of a blog post or just a single tweet with a picture.
+
+## More
 
 The Padonma Network is exploring the possibility of tracking cottage
 industry garments via handwoven QR codes. The goal is to design the

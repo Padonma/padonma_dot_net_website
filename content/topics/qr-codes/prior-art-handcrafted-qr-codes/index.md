@@ -1,7 +1,12 @@
 ---
 title: Prior art handcrafted QRs
-summary: Folks have crafted QRs codes with tablet weaving, crocheting, etc.
-weight: 70
+summary: Over the years various folks have crafted QRs Codes with fiber arts such as tablet weaving, crocheting, etc. We are just doing the same with rMQR Codes.
+weight: 3
+hero:
+  image: tablet_woven_qr.jpg
+  focal: 
+    x: 0.5
+    "y": 1.0
 ---
 
 In, [A Spinner’s Journey in Inkle Bands](https://spinoffmagazine.com/a-spinner-s-journey-in-inkle-bands/), author Jeannine Glaves

@@ -122,7 +122,7 @@ weaving might be harder for QR readers to recognise. Although in
 [Tablet Weaving a QR code \| BushcraftUK Community](https://bushcraftuk.com/community/threads/tablet-weaving-a-qr-code.97056/), there is a tablet
 woven QR that surprising does scan:
 
-[![](tablet_woven_qr.jpg)](https://bushcraftuk.com/community/threads/tablet-weaving-a-qr-code.97056/)
+[![](../../prior-art-handcrafted-qr-codes/tablet_woven_qr.jpg)](https://bushcraftuk.com/community/threads/tablet-weaving-a-qr-code.97056/)
 
 For the situation where the artisan already has a large loom and
 wishes to encorporate an rMQR into the garment but not as a tag, an

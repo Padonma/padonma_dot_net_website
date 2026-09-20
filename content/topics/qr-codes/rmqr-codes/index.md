@@ -9,6 +9,21 @@ hero:
     y: 0.5
 ---
 
+# rMQR Codes
+
+- QR Codes were first open sourced by DENSO (Toyota Group) in 1994.
+  From the begining, QR Codes have always been squares, orignally
+  size 21 to 73. In 2000, the QR spec work was transfered to the
+  ISO/IEC standards bodys which published the QR Code standard as
+  18004, with square size extended from a max of 73 to 177. Over the
+  years that spec has been updated (the latest being 2024) yet those
+  QR Codes are always remained squares, now sized 11 to 177.
+- rMQR was also invented by DENSO and in 2022 ISO/IEC pusblished the
+  rMQR standard as 23941. It was this standard that defines the
+  first standard non-square QR codes.
+
+
+
 <figure width="75%">
 <img src="00-rmqr-padumma.png" />
 <figcaption>The above is the rMQR Code for "<a href="https://padumma.com">https://padumma.com</a>"</figcaption>

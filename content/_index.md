@@ -8,7 +8,7 @@ as a nod to the culture which invented lotus fiber textiles.
 
 In this project "Padonma" refers to three things:
 
-1. **Padonma, the fiber:** the physical textile and its producers in Southeast Asia and the economics thereof
+1. **Padonma, the fiber:** the physical textile and its producers in Southeast Asia -- its history, technology, and the economics thereof
 2. **Padonma, the network:** open-source digital technology based on handwoven QR ID tags facilitating a global lotus fiber marketplace
 3. **Padonma, the atelier:** a fashion brand showcasing Burmese lotus fashion distributed over the network
 

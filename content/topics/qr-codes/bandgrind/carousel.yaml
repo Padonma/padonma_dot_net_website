@@ -14,10 +14,3 @@
   focal:
     x: 0.5
     "y": 0.5
-
-- slug: qr-codes/bandgrind/handweaving-rmqr-codes
-  image: tablet_woven_qr.jpg
-  alt: Tablet-woven rMQR code band
-  focal:
-    x: 0.5
-    "y": 0.5

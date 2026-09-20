@@ -1,6 +1,6 @@
 ---
 title: Aung Sakkyar
-summary: Aung Sakkyar Lotus Robe Production Co Ltd
+summary: Large producer around Inle Lake
 hero:
   image: spinner.jpg
   focal:
@@ -8,7 +8,28 @@ hero:
     y: 0.5
 ---
 
-- [Facebook](https://www.facebook.com/aungsakkyarlotusrobe)
+
+Deets
+- Full name: Aung Sakkyar Lotus Robe Production Co Ltd
+- Facebook: [aungsakkyarlotusrobe](https://www.facebook.com/aungsakkyarlotusrobe)
+- Instagram: [lotustextile22](https://www.instagram.com/lotustextile22)
+- [Website](https://lotusmyanmar.com/)
+  - [Contact info](https://lotusmyanmar.com/contactus.php)
+  
+Taunggyi Branch
+No.(82), Ngu War Street, Nyaungphyu Sakkan, Taunggyi, Myanmar
+Tel : (+95) 09-5195083, 09-774359652
+WhatsApp : +95 95 1 950 83
+E-mail :nyimalay.jp@gmail.com
+E-mail : contact@lotusfashionmyanmar.com
+Facebook :https://m.facebook.com/aungsakkyarlotusrobe/
+
+Inle
+U Tun Yee - Daw Ohn Kyi
+Kyaingkhan Village, Nyaungshwe Township, Inle,
+Shan State(South), Myanmar.
+Tel : (+95) 09-778012058
+HP : 09 519 5083, 09 517 9505  
 
 ## Sources
 
