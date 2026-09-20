@@ -5,8 +5,6 @@ in `SPEC.md`; current installation and authoring instructions are in `README.md`
 
 ## Conformance cleanup
 
-- Remove the hard-coded `brand/checkerboard.png` lookup from `baseof.html` and
-  make the header open and close unconditionally with no consumer asset path.
 - Make an explicitly configured but missing hero image fail with actionable page
   context instead of silently falling back to a different bundle image.
 
