@@ -8,6 +8,7 @@
 {{- end -}}
 
 <link rel="canonical" href="{{ $page.Permalink }}">
+<meta name="theme-color" content="#d70969">
 {{- with $page.OutputFormats.Get "RSS" }}
 <link rel="alternate" type="{{ .MediaType.Type | safeHTMLAttr }}" href="{{ .Permalink }}" title="{{ $page.Title }} RSS Feed">
 {{- end }}

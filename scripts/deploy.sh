@@ -40,11 +40,13 @@ check_source() {
 }
 
 build() {
+  local build_version
   require_command hugo
   require_command python3
   check_source
+  build_version="$(git -C "$repo_root" describe --tags --always --dirty --abbrev=12)"
   printf 'Building production site with Hugo %s...\n' "$expected_hugo_version"
-  hugo --source "$repo_root" --environment production --baseURL "$base_url" \
+  HUGO_PARAMS_BUILD_VERSION="$build_version" hugo --source "$repo_root" --environment production --baseURL "$base_url" \
     --destination "$build_dir" --cleanDestinationDir --gc --minify --panicOnWarning
   find "$build_dir" -type f \( -name '.DS_Store' -o -name 'Thumbs.db' \) -delete
   python3 "$repo_root/scripts/validate-build.py" "$build_dir" --base-url "$base_url"

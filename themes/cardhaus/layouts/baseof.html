@@ -86,6 +86,7 @@
     <div class="footer-inner">
       <span class="footer-logo">{{ site.Title }}</span>
       <span class="footer-copy">© {{ now.Year }}</span>
+      {{ with site.Params.build.version }}<span class="footer-build">Build {{ . }}</span>{{ end }}
     </div>
   </footer>
   <script src="{{ "js/swiper.min.js?v=12.1.4" | relURL }}"></script>
