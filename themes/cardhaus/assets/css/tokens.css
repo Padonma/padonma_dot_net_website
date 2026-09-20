@@ -45,6 +45,7 @@
   --font-brand:                Georgia, serif;
   --font-display:              Georgia, serif;
   --font-wordmark:             var(--font);
+  --font-size-body:            1rem;
 
   /* Spacing */
   --unit:   8px;

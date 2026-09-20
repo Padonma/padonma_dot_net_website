@@ -44,6 +44,7 @@
   --font-display:              "Literata", Georgia, serif;
   --font-wordmark:             "Jost", var(--font);
   --font-topic-card-grid-heading: "Jost", var(--font);
+  --font-size-body:            1rem;
 }
 
 
