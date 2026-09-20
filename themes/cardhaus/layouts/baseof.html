@@ -121,9 +121,51 @@
       var manualNavigation = false;
       var heroPreloads = [];
 
+      /* `object-position: focal-x` aligns that percentage in the image with
+         the same percentage in the frame; it does not put the focal pixel in
+         the centre.  Work out the real object-fit crop instead, so each wide
+         image starts with its editorial focal point centred when possible. */
+      function centreWideSlideFocal(slide) {
+        var image = slide.querySelector('.hero-carousel-image');
+        if (!image || !image.naturalWidth || !image.naturalHeight) return;
+
+        var frame = slide.getBoundingClientRect();
+        var scale = Math.max(frame.width / image.naturalWidth, frame.height / image.naturalHeight);
+        var renderedWidth = image.naturalWidth * scale;
+        var overflow = renderedWidth - frame.width;
+        var focal = parseFloat(getComputedStyle(slide).getPropertyValue('--hero-focal-x')) / 100;
+        var position = 50;
+
+        if (overflow > 0 && Number.isFinite(focal)) {
+          position = Math.max(0, Math.min(100, ((focal * renderedWidth) - (frame.width / 2)) / overflow * 100));
+        }
+        slide.style.setProperty('--hero-focal-centered-x', position + '%');
+      }
+
+      function centreWideSlideFocals() {
+        slides.forEach(centreWideSlideFocal);
+        Array.prototype.forEach.call(wrapper.querySelectorAll('.hero-carousel-slide--wide'), centreWideSlideFocal);
+      }
+
+      function setWideSlidePanDirection(slide, direction) {
+        if (!slide || !slide.classList.contains('hero-carousel-slide--wide')) return;
+        var movingRight = direction === 'next';
+        slide.style.setProperty('--hero-pan-first-x', movingRight ? '100%' : '0%');
+        slide.style.setProperty('--hero-pan-second-x', movingRight ? '0%' : '100%');
+      }
+
+      centreWideSlideFocals();
+      window.addEventListener('resize', centreWideSlideFocals);
+
       function realIndex(swiper) {
         var active = swiper.slides[swiper.activeIndex];
         return active ? Number(active.getAttribute('data-carousel-index')) : 0;
+      }
+
+      function updateActiveSlidePanDirection(swiper) {
+        var movement = swiper.activeIndex - swiper.previousIndex;
+        if (!movement) return;
+        setWideSlidePanDirection(swiper.slides[swiper.activeIndex], movement > 0 ? 'next' : 'previous');
       }
 
       function preload(swiper) {
@@ -171,6 +213,7 @@
         // Keep the partial's bespoke button labels untouched.
         a11y: { enabled: false }
       });
+      centreWideSlideFocals();
 
       function stopTimer() {
         if (timer !== null) { window.clearTimeout(timer); timer = null; }
@@ -245,7 +288,11 @@
         });
       }
 
-      swiper.on('slideChange', function () { preload(swiper); updatePagination(); });
+      swiper.on('slideChange', function () {
+        updateActiveSlidePanDirection(swiper);
+        preload(swiper);
+        updatePagination();
+      });
       swiper.on('slideChangeTransitionEnd', normalizeEdge);
       preload(swiper);
       updatePagination();

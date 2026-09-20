@@ -1446,14 +1446,15 @@
   transition: object-position 0.2s ease-out;
 }
 
-/* Only a centered wide image pans its horizontal crop; Y always retains the editor focal. */
+/* Wide slides begin at the focal crop, then visit both horizontal edges. */
 .hero-carousel .hero-carousel-slide--wide.swiper-slide-active .hero-carousel-image {
   animation: hero-carousel-pan 9s ease-in-out infinite alternate;
 }
 
 @keyframes hero-carousel-pan {
-  from { object-position: 0% var(--hero-focal-y); }
-  to { object-position: 100% var(--hero-focal-y); }
+  0% { object-position: var(--hero-focal-centered-x) var(--hero-focal-y); }
+  40% { object-position: var(--hero-pan-first-x, 100%) var(--hero-focal-y); }
+  100% { object-position: var(--hero-pan-second-x, 0%) var(--hero-focal-y); }
 }
 
 .hero-carousel .hero-carousel-pagination {
