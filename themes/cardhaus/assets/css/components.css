@@ -1312,6 +1312,8 @@
 }
 
 .hero-carousel {
+  /* Shared focused-slide cap; narrower aspect-ratio-derived slides stay narrower. */
+  --hero-slide-max-width: 70vw;
   width: 100%;
   height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
@@ -1419,7 +1421,7 @@
 
 .hero-carousel .swiper-slide {
   /* Each selected carousel resource supplies this intrinsic ratio at build time. */
-  width: min(calc((100dvh - var(--header-height)) * var(--hero-aspect)), 70vw);
+  width: min(calc((100dvh - var(--header-height)) * var(--hero-aspect)), var(--hero-slide-max-width));
   height: 100%;
   position: relative;
   cursor: pointer;
@@ -1430,8 +1432,8 @@
 
 /* Landscape editorial images deliberately share the same centered, capped frame. */
 .hero-carousel .hero-carousel-slide--wide {
-  width: 70vw;
-  max-width: 70vw;
+  width: var(--hero-slide-max-width);
+  max-width: var(--hero-slide-max-width);
 }
 
 .hero-carousel-image {
@@ -1495,6 +1497,10 @@
 }
 
 @media (max-width: {{ site.Params.cardhaus.breakpoints.mobile | default 850 }}px) {
+  .hero-carousel {
+    --hero-slide-max-width: 100vw;
+  }
+
   .hero-carousel-controls {
     --control-height: 3.5rem;
   }

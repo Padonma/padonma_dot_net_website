@@ -168,6 +168,14 @@ topic's bundle and falls back to its canonical hero when omitted. Slide focal
 and alt values belong to the carousel selection and do not change the topic's
 canonical identity.
 
+The focused carousel slide is capped at `70vw` by default, leaving about
+`15vw` of each neighboring slide visible for capped landscape images. At the
+configured mobile breakpoint (850px by default), that cap becomes `100vw`,
+leaving no neighboring-slide peek for capped landscape images. The
+`--hero-slide-max-width` custom property
+controls both caps. Narrow portrait images retain their aspect-ratio-derived
+width until they reach the cap, so they can show more of their neighbors.
+
 ## Source map and validation
 
 Key reusable source:
