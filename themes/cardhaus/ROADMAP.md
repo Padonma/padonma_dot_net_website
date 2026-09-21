@@ -10,6 +10,10 @@ remaining verification and automated coverage tracked in
 [`carousel-linking-update.md`](carousel-linking-update.md) before treating the
 new contract as finished.
 
+## Hugo image pipeline
+
+The carousel and topic galleries use Hugo resizing, but regular images in topic prose bypass it, so they’re served as a single original file, not responsive sizes. Hugo processing is active and healthy, but the pipeline is uneven so far. The carousel makes responsive WebPs, but preloads every slide and marks them eager, which is wasteful beyond the first slide or two. Topic galleries reuse those images, but claim full viewport width, so browsers often pick larger files than needed. Topic cards are in better shape with responsive variants. The big gap is images inside topic prose: no render hook, so no source sets or consistent lazy loading.
+
 ## Conformance cleanup
 
 - Make an explicitly configured but missing hero image fail with actionable page
