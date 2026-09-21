@@ -1,5 +1,5 @@
 ---
-title: "Padonma's rMQR ID Bands"
+title: "Padonma's QR ID Bands"
 date: 2026-08-06
 weight: 1
 summary: "Padonma has tested that handwoven rMQR codes can be easily scanned with free mobile apps, even if the weaver is a total noob."

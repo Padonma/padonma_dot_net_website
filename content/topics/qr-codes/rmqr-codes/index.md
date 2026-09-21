@@ -72,24 +72,27 @@ For example, one of those UUIDs might look like the following:
     170bf486-a96f-47e9-90e6-632373d27924
 
 - Demo create rMQR codes: [Online rMQR Generator](https://rmqr.oudon.xyz/)
-- Tech primers
-  - [rMQR Code \| QRcode.com \| DENSO WAVE](https://www.qrcode.com/en/codes/rmqr.html)
 
+## Tech primers
+
+- [rMQR Code | DENSO WAVE](https://www.qrcode.com/en/codes/rmqr.html)
     - Standardization 05.2022 Obtained ISO approval
 
-  - [What is rMQR Code?｜Technical Information of automatic identification｜DENSO WAVE](https://www.denso-wave.com/en/adcd/fundamental/2dcode/qrc/rmqr.html)
+- [What is rMQR Code?｜Technical Information of automatic identification｜DENSO WAVE](https://www.denso-wave.com/en/adcd/fundamental/2dcode/qrc/rmqr.html)
 
-  - [DENSO WAVE Develops “rMQR Code”, a new rectangular QR Code that can even be printed in long, narrow spaces.](https://www.denso-wave.com/en/adcd/info/detail__220525.html)
+- [DENSO WAVE Develops “rMQR Code”, a new rectangular QR Code that can even be printed in long, narrow spaces.](https://www.denso-wave.com/en/adcd/info/detail__220525.html)
 
-  - Capacity
-
+- Capacity
     > a standard QR code can hold up to 7,089 numerical digits or 4,296
     > English letters. A Micro QR code can only contain up to 35 numbers
     > or 21 letters, but **a rMQR code ups it to 361 numbers or 219 letters**
     > with only a slight increase in size over the Micro QR code.
     > (via [QR codes evolve into their newest form: a bar QR code - Japan Today](https://japantoday.com/category/tech/qr-codes-evolve-into-their-newest-form-a-bar-qr-code))
-- The spec
-  - [ISO/IEC 23941](https://cdn.standards.iteh.ai/samples/77404/e103bf2d1f0d4162b34ca493efdaf9c4/ISO-IEC-23941-2022.pdf)
-    - First edition: 2022-05
-  - [ISO/IEC 23941:2022 — Rectangular Micro QR Code (rMQR) bar code symbology specification](https://www.iso.org/standard/77404.html)
-  - 2020, was draft ISO standard: [(24) Rectangular Micro QR Code \| LinkedIn](https://www.linkedin.com/pulse/rectangular-micro-qr-code-terry-burton/)
+
+
+## Relevant standards
+
+- [ISO/IEC 23941](https://cdn.standards.iteh.ai/samples/77404/e103bf2d1f0d4162b34ca493efdaf9c4/ISO-IEC-23941-2022.pdf)
+  - First edition: 2022-05
+- [ISO/IEC 23941:2022 — Rectangular Micro QR Code (rMQR) bar code symbology specification](https://www.iso.org/standard/77404.html)
+- 2020, was draft ISO standard: [(24) Rectangular Micro QR Code \| LinkedIn](https://www.linkedin.com/pulse/rectangular-micro-qr-code-terry-burton/)

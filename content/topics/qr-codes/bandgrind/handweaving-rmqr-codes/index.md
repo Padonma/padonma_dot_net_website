@@ -6,6 +6,18 @@ hero:
   image: veving.png
 ---
 
+## QR pattern complexity is negligable for a skilled weaver
+
+The the skill to weave the complexity of many a weaving pattern is far
+beyond what is required to weave a QR code, although granted the
+pattern may seem random to the untrained eye. This is yet another
+reason why we went with rMQR codes over standard square QR codes:
+it is easier to eye-jump between QR pattern design and loom when
+the Code is narrow as with R7, R9, and some folks like R11 because
+greater height makes for shorter weave length.
+
+## Pre chunked
+
 [![](00-two-module-band.jpg)](https://norwegiantextileletter.com/article-categories/band-weaving/)
 
 **We need to test this idea and actually weave some rMQR codes; see

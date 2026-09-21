@@ -38,7 +38,7 @@ The most general Padonma the fiber, it's history and cultural context, productio
 
 
 
-{{< topic-card-grid heading="Padonma Network" >}}
+{{< topic-card-grid heading="Padonma Network" class="card-grid-dark" >}}
 
 The main takeaway of this project is the Padonma Network. Free
 OSS. Free as in speech and in beer. OSS that runs on free tier web

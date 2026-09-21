@@ -13,7 +13,7 @@ it is the Big Four (Paris, Milan, London, and New York) that need more
 educating than the newer Asian markets such as Tokyo, Seoul, Shanghai,
 Hong Kong which seemingly have a slightly more elevated awareness of
 how luxurious and exclusive lotus fiber is.
-
+!
 
 So, yes, Atelier Padonma does indeed produce lotus fiber apparel but
 with the intent of getting the fabric touched by artisans at true
@@ -32,7 +32,7 @@ way we stay out of sectors which true fashion houses service while still
 having a focused theme to the atelier's product line.
 
 
-## Business goal
+## Business goal: connector and bootstrapper
 
 It may well be that Atelier Padonma becomes a brand known for putting
 its name on excellent lotus fiber apparel sourced from various
@@ -51,7 +51,7 @@ labor causing natural scarcity and novelty make it an excellent
 candidate for selling into the haute couture world.
 
 
-## Atelier aestetic goal: Burmese inspired but not folkloric
+## Aestetic goal: Burmese inspired but not folkloric
 
 Jan-Jan Van Essche: [~"Build a pattern language based in the cultural roots but then without making it folkloric"](https://youtu.be/RLqTV8OSCUc?t=374)
 

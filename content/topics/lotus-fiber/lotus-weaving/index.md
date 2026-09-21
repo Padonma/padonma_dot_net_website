@@ -4,7 +4,9 @@ summary: Surprisingly, rather than being something out of pre-history, lotus fib
 weight: 1
 hero:
   image: inle-lake-weaver.jpg
-  
+  focal:
+    x: 0.6
+    "y": 0.2
 ---
 
 # Lotus weaving

@@ -1,6 +1,8 @@
 ---
 title: Sport Coat
 summary: We want to make a classic sport coat, soft tailerer, unstructured, patch pockets
+hero:
+  NOT_image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
 ---
 
 Atelier Padonma's collection is Burma inspired. And although we love the rich, rich
@@ -10,6 +12,14 @@ end of the spectrum.
 Supposedly the first thing that the Loro Piana kid did when he found
 out about lotus fabric was make himself a sport coat, which must have
 been very similar to the ones he sold for $5600 in 2012.
+
+
+## Prior art: 100% lotus jackets
+
+- The Hope's jacket for women: /topics/lotus-fiber/companies/hope/jacket.png
+  - Good demo of the drape of the fabric in a tropic sport coat
+  - Atelier Padonma would level out those pockets, bring the label notch down, and get 3 real buttons in the middle
+- Loro Piana's sport coat for men: ____________
 
 ## Modern sport coat
 

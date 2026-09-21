@@ -35,6 +35,14 @@ crowd behaving completely organicly, grassroots.
 
 ## The longyi is the Burmese garment
 
+The longyi has long been THE quintesential Burmese leg garment, not
+pants. (Some folks, like the Shan, do still have very nice traditional
+pants). Check out this 1983 street footage from the capital,
+Yangon. Almost everyone is wearing a longyi.
+
+{{< youtube nQeM1VUZuus >}}
+
+
 Longyi around the waiste and thanaka on the face? You're in Burma.
 
 {{< youtube rKub7QH1L0w >}}
