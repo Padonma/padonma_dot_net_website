@@ -3,6 +3,13 @@
 Only unfinished reusable-theme work belongs here. Stable behavior is specified
 in `SPEC.md`; current installation and authoring instructions are in `README.md`.
 
+## Carousel linking acceptance
+
+The hero carousel linking migration is partially implemented. Complete the
+remaining verification and automated coverage tracked in
+[`carousel-linking-update.md`](carousel-linking-update.md) before treating the
+new contract as finished.
+
 ## Conformance cleanup
 
 - Make an explicitly configured but missing hero image fail with actionable page

@@ -1280,6 +1280,10 @@
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
 
 /* ── Homepage hero carousel ────────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
 .homepage-opening-snap {
   scroll-snap-type: y mandatory;
 }
@@ -1417,6 +1421,55 @@
 .hero-carousel .swiper-slide {
   border: none !important;
   height: 100%;
+}
+
+button.hero-carousel-slide {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}
+
+.hero-carousel-lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(15, 15, 15, 0.96);
+  color: white;
+  overflow: hidden;
+}
+
+.hero-carousel-lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.hero-carousel-lightbox::backdrop {
+  background: rgba(15, 15, 15, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.hero-carousel-lightbox-image {
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-carousel-lightbox-close {
+  position: fixed;
+  z-index: 1;
+  top: 1rem;
+  right: 1rem;
+  min-height: 44px;
 }
 
 .hero-carousel .swiper-slide {

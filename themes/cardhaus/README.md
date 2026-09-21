@@ -56,8 +56,6 @@ on them:
       tablet = 1200
       mobile = 850
 
-    [params.cardhaus.carousel]
-      pageRefPrefix = "/knowledge"
 ```
 
 Image paths resolve through the consumer's global `assets/` directory. The
@@ -174,20 +172,49 @@ Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
 `content/carousel.yaml`. Bundles without the file omit the carousel.
 
 ```yaml
-- slug: example-topic
-  image: supporting-image.jpg
+- image: /knowledge/example-topic/supporting-image.jpg
+  hash: example-topic-supporting
+  link: /knowledge/example-topic/
   alt: Description of the selected image
   focal:
     x: 0.4
     y: 0.6
 ```
 
-`slug` identifies the linked page. An absolute value such as
-`/knowledge/example-topic` is resolved directly. A relative value is resolved
-below `params.cardhaus.carousel.pageRefPrefix`, which defaults to `/`. `image`
-may select any image from the linked page's bundle and falls back to its
-canonical hero when omitted. Slide focal and alt values belong to the carousel
-selection and do not change the page's canonical identity.
+`image`, `hash`, and accessible `alt` text are required. A site-relative
+`image` path selects and processes an image from its page bundle; a fully
+qualified HTTP(S) URL remains remote. Remote slides may declare positive
+`width` and `height` values to reserve their aspect ratio. `focal` controls the
+carousel crop.
+
+`link` is optional. An ordinary link navigates normally. A same-site link to a
+carousel page whose fragment matches one of that carousel's hashes focuses the
+matching slide and coordinates the clicked and destination images with a view
+transition. A slide without `link` opens its complete, uncropped image in an
+accessible lightbox. Legacy `slug` input is rejected with a build error.
+
+To link one carousel to the same image in another carousel, give both entries
+the identical `image` and `hash`. On the source entry, set `link` to the
+destination carousel page followed by `#` and that hash:
+
+```yaml
+# Source carousel
+- image: /knowledge/weaving/session-13/hero.png
+  hash: weaving-session-13
+  link: /knowledge/weaving/#weaving-session-13
+  alt: Weaving experiment session 13
+
+# Destination carousel at /knowledge/weaving/
+- image: /knowledge/weaving/session-13/hero.png
+  hash: weaving-session-13
+  link: /knowledge/weaving/session-13/
+  alt: Weaving experiment session 13
+```
+
+The destination entry's `link` remains its ordinary activation destination;
+it does not point back to the source carousel. Loading the destination URL with
+the fragment focuses the matching slide and stops autoplay so it remains
+selected.
 
 The focused carousel slide is capped at `70vw` by default, leaving about
 `15vw` of each neighboring slide visible for capped landscape images. At the

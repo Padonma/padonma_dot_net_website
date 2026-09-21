@@ -118,6 +118,11 @@
       var transition = 0;
       var manualNavigation = false;
       var heroPreloads = [];
+      var requestedHash = window.location.hash.slice(1);
+      var requestedIndex = slides.findIndex(function (slide) {
+        return slide.getAttribute('data-hash') === requestedHash;
+      });
+      if (requestedIndex >= 0) manualNavigation = true;
 
       /* `object-position: focal-x` aligns that percentage in the image with
          the same percentage in the frame; it does not put the focal pixel in
@@ -203,7 +208,7 @@
         centeredSlides: true,
         spaceBetween: 0,
         loop: false,
-        initialSlide: many ? slides.length : 0,
+        initialSlide: (many ? slides.length : 0) + (requestedIndex >= 0 ? requestedIndex : 0),
         grabCursor: many,
         speed: 450,
         keyboard: false,
@@ -211,6 +216,10 @@
         // Keep the partial's bespoke button labels untouched.
         a11y: { enabled: false }
       });
+      if (requestedIndex >= 0) {
+        var transitionImage = swiper.slides[swiper.activeIndex] && swiper.slides[swiper.activeIndex].querySelector('.hero-carousel-image');
+        if (transitionImage) transitionImage.style.viewTransitionName = 'carousel-handoff';
+      }
       centreWideSlideFocals();
 
       function stopTimer() {
@@ -266,6 +275,13 @@
         });
       }
 
+      function updateHash() {
+        var active = slides[realIndex(swiper)];
+        var hash = active && active.getAttribute('data-hash');
+        if (!hash || window.location.hash === '#' + hash) return;
+        window.history.replaceState(window.history.state, '', window.location.pathname + window.location.search + '#' + hash);
+      }
+
       function normalizeEdge() {
         if (swiper.activeIndex < slides.length) {
           swiper.slideTo(swiper.activeIndex + slides.length, 0, false);
@@ -290,10 +306,12 @@
         updateActiveSlidePanDirection(swiper);
         preload(swiper);
         updatePagination();
+        updateHash();
       });
       swiper.on('slideChangeTransitionEnd', normalizeEdge);
       preload(swiper);
       updatePagination();
+      if (requestedIndex >= 0) updateHash();
       if (many) schedule(transition);
 
       carousel.addEventListener('mouseenter', function () { hovered = true; stopTimer(); });
@@ -322,6 +340,52 @@
         if (event.key === 'ArrowRight') moveNext();
         else movePrevious();
       });
+
+      carousel.addEventListener('click', function (event) {
+        var link = event.target.closest('a.hero-carousel-slide[href]');
+        if (!link) return;
+        var destination;
+        try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
+        if (destination.origin !== window.location.origin || !destination.hash) return;
+        link.querySelector('.hero-carousel-image').style.viewTransitionName = 'carousel-handoff';
+      });
+
+      var lightbox = carousel.nextElementSibling;
+      if (lightbox && lightbox.classList.contains('hero-carousel-lightbox')) {
+        var lightboxImage = lightbox.querySelector('.hero-carousel-lightbox-image');
+        var lightboxClose = lightbox.querySelector('.hero-carousel-lightbox-close');
+        var opener = null;
+        function closeLightbox() { lightbox.close(); }
+        function openLightbox(trigger) {
+          opener = trigger;
+          lightboxImage.src = trigger.getAttribute('data-full-src');
+          lightboxImage.alt = trigger.getAttribute('data-full-alt') || '';
+          lightbox.showModal();
+          lightboxClose.focus();
+        }
+        carousel.addEventListener('click', function (event) {
+          var trigger = event.target.closest('.hero-carousel-lightbox-trigger');
+          if (trigger) openLightbox(trigger);
+        });
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (event) {
+          if (event.target === lightbox) closeLightbox();
+        });
+        lightbox.addEventListener('cancel', function (event) {
+          event.preventDefault();
+          closeLightbox();
+        });
+        lightbox.addEventListener('close', function () {
+          lightboxImage.removeAttribute('src');
+          if (opener && document.contains(opener)) opener.focus();
+          opener = null;
+        });
+        lightbox.addEventListener('keydown', function (event) {
+          if (event.key !== 'Tab') return;
+          event.preventDefault();
+          lightboxClose.focus();
+        });
+      }
       });
     });
 

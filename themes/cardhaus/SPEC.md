@@ -72,24 +72,30 @@ and one at mobile widths. Consumers may override `tablet` and `mobile` under
 ## Carousels and galleries
 
 A branch bundle may supply `carousel.yaml`; the root bundle uses
-`content/carousel.yaml`. Each slide resolves `slug` to a page and may select any
-image in its bundle, plus slide-specific `focal` and `alt` values. Absolute page
-references resolve directly; relative references resolve below
-`params.cardhaus.carousel.pageRefPrefix`, which defaults to `/`. Omitting
-`image` falls back to the canonical page image. Slides contain no visible title
+`content/carousel.yaml`. Every slide requires an explicit `image`, stable
+`hash`, and accessible `alt`. Site-relative images resolve from page bundles
+and use Hugo's responsive image pipeline. Fully qualified HTTP(S) images remain
+remote and may supply `width` and `height` to reserve their aspect ratio.
+Slide-specific `focal` values control the crop. Slides contain no visible title
 or caption.
 
-The editorial carousel is an explicit exception to canonical image identity:
-an arbitrary slide image links to a topic but does not receive that topic's
-named transition.
+An optional `link` navigates normally. A same-site carousel URL with a fragment
+matching a destination hash focuses that slide and gives only the clicked and
+destination images a coordinated view transition. The source and destination
+carousel entries use the same `image` and `hash`; the source `link` names the
+destination carousel URL plus that shared hash. Slides without `link` open the
+complete image in a modal lightbox. Legacy `slug` input is a build error.
 
 Carousel navigation uses complete clone sets before and after the originals so
 centered, variable-width layouts do not expose an empty track. Previous and next
 controls make one physical move; after entering a clone set, the implementation
 resets without animation to the matching original. Logical state comes from
-`data-carousel-index`. Manual pointer or keyboard navigation stops autoplay.
+`data-carousel-index`. Manual pointer or keyboard navigation stops autoplay,
+as does arriving with a fragment that selects a slide; a deep-linked image must
+remain focused rather than advancing on the autoplay timer.
 Cardhaus supplies control labels and arrow presentation rather than Swiper's
-navigation or accessibility rewriting.
+navigation or accessibility rewriting. The URL fragment tracks the focused
+slide and initializes a matching slide on arrival.
 
 An image-bearing topic starts with all compatible bundle images. The canonical
 image is first and active. Per-image focal metadata takes precedence; missing

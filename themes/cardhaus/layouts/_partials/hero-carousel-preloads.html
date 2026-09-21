@@ -5,26 +5,8 @@
 {{- /* Every slide can become an immediate neighbour after the first timed move.
       Preload the full, deliberately short editorial carousel before CSS/JS. */ -}}
 {{- range $slides -}}
-  {{- $item := . -}}
-  {{- $pageRef := $item.slug -}}
-  {{- if not (hasPrefix $pageRef "/") -}}
-    {{- $pageRef = path.Join (site.Params.cardhaus.carousel.pageRefPrefix | default "/") $pageRef -}}
-  {{- end -}}
-  {{- $page := site.GetPage $pageRef -}}
-  {{- with $page -}}
-    {{- $image := false -}}
-    {{- with $item.image -}}
-      {{- $image = $page.Resources.GetMatch . -}}
-    {{- else -}}
-      {{- $image = partial "hero-resource.html" $page -}}
-    {{- end -}}
-    {{- with $image -}}
-      {{- $variants := partial "responsive-image-resources.html" . -}}
-      {{- $small := $variants.small -}}
-      {{- $medium := $variants.medium -}}
-      {{- $large := $variants.large -}}
-      {{- $fallback := $variants.fallback -}}
-      <link rel="preload" as="image" href="{{ $fallback.RelPermalink }}"{{ with $small }} imagesrcset="{{ .RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 1000w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1600w{{ end }}" imagesizes="100vw"{{ end }} fetchpriority="high">
-    {{- end -}}
+  {{- $slide := partial "carousel-slide-data.html" (dict "item" . "source" $.Path) -}}
+  {{- with $slide -}}
+    <link rel="preload" as="image" href="{{ .src }}"{{ with .srcset }} imagesrcset="{{ . }}" imagesizes="100vw"{{ end }} fetchpriority="high">
   {{- end -}}
 {{- end -}}

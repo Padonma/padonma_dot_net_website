@@ -8,65 +8,33 @@
   <div class="swiper hero-carousel" aria-label="Featured images">
     <div class="swiper-wrapper">
       {{- range $index, $item := $slides -}}
-        {{- $pageRef := $item.slug -}}
-        {{- if not (hasPrefix $pageRef "/") -}}
-          {{- $pageRef = path.Join (site.Params.cardhaus.carousel.pageRefPrefix | default "/") $pageRef -}}
-        {{- end -}}
-        {{- $page := site.GetPage $pageRef -}}
-        {{- if not $page -}}
-          {{- warnf "hero-carousel.html: no page found for reference %q" $pageRef -}}
-        {{- else -}}
-          {{- $image := false -}}
-          {{- with $item.image -}}
-            {{- $image = $page.Resources.GetMatch . -}}
-            {{- if not $image -}}
-              {{- warnf "hero-carousel.html: image %q not found on page %q" . $pageRef -}}
-            {{- end -}}
-          {{- else -}}
-            {{- $image = partial "hero-resource.html" $page -}}
-          {{- end -}}
-
-          {{- with $image -}}
+        {{- $slide := partial "carousel-slide-data.html" (dict "item" $item "source" $pageContext.Path) -}}
+        {{- with $slide -}}
             {{- $x := 0.5 -}}
             {{- $y := 0.5 -}}
-            {{- with $item.focal -}}
+            {{- with .focal -}}
               {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
               {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
-            {{- else -}}
-              {{- if not $item.image -}}
-                {{- with $page.Params.hero.focal -}}
-                  {{- if isset . "x" }}{{ $x = float .x }}{{ end -}}
-                  {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
-                {{- end -}}
-              {{- end -}}
             {{- end -}}
-
-            {{- $variants := partial "responsive-image-resources.html" . -}}
-            {{- $small := $variants.small -}}
-            {{- $medium := $variants.medium -}}
-            {{- $large := $variants.large -}}
-            {{- $fallback := $variants.fallback -}}
-            {{- $alt := $item.alt | default $page.Title -}}
-
-            {{- $ratio := div (float .Width) (float .Height) -}}
-            {{- $wide := ge $ratio 1 -}}
-            <a class="swiper-slide hero-carousel-slide{{ if $wide }} hero-carousel-slide--wide{{ end }}" href="{{ $page.RelPermalink }}" style="--hero-aspect: {{ printf "%.6f" $ratio }}; --hero-focal-x: {{ mul $x 100 }}%; --hero-focal-y: {{ mul $y 100 }}%;" data-carousel-index="{{ $index }}">
+            {{- $wide := ge .ratio 1 -}}
+            {{- if .link -}}<a class="swiper-slide hero-carousel-slide{{ if $wide }} hero-carousel-slide--wide{{ end }}" href="{{ .link }}"{{ else }}<button type="button" class="swiper-slide hero-carousel-slide hero-carousel-lightbox-trigger{{ if $wide }} hero-carousel-slide--wide{{ end }}" data-full-src="{{ .fullSrc }}" data-full-alt="{{ .alt }}" aria-label="View full image: {{ .alt }}"{{ end }} style="--hero-aspect: {{ printf "%.6f" .ratio }}; --hero-focal-x: {{ mul $x 100 }}%; --hero-focal-y: {{ mul $y 100 }}%;" data-carousel-index="{{ $index }}" data-hash="{{ .hash }}">
               <img
-                src="{{ $fallback.RelPermalink }}"
-                {{- if $small }}
-                srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 1000w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1600w{{ end }}"
+                src="{{ .src }}"
+                {{- with .srcset }}
+                srcset="{{ . }}"
                 sizes="100vw"
                 {{- end }}
-                width="{{ $fallback.Width }}"
-                height="{{ $fallback.Height }}"
-                alt="{{ $alt }}"
+                {{- if and .width .height }}
+                width="{{ .width }}"
+                height="{{ .height }}"
+                {{- end }}
+                alt="{{ .alt }}"
                 loading="eager"
                 fetchpriority="high"
                 class="hero-carousel-image"
                 style="object-position: {{ mul $x 100 }}% {{ mul $y 100 }}%;"
               >
-            </a>
-          {{- end -}}
+            {{- if .link }}</a>{{ else }}</button>{{ end -}}
         {{- end -}}
       {{- end -}}
     </div>
@@ -78,4 +46,8 @@
       </nav>
     {{ end }}
   </div>
+  <dialog class="hero-carousel-lightbox" aria-label="Full image viewer">
+    <button type="button" class="hero-carousel-lightbox-close" aria-label="Close full image">CLOSE ✕</button>
+    <img class="hero-carousel-lightbox-image" alt="">
+  </dialog>
 {{- end -}}

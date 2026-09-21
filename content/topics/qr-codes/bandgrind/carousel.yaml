@@ -1,15 +1,19 @@
-- slug: qr-codes/bandgrind/bandgrind-experiments
-  image: qr_bands.5_of_earlies.jpeg
-  
-- slug: qr-codes/bandgrind/bandgrind-session-13
-  image: hero-13.png
-  alt: Weaving experiment session #13
+- image: /topics/qr-codes/bandgrind/bandgrind-experiments/qr_bands.5_of_earlies.jpeg
+  hash: early-qr-bands
+  link: /topics/qr-codes/bandgrind/bandgrind-experiments/
+  alt: Five early woven QR-code bands
+
+- image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
+  hash: bandgrind-session-13
+  link: /topics/bandgrind-session-13/
+  alt: "Weaving experiment session #13"
   focal:
     x: 0.5
     "y": 0.5
 
-- slug: weaving/bandweaving
-  image: r7_wide_band.png
+- image: /topics/weaving/bandweaving/r7_wide_band.png
+  hash: wide-rmqr-band
+  link: /topics/weaving/bandweaving/
   alt: Wide woven band with an rMQR pattern
   focal:
     x: 0.5
