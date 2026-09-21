@@ -230,7 +230,8 @@
 
 .topic-card:hover .hero-media img { transform: scale(1.035); }
 
-/* One material, with per-surface tint and frost. Filters never touch text. */
+/* One material, with per-surface tint and frost. The pseudo-element keeps the
+   filter behind the content so conforming compositors never filter the text. */
 .glass-filter-defs {
   position: absolute;
   width: 0;
@@ -267,7 +268,14 @@
   backdrop-filter: blur(var(--glass-frost)) saturate(115%);
 }
 
-@supports (backdrop-filter: url("#cardhaus-soft-reflection") blur(1px)) {
+/* SVG backdrop filters can parse successfully but corrupt the entire composited
+   card (image, border, and text) in old Chromium-derived browsers such as older
+   Amazon Silk. color-mix() is intentionally used as a conservative modern-engine
+   floor: older engines keep the plain blur above, while current mobile browsers
+   such as Chrome on Android can still receive the reflection enhancement. */
+@supports (background: color-mix(in srgb, white 50%, transparent)) and
+  ((backdrop-filter: url("#cardhaus-soft-reflection") blur(1px)) or
+  (-webkit-backdrop-filter: url("#cardhaus-soft-reflection") blur(1px))) {
   .glass::before,
   .hero-carousel-controls::before,
   .topic-card::before {

@@ -64,6 +64,25 @@ to override semantic CSS properties such as `--accent`, `--primary`, and
 `--font-display`. Breakpoints are unitless pixel values compiled into media
 queries.
 
+### Glass rendering compatibility
+
+Cardhaus treats its SVG glass reflection as a progressive enhancement. Every
+browser receives the translucent tint, rim, and ordinary backdrop blur. The SVG
+reflection is enabled only when the browser supports both an SVG backdrop
+filter and `color-mix()`.
+
+The `color-mix()` check is deliberately a conservative modern-engine floor, not
+a dependency of the visual effect itself. Some older Chromium-derived browsers,
+including older Amazon Silk releases, accept SVG backdrop-filter syntax but
+incorrectly apply its displacement to the entire composited card. That can make
+the image, overlay, border, and text appear wavy. Syntax detection for the
+filter alone therefore produces a false positive on those engines. Requiring a
+newer broadly supported CSS feature leaves them on the stable ordinary-blur
+fallback without user-agent or device detection, while current mobile browsers
+remain eligible for the enhanced reflection. Keep this compatibility gate with
+the SVG filter rules in `assets/css/components.css` unless the rendering issue
+is replaced by a reliable direct capability test.
+
 ## Author a topic
 
 Topics are normally page bundles below `content/topics/`. Select a canonical
