@@ -1,5 +1,6 @@
 {{- $item := .item -}}
 {{- $source := .source | default "carousel.yaml" -}}
+{{- $carouselPage := .page -}}
 {{- if isset $item "slug" -}}
   {{- errorf "%s: carousel slide uses removed field \"slug\"; replace it with required image and hash fields plus optional link" $source -}}
 {{- end -}}
@@ -35,7 +36,10 @@
     {{- end -}}
   {{- else -}}
     {{- if not (hasPrefix $imagePath "/") -}}
-      {{- errorf "%s: local carousel image %q must be a site-relative path beginning with /" $source $imagePath -}}
+      {{- $image = $carouselPage.Resources.GetMatch $imagePath -}}
+      {{- if not $image -}}
+        {{- errorf "%s: carousel image %q was not found beside carousel.yaml in page bundle %q" $source $imagePath $carouselPage.Path -}}
+      {{- end -}}
     {{- else -}}
       {{- $contentPath := strings.TrimPrefix "/" $imagePath -}}
       {{- $pageRef := printf "/%s" (path.Dir $contentPath) -}}
@@ -46,22 +50,23 @@
         {{- $image = $page.Resources.GetMatch (path.Base $contentPath) -}}
         {{- if not $image -}}
           {{- errorf "%s: carousel image %q was not found in page bundle %q" $source $imagePath $pageRef -}}
-        {{- else -}}
-          {{- $variants := partial "responsive-image-resources.html" $image -}}
-          {{- $small := $variants.small -}}
-          {{- $medium := $variants.medium -}}
-          {{- $large := $variants.large -}}
-          {{- $fallback := $variants.fallback -}}
-          {{- $src = $fallback.RelPermalink -}}
-          {{- $fullSrc = $image.RelPermalink -}}
-          {{- $width = $fallback.Width -}}
-          {{- $height = $fallback.Height -}}
-          {{- with $small -}}
-            {{- $srcset = printf "%s 640w" .RelPermalink -}}
-            {{- with $medium }}{{ $srcset = printf "%s, %s 1000w" $srcset .RelPermalink }}{{ end -}}
-            {{- with $large }}{{ $srcset = printf "%s, %s 1600w" $srcset .RelPermalink }}{{ end -}}
-          {{- end -}}
         {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- with $image -}}
+      {{- $variants := partial "responsive-image-resources.html" . -}}
+      {{- $small := $variants.small -}}
+      {{- $medium := $variants.medium -}}
+      {{- $large := $variants.large -}}
+      {{- $fallback := $variants.fallback -}}
+      {{- $src = $fallback.RelPermalink -}}
+      {{- $fullSrc = .RelPermalink -}}
+      {{- $width = $fallback.Width -}}
+      {{- $height = $fallback.Height -}}
+      {{- with $small -}}
+        {{- $srcset = printf "%s 640w" .RelPermalink -}}
+        {{- with $medium }}{{ $srcset = printf "%s, %s 1000w" $srcset .RelPermalink }}{{ end -}}
+        {{- with $large }}{{ $srcset = printf "%s, %s 1600w" $srcset .RelPermalink }}{{ end -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}

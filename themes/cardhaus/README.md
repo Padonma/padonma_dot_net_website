@@ -172,7 +172,7 @@ Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
 `content/carousel.yaml`. Bundles without the file omit the carousel.
 
 ```yaml
-- image: /knowledge/example-topic/supporting-image.jpg
+- image: supporting-image.jpg
   hash: example-topic-supporting
   link: /knowledge/example-topic/
   alt: Description of the selected image
@@ -181,9 +181,12 @@ Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
     y: 0.6
 ```
 
-`image`, `hash`, and accessible `alt` text are required. A site-relative
-`image` path selects and processes an image from its page bundle; a fully
-qualified HTTP(S) URL remains remote. Remote slides may declare positive
+`image`, `hash`, and accessible `alt` text are required. A bundle-relative
+`image` path such as `supporting-image.jpg` selects a resource beside
+`carousel.yaml`. A site-root-relative path such as
+`/knowledge/example-topic/supporting-image.jpg` selects a resource from that
+page bundle. Both local forms use Hugo's image pipeline; a fully qualified
+HTTP(S) URL remains remote. Remote slides may declare positive
 `width` and `height` values to reserve their aspect ratio. `focal` controls the
 carousel crop.
 

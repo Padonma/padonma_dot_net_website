@@ -8,7 +8,7 @@
   <div class="swiper hero-carousel" aria-label="Featured images">
     <div class="swiper-wrapper">
       {{- range $index, $item := $slides -}}
-        {{- $slide := partial "carousel-slide-data.html" (dict "item" $item "source" $pageContext.Path) -}}
+        {{- $slide := partial "carousel-slide-data.html" (dict "item" $item "page" $pageContext "source" $pageContext.Path) -}}
         {{- with $slide -}}
             {{- $x := 0.5 -}}
             {{- $y := 0.5 -}}

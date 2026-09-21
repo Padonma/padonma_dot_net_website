@@ -1,3 +1,7 @@
+- image: bandgrind_cover.jpeg
+  alt: Band six in the loom
+  hash: band-six-in-loom
+
 - image: /topics/qr-codes/bandgrind/bandgrind-experiments/qr_bands.5_of_earlies.jpeg
   hash: early-qr-bands
   link: /topics/qr-codes/bandgrind/bandgrind-experiments/

@@ -73,9 +73,11 @@ and one at mobile widths. Consumers may override `tablet` and `mobile` under
 
 A branch bundle may supply `carousel.yaml`; the root bundle uses
 `content/carousel.yaml`. Every slide requires an explicit `image`, stable
-`hash`, and accessible `alt`. Site-relative images resolve from page bundles
-and use Hugo's responsive image pipeline. Fully qualified HTTP(S) images remain
-remote and may supply `width` and `height` to reserve their aspect ratio.
+`hash`, and accessible `alt`. A relative image path resolves from the bundle
+containing `carousel.yaml`; a site-root-relative image path resolves from the
+page bundle named by that path. Both local forms use Hugo's responsive image
+pipeline. Fully qualified HTTP(S) images remain remote and may supply `width`
+and `height` to reserve their aspect ratio.
 Slide-specific `focal` values control the crop. Slides contain no visible title
 or caption.
 

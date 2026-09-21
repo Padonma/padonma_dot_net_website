@@ -11,6 +11,8 @@ Verified:
 - Legacy carousel prefix configuration is removed and legacy `slug` input is
   rejected.
 - Local images use Hugo processing and responsive preloads.
+- Bundle-relative image paths resolve from the bundle containing
+  `carousel.yaml`; site-root-relative paths retain their existing behavior.
 - The homepage-to-Bandgrind session 13 handoff focuses the matching destination
   slide. A fragment-selected slide remains focused with autoplay stopped.
 - The production build validates all generated files and internal links, and
@@ -59,8 +61,10 @@ actionable build error.
 
 Each slide has:
 
-- One required `image`. A site-relative path is resolved and processed by Hugo.
-  A fully qualified `http://` or `https://` URL is loaded remotely.
+- One required `image`. A relative path is resolved from the bundle containing
+  `carousel.yaml`; a site-root-relative path is resolved from the bundle named
+  by that path. Both are processed by Hugo. A fully qualified `http://` or
+  `https://` URL is loaded remotely.
 - One required, stable `hash`, used by Swiper Hash Navigation to identify and
   focus the slide.
 - Accessible `alt` text.
@@ -160,9 +164,10 @@ reconciled if it becomes authored content.
   optional `link` contract. Legacy `slug` input is either rejected with an
   actionable warning/error or supported by a documented, time-bounded
   compatibility path.
-- Site-relative images pass through Hugo's image pipeline. Fully qualified
-  HTTP/HTTPS image URLs remain remote and render without attempted Hugo
-  processing.
+- Bundle-relative and site-root-relative images pass through Hugo's image
+  pipeline. Bundle-relative paths resolve from the bundle containing
+  `carousel.yaml`. Fully qualified HTTP/HTTPS image URLs remain remote and
+  render without attempted Hugo processing.
 - Remote images with `width` and `height` reserve the intended aspect ratio.
 - An ordinary linked slide navigates to its declared destination.
 - A carousel link whose fragment matches a destination hash focuses that slide.
