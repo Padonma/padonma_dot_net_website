@@ -126,10 +126,11 @@ Embed one existing canonical card with an absolute content reference:
 {{</* topic-card ref="/topics/example-topic" */>}}
 ```
 
-Group curated cards with an optional heading and introductory Markdown:
+Group curated cards with an optional heading, custom CSS class (or
+space-separated classes), and introductory Markdown:
 
 ```go-html-template
-{{</* topic-card-grid heading="Related topics" */>}}
+{{</* topic-card-grid heading="Related topics" class="related-topics featured-grid" */>}}
 
 These topics provide useful context.
 
@@ -139,9 +140,11 @@ These topics provide useful context.
 {{</* /topic-card-grid */>}}
 ```
 
-A grid requires a nested card. Put all introductory Markdown before its first
-card. Missing or relative references fail the build. Do not repeat one topic on
-a rendered page because canonical cards carry document-unique transition names.
+A grid requires a nested card. Its wrapper always has `topic-card-grid` (and
+`topic-card-grid--home` on the homepage); `class` appends the supplied classes.
+Put all introductory Markdown before its first card. Missing or relative
+references fail the build. Do not repeat one topic on a rendered page because
+canonical cards carry document-unique transition names.
 
 ## List immediate children
 

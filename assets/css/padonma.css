@@ -47,6 +47,9 @@
   --font-size-body:            1rem;
 }
 
+.card-grid-dark {
+    background: var(--inverse-primary);
+}
 
 .card-title {
     font-family: var(--font-topic-card-grid-heading);

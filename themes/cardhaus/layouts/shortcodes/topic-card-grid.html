@@ -1,9 +1,10 @@
 {{- $heading := .Get "heading" -}}
+{{- $class := strings.TrimSpace (.Get "class") -}}
 {{- $parts := strings.Split .Inner "::CARDHAUS-TOPIC-CARD::" -}}
 {{- if lt (len $parts) 2 -}}
   {{- errorf "topic-card-grid shortcode requires at least one nested topic-card (%s)" .Position -}}
 {{- end -}}
-<section class="topic-card-grid{{ if .Page.IsHome }} topic-card-grid--home{{ end }}">
+<section class="topic-card-grid{{ if .Page.IsHome }} topic-card-grid--home{{ end }}{{ with $class }} {{ . }}{{ end }}">
   <div{{ if .Page.IsHome }} class="topics-grid"{{ end }}>
   {{ with $heading }}
     {{ if $.Page.IsHome }}
