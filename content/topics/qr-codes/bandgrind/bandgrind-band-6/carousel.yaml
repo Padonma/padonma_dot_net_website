@@ -16,9 +16,3 @@
   focal:
     x: 0.5
     "y": 0.5
-- image: "take_2.jpg"
-  hash: "take-2"
-  alt: "Session #14"
-  focal:
-    x: 0.5
-    "y": 0.5
