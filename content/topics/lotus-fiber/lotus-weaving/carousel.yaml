@@ -1,0 +1,48 @@
+- image: "inle-lake-weaver.jpg"
+  hash: "inle-lake-weaver"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.6
+    "y": 0.2
+- image: "fabric.png"
+  hash: "fabric"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "fiber-extraction.png"
+  hash: "fiber-extraction"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "harvesting.webp"
+  hash: "harvesting"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "inle-workshop_1.jpg"
+  hash: "inle-workshop-1"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "inle-workshop_2.jpg"
+  hash: "inle-workshop-2"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "spinner-1.jpg"
+  hash: "spinner-1"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "weaver-at-loom-in-inle.jpg"
+  hash: "weaver-at-loom-in-inle"
+  alt: "Lotus weaving"
+  focal:
+    x: 0.5
+    "y": 0.5

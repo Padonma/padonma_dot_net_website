@@ -1,0 +1,42 @@
+- image: "Pier-Luigi-Loro-Piana.jpg"
+  hash: "Pier-Luigi-Loro-Piana"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0
+- image: "extra_bag.jpg"
+  hash: "extra-bag"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "loro_pianan_jacket_detail.jpg"
+  hash: "loro-pianan-jacket-detail"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "loro_pianan_jacket_full.jpg"
+  hash: "loro-pianan-jacket-full"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "loro_pianan_jacket_most.jpg"
+  hash: "loro-pianan-jacket-most"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lotus_jacket.jpg"
+  hash: "lotus-jacket"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "sneakers.jpg"
+  hash: "sneakers"
+  alt: "Loro Piana"
+  focal:
+    x: 0.5
+    "y": 0.5

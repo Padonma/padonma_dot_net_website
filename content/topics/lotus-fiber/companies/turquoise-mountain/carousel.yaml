@@ -1,0 +1,18 @@
+- image: "drying-racks.jpg"
+  hash: "drying-racks"
+  alt: "Turquoise Mountain"
+  focal:
+    x: 0
+    "y": 0.5
+- image: "learning.png"
+  hash: "learning"
+  alt: "Turquoise Mountain"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "ma-su.jpg"
+  hash: "ma-su"
+  alt: "Turquoise Mountain"
+  focal:
+    x: 0.5
+    "y": 0.5

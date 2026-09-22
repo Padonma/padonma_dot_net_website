@@ -1,0 +1,30 @@
+- image: "00-sami-band-weaving.jpg"
+  hash: "00-sami-band-weaving"
+  alt: "Ridig Heddle Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "backstrap_and_ridig_heddle.png"
+  hash: "backstrap-and-ridig-heddle"
+  alt: "Ridig Heddle Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "pickup_weaving.png"
+  hash: "pickup-weaving"
+  alt: "Ridig Heddle Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "quipo_in_cusco.jpg"
+  hash: "quipo-in-cusco"
+  alt: "Ridig Heddle Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "tape_loom.png"
+  hash: "tape-loom"
+  alt: "Ridig Heddle Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5

@@ -103,9 +103,10 @@ otherwise interpret it as a boolean. If `hero.image` is omitted, Cardhaus uses
 the first compatible bundle image when available. The Hugo summary supplies
 optional card copy.
 
-Supporting gallery images may use entries in the page's `images` front matter
-array for focal data. Per-image coordinates take precedence; missing coordinates
-on the canonical image inherit from `hero.focal`.
+Supporting images may use entries in the page's `images` front matter array for
+focal data. The leaf-carousel generator preserves those values: per-image
+coordinates take precedence, and missing coordinates on the canonical image
+inherit from `hero.focal`.
 
 ## Configure social previews
 
@@ -188,10 +189,12 @@ For a page that contains this listing, set an explicit front-matter `summary`
 when its own card needs copy. Cardhaus omits automatic summaries for such pages
 to avoid recursively rendering the listing inside the card.
 
-## Add a branch carousel
+## Add a page-bundle carousel
 
-Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
-`content/carousel.yaml`. Bundles without the file omit the carousel.
+Place `carousel.yaml` beside a branch bundle's `_index.md` or a leaf bundle's
+`index.md`. The homepage uses `content/carousel.yaml`. A bundle without that
+file has no carousel: sibling images are never discovered implicitly. Branch
+landing pages retain opening scroll snap; ordinary leaf pages never receive it.
 
 ```yaml
 - image: supporting-image.jpg
@@ -200,7 +203,7 @@ Place `carousel.yaml` beside a branch bundle's `_index.md`. The homepage uses
   alt: Description of the selected image
   focal:
     x: 0.4
-    y: 0.6
+    "y": 0.6
 ```
 
 `image`, `hash`, and accessible `alt` text are required. A bundle-relative
@@ -211,6 +214,19 @@ page bundle. Both local forms use Hugo's image pipeline; a fully qualified
 HTTP(S) URL remains remote. Remote slides may declare positive
 `width` and `height` values to reserve their aspect ratio. `focal` controls the
 carousel crop.
+
+For an existing image-bearing leaf bundle, generate deterministic entries from
+its title, hero, and per-image focal metadata:
+
+```sh
+python3 scripts/generate-carousel.py content/topics/example-topic
+python3 scripts/generate-carousel.py content/topics/example-topic --check
+```
+
+Run the program without a directory from inside a copied bundle. Use
+`--dry-run` to print the proposed file. Generation refuses to overwrite an
+existing carousel, excludes AVIF, emits no links, and gives every generated
+slide a lightbox action. See `--help` for all modes.
 
 `link` is optional. An ordinary link navigates normally. A same-site link to a
 carousel page whose fragment matches one of that carousel's hashes focuses the
@@ -256,7 +272,7 @@ Key reusable source:
 - `layouts/_partials/hero-resource.html` resolves canonical images.
 - `layouts/_partials/hero-image.html` renders responsive canonical imagery.
 - `layouts/_partials/topic-card.html` renders every shared card.
-- `layouts/_partials/topic-gallery.html` renders galleries and lightboxes.
+- `layouts/_partials/hero-carousel.html` is the single carousel and image-sequence renderer.
 - `layouts/_partials/social-metadata.html` emits sharing metadata.
 - `layouts/shortcodes/` contains the author-facing card APIs.
 - `assets/css/` contains tokens, base rules, layouts, and components.

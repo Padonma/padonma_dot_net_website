@@ -1,0 +1,12 @@
+- image: "00-session-04.jpg"
+  hash: "00-session-04"
+  alt: "Session #4"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "rmqr_r7_43_structure.png"
+  hash: "rmqr-r7-43-structure"
+  alt: "Session #4"
+  focal:
+    x: 0.5
+    "y": 0.5

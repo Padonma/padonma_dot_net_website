@@ -1,0 +1,12 @@
+- image: "backstrap-weaving-in-shade-2.jpg"
+  hash: "backstrap-weaving-in-shade-2"
+  alt: "Backstrap weaving"
+  focal:
+    x: 0
+    "y": 0
+- image: "backstrap-weaving-in-shade.jpg"
+  hash: "backstrap-weaving-in-shade"
+  alt: "Backstrap weaving"
+  focal:
+    x: 0.5
+    "y": 0.5

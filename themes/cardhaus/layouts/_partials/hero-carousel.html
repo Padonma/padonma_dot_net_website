@@ -1,5 +1,5 @@
 {{- $pageContext := . -}}
-{{- /* A carousel belongs to the current branch bundle as carousel.yaml. */ -}}
+{{- /* A carousel belongs to the current page bundle as carousel.yaml. */ -}}
 {{- $slides := slice -}}
 {{- with $pageContext.Resources.GetMatch "carousel.yaml" -}}
   {{- $slides = . | transform.Unmarshal -}}

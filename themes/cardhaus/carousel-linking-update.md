@@ -1,6 +1,8 @@
 # Hero carousel linking update
 
-Status: partially implemented; acceptance verification remains
+Status: partially implemented; carousel handoff integrity and rendered-link
+verification are implemented, while broader lightbox and remote-image checks
+remain.
 
 ## Current implementation status
 
@@ -17,6 +19,9 @@ Verified:
   slide. A fragment-selected slide remains focused with autoplay stopped.
 - The production build validates all generated files and internal links, and
   `git diff --check` passes.
+- `scripts/validate-carousel-handoffs.py` validates every image-preserving
+  same-site handoff and its rendered anchor/destination hash after a Hugo
+  build.
 
 Implemented but not yet verified against the acceptance criteria:
 
@@ -30,9 +35,9 @@ Implemented but not yet verified against the acceptance criteria:
 - Regression coverage for carousel looping, focal positioning, responsive
   variants, controls, and keyboard/manual interaction.
 
-No relevant automated carousel tests currently exist. Do not change this
-status to implemented until the remaining acceptance cases are exercised and
-any failures are fixed.
+The repository test suite includes content and rendered integration coverage
+for carousel handoffs. Do not change the broader status to fully implemented
+until the remaining acceptance cases are exercised and any failures are fixed.
 
 ## Context
 
@@ -83,8 +88,8 @@ A source carousel may contain all four forms:
 ```yaml
 # Deep-link to a focused slide in another same-site carousel.
 - image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
-  hash: bandgrind-session-13
-  link: /topics/qr-codes/bandgrind/#bandgrind-session-13
+  hash: hero-13
+  link: /topics/qr-codes/bandgrind/#hero-13
   alt: Weaving experiment session 13
   focal:
     x: 0.5
@@ -117,8 +122,7 @@ with its ordinary content-page link:
 
 ```yaml
 - image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
-  hash: bandgrind-session-13
-  link: /topics/qr-codes/bandgrind/bandgrind-session-13/
+  hash: hero-13
   alt: Weaving experiment session 13
   focal:
     x: 0.5
@@ -132,12 +136,14 @@ including links to a different origin, receives no coordinated view transition.
 
 ## Lightbox behavior
 
+> Historical note: the later carousel-unification work removed the topic
+> gallery. `hero-carousel.html` now supplies the only image-sequence renderer
+> and its accessible dialog is the supported lightbox implementation.
+
 An image-only slide has no navigation destination. Activating it opens the
 complete source image in a modal/lightbox using contain-style sizing. The
-existing topic-gallery lightbox markup, JavaScript, and styles may provide
-useful pieces. Evaluate them for reuse or extraction, including their Swiper
-coupling, identifier assumptions, focus behavior, and suitability for a
-single-image carousel modal; do not assume direct reuse is correct.
+topic-gallery experiment discussed by this historical proposal is superseded
+and must not be reused.
 
 ## Implementation scope
 

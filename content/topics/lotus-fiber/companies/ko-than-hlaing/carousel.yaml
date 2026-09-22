@@ -1,0 +1,48 @@
+- image: "warping.jpg"
+  hash: "warping"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0
+    "y": 0.5
+- image: "a-silk-cloth-weaving.jpg"
+  hash: "a-silk-cloth-weaving"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lady-at-work.jpg"
+  hash: "lady-at-work"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "spannen-der-faden.jpg"
+  hash: "spannen-der-faden"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "the-workroom.jpg"
+  hash: "the-workroom"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "tissage-du-lotus.jpg"
+  hash: "tissage-du-lotus"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "tissage-du-lowghi-traditionnel.jpg"
+  hash: "tissage-du-lowghi-traditionnel"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "two-looms.jpg"
+  hash: "two-looms"
+  alt: "Ko Than Hlaing"
+  focal:
+    x: 0.5
+    "y": 0.5

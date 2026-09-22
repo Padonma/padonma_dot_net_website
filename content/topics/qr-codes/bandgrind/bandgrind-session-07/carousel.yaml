@@ -1,0 +1,12 @@
+- image: "00-session-07.jpg"
+  hash: "00-session-07"
+  alt: "Session #7"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hemptique_1mm_laid_cord.jpg"
+  hash: "hemptique-1mm-laid-cord"
+  alt: "Session #7"
+  focal:
+    x: 0.5
+    "y": 0.5

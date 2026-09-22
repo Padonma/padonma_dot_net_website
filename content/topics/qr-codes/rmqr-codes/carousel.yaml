@@ -1,0 +1,36 @@
+- image: "three_rmqr_43s.png"
+  hash: "three-rmqr-43s"
+  alt: "rMQR codes"
+  focal:
+    x: 0
+    "y": 0.5
+- image: "00-rmqr-padumma.png"
+  hash: "00-rmqr-padumma"
+  alt: "rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "payload-capacity-of-qr-variants.jpg"
+  hash: "payload-capacity-of-qr-variants"
+  alt: "rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "r7_x_77.png"
+  hash: "r7-x-77"
+  alt: "rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "rMQR_six_sizes.png"
+  hash: "rMQR-six-sizes"
+  alt: "rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "six_rmqr_43s.png"
+  hash: "six-rmqr-43s"
+  alt: "rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5

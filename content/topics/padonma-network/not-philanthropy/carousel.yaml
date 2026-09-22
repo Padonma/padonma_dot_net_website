@@ -1,0 +1,6 @@
+- image: "no_philanthropy.gemini_generated.png"
+  hash: "no-philanthropy-gemini-generated"
+  alt: "OSS not philanthropy"
+  focal:
+    x: 0.5
+    "y": 0.01

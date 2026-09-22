@@ -1,0 +1,30 @@
+- image: "tablet_woven_qr.jpg"
+  hash: "tablet-woven-qr"
+  alt: "Prior art handcrafted QRs"
+  focal:
+    x: 0.5
+    "y": 1
+- image: "00-qr-and-ribbons.jpg"
+  hash: "00-qr-and-ribbons"
+  alt: "Prior art handcrafted QRs"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "cross_stitched.jpg"
+  hash: "cross-stitched"
+  alt: "Prior art handcrafted QRs"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "cross_stitched_2.jpg"
+  hash: "cross-stitched-2"
+  alt: "Prior art handcrafted QRs"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "qr_on_bag.jpg"
+  hash: "qr-on-bag"
+  alt: "Prior art handcrafted QRs"
+  focal:
+    x: 0.5
+    "y": 0.5

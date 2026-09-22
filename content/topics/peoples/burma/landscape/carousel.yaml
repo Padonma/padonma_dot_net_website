@@ -1,0 +1,6 @@
+- image: "bird-and-lotus.jpg"
+  hash: "bird-and-lotus"
+  alt: "Fluff"
+  focal:
+    x: 0.5
+    "y": 0.5

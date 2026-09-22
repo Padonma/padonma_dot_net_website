@@ -1,0 +1,6 @@
+- image: "theinterline_qr_blockchain.jpg"
+  hash: "theinterline-qr-blockchain"
+  alt: "Luxury and blockchain"
+  focal:
+    x: 0.5
+    "y": 0.5

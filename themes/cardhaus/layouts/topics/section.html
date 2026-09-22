@@ -3,16 +3,7 @@
 {{ $children := .Pages.ByWeight }}
 {{ $hasIntro := ne (strings.TrimSpace .RawContent) "" }}
 {{ if or $hasIntro (not $children) }}
-  {{ $images := .Resources.ByType "image" }}
-  <article class="standard-page topic-page section-intro{{ if and (not $children) $images }} topic-page--with-gallery{{ end }}">
-    {{ if and (not $children) $images }}
-      <div class="gallery">
-        {{ partial "topic-gallery.html" (dict
-          "page" .
-          "meta" (dict "title" .Title)
-        ) }}
-      </div>
-    {{ end }}
+  <article class="standard-page topic-page section-intro">
     {{ partial "breadcrumbs.html" . }}
     <header class="page-header">
       <div class="post-header-inner">

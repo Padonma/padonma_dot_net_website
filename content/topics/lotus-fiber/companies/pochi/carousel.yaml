@@ -1,0 +1,18 @@
+- image: "pochi-weaver.png"
+  hash: "pochi-weaver"
+  alt: "Pochi Silk"
+  focal:
+    x: 0.5
+    "y": 0
+- image: "pochisilk-welcome-830601.jpg"
+  hash: "pochisilk-welcome-830601"
+  alt: "Pochi Silk"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "workshop.jpg"
+  hash: "workshop"
+  alt: "Pochi Silk"
+  focal:
+    x: 0.5
+    "y": 0.5

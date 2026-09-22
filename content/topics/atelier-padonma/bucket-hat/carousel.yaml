@@ -1,0 +1,18 @@
+- image: "bucket-aung-sakkyur.png"
+  hash: "bucket-aung-sakkyur"
+  alt: "Bucket Hat"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hat.png"
+  hash: "hat"
+  alt: "Bucket Hat"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hope-bucket-from-website.webp"
+  hash: "hope-bucket-from-website"
+  alt: "Bucket Hat"
+  focal:
+    x: 0.5
+    "y": 0.5

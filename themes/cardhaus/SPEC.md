@@ -69,17 +69,21 @@ grid has three columns above the tablet breakpoint, two through tablet widths,
 and one at mobile widths. Consumers may override `tablet` and `mobile` under
 `params.cardhaus.breakpoints`; defaults are `1200px` and `850px`.
 
-## Carousels and galleries
+## Carousels
 
-A branch bundle may supply `carousel.yaml`; the root bundle uses
-`content/carousel.yaml`. Every slide requires an explicit `image`, stable
-`hash`, and accessible `alt`. A relative image path resolves from the bundle
-containing `carousel.yaml`; a site-root-relative image path resolves from the
-page bundle named by that path. Both local forms use Hugo's responsive image
-pipeline. Fully qualified HTTP(S) images remain remote and may supply `width`
-and `height` to reserve their aspect ratio.
-Slide-specific `focal` values control the crop. Slides contain no visible title
-or caption.
+The homepage uses `content/carousel.yaml`. A branch or leaf page reads only the
+`carousel.yaml` resource in its own bundle. Bundles without that file have no
+carousel, even when they contain images. A configured carousel precedes the
+page's normal article presentation. Opening scroll snap applies only to the
+homepage and branch landing pages, never to leaf pages.
+
+Every slide requires an explicit `image`, stable `hash`, and accessible `alt`.
+A relative image path resolves from the bundle containing `carousel.yaml`; a
+site-root-relative image path resolves from the page bundle named by that path.
+Both local forms use Hugo's responsive image pipeline. Fully qualified HTTP(S)
+images remain remote and may supply `width` and `height` to reserve their aspect
+ratio. Slide-specific `focal.x` and `focal."y"` coordinates independently
+default to `0.5`. Slides contain no visible title or caption.
 
 An optional `link` navigates normally. A same-site carousel URL with a fragment
 matching a destination hash focuses that slide and gives only the clicked and
@@ -99,18 +103,19 @@ Cardhaus supplies control labels and arrow presentation rather than Swiper's
 navigation or accessibility rewriting. The URL fragment tracks the focused
 slide and initializes a matching slide on arrival.
 
-An image-bearing topic starts with all compatible bundle images. The canonical
-image is first and active. Per-image focal metadata takes precedence; missing
-canonical coordinates fall back independently to `hero.focal`, then center.
-Canonical alt text falls back through `hero.alt` to the title. The main gallery,
-thumbnail strip, and single-image lightbox stay synchronized; clicking a slide
-opens that exact image, and the main gallery and lightbox loop continuously.
-A text-only topic remains valid.
+Generated leaf carousel data explicitly lists every compatible non-AVIF sibling
+image in the former gallery order, with the canonical image first. Its focal
+coordinates preserve per-image metadata over canonical `hero.focal` over the
+center default, coordinate by coordinate. Generated alt text is always the page
+title and generated entries contain no `link`, so activation opens the complete
+image in the shared carousel lightbox. Runtime rendering never infers carousel
+membership from sibling images. Text-only topics and image-bearing topics with
+no `carousel.yaml` remain valid.
 
 ## View Transitions
 
-Canonical cards and the canonical first gallery image receive the same stable,
-filename-safe `view-transition-name`, derived by
+Canonical cards and carousel handoff images receive stable, filename-safe
+`view-transition-name` values derived by
 `layouts/_partials/view-transition-name.html`. Cardhaus opts into cross-document
 transitions. The named image expands over 750ms while page roots fade.
 `prefers-reduced-motion: reduce` makes the named transition effectively
@@ -132,8 +137,8 @@ linked without an attempted crop.
 ## Design and extension contracts
 
 Image overlays share a subtle dark glass treatment with useful contrast. Topic
-cards use a consistent `3 / 4` portrait crop; gallery images preserve their
-source proportions within the carousel.
+cards use a consistent `3 / 4` portrait crop; carousel images preserve their
+source proportions.
 
 Theme CSS is divided into neutral tokens, document base, layout, and components,
 then concatenated, minified, and fingerprinted. Consumers may override semantic
@@ -142,7 +147,7 @@ custom properties through a site-owned stylesheet configured as
 Hugo parameters because CSS custom properties cannot define media-query limits.
 
 The theme may provide generic header, menu, breadcrumb, footer, page, section,
-taxonomy, topic, carousel, gallery, and card rendering. Consumer configuration
+taxonomy, topic, carousel, and card rendering. Consumer configuration
 provides navigation and identity. Header markup must be valid without any
 consumer asset; the current exception is tracked in `ROADMAP.md`.
 
@@ -150,6 +155,6 @@ consumer asset; the current exception is tracked in `ROADMAP.md`.
 
 A conforming change preserves canonical image identity, shared cards, graceful
 text-only pages, responsive grids, accessible metadata, reduced motion, exact
-gallery targeting, and continuous carousel navigation. Validate with a
+carousel targeting, and continuous carousel navigation. Validate with a
 production Hugo build, generated-page inspection, interaction checks for changed
 UI behavior, and `git diff --check`.

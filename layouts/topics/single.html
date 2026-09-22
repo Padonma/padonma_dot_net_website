@@ -1,14 +1,6 @@
 {{ define "main" }}
-{{ $images := .Resources.ByType "image" }}
-<article class="standard-page topic-page{{ if $images }} topic-page--with-gallery{{ end }}">
-  {{ if $images }}
-    <div class="gallery">
-      {{ partial "topic-gallery.html" (dict
-        "page" .
-        "meta" (dict "title" .Title)
-      ) }}
-    </div>
-  {{ end }}
+{{ partial "hero-carousel.html" . }}
+<article class="standard-page topic-page">
   {{ partial "breadcrumbs.html" . }}
   <header class="page-header">
     <div class="post-header-inner">

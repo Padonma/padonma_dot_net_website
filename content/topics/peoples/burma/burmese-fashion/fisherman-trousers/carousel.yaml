@@ -1,0 +1,30 @@
+- image: "inle-lake-fishermen.jpg"
+  hash: "inle-lake-fishermen"
+  alt: "Fisherman trousers"
+  focal:
+    x: 0.5
+    "y": 0
+- image: "fisherman.webp"
+  hash: "fisherman"
+  alt: "Fisherman trousers"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "inle-lake-fisherman.jpg"
+  hash: "inle-lake-fisherman"
+  alt: "Fisherman trousers"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "kicking_red_fisherman_pants.jpg"
+  hash: "kicking-red-fisherman-pants"
+  alt: "Fisherman trousers"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "tying-trousers.jpg"
+  hash: "tying-trousers"
+  alt: "Fisherman trousers"
+  focal:
+    x: 0.5
+    "y": 0.5

@@ -1,14 +1,14 @@
 - image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
-  hash: loro-piana-jacket-full
-  link: /topics/lotus-fiber/companies/loro-piana/
+  hash: loro-pianan-jacket-full
+  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-full
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_detail.jpg
-  hash: loro-piana-jacket-detail
-  link: /topics/lotus-fiber/companies/loro-piana/
+  hash: loro-pianan-jacket-detail
+  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-detail
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5

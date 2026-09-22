@@ -1,0 +1,18 @@
+- image: "00-session-13.jpg"
+  hash: "00-session-13"
+  alt: "Session #13"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "bandgrind_session_13_plus.jpg"
+  hash: "bandgrind-session-13-plus"
+  alt: "Session #13"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hero-13.png"
+  hash: "hero-13"
+  alt: "Session #13"
+  focal:
+    x: 0.5
+    "y": 0.5

@@ -1,0 +1,48 @@
+- image: "fiber-extraction.jpg"
+  hash: "fiber-extraction"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "samatoa-tailor-696x1131.jpg"
+  hash: "samatoa-tailor-696x1131"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "samatoa_combomark.png"
+  hash: "samatoa-combomark"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "shop-lotus-silk-alt.webp"
+  hash: "shop-lotus-silk-alt"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "short-dress-close-up.jpeg"
+  hash: "short-dress-close-up"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "short-dress.png"
+  hash: "short-dress"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "textile_workshop.jpg"
+  hash: "textile-workshop"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "wide-backstrap.png"
+  hash: "wide-backstrap"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 0.5

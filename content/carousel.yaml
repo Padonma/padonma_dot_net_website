@@ -1,6 +1,6 @@
 - image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
-  hash: bandgrind-session-13
-  link: /topics/qr-codes/bandgrind/#bandgrind-session-13
+  hash: hero-13
+  link: /topics/qr-codes/bandgrind/#hero-13
   alt: "Weaving experiment session #13"
   focal:
     x: 0.5
@@ -8,23 +8,23 @@
 
 - image: /topics/lotus-fiber/companies/pochi/pochi-weaver.png
   hash: pochi-weaver
-  link: /topics/lotus-fiber/companies/pochi/
+  link: /topics/lotus-fiber/companies/pochi/#pochi-weaver
   alt: Pochi Weaver
   focal:
     x: 0.5
     "y": 0.2
 
 - image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
-  hash: loro-piana-jacket-full
-  link: /topics/lotus-fiber/companies/loro-piana/
+  hash: loro-pianan-jacket-full
+  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-full
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/samatoa/fiber-extraction.jpg
-  hash: samatoa-fiber-extraction
-  link: /topics/lotus-fiber/companies/samatoa/
+  hash: fiber-extraction
+  link: /topics/lotus-fiber/companies/samatoa/#fiber-extraction
   alt: Cambodian woman extracting lotus fiber
   focal:
     x: 0.5
@@ -39,48 +39,48 @@
     "y": 0.0
 
 - image: /topics/lotus-fiber/lotus-weaving/weaver-at-loom-in-inle.jpg
-  hash: inle-lotus-weaver
-  link: /topics/lotus-fiber/lotus-weaving/
+  hash: weaver-at-loom-in-inle
+  link: /topics/lotus-fiber/lotus-weaving/#weaver-at-loom-in-inle
   alt: Lotus weaver on Inle
   focal:
     x: 1.0
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_detail.jpg
-  hash: loro-piana-jacket-detail
-  link: /topics/lotus-fiber/companies/loro-piana/
+  hash: loro-pianan-jacket-detail
+  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-detail
   alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/turquoise-mountain/ma-su.jpg
-  hash: ma-su-weaving
-  link: /topics/lotus-fiber/companies/turquoise-mountain/
+  hash: ma-su
+  link: /topics/lotus-fiber/companies/turquoise-mountain/#ma-su
   alt: Ma Su weaving
   focal:
     x: 0.5
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/samatoa/short-dress-close-up.jpeg
-  hash: samatoa-short-dress
-  link: /topics/lotus-fiber/companies/samatoa/
+  hash: short-dress-close-up
+  link: /topics/lotus-fiber/companies/samatoa/#short-dress-close-up
   alt: A short dress by Samatoa
   focal:
     x: 0.5
     "y": 0.0
 
 - image: /topics/lotus-fiber/companies/hope/hat.png
-  hash: hope-lotus-hat
-  link: /topics/lotus-fiber/companies/hope/
+  hash: hat
+  link: /topics/lotus-fiber/companies/hope/#hat
   alt: Lotus Bucket Hat
   focal:
     x: 0.5
     "y": 0.5
 
 - image: /topics/lotus-fiber/lotus-weaving/fiber-extraction.png
-  hash: lotus-fiber-extraction
-  link: /topics/lotus-fiber/lotus-weaving/
+  hash: fiber-extraction
+  link: /topics/lotus-fiber/lotus-weaving/#fiber-extraction
   alt: Fiber extraction close up
   focal:
     x: 0.5

@@ -1,0 +1,36 @@
+- image: "electron-microscopy.jpg"
+  hash: "electron-microscopy"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "fibers-in-em.png"
+  hash: "fibers-in-em"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "idigo-and-henna.png"
+  hash: "idigo-and-henna"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lotus-fibres-and-hydrogen-peroxide.png"
+  hash: "lotus-fibres-and-hydrogen-peroxide"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lotus_silk_economics.1.png"
+  hash: "lotus-silk-economics-1"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lotus_silk_economics.2.png"
+  hash: "lotus-silk-economics-2"
+  alt: "Lotus fiber research"
+  focal:
+    x: 0.5
+    "y": 0.5

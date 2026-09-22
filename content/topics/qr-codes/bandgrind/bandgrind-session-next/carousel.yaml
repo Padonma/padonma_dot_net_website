@@ -1,0 +1,12 @@
+- image: "00-band-width-guide.png"
+  hash: "00-band-width-guide"
+  alt: "Next bandgrind session"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "sunna-heddle-17-pattern-slots.jpg"
+  hash: "sunna-heddle-17-pattern-slots"
+  alt: "Next bandgrind session"
+  focal:
+    x: 0.5
+    "y": 0.5

@@ -78,6 +78,12 @@
       {{- $destinationHash := index $parts 1 -}}
       {{- $destination := site.GetPage $destinationPath -}}
       {{- if not $destination -}}
+        {{- $permalinkMatches := where site.Pages "RelPermalink" $destinationPath -}}
+        {{- if eq (len $permalinkMatches) 1 -}}
+          {{- $destination = index $permalinkMatches 0 -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if not $destination -}}
         {{- errorf "%s: carousel link %q points to a missing same-site page" $source $link -}}
       {{- else -}}
         {{- $destinationCarousel := $destination.Resources.GetMatch "carousel.yaml" -}}

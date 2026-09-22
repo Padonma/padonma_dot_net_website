@@ -1,0 +1,24 @@
+- image: "00-band-6.jpeg"
+  hash: "00-band-6"
+  alt: "Session #14"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "bandgrind_band_6_in_heddle.jpeg"
+  hash: "bandgrind-band-6-in-heddle"
+  alt: "Session #14"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "rmqr_01_image_01.jpg"
+  hash: "rmqr-01-image-01"
+  alt: "Session #14"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "take_2.jpg"
+  hash: "take-2"
+  alt: "Session #14"
+  focal:
+    x: 0.5
+    "y": 0.5

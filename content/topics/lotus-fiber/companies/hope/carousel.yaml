@@ -1,0 +1,30 @@
+- image: "reeler.png"
+  hash: "reeler"
+  alt: "The Hope"
+  focal:
+    x: 0.4
+    "y": 0
+- image: "boat.png"
+  hash: "boat"
+  alt: "The Hope"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hat.png"
+  hash: "hat"
+  alt: "The Hope"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "jacket.png"
+  hash: "jacket"
+  alt: "The Hope"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lotus-thread.png"
+  hash: "lotus-thread"
+  alt: "The Hope"
+  focal:
+    x: 0.5
+    "y": 0.5

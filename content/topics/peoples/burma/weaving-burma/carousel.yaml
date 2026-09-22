@@ -1,0 +1,18 @@
+- image: "nan_yite_backstrap_weaving.jpg"
+  hash: "nan-yite-backstrap-weaving"
+  alt: "Burmese Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "mandalay_weaver.png"
+  hash: "mandalay-weaver"
+  alt: "Burmese Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "weaver-in-red-jacket.jpg"
+  hash: "weaver-in-red-jacket"
+  alt: "Burmese Weaving"
+  focal:
+    x: 0.5
+    "y": 0.5

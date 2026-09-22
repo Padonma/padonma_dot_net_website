@@ -1,0 +1,6 @@
+- image: "uuid-v4-bits-random-vs-fixed.jpeg"
+  hash: "uuid-v4-bits-random-vs-fixed"
+  alt: "UUID"
+  focal:
+    x: 0.5
+    "y": 0.5

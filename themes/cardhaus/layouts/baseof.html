@@ -389,61 +389,6 @@
       });
     });
 
-    (function initTopicGallery() {
-      var mainEl = document.querySelector('.topic-gallery-main');
-      var thumbsEl = document.querySelector('.topic-gallery-thumbs');
-      var lightboxEl = document.getElementById('topic-lightbox');
-
-      if (!mainEl || !thumbsEl || !lightboxEl) return;
-
-      var many = mainEl.querySelectorAll(':scope > .swiper-wrapper > .swiper-slide').length > 1;
-      var thumbsSwiper = new Swiper(thumbsEl, {
-        slidesPerView: 'auto',
-        spaceBetween: 8,
-        freeMode: true,
-        watchSlidesProgress: true
-      });
-      var mainSwiper = new Swiper(mainEl, {
-        slidesPerView: 2.5,
-        centeredSlides: true,
-        spaceBetween: 0,
-        loop: many,
-        keyboard: { enabled: true, onlyInViewport: true },
-        navigation: many ? {
-          nextEl: mainEl.querySelector('.swiper-button-next'),
-          prevEl: mainEl.querySelector('.swiper-button-prev')
-        } : false,
-        thumbs: { swiper: thumbsSwiper }
-      });
-      var lightboxSwiperEl = lightboxEl.querySelector('.topic-lightbox-swiper');
-      var lightboxSwiper = new Swiper(lightboxSwiperEl, {
-        slidesPerView: 1,
-        loop: many,
-        keyboard: { enabled: true },
-        navigation: many ? {
-          nextEl: lightboxSwiperEl.querySelector('.swiper-button-next'),
-          prevEl: lightboxSwiperEl.querySelector('.swiper-button-prev')
-        } : false
-      });
-
-      mainSwiper.on('click', function () {
-        var clickedSlide = mainSwiper.clickedSlide;
-        var clickedIndex = clickedSlide && clickedSlide.getAttribute('data-swiper-slide-index');
-        if (clickedIndex === null || clickedIndex === undefined) return;
-        lightboxEl.classList.add('open');
-        lightboxSwiper.slideToLoop(Number(clickedIndex), 0);
-      });
-      lightboxEl.addEventListener('click', function (event) {
-        if (event.target === lightboxEl) lightboxEl.classList.remove('open');
-      });
-      document.getElementById('topic-lightbox-close').addEventListener('click', function () {
-        lightboxEl.classList.remove('open');
-      });
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') lightboxEl.classList.remove('open');
-      });
-    })();
-
     (function initOpeningSnap() {
       var root = document.documentElement;
       var homepage = root.classList.contains('homepage');

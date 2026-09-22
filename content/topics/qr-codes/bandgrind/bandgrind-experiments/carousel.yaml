@@ -1,0 +1,48 @@
+- image: "qr_bands.5_of_earlies.jpeg"
+  hash: "qr-bands-5-of-earlies"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "00-rmqr-encoding.png"
+  hash: "00-rmqr-encoding"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "01-woven-rmqr-band.jpg"
+  hash: "01-woven-rmqr-band"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "02-bandgrind-heddle.png"
+  hash: "02-bandgrind-heddle"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "handloom-qr-code.jpg"
+  hash: "handloom-qr-code"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "rmrq_r7_43_structure_unannotated.png"
+  hash: "rmrq-r7-43-structure-unannotated"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "spinning_for_bandweaving__weft_sizes.jpeg"
+  hash: "spinning-for-bandweaving--weft-sizes"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "uneven_beat_belt.jpg"
+  hash: "uneven-beat-belt"
+  alt: "rMQR experiments"
+  focal:
+    x: 0.5
+    "y": 0.5

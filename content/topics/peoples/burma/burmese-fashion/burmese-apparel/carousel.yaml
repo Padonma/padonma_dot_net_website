@@ -1,0 +1,18 @@
+- image: "hemp_tunic.png"
+  hash: "hemp-tunic"
+  alt: "Burmese attire"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "a-jacket-woven-from-lotus-fibres-at-a-workshop-on-inle-lake-in-myanmar.jpg"
+  hash: "a-jacket-woven-from-lotus-fibres-at-a-workshop-on-inle-lake-in-myanmar"
+  alt: "Burmese attire"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "women_in_line.jpeg"
+  hash: "women-in-line"
+  alt: "Burmese attire"
+  focal:
+    x: 0.5
+    "y": 0.5

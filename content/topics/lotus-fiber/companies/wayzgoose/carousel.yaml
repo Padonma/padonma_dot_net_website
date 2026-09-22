@@ -1,0 +1,24 @@
+- image: "backstrapping.webp"
+  hash: "backstrapping"
+  alt: "Wayzgoose"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "backstrapper.webp"
+  hash: "backstrapper"
+  alt: "Wayzgoose"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "waver-at-loom.webp"
+  hash: "waver-at-loom"
+  alt: "Wayzgoose"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "weavers-group-pic.webp"
+  hash: "weavers-group-pic"
+  alt: "Wayzgoose"
+  focal:
+    x: 0.5
+    "y": 0.5

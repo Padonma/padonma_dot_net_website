@@ -1,0 +1,42 @@
+- image: "veving.png"
+  hash: "veving"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "00-two-module-band.jpg"
+  hash: "00-two-module-band"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hedddle_pickup_13.jpeg"
+  hash: "hedddle-pickup-13"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "heddle_24_pattern_bands.jpg"
+  hash: "heddle-24-pattern-bands"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "rmqr_r7_43_structure.png"
+  hash: "rmqr-r7-43-structure"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "seizenn.png"
+  hash: "seizenn"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "two_row_module_band.jpg"
+  hash: "two-row-module-band"
+  alt: "Handweaving rMQR codes"
+  focal:
+    x: 0.5
+    "y": 0.5

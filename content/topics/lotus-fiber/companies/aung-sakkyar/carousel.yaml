@@ -1,0 +1,54 @@
+- image: "spinner.jpg"
+  hash: "spinner"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.25
+    "y": 0.5
+- image: "drying-racks.jpg"
+  hash: "drying-racks"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "drying-silk.jpg"
+  hash: "drying-silk"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "group-photo.jpg"
+  hash: "group-photo"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "loom.jpg"
+  hash: "loom"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lunch-break.webp"
+  hash: "lunch-break"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "robes.jpg"
+  hash: "robes"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "stacks-of-fabric.jpg"
+  hash: "stacks-of-fabric"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "whitened-fabric.jpg"
+  hash: "whitened-fabric"
+  alt: "Aung Sakkyar"
+  focal:
+    x: 0.5
+    "y": 0.5

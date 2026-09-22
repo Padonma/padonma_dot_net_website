@@ -1,0 +1,6 @@
+- image: "lotus-silk-production-timeline.png"
+  hash: "lotus-silk-production-timeline"
+  alt: "Labor costs"
+  focal:
+    x: 0
+    "y": 0

@@ -1,0 +1,24 @@
+- image: "00-handloom-qr.jpeg"
+  hash: "00-handloom-qr"
+  alt: "Handloomed QRs in India"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "QR-code-woven-in-Banarasi-sari.jpg"
+  hash: "QR-code-woven-in-Banarasi-sari"
+  alt: "Handloomed QRs in India"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "modi_looking_at_qr_codes.png"
+  hash: "modi-looking-at-qr-codes"
+  alt: "Handloomed QRs in India"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "qr-in-pashmina.jpg"
+  hash: "qr-in-pashmina"
+  alt: "Handloomed QRs in India"
+  focal:
+    x: 0.5
+    "y": 0.5

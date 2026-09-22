@@ -3,21 +3,21 @@
   hash: band-six-in-loom
 
 - image: /topics/qr-codes/bandgrind/bandgrind-experiments/qr_bands.5_of_earlies.jpeg
-  hash: early-qr-bands
-  link: /topics/qr-codes/bandgrind/bandgrind-experiments/
+  hash: qr-bands-5-of-earlies
+  link: /topics/qr-codes/bandgrind/bandgrind-experiments/#qr-bands-5-of-earlies
   alt: Five early woven QR-code bands
 
 - image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
-  hash: bandgrind-session-13
-  link: /topics/bandgrind-session-13/
+  hash: hero-13
+  link: /topics/bandgrind-session-13/#hero-13
   alt: "Weaving experiment session #13"
   focal:
     x: 0.5
     "y": 0.5
 
 - image: /topics/weaving/bandweaving/r7_wide_band.png
-  hash: wide-rmqr-band
-  link: /topics/weaving/bandweaving/
+  hash: r7-wide-band
+  link: /topics/weaving/bandweaving/#r7-wide-band
   alt: Wide woven band with an rMQR pattern
   focal:
     x: 0.5

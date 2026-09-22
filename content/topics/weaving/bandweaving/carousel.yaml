@@ -1,0 +1,78 @@
+- image: "r7_wide_band_kinda.png"
+  hash: "r7-wide-band-kinda"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "00-two-heddles.jpg"
+  hash: "00-two-heddles"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "band_13_pattern_example.png"
+  hash: "band-13-pattern-example"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "band_width_guide.png"
+  hash: "band-width-guide"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "basket_weave.png"
+  hash: "basket-weave"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "binary_weave.png"
+  hash: "binary-weave"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "example_black_and_white.png"
+  hash: "example-black-and-white"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "inkled_letters.jpg"
+  hash: "inkled-letters"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "pick_up_sticks.png"
+  hash: "pick-up-sticks"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "r7_wide_band.png"
+  hash: "r7-wide-band"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "spinner-s-journey-in-inkle-bands-3.jpg"
+  hash: "spinner-s-journey-in-inkle-bands-3"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "squares_8_by_8.jpg"
+  hash: "squares-8-by-8"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "veving.png"
+  hash: "veving"
+  alt: "Bandweaving"
+  focal:
+    x: 0.5
+    "y": 0.5

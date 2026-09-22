@@ -1,0 +1,6 @@
+- image: "my_duc_vietnam_.jpg"
+  hash: "my-duc-vietnam-"
+  alt: "Mỹ Đức"
+  focal:
+    x: 0.5
+    "y": 0.5

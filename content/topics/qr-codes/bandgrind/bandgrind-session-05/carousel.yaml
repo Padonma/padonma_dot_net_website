@@ -1,0 +1,6 @@
+- image: "00-session-05.jpg"
+  hash: "00-session-05"
+  alt: "Session #5"
+  focal:
+    x: 0.5
+    "y": 0.5

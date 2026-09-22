@@ -1,0 +1,30 @@
+- image: "tongbram-in-boat.jpg"
+  hash: "tongbram-in-boat"
+  alt: "Sanajing Sana Thambal"
+  focal:
+    x: 1
+    "y": 0
+- image: "Loktak_Lake_Boat_people_Moirang_Manipur_India.jpg"
+  hash: "Loktak-Lake-Boat-people-Moirang-Manipur-India"
+  alt: "Sanajing Sana Thambal"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "lake-loktak.png"
+  hash: "lake-loktak"
+  alt: "Sanajing Sana Thambal"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "scarves.jpg"
+  hash: "scarves"
+  alt: "Sanajing Sana Thambal"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "weavers.jpg"
+  hash: "weavers"
+  alt: "Sanajing Sana Thambal"
+  focal:
+    x: 0.5
+    "y": 0.5
