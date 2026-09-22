@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate image-preserving links between Hugo carousels."""
+"""Validate image-preserving links from Hugo carousels."""
 
 from __future__ import annotations
 
@@ -15,6 +15,9 @@ from urllib.parse import unquote, urlsplit
 
 class ValidationError(Exception):
     pass
+
+
+IMAGE_SUFFIXES = {".bmp", ".gif", ".jpg", ".jpeg", ".png", ".tif", ".tiff", ".webp"}
 
 
 def scalar(text: str) -> str:
@@ -45,16 +48,24 @@ def load_carousel(path: Path) -> list[dict[str, str]]:
     return entries
 
 
+def front_matter(index: Path) -> str:
+    parts = index.read_text(encoding="utf-8").split("---", 2)
+    return parts[1] if len(parts) == 3 else ""
+
+
+def page_url_from_index(index: Path, content: Path) -> str:
+    match = re.search(r"(?m)^url:\s*(.+?)\s*$", front_matter(index))
+    if match:
+        return normalize_url_path(scalar(match.group(1)))
+    relative = index.parent.relative_to(content).as_posix()
+    return "/" if relative == "." else f"/{relative}/"
+
+
 def page_url(carousel: Path, content: Path) -> str:
     for name in ("index.md", "_index.md"):
         index = carousel.parent / name
-        if not index.is_file():
-            continue
-        front_matter = index.read_text(encoding="utf-8").split("---", 2)
-        if len(front_matter) == 3:
-            match = re.search(r"(?m)^url:\s*(.+?)\s*$", front_matter[1])
-            if match:
-                return normalize_url_path(scalar(match.group(1)))
+        if index.is_file():
+            return page_url_from_index(index, content)
     relative = carousel.parent.relative_to(content).as_posix()
     return "/" if relative == "." else f"/{relative}/"
 
@@ -73,104 +84,178 @@ def image_identity(image: str, carousel: Path, content: Path) -> Path | None:
     return (carousel.parent / unquote(parts.path)).resolve()
 
 
+def hero_image_identity(index: Path) -> Path | None:
+    metadata = front_matter(index)
+    hero = re.search(r"(?ms)^hero:\s*(?:#.*)?\n(?P<body>(?:^[ \t]+.*(?:\n|$))*)", metadata)
+    if hero:
+        image = re.search(r"(?m)^\s{2,}image:\s*(.+?)\s*$", hero.group("body"))
+        if image:
+            candidate = (index.parent / scalar(image.group(1))).resolve()
+            if candidate.is_file() and candidate.suffix.lower() in IMAGE_SUFFIXES:
+                return candidate
+            return None
+    images = sorted(
+        path.resolve()
+        for path in index.parent.iterdir()
+        if path.is_file() and path.suffix.lower() in IMAGE_SUFFIXES
+    )
+    return images[0] if images else None
+
+
+class Page(NamedTuple):
+    index: Path
+    carousel: Path | None
+    slides: list[dict[str, str]]
+    hero_image: Path | None
+
+
 class Handoff(NamedTuple):
     source_url: str
     source_hash: str
     destination_url: str
-    destination_hash: str
+    destination_hash: str | None
     link: str
+    destination_kind: str
 
 
 def validate_content(root: Path) -> tuple[list[Handoff], list[str]]:
     content = root / "content"
-    carousels = sorted(content.rglob("carousel.yaml"))
-    by_url = {page_url(path, content): (path, load_carousel(path)) for path in carousels}
+    pages: dict[str, Page] = {}
+    for index in sorted(path for path in content.rglob("*.md") if path.name in {"index.md", "_index.md"}):
+        carousel = index.parent / "carousel.yaml"
+        pages[page_url_from_index(index, content)] = Page(
+            index,
+            carousel if carousel.is_file() else None,
+            load_carousel(carousel) if carousel.is_file() else [],
+            hero_image_identity(index),
+        )
     errors: list[str] = []
     handoffs: list[Handoff] = []
 
-    for source_url, (source_path, slides) in by_url.items():
-        for position, slide in enumerate(slides, 1):
+    for source_url, source in pages.items():
+        if source.carousel is None:
+            continue
+        for position, slide in enumerate(source.slides, 1):
             link = slide.get("link", "").strip()
             if not link.startswith("/") or link.startswith("//"):
                 continue
             parsed = urlsplit(link)
             destination_url = normalize_url_path(parsed.path)
-            destination = by_url.get(destination_url)
-            source_image = image_identity(slide.get("image", ""), source_path, content)
+            destination = pages.get(destination_url)
+            source_image = image_identity(slide.get("image", ""), source.carousel, content)
 
-            if parsed.fragment:
-                if destination is None:
-                    errors.append(f"{source_path}:{position}: {link!r} has no destination carousel")
+            if destination is None:
+                errors.append(f"{source.carousel}:{position}: {link!r} has no destination page")
+                continue
+
+            if destination.carousel is None:
+                if parsed.fragment:
+                    errors.append(
+                        f"{source.carousel}:{position}: carousel-to-hero link {link!r} must not include a fragment"
+                    )
                     continue
-            elif destination is None:
-                continue  # Ordinary navigation to a page without a carousel.
-            else:
-                destination_path, destination_slides = destination
-                shared = [item for item in destination_slides if image_identity(
-                    item.get("image", ""), destination_path, content) == source_image]
+                if destination.hero_image is None:
+                    errors.append(
+                        f"{source.carousel}:{position}: {link!r} points to a page with neither "
+                        "carousel.yaml nor a hero image"
+                    )
+                    continue
+                if source_image != destination.hero_image:
+                    errors.append(
+                        f"{source.carousel}:{position}: {link!r} does not use the destination hero image"
+                    )
+                    continue
+                handoffs.append(
+                    Handoff(source_url, slide["hash"], destination_url, None, link, "hero")
+                )
+                continue
+
+            if not parsed.fragment:
+                shared = [item for item in destination.slides if image_identity(
+                    item.get("image", ""), destination.carousel, content) == source_image]
                 if not shared:
                     continue  # Ordinary navigation, even though the page has a carousel.
-                errors.append(f"{source_path}:{position}: carousel handoff {link!r} needs a fragment")
+                errors.append(f"{source.carousel}:{position}: carousel handoff {link!r} needs a fragment")
                 if len(shared) == 1 and slide.get("hash") != shared[0].get("hash"):
                     errors.append(
-                        f"{source_path}:{position}: shared image hashes differ: "
+                        f"{source.carousel}:{position}: shared image hashes differ: "
                         f"{slide.get('hash')!r} != {shared[0].get('hash')!r}"
                     )
                 continue
 
-            destination_path, destination_slides = destination
-            matches = [item for item in destination_slides if item.get("hash") == parsed.fragment]
+            matches = [item for item in destination.slides if item.get("hash") == parsed.fragment]
             if len(matches) != 1:
                 errors.append(
-                    f"{source_path}:{position}: {link!r} matches {len(matches)} destination slides; expected 1"
+                    f"{source.carousel}:{position}: {link!r} matches {len(matches)} destination slides; expected 1"
                 )
                 continue
-            destination_image = image_identity(matches[0].get("image", ""), destination_path, content)
+            destination_image = image_identity(
+                matches[0].get("image", ""), destination.carousel, content
+            )
             if source_image != destination_image:
-                errors.append(f"{source_path}:{position}: {link!r} does not select the linked source image")
+                errors.append(
+                    f"{source.carousel}:{position}: {link!r} does not select the linked source image"
+                )
             if slide.get("hash") != parsed.fragment:
                 errors.append(
-                    f"{source_path}:{position}: source hash {slide.get('hash')!r} "
+                    f"{source.carousel}:{position}: source hash {slide.get('hash')!r} "
                     f"does not equal destination hash {parsed.fragment!r}"
                 )
             if source_image == destination_image and slide.get("hash") == parsed.fragment:
-                handoffs.append(Handoff(source_url, slide["hash"], destination_url, parsed.fragment, link))
+                handoffs.append(
+                    Handoff(source_url, slide["hash"], destination_url, parsed.fragment, link, "carousel")
+                )
 
     return handoffs, errors
 
 
-class CarouselHTMLParser(HTMLParser):
+class RenderedPage(NamedTuple):
+    slides: list[dict[str, str]]
+    detail_heroes: list[dict[str, str]]
+
+
+class PageHTMLParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.slides: list[dict[str, str]] = []
+        self.detail_heroes: list[dict[str, str]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {key: value or "" for key, value in attrs}
         classes = values.get("class", "").split()
         if tag in {"a", "button"} and "hero-carousel-slide" in classes:
             self.slides.append(values)
+        if tag == "img" and "hero-image--detail" in classes:
+            self.detail_heroes.append(values)
 
 
-def rendered_slides(rendered: Path, url: str) -> list[dict[str, str]]:
+def rendered_page(rendered: Path, url: str) -> RenderedPage:
     path = rendered / url.lstrip("/") / "index.html"
-    parser = CarouselHTMLParser()
+    parser = PageHTMLParser()
     try:
         parser.feed(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         raise ValidationError(f"rendered page is missing: {path}") from None
-    return parser.slides
+    return RenderedPage(parser.slides, parser.detail_heroes)
+
+
+def style_transition_name(attributes: dict[str, str]) -> str:
+    match = re.search(
+        r"(?:^|;)\s*view-transition-name\s*:\s*([^;]+)", attributes.get("style", "")
+    )
+    return match.group(1).strip() if match else ""
 
 
 def validate_rendered(rendered: Path, handoffs: list[Handoff]) -> list[str]:
     errors: list[str] = []
-    cache: dict[str, list[dict[str, str]]] = {}
+    cache: dict[str, RenderedPage] = {}
     for handoff in handoffs:
-        source = cache.setdefault(handoff.source_url, rendered_slides(rendered, handoff.source_url))
+        source = cache.setdefault(handoff.source_url, rendered_page(rendered, handoff.source_url))
         destination = cache.setdefault(
-            handoff.destination_url, rendered_slides(rendered, handoff.destination_url)
+            handoff.destination_url, rendered_page(rendered, handoff.destination_url)
         )
         anchors = [
-            slide for slide in source
+            slide for slide in source.slides
             if slide.get("data-hash") == handoff.source_hash and slide.get("href") == handoff.link
         ]
         if len(anchors) != 1:
@@ -178,12 +263,35 @@ def validate_rendered(rendered: Path, handoffs: list[Handoff]) -> list[str]:
                 f"rendered {handoff.source_url} does not contain one {handoff.source_hash!r} "
                 f"anchor with href {handoff.link!r}"
             )
-        matches = [slide for slide in destination if slide.get("data-hash") == handoff.destination_hash]
-        if len(matches) != 1:
+            continue
+        transition_name = anchors[0].get("data-view-transition-name", "")
+        if handoff.destination_kind == "carousel":
+            matches = [
+                slide for slide in destination.slides
+                if slide.get("data-hash") == handoff.destination_hash
+            ]
+            if len(matches) != 1:
+                errors.append(
+                    f"rendered {handoff.destination_url} contains {len(matches)} slides with "
+                    f"data-hash {handoff.destination_hash!r}; expected 1"
+                )
+            if transition_name != "carousel-handoff":
+                errors.append(
+                    f"rendered carousel handoff {handoff.link!r} uses transition name "
+                    f"{transition_name!r}; expected 'carousel-handoff'"
+                )
+        elif len(destination.detail_heroes) != 1:
             errors.append(
-                f"rendered {handoff.destination_url} contains {len(matches)} slides with "
-                f"data-hash {handoff.destination_hash!r}; expected 1"
+                f"rendered {handoff.destination_url} contains {len(destination.detail_heroes)} "
+                "detail hero images; expected 1"
             )
+        else:
+            destination_name = style_transition_name(destination.detail_heroes[0])
+            if not transition_name or transition_name != destination_name:
+                errors.append(
+                    f"rendered hero handoff {handoff.link!r} uses transition name "
+                    f"{transition_name!r}, but its destination hero uses {destination_name!r}"
+                )
     return errors
 
 

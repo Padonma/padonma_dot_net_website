@@ -17,7 +17,7 @@
               {{- if isset . "y" }}{{ $y = float .y }}{{ end -}}
             {{- end -}}
             {{- $wide := ge .ratio 1 -}}
-            {{- if .link -}}<a class="swiper-slide hero-carousel-slide{{ if $wide }} hero-carousel-slide--wide{{ end }}" href="{{ .link }}"{{ else }}<button type="button" class="swiper-slide hero-carousel-slide hero-carousel-lightbox-trigger{{ if $wide }} hero-carousel-slide--wide{{ end }}" data-full-src="{{ .fullSrc }}" data-full-alt="{{ .alt }}" aria-label="View full image: {{ .alt }}"{{ end }} style="--hero-aspect: {{ printf "%.6f" .ratio }}; --hero-focal-x: {{ mul $x 100 }}%; --hero-focal-y: {{ mul $y 100 }}%;" data-carousel-index="{{ $index }}" data-hash="{{ .hash }}">
+            {{- if .link -}}<a class="swiper-slide hero-carousel-slide{{ if $wide }} hero-carousel-slide--wide{{ end }}" href="{{ .link }}"{{ with .viewTransitionName }} data-view-transition-name="{{ . }}"{{ end }}{{ else }}<button type="button" class="swiper-slide hero-carousel-slide hero-carousel-lightbox-trigger{{ if $wide }} hero-carousel-slide--wide{{ end }}" data-full-src="{{ .fullSrc }}" data-full-alt="{{ .alt }}" aria-label="View full image: {{ .alt }}"{{ end }} style="--hero-aspect: {{ printf "%.6f" .ratio }}; --hero-focal-x: {{ mul $x 100 }}%; --hero-focal-y: {{ mul $y 100 }}%;" data-carousel-index="{{ $index }}" data-hash="{{ .hash }}">
               <img
                 src="{{ .src }}"
                 {{- with .srcset }}
@@ -50,4 +50,13 @@
     <button type="button" class="hero-carousel-lightbox-close" aria-label="Close full image">CLOSE ✕</button>
     <img class="hero-carousel-lightbox-image" alt="">
   </dialog>
+{{- else -}}
+  {{- with partial "hero-resource.html" $pageContext -}}
+    {{- partial "hero-image.html" (dict
+      "page" $pageContext
+      "variant" "detail"
+      "loading" "eager"
+      "sizes" "100vw"
+    ) -}}
+  {{- end -}}
 {{- end -}}

@@ -33,7 +33,9 @@ optional, ranges from 0 through 1, and defaults independently to `0.5`.
 `hero.alt` defaults to the page title. Quote `"y"` in YAML 1.1 front matter.
 
 When `hero.image` is absent, the first compatible bundle image may be used.
-A page without an image receives an intentional placeholder, not a broken image.
+A topic bundle without `carousel.yaml` renders that canonical image as its
+detail hero. A page without an image remains valid and receives an intentional
+placeholder where an image-bearing component such as a card is requested.
 Explicit image names that cannot be resolved should fail validation rather than
 quietly choose another image; this stricter behavior remains roadmap work.
 
@@ -85,12 +87,20 @@ images remain remote and may supply `width` and `height` to reserve their aspect
 ratio. Slide-specific `focal.x` and `focal."y"` coordinates independently
 default to `0.5`. Slides contain no visible title or caption.
 
-An optional `link` navigates normally. A same-site carousel URL with a fragment
-matching a destination hash focuses that slide and gives only the clicked and
-destination images a coordinated view transition. The source and destination
-carousel entries use the same `image` and `hash`; the source `link` names the
-destination carousel URL plus that shared hash. Slides without `link` open the
-complete image in a modal lightbox. Legacy `slug` input is a build error.
+An optional `link` navigates normally. Image-preserving same-site links support
+two handoff forms:
+
+- A carousel destination requires a fragment matching its destination slide
+  hash. The source and destination entries use the same image and hash, and the
+  clicked and selected images use the fixed `carousel-handoff` transition name.
+- A destination bundle without `carousel.yaml` requires a fragmentless URL and
+  a canonical hero that is the same local image as the source slide. The clicked
+  slide adopts the hero's normal stable transition name; the detail hero keeps
+  the same name it already shares with canonical cards.
+
+A same-site carousel link into a bundle with neither a carousel nor a canonical
+hero is a build error. Slides without `link` open the complete image in a modal
+lightbox. Legacy `slug` input is a build error.
 
 Carousel navigation uses complete clone sets before and after the originals so
 centered, variable-width layouts do not expose an empty track. Previous and next
@@ -114,9 +124,11 @@ no `carousel.yaml` remain valid.
 
 ## View Transitions
 
-Canonical cards and carousel handoff images receive stable, filename-safe
+Canonical cards and detail heroes receive stable, filename-safe
 `view-transition-name` values derived by
-`layouts/_partials/view-transition-name.html`. Cardhaus opts into cross-document
+`layouts/_partials/view-transition-name.html`. A carousel-to-hero source adopts
+that destination name when activated. Carousel-to-carousel handoffs retain the
+fixed `carousel-handoff` name on both sides. Cardhaus opts into cross-document
 transitions. The named image expands over 750ms while page roots fade.
 `prefers-reduced-motion: reduce` makes the named transition effectively
 instantaneous and disables root fades.

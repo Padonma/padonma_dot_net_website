@@ -4,8 +4,16 @@
 
 Implemented. Repository-wide content and rendered-output checks live in
 `scripts/validate-carousel-handoffs.py` and `tests/test_carousel_handoffs.py`.
-The renderer continues to emit `link` unchanged, so ordinary fragmentless links
-retain their existing navigation behavior.
+The renderer continues to emit `link` unchanged. Fragmentless links into a
+carousel that does not share the source image retain ordinary navigation
+behavior.
+
+The contract now also supports an image-preserving link into a bundle without
+`carousel.yaml`: the fragmentless destination must have a canonical hero that
+resolves to the source slide image. The clicked slide uses the hero's normal
+stable transition name, while carousel-to-carousel links retain their required
+slide fragment and fixed `carousel-handoff` name. A same-site destination with
+neither a carousel nor a hero fails the build.
 
 ## Problem
 

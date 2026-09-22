@@ -344,10 +344,9 @@
       carousel.addEventListener('click', function (event) {
         var link = event.target.closest('a.hero-carousel-slide[href]');
         if (!link) return;
-        var destination;
-        try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
-        if (destination.origin !== window.location.origin || !destination.hash) return;
-        link.querySelector('.hero-carousel-image').style.viewTransitionName = 'carousel-handoff';
+        var transitionName = link.getAttribute('data-view-transition-name');
+        var image = link.querySelector('.hero-carousel-image');
+        if (transitionName && image) image.style.viewTransitionName = transitionName;
       });
 
       var lightbox = carousel.nextElementSibling;

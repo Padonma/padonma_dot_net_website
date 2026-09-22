@@ -26,6 +26,7 @@
     {{- $fallback := . -}}
     {{- if $medium }}{{ $fallback = $medium }}{{ else if $small }}{{ $fallback = $small }}{{ end -}}
     <img
+      class="hero-image hero-image--{{ $variant }}"
       src="{{ $fallback.RelPermalink }}"
       {{- if $small }}
       srcset="{{ $small.RelPermalink }} 640w{{ with $medium }}, {{ .RelPermalink }} 960w{{ end }}{{ with $large }}, {{ .RelPermalink }} 1440w{{ end }}"

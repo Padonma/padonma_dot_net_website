@@ -42,8 +42,11 @@ existing file; resolve reported filenames, focal metadata, or hash collisions
 instead of editing identifiers automatically.
 
 When one carousel links to the same image in another carousel, give both slides
-the same `hash` and include it explicitly in the destination URL fragment. Check
-all such handoffs, and optionally a rendered Hugo output directory, with:
+the same `hash` and include it explicitly in the destination URL fragment. A
+carousel may instead link to a bundle without `carousel.yaml` when its source
+image is that bundle's canonical hero; use the fragmentless page URL. A linked
+bundle with neither a carousel nor a hero is invalid. Check all such handoffs,
+and optionally a rendered Hugo output directory, with:
 
 ```sh
 python3 scripts/validate-carousel-handoffs.py

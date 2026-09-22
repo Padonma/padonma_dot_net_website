@@ -228,11 +228,11 @@ Run the program without a directory from inside a copied bundle. Use
 existing carousel, excludes AVIF, emits no links, and gives every generated
 slide a lightbox action. See `--help` for all modes.
 
-`link` is optional. An ordinary link navigates normally. A same-site link to a
-carousel page whose fragment matches one of that carousel's hashes focuses the
-matching slide and coordinates the clicked and destination images with a view
-transition. A slide without `link` opens its complete, uncropped image in an
-accessible lightbox. Legacy `slug` input is rejected with a build error.
+`link` is optional. An ordinary external link, or a fragmentless link into a
+carousel that does not share the source image, navigates normally. A same-site
+image-preserving link supports either a carousel or canonical-hero destination.
+A slide without `link` opens its complete, uncropped image in an accessible
+lightbox. Legacy `slug` input is rejected with a build error.
 
 To link one carousel to the same image in another carousel, give both entries
 the identical `image` and `hash`. On the source entry, set `link` to the
@@ -256,6 +256,23 @@ The destination entry's `link` remains its ordinary activation destination;
 it does not point back to the source carousel. Loading the destination URL with
 the fragment focuses the matching slide and stops autoplay so it remains
 selected.
+
+To hand off to a topic bundle without `carousel.yaml`, use that bundle's
+canonical hero as the source slide image and link to the fragmentless page URL:
+
+```yaml
+- image: /knowledge/weaving/session-13/hero.png
+  hash: weaving-session-13
+  link: /knowledge/weaving/session-13/
+  alt: Weaving experiment session 13
+```
+
+The destination resolves its hero through the normal `hero.image`/implicit-image
+contract and renders it as the detail hero. The source slide adopts the hero's
+stable transition name when clicked. A fragment is reserved for selecting a
+destination carousel slide, so carousel-to-hero links must not include one.
+The build rejects a same-site carousel link when the destination has neither
+`carousel.yaml` nor a valid hero, or when the source slide is not that hero.
 
 The focused carousel slide is capped at `70vw` by default, leaving about
 `15vw` of each neighboring slide visible for capped landscape images. At the
