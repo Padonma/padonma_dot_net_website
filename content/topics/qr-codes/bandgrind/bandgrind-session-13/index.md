@@ -3,7 +3,6 @@ title: "Session #13"
 summary: "The first full QR completed unfortutely proved unscannable"
 weight: 142
 sequence: 13
-url: /topics/bandgrind-session-13/
 ---
 
 This was actually three mini-sessions that spanned two days, ending on [2023-12-26 Tue].

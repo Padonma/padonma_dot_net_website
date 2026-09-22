@@ -3,7 +3,6 @@ title: "Session #5"
 summary: "A second attempt at a QR big finder"
 weight: 150
 sequence: 5
-url: /topics/bandgrind-session-05/
 ---
 
 Session \#5 was a second attempt at the finder pattern, the black start square. Last time

@@ -3,7 +3,6 @@ title: "Session #8"
 summary: "Time came to adopt weft faced techniques"
 weight: 147
 sequence: 8
-url: /topics/bandgrind-session-08/
 ---
 
 By Session #8, the basics of what theads to work with had been solved

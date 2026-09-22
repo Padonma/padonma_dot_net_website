@@ -3,7 +3,6 @@ title: "Session #1"
 summary: "Band One starts: first thing we tried was wool, which was way too stretchy"
 weight: 154
 sequence: 1
-url: /topics/bandgrind-session-01/
 ---
 
 Randomly we acquired some black and white wool and started learning how to backstrap weave bands.

@@ -3,7 +3,6 @@ title: "Session #7"
 summary: "We had figured out the weft needed to be thicker so we tried 1 mm"
 weight: 148
 sequence: 7
-url: /topics/bandgrind-session-07/
 ---
 
 Session #6 was using multiple size 10 threads to make a thick weft.

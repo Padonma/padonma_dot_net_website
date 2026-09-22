@@ -3,7 +3,6 @@ title: "Session #11"
 summary: "Band Five starts on a new higher capacity heddle"
 weight: 144
 sequence: 11
-url: /topics/bandgrind-session-11/
 ---
 
 Session #11 is when work started on Band #5.
