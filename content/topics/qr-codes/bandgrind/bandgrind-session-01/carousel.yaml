@@ -4,9 +4,3 @@
   focal:
     x: 0.5
     "y": 0.5
-- image: "box.jpg"
-  hash: "box"
-  alt: "Session #1"
-  focal:
-    x: 0.5
-    "y": 0.5
