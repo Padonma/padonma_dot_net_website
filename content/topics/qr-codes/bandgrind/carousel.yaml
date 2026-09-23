@@ -9,7 +9,7 @@
 
 - image: /topics/qr-codes/bandgrind/bandgrind-session-13/hero-13.png
   hash: hero-13
-  link: /topics/qr-codes/bandgrind/bandgrind-session-13/#hero-13
+  link: /topics/qr-codes/bandgrind/bandgrind-session-13/
   alt: "Weaving experiment session #13"
   focal:
     x: 0.5

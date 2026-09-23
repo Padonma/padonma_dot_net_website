@@ -1,10 +1,7 @@
 ---
 title: rMQR experiments
 summary: We needed to prove that handwoven rMQRs codes would actually be scannable
-aliases:
-  - /bandgrinding.html
-  - /banggrinding.html
-weight: 140
+weight: 5
 hero:
   image: "qr_bands.5_of_earlies.jpeg"
 ---

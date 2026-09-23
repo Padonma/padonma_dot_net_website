@@ -1,6 +1,6 @@
 ---
 title: "Session #10"
-summary: "Gear has been getting sorted out so time to improve technique"
+summary: "New bigger heddle, Band #5 starts."
 weight: 145
 sequence: 10
 ---
@@ -12,12 +12,7 @@ Obviously, my inexperience with ever the most basic weaving techniques
 has been hampering results but I am getting better; the problems have
 been not just hardware, but software as well :)
 
-<figure height="300px" data-align="center">
-<img src="00-session-10.jpg" />
-<figcaption>Band #4</figcaption>
-</figure>
-
-- Woven [2023-12-22 Fri]
+- Woven Friday, 2023-12-22 Fri
 - A continuation of Band #4, started in Session #9 on Heddle #1 (33 dents)
 - Plastic warps clamp **added**, making tensions individually adjustable
   - Much more even tension on warps than Session #9

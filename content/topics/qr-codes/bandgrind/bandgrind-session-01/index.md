@@ -5,11 +5,10 @@ weight: 154
 sequence: 1
 ---
 
-Randomly we acquired some black and white wool and started learning how to backstrap weave bands.
+We needed to prove that rMQR bands could be handwoven.  We did not
+know anything about weaving, so we started with a simple, low dent
+count ridig heddle. We acquired some black and white wool and started
+learning how to backstrap weave bands.
 
-[\$9 on Amazon](https://www.amazon.com/dp/B0B6M7Z82H?psc=1&ref=ppx_yo2ov_dt_b_product_details)
+[$9 rigid heddle on Amazon](https://www.amazon.com/dp/B0B6M7Z82H?psc=1&ref=ppx_yo2ov_dt_b_product_details)
 
-<figure height="300px" data-align="center">
-<img src="00-session-01.jpg" />
-<figcaption>Bandgrind Session #1</figcaption>
-</figure>

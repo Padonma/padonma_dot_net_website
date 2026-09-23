@@ -1,7 +1,7 @@
 ---
-draft: true
-title: Next bandgrind session
-weight: 155
+title: Future bandgrinding
+summary: We have proved that rMQRs can be handwoven. Next better, faster, easier.
+weight: 10
 ---
 
 ## Tooling: band width guide

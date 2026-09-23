@@ -12,7 +12,3 @@ weaving technique for pattern weaving. That warping pattern naturally
 exposes parts of the weft, which in the end is simply a design
 deadend, which ended right here:
 
-<figure height="300px" data-align="center">
-<img src="00-session-08.jpg" />
-<figcaption>Bandgrind Session #8</figcaption>
-</figure>

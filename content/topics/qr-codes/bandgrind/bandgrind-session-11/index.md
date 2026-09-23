@@ -8,11 +8,6 @@ sequence: 11
 Session #11 is when work started on Band #5.
 Session #11 is also the first time weaving with Heddle #2.
 
-<figure height="400px" data-align="center">
-<img src="00-session-11.jpg" />
-<figcaption>Band #5 on Heddle #2, end of Session #11</figcaption>
-</figure>
-
 ## Ladder infra-structured bands
 
 There is an interesting coincidence between the physical structure of

@@ -5,7 +5,7 @@ weight: 146
 sequence: 9
 ---
 
-Woven [2023-12-10 Sun]
+Woven Sunday, 2023-12-10 Sun.
 
 Session #9 was the first time for the second warping pattern.
 Previous was using the (double black, white, white, repeat) warping
@@ -32,10 +32,5 @@ heddle (17 holes, 16 slots) was not wide enough to render a band 7 QR
 modules wide. That is why the "QR code" of Session #9 is only 5
 modules wide. This smaller square is known as the "finder sub pattern"
 which ends an rMQR:
-
-<figure height="300px" data-align="center">
-<img src="00-session-09.jpg" />
-<figcaption>Bandgrind Session #9</figcaption>
-</figure>
 
 There are a few errors in the above weave :(

@@ -16,11 +16,7 @@ to 1mm thick natural color hemp from [Hemptique](https://hemptique.com/).
 
 <br/>
 
-(The hemp aspect is just an experiment. Would be nice to have an
-all cotton solution. Hemp would be more difficult to source in remote
-parts of the world.)
-
-<figure height="300px" data-align="center">
-<img src="00-session-07.jpg" />
-<figcaption>Bandgrind Session #7</figcaption>
-</figure>
+The hemp aspect is just an experiment; we needed thicker thread and
+1mm hemp was simply what was on hand. That was good enough for
+experimenting.  The real solution needs to used cotton or lotus. Hemp
+would be more difficult to source in remote parts of the world.)
