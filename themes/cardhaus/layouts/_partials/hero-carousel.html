@@ -51,6 +51,13 @@
     <img class="hero-carousel-lightbox-image" alt="">
   </dialog>
 {{- else -}}
+  {{- $heroImage := "" -}}
+  {{- with $pageContext.Params.hero -}}
+    {{- with .image }}{{ $heroImage = . }}{{ end -}}
+  {{- end -}}
+  {{- if not $heroImage -}}
+    {{- errorf "Cardhaus page %s must define either carousel.yaml or hero.image" $pageContext.File.Path -}}
+  {{- end -}}
   {{- with partial "hero-resource.html" $pageContext -}}
     {{- partial "hero-image.html" (dict
       "page" $pageContext
