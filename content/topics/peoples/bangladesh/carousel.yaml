@@ -1,0 +1,18 @@
+- image: "achhia-begum-scarf.avif"
+  hash: "acchia-begum"
+  alt: "Acchia Begum"
+  focal:
+    x: 0.5
+    "y": 0.25
+- image: "katuni.avif"
+  hash: "katuni"
+  alt: "Katuni spinning"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "pit-weaver.avif"
+  hash: "pit-weaver"
+  alt: "Pit weaver"
+  focal:
+    x: 0.5
+    "y": 0.0
