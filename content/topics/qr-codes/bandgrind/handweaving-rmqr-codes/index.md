@@ -6,7 +6,15 @@ hero:
   image: 00-two-module-band.jpg
 ---
 
-## QR pattern complexity is negligable for a skilled weaver
+# Inbox
+
+Various notes that need to be folded in ...
+
+## Weaving QR Codes is very doable
+
+QR pattern complexity is negligable for a skilled weaver and even
+non-weavers can pick it up. Padonma Network has proven it, the
+hard way for a self-educated noob.
 
 The the skill to weave the complexity of many a weaving pattern is far
 beyond what is required to weave a QR code, although granted the
@@ -16,9 +24,15 @@ it is easier to eye-jump between QR pattern design and loom when
 the Code is narrow as with R7, R9, and some folks like R11 because
 greater height makes for shorter weave length.
 
-## Pre chunked
+## Images
 
 [![](00-two-module-band.jpg)](https://norwegiantextileletter.com/article-categories/band-weaving/)
+
+
+QR-like weaving example from backstrapweaving.com:
+[![](embedded-double-weave.jpg)](https://backstrapweaving.com/2011/08/05/backstrap-weaving-preparing-to-weave-along/)
+
+## Intro
 
 **We need to test this idea and actually weave some rMQR codes; see
 what can actually be scanned.** For a primer on backstrap rigid heddle

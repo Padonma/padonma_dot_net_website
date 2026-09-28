@@ -3,6 +3,8 @@ title: "Session #4"
 summary: "Semi-square but misaligned pixels start getting assembled into QR structural components"
 weight: 151
 sequence: 4
+hero:
+  image: 00-session-04.jpg
 ---
 
 By the end of Session #3, "square enough" QR modules were happening.

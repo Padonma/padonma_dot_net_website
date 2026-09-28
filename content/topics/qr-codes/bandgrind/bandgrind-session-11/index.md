@@ -3,6 +3,8 @@ title: "Session #11"
 summary: "Band Five starts on a new higher capacity heddle"
 weight: 144
 sequence: 11
+hero:
+  image: 00-session-11.jpg
 ---
 
 Session #11 is when work started on Band #5.
