@@ -8,6 +8,9 @@ hero:
     "y": 0
 ---
 
+At age 27 in 2019 Bijiyashanti Tongbram single handedly introduced lotus fiber technology to India
+after hearing of Burmese lotus thread from her uncle while she was exploring lotus flower farming.
+
 - Location: Thanga, near Moirang, in Bishnupur district, NE India. ~60km from border of Burma
 - Company Instagram: [sanajingsanathambal](https://www.instagram.com/sanajingsanathambal/)
 - Her Instagram: [bijiyashanti_tongbram](https://www.instagram.com/bijiyashanti_tongbram/)
@@ -53,3 +56,4 @@ hero:
 
 - [Wide backstrap looming of lotus](https://youtu.be/0Ln_XwEbCPQ?t=138)
 - [Circles in Loktak Lake, Indian](https://en.wikipedia.org/wiki/Loktak_Lake#/media/File:Loktak_Lake_Boat_people_Moirang_Manipur_India.jpg)
+- [Weaving outdoors, scarf](https://www.dotin.com.au/article/the-lotus-silk-route)

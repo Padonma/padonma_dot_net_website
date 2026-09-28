@@ -4,21 +4,15 @@
   focal:
     x: 0.5
     "y": 0.5
-- image: "samatoa_textilers.png"
-  hash: "samatoa-uniforms"
-  alt: "Samatoa folks watching a video"
 - image: "samatoa-tailor-696x1131.jpg"
   hash: "samatoa-tailor-696x1131"
   alt: "Samatoa"
   focal:
     x: 0.5
     "y": 0.5
-- image: "samatoa_combomark.png"
-  hash: "samatoa-combomark"
-  alt: "Samatoa"
-  focal:
-    x: 0.5
-    "y": 0.5
+- image: "samatoa_textilers.png"
+  hash: "samatoa-uniforms"
+  alt: "Samatoa folks watching a video"
 - image: "shop-lotus-silk-alt.webp"
   hash: "shop-lotus-silk-alt"
   alt: "Samatoa"

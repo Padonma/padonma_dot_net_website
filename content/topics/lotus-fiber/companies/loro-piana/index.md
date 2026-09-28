@@ -43,6 +43,8 @@ They describe three materials as their excellences:
 
 ## Example apparel
 
+Note that Loro Piana likes to call the color, Wheat Land.
+
 <style>
 .post-body img.examples { height: 33vh; width: auto; display: block; margin-left: 0;}
 </style>
@@ -56,6 +58,15 @@ They describe three materials as their excellences:
 
 - $5,600 [WSJ, 2010](https://www.wsj.com/articles/SB10001424052748703506904575592441000440092)
 - Composition: 100% lotus fiber?
+
+### Lotus Shirt
+
+[Sustainable textiles from lotus](http://researchgate.net/publication/340279701_Sustainable_textiles_from_lotus) (2019)/
+
+> Loro Piana, an Italian luxury brand that designed and showcased a
+> 100% lotus fiber garment in the Parisian fair. Their lotus shirt is
+> priced at Euros 4000.
+
 
 ### Women's Lotus Jacket
 

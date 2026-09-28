@@ -4,14 +4,14 @@
   focal:
     x: 0.4
     "y": 0
-- image: "boat.png"
-  hash: "boat"
+- image: "hat.png"
+  hash: "hat"
   alt: "The Hope"
   focal:
     x: 0.5
     "y": 0.5
-- image: "hat.png"
-  hash: "hat"
+- image: "boat.png"
+  hash: "boat"
   alt: "The Hope"
   focal:
     x: 0.5

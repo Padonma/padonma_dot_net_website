@@ -23,7 +23,7 @@ somewhere between roughly 60% and 90% of the labor cost.
     - Author: Win Win Soe, University of Mandalay
     - DOI: <https://doi.org/10.33423/ijba.v8i2.1403>
 4.  [Techniques of Weaving Silk from Self-Woven Silkworms and Lotus Thread of Artisan Phan Thi Thuan in Phung Xa Craft Village, My Duc district, Ha Noi, Vietnam](vietnamese_lotus_thread_techniques.pdf) (PDF)
-
+5.  [Sustainable textiles from lotus](https://researchgate.net/publication/340279701_Sustainable_textiles_from_lotus), 2019
 
 ## Microfiber
 

@@ -1,0 +1,31 @@
+- image: "hanks-hanging.jpg"
+  hash: "hanks-hanging"
+  alt: "Hanks of lotus thread unwhitened natural color"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "samatoa_fabric_1.png"
+  hash: "samatoa-fabric"
+  alt: "Sample of Samatoa's fabric"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "whitened-fabric.jpg"
+  hash: whitened-fabric
+  link: /topics/lotus-fiber/companies/aung-sakkyar/#whitened-fabric
+  alt: "Aung Sakkyar's whitened lotus fabric"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "hanks-dyed.avif"
+  hash: "hanks-dyed"
+  alt: "Hanks of lotus thread dyed various colors"
+  focal:
+    x: 0.5
+    "y": 0.5
+- image: "samatoa_fabric_2.jpg"
+  hash: "samatoa-fabric"
+  alt: "Sample of Samatoa's fabric"
+  focal:
+    x: 0.5
+    "y": 0.5
