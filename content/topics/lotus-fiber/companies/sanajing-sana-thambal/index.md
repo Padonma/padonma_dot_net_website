@@ -13,7 +13,12 @@ after hearing of Burmese lotus thread from her uncle while she was exploring lot
 
 - Location: Thanga, near Moirang, in Bishnupur district, NE India. ~60km from border of Burma
 - Company Instagram: [sanajingsanathambal](https://www.instagram.com/sanajingsanathambal/)
+  - This is supposedly one of the best ways to stay up to date with them, and **make contact**
+
 - Her Instagram: [bijiyashanti_tongbram](https://www.instagram.com/bijiyashanti_tongbram/)
+- Dead website: https://sanajingsanathambal.com/
+For order Dm :7630873621
+
 
 ### Short blurb, 4 minutes
 
@@ -30,7 +35,7 @@ after hearing of Burmese lotus thread from her uncle while she was exploring lot
 
 ### Indian segment
 
-**5 minutes, main language is English
+5 minutes, main language is English
 
 {{< youtube ah7v7ihmcFo >}}
 
@@ -57,3 +62,4 @@ after hearing of Burmese lotus thread from her uncle while she was exploring lot
 - [Wide backstrap looming of lotus](https://youtu.be/0Ln_XwEbCPQ?t=138)
 - [Circles in Loktak Lake, Indian](https://en.wikipedia.org/wiki/Loktak_Lake#/media/File:Loktak_Lake_Boat_people_Moirang_Manipur_India.jpg)
 - [Weaving outdoors, scarf](https://www.dotin.com.au/article/the-lotus-silk-route)
+- [Scarf on lotus plant](https://www.dotin.com.au/article/the-lotus-silk-route)

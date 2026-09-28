@@ -34,3 +34,10 @@
   focal:
     x: 0.5
     "y": 0.5
+- image: "scarf-on-plant.webp"
+  hash: "scarf-on-plant"
+  alt: "Scarf on plant"
+  focal:
+    x: 0.5
+    "y": 0.5
+    

@@ -17,7 +17,7 @@ refers to three interlinked aspects of lotus fiber: textile, technology, and fas
 {{< topic-card
   ref="/topics/padonma-network"
   title="Padonma Network"
-  description="A network of lotus fiber businesses, which produces free software to enable a global supply chain of confederated artisans"
+  description="A global supply chain of confederated lotus artisans, constructed upon Padonma's open source software"
 >}}
 
 
