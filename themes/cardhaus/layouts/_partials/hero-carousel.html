@@ -3,6 +3,9 @@
 {{- $slides := slice -}}
 {{- with $pageContext.Resources.GetMatch "carousel.yaml" -}}
   {{- $slides = . | transform.Unmarshal -}}
+  {{- if lt (len $slides) 3 -}}
+    {{- warnf "Cardhaus carousel for %s lists only %d slide(s); carousels should list at least 3" $pageContext.Path (len $slides) -}}
+  {{- end -}}
 {{- end -}}
 {{- if $slides -}}
   <div class="swiper hero-carousel" aria-label="Featured images">

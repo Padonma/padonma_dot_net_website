@@ -2,8 +2,7 @@
 {{- $focal := .focal -}}
 {{- $result := $image -}}
 
-{{- $processableTypes := slice "avif" "bmp" "jpeg" "png" "tiff" "webp" -}}
-{{- if and $image (in $processableTypes $image.MediaType.SubType) -}}
+{{- if and $image (reflect.IsImageResourceProcessable $image) -}}
   {{- $sourceWidth := $image.Width -}}
   {{- $sourceHeight := $image.Height -}}
   {{- $cropWidth := $sourceWidth -}}
