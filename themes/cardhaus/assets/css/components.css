@@ -938,6 +938,13 @@
   scroll-margin-top: var(--header-height);
 }
 
+/* Match the homepage content inset while keeping the section carousel full-bleed. */
+.topic-section-page .topics-grid {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
 .hero-carousel {
   /* Shared focused-slide cap; narrower aspect-ratio-derived slides stay narrower. */
   --hero-slide-max-width: 70vw;
