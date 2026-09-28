@@ -51,6 +51,24 @@
     background: var(--inverse-primary);
 }
 
+/* Homepage groups live inside the centred content wrapper. Extend the group's
+   background to the viewport edges without moving its content out of the grid. */
+.homepage .topic-card-grid--home.card-grid-dark {
+  position: relative;
+  isolation: isolate;
+}
+
+.homepage .topic-card-grid--home.card-grid-dark::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--inverse-primary);
+}
+
 .card-title {
     font-family: var(--font-topic-card-grid-heading);
     color: var(--primary);

@@ -28,10 +28,10 @@
   alt: Cambodian woman extracting lotus fiber
   focal:
     x: 0.5
-    "y": 0.0
+    "y": 1.0
 
-- image: /topics/qr-codes/bandgrind/six-bands.png
-  hash: six-bands
+- image: /topics/qr-codes/bandgrind/six-bands-on-black.jpg
+  hash: six-bands-on-black
   link: /topics/qr-codes/bandgrind/
   alt: Six woven bands experimenting with rMQRs
   focal:
@@ -66,6 +66,14 @@
   hash: short-dress-close-up
   link: /topics/lotus-fiber/companies/samatoa/#short-dress-close-up
   alt: A short dress by Samatoa
+  focal:
+    x: 0.5
+    "y": 0.0
+
+- image: /topics/peoples/bangladesh/achhia-begum-scarf.avif
+  hash: acchia-begum
+  link: /topics/peoples/bangladesh/#acchia-begum
+  alt: Acchia Begum, Master Weaver of Bangladesh
   focal:
     x: 0.5
     "y": 0.0

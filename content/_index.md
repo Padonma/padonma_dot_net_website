@@ -3,14 +3,43 @@ title: "Padonma"
 ---
 
 
-Padonma is the Burmese word for lotus. This project goes by that name
-as a nod to the culture which invented lotus fiber textiles.
+{{< topic-card-grid heading="Padonma" >}}
 
-In this project "Padonma" refers to three things:
+Padonma is the Burmese word for lotus. In this project "Padonma"
+refers to three interlinked aspects of lotus fiber: textile, technology, and fashion.
 
-1. **Padonma, the fiber:** the physical textile and its producers in Southeast Asia -- its history, technology, and the economics thereof
-2. **Padonma, the network:** open-source digital technology based on handwoven QR ID tags facilitating a global lotus fiber marketplace
-3. **Padonma, the atelier:** a fashion brand showcasing Burmese lotus fashion distributed over the network
+{{< topic-card
+  ref="/topics/lotus-fiber/companies/sanajing-sana-thambal"
+  title="Padonma Thread"
+  description="Textiles produced from lotus fiber in Southeast Asia -- the history, the business, and the peoples"
+>}}
+
+{{< topic-card
+  ref="/topics/padonma-network"
+  title="Padonma Network"
+  description="A network of lotus fiber businesses, which produces free software to enable a global supply chain of confederated artisans"
+>}}
+
+
+{{< topic-card
+  ref="/topics/atelier-padonma"
+  title="Atelier Padonma"
+  description="A fashion brand featuring Burmese inspired apparel made of lotus fiber, transacting over the Padonma Network"
+>}}
+
+
+{{< /topic-card-grid >}}
+
+
+**Padonma, the fiber**
+The physical textile and its producers in Southeast Asia -- its history, technology, and the economics thereof
+
+
+**Padonma, the network**
+Open-source digital technology working with handwoven QR ID tags facilitating a global lotus fiber marketplace
+
+**Padonma, the atelier**
+A fashion brand showcasing Burmese lotus fashion, serving to demo the network and represent it in the fashion world
 
 {{< topic-card-grid heading="Padonma Fiber" >}}
 
@@ -40,49 +69,54 @@ The most general Padonma the fiber, it's history and cultural context, productio
 
 {{< topic-card-grid heading="Padonma Network" class="card-grid-dark" >}}
 
-The main takeaway of this project is the Padonma Network. Free
-OSS. Free as in speech and in beer. OSS that runs on free tier web
-services, architected to avoid any centralizing beaurocracy.
+The main takeaway of this project is the Padonma Network which is a
+global marketplace of lotus fiber, architectured to minimize the power
+of intermediaries and implemented as free open source software that
+runs on free Web services like Google Search and GitHub pages.
 
+## The goal
 
+The goal here is to engineer a start-up style situation to bootstrap a
+global supply chain but without building for an outcome like eBay
+which will devolve via enshitification based on the initial incentive
+structure. In other words, this is not about the money (well, not for
+the founders, as would normally be the case for a start-up).
 
-There is immensense power in unique QR codes. A single QR code that
-IDs, say, 10,000 of the same t-shirt is a lot different that a single
-QR code for a single garment. In the former case an owner gives the
-tags to anonymous workers. In the latter, the artisan makes themselves
-a tag to digitally represent the value added product they manufactured
-and own. The Padonma Network inverts the power dynamics around the
-digital ID technology for the textile industry.
+## The UX experience
 
-Further, the data in the Network's QRs are simply UUIDs, which can be
-created without any centralizing authority as is the case with, sat,
-GS1 barcodes for grocery store products.  In extreme cases, simply
-flipping a coin 128 times is a way to generate a new random UUID. The
-Padonma Networks is all about "lateral thinking with weathered
-technologies" and architecting simple scalable solutions. Simpliest,
-cheapest weaving tech and simpliest cheapest web tech happily married.
+An artisan simply generates a new UUID for each handwoven garment and
+uses it twice:
+- Once as text in a webpage that Google indexes
+- Again as bits in a QR Code handwoven into a garment
 
-UUIDs in one-off QR codes that can be handwoven empower an individual
-artisan with all the power needed to represent their goods within the
-global digital marketplace. Just put the QR code's UUID on any free
-website (free tier on AWS, Google, CloudFlare, GitHub, etc.) and when
-the QR is later scanned by a cell phone camera a Google search will
-connect the scanner dirrectly back to the artisan, no intermediaries
-wetting their beaks along the social connection.
+Later when the QR Code on the garment is scanned it leads to that
+webpage with the same UUID, which will be the artisans website.
 
-places the identifying
-of an object fully within controls of the artisan.
+## The technical core
 
-The Padonma Network is the sort of inventory system that would have
-made Luddites in the English cottage industry into enthusiastic early
-adoptors, because this technology enables the solo artisan to be on
-the same playing field as the other capitalists. Technology evolved
-back to decentralized means of production and distribution.
+From a technology perspective, the Padonma Network boils down to doing
+UUID look-up via Google Search, where the UUID to look-up is unique to
+an individual handwoven garment into which that UUID has been woven,
+encoded in a QR Code.
 
-Specific to the handlooming sector is the need to authenticate an item
-as hand-loomed versus machine-woven, something the unique ID QR bands can enable
-as demonstrated by India and its QR-based handloom authentication
-system.
+The core of the Padonma Network is intentionally very simple. It is
+designed to enable solo entrepreneurs to fully self-represent in a
+global marketplace at zero cost and without loss of control to
+unnecessary intermediaries. It has been architected for decentralized
+control.
+
+## The business implications
+
+From a business perspective, the Padonma Network is very much like
+a traditional textile industry Collective Mark Organization (CMO) such
+as Woolmark or the Silk Mark Organization, serving as brand and
+enabling digital coordination. The Padonma Network does self-identify
+as a CMO, for the modern digital world.
+
+Technically the core of the Padonma Network is simple to
+understand and easy to participate within, but architecting a
+marketplace this way has all manner of interesting implications for
+the power dynamics of the textile industry.
 
 {{< topic-card ref="/topics/padonma-network" >}}
 {{< topic-card ref="/topics/qr-codes/bandgrind" >}}
@@ -97,6 +131,18 @@ system.
 {{< topic-card-grid heading="Atelier Padonma" >}}
 
 Atelier to bootstrap the Padonma Network.
+
+The extremely decentralized design of the Padonma Network does mean
+that not all functions of a traditional CMO as satisfied. In
+particular there still needs to be authenticators of quality. Anyone
+can join the Network, so there is no quality control organization at
+the core off network because that would grant too much power to the
+confederation's bureaucracy. So, the quality control functionality is
+farmed out to entities within the Padonma Network, the prototype of
+which is Atelier Padonma.
+
+
+
 
 Within the context of the Padonma Network we have launched Atelier
 Podonma, a boutique fashion workshop which produces an extremely
