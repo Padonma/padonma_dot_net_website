@@ -146,6 +146,21 @@ Embed one existing canonical card with an absolute content reference:
 {{</* topic-card ref="/topics/example-topic" */>}}
 ```
 
+Override the referenced page's card image, title, or description when needed:
+
+```go-html-template
+{{</* topic-card
+  ref="/topics/example-topic"
+  image="alternate-card-image.jpg"
+  title="Alternate card title"
+  description="A short **Markdown-enabled** description."
+*/>}}
+```
+
+`ref` remains the internal page destination. Override images are resolved from
+that page's bundle. Every override is optional; omitted values continue to use
+the referenced page's canonical card data.
+
 Group curated cards with an optional heading, custom CSS class (or
 space-separated classes), and introductory Markdown:
 

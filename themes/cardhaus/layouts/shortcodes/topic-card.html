@@ -11,6 +11,11 @@
     {{- with .Parent -}}
       {{- if eq .Name "topic-card-grid" -}}::CARDHAUS-TOPIC-CARD::{{- end -}}
     {{- end -}}
-    {{- partial "topic-card.html" $topic -}}
+    {{- partial "topic-card.html" (dict
+      "page" $topic
+      "image" (.Get "image")
+      "title" (.Get "title")
+      "description" (.Get "description")
+    ) -}}
   {{- end -}}
 {{- end -}}

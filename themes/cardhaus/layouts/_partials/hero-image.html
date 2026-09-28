@@ -7,6 +7,15 @@
 {{- $x := $imageContext.focal.x -}}
 {{- $y := $imageContext.focal.y -}}
 {{- $alt := $imageContext.alt -}}
+{{- with .image -}}
+  {{- $image = $page.Resources.GetMatch . -}}
+  {{- if not $image -}}
+    {{- errorf "Cardhaus image override %q was not found for %s" . $page.File.Path -}}
+  {{- end -}}
+  {{- $x = 0.5 -}}
+  {{- $y = 0.5 -}}
+{{- end -}}
+{{- with .alt }}{{ $alt = . }}{{ end -}}
 {{- $transitionName := "" -}}
 {{- if and $image (or (eq $variant "card") (eq $variant "detail")) -}}
   {{- $transitionName = partial "view-transition-name.html" (dict "page" $page "image" $image) -}}
