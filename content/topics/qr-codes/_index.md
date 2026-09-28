@@ -1,6 +1,8 @@
 ---
 title: QR Codes
 summary: QR Codes have been around since 1994, standardized since 2000, and the rMQR variant is new as of 2022.
+hero:
+  image: payload-capacity-of-qr-variants.jpg
 ---
 
 
