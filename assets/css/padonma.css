@@ -98,7 +98,9 @@
 }
 
 .billboard-logo-mark {
-  margin: 0 auto 2rem;
+    height: 20rem;
+    width: auto;
+    margin: 0 auto 3rem;
 }
 
 /* Bandgrind-specific sequential session navigation. */
