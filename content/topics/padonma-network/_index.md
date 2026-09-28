@@ -3,10 +3,33 @@ title: Padonma Network Intro
 summary: "Handwoven QR tech for artisan textiles"
 weight: 1
 hero:
-  image: "dotted-p-icon-r7-pinked-bigged.png"
+  image: "dotted-p-icon-r9.png"
 ---
 
-once have uuid, can do all manner of fancy stuff, like write it on a piece of paper, put that tame alpanumeric character sequence on a web page that google crawls, blockchain, etc
+once have uuid, can do all manner of fancy stuff, like write it on a
+piece of paper, put that tame alpanumeric character sequence on a web
+page that google crawls, blockchain, etc
+
+## Philosophy
+
+Padonma (pa don ma) is the Burmese word for lotus. This is the lotus
+network, directly connecting the lotus spinners and weavers with the
+ateliers of the world, in a marketplace designed to maintain the
+identities of the individual artisans who voluntarily join the
+marketplace for zero cost and zero controls.
+
+It is an explicit goal of the Padonma Network to subvert the power
+structure of the fashion world. Extreme disintermediation enables this
+small niche of the textile industry to function like the cottage
+industry of olden days: skilled artisans working from home (often
+mothers simultaneously providing at-home child care). Open protocols
+replace much of the coordination normally supplied by centralized
+intermediaries.
+
+It is THE global marketplace because it is built on a blockchain
+controlled by ALL the producers who are members of the blockchain
+network.
+
 
 ## Who defines a garments native ID
 
