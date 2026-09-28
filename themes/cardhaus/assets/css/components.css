@@ -915,11 +915,17 @@
   scroll-snap-type: y mandatory;
 }
 
+.atelier-opening-snap {
+  scroll-snap-type: y mandatory;
+}
+
 .homepage .hero-carousel,
 .homepage .billboard,
 .homepage .homepage-content,
 .topic-section-page .hero-carousel,
-.topic-section-page .topics-grid {
+.topic-section-page .topics-grid,
+.atelier-page .billboard,
+.atelier-page .atelier-content {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -935,6 +941,13 @@
 }
 
 .topic-section-page .hero-carousel {
+  scroll-margin-top: var(--header-height);
+}
+
+.atelier-page .billboard {
+  /* Keep vh as a fallback; dvh tracks mobile browser chrome in modern browsers. */
+  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   scroll-margin-top: var(--header-height);
 }
 
@@ -1210,6 +1223,10 @@ button.hero-carousel-slide {
   }
 
   .topic-section-opening-snap {
+    scroll-snap-type: none;
+  }
+
+  .atelier-opening-snap {
     scroll-snap-type: none;
   }
 

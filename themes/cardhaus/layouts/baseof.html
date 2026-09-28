@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 {{- $hasSectionCarousel := and .IsSection (.Resources.GetMatch "carousel.yaml") -}}
-<html lang="{{ site.Language.LanguageCode | default "en" }}"{{ if .IsHome }} class="homepage homepage-opening-snap"{{ else if $hasSectionCarousel }} class="topic-section-page topic-section-opening-snap"{{ end }}>
+{{- $isAtelier := eq .Layout "atelier" -}}
+<html lang="{{ site.Language.LanguageCode | default "en" }}"
+      {{ if .IsHome }}
+          class="homepage homepage-opening-snap"
+      {{ else if $hasSectionCarousel }}
+          class="topic-section-page topic-section-opening-snap"
+      {{ else if $isAtelier }}
+          class="atelier-page atelier-opening-snap"
+      {{ end }}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -391,18 +399,27 @@
     (function initOpeningSnap() {
       var root = document.documentElement;
       var homepage = root.classList.contains('homepage');
-      var firstPanel = homepage
-        ? document.querySelector('.homepage .billboard')
+      var atelier = root.classList.contains('atelier-page');
+      var firstPanel = homepage || atelier
+        ? document.querySelector(homepage ? '.homepage .billboard' : '.atelier-page .billboard')
         : document.querySelector('.topic-section-page .hero-carousel');
       var finalPanel = homepage
         ? document.querySelector('.homepage .homepage-content')
-        : document.querySelector('.topic-section-page .topics-grid');
+        : atelier
+          ? document.querySelector('.atelier-page .atelier-content')
+          : document.querySelector('.topic-section-page .topics-grid');
       if (!firstPanel) return;
       var lastSnapTarget = finalPanel || firstPanel;
 
       var isUpdating = false;
+      function openingSnapClass() {
+        if (homepage) return 'homepage-opening-snap';
+        if (atelier) return 'atelier-opening-snap';
+        return 'topic-section-opening-snap';
+      }
+
       function setOpeningSnap(enabled) {
-        root.classList.toggle(homepage ? 'homepage-opening-snap' : 'topic-section-opening-snap', enabled);
+        root.classList.toggle(openingSnapClass(), enabled);
       }
 
       function updateForPosition() {

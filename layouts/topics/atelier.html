@@ -1,6 +1,35 @@
 {{ define "main" }}
-{{ partial "hero-carousel.html" . }}
-<article class="standard-page topic-page">
+
+{{ $background := resources.Get site.Params.billboardImage }}
+<section class="billboard"{{ with $background }} style="background-image: url('{{ (.Resize "1600x").RelPermalink }}');"{{ end }}>
+    <div class="billboard-text">
+        {{ with site.Params.billboardLogo }}
+        {{ with resources.Get . }}
+        {{ $mark240 := .Resize "240x" }}
+        {{ $mark480 := .Resize "480x" }}
+        <img
+            src="{{ $mark240.RelPermalink }}"
+            srcset="{{ $mark240.RelPermalink }} 240w,
+                 {{ $mark480.RelPermalink }} 480w"
+            sizes="(max-width: 600px) 40vw, 240px"
+            alt=""
+            class="billboard-logo-mark">
+        {{ end }}
+        {{ end }}
+        <h1 class="billboard-wordmark">
+            {{ with site.Params.billboardTitle }}
+            {{ range . }}<span>{{ . }}</span>{{ end }}
+            {{ else }}
+            <span>{{ site.Title }}</span>
+            {{ end }}
+        </h1>
+        {{ with site.Params.subtitle }}<p class="section-subtitle">{{ . }}</p>{{ end }}
+    </div>
+</section>
+
+
+
+<article class="standard-page topic-page atelier-content">
     {{ partial "breadcrumbs.html" . }}
     <header class="page-header">
         <div class="post-header-inner">
