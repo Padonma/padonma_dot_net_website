@@ -60,11 +60,16 @@ demonstrates the pattern design of an unstructured coat. Check the inside pictur
 
 ## Details
 
+### Include
+
 - [Functional label](https://www.instagram.com/reel/DPMiPmBCNnJ/)
 - [Functional cuff](https://us.mossbros.com/inside-pocket/post/functional-cuffs-working-detail) with real buttons and buttonholes on the OG surgeon's cuff
+- English style double vents in the rear
 - Indigo dyed option?
 
-No
+
+### Exclude
+
 - No peaked lapel
 - No double breast
 - No [epaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ)
