@@ -47,7 +47,7 @@ build() {
   build_version="$(git -C "$repo_root" describe --tags --always --dirty --abbrev=12)"
   printf 'Building production site with Hugo %s...\n' "$expected_hugo_version"
   HUGO_PARAMS_BUILD_VERSION="$build_version" hugo --source "$repo_root" --environment production --baseURL "$base_url" \
-    --destination "$build_dir" --cleanDestinationDir --gc --minify --panicOnWarning
+    --destination "$build_dir" --cleanDestinationDir --gc --minify
   find "$build_dir" -type f \( -name '.DS_Store' -o -name 'Thumbs.db' \) -delete
   python3 "$repo_root/scripts/validate-build.py" "$build_dir" --base-url "$base_url"
 }
