@@ -63,9 +63,12 @@ Cardhaus provides three author-facing shortcodes:
 
 Unresolved references and structurally invalid shortcode use fail the build.
 Shortcodes delegate to shared partials. `topic-card` may override the referenced
-topic's bundle image, title, or description; omitted values retain the canonical
-page data, and `ref` remains the internal destination. A canonical topic should
-appear only once per document, because named View Transitions must be unique.
+topic's image, title, or description. A relative image override resolves from
+the referenced topic's bundle; an absolute image override resolves from the
+bundle identified by the image's directory, then from the site's `assets`
+directory. Omitted values retain the canonical page data, and `ref` remains the
+internal destination. A canonical topic should appear only once per document,
+because named View Transitions must be unique.
 
 Generated section, taxonomy, and term lists use the same card. The structural
 grid has three columns above the tablet breakpoint, two through tablet widths,

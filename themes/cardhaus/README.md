@@ -158,8 +158,13 @@ Override the referenced page's card image, title, or description when needed:
 ```
 
 `ref` remains the internal page destination. Override images are resolved from
-that page's bundle. Every override is optional; omitted values continue to use
-the referenced page's canonical card data.
+that page's bundle when `image` is relative. An `image` beginning with `/` may
+identify a resource in any page bundle (for example,
+`/topics/example-topic/alternate-card-image.jpg`) or a file beneath the site's
+`assets` directory (for example, `/images/alternate-card-image.jpg` resolves
+`assets/images/alternate-card-image.jpg`). This lets a card use another internal
+image without changing the referenced page's hero. Every override is optional;
+omitted values continue to use the referenced page's canonical card data.
 
 Group curated cards with an optional heading, custom CSS class (or
 space-separated classes), and introductory Markdown:

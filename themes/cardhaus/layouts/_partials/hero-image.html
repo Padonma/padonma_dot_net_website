@@ -8,9 +8,20 @@
 {{- $y := $imageContext.focal.y -}}
 {{- $alt := $imageContext.alt -}}
 {{- with .image -}}
-  {{- $image = $page.Resources.GetMatch . -}}
+  {{- if strings.HasPrefix . "/" -}}
+    {{- $imagePath := strings.TrimPrefix "/" . -}}
+    {{- $resourcePage := site.GetPage (path.Dir $imagePath) -}}
+    {{- if $resourcePage -}}
+      {{- $image = $resourcePage.Resources.GetMatch (path.Base $imagePath) -}}
+    {{- end -}}
+    {{- if not $image -}}
+      {{- $image = resources.Get $imagePath -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $image = $page.Resources.GetMatch . -}}
+  {{- end -}}
   {{- if not $image -}}
-    {{- errorf "Cardhaus image override %q was not found for %s" . $page.File.Path -}}
+    {{- errorf "Cardhaus image override %q was not found for %s (use a bundle-relative name or an absolute path to a page resource or asset)" . $page.File.Path -}}
   {{- end -}}
   {{- $x = 0.5 -}}
   {{- $y = 0.5 -}}

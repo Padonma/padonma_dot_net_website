@@ -10,7 +10,8 @@ Padonma is the Burmese word for lotus. In this project "Padonma"
 refers to three interlinked aspects of lotus fiber: textiles, technology, and fashion, respectively:
 
 {{< topic-card
-  ref="/topics/lotus-fiber/companies/sanajing-sana-thambal"
+  ref="/topics/lotus-fiber/"
+  image="/topics/lotus-fiber/companies/sanajing-sana-thambal/tongbram-in-boat.jpg"
   title="Padonma Thread"
   description="Textiles produced from lotus fiber in Southeast Asia -- the history, the business, and the peoples"
 >}}
