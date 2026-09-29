@@ -40,6 +40,25 @@ They describe three materials as their excellences:
 - Vicuña
 - Baby cashmere
 
+## Mueller und Sohn article
+
+[Lotus Silk – Yarn from Buddhas Flower](https://www.muellerundsohn.com/en/allgemein/lotus-silk/)
+- Written by Staff, 11. October 2022
+
+> But in 2010, the Italian entrepreneur Pier Luigi Loro Piana
+> discovered the preciousness of the substance. The traditional
+> family-owned Loro Piana (sixth generation since 1924) belongs to the
+> luxury group LVMH since 2013 and became famous for its products made
+> from only the finest of cashmere. Now he sees the silk of the lotus
+> flower as the non-plus ultra for his fashion. For Pier Luigi, this
+> lotus fiber has all the qualities one could wish for in a fabric: it
+> is very light, breathable, water repellent, cool in summer and warm
+> in winter, and does not wrinkle. The brand name is “Loro Piana Lotus
+> Flower®”. Only about 100 exclusive Made-to-Measure jackets are
+> produced per year out of the fine cloth (for a jacket you need 26000
+> panzers), at a cost of about 6,000 euros per blazer. Loro Piana
+> receives about 50 meters of fabric per month from the contract
+> weaving mill, which means a whole village solely works for him.
 
 ## Example apparel
 
