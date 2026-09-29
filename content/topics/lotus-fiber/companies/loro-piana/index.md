@@ -70,8 +70,7 @@ Note that Loro Piana likes to call the color, Wheat Land.
 
 ### Men's Sport Coat
 
-<a href="https://www.wsj.com/articles/SB10001424052748703506904575592441000440092
-         https://www.wsj.com/articles/SB10001424052748703506904575592441000440092">
+<a href="https://www.wsj.com/articles/SB10001424052748703506904575592441000440092">
   <img src="loro_pianan_jacket_full.jpg" alt="Lotus fiber sport coat" class="examples">
 </a>
 

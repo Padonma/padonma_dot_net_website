@@ -11,6 +11,47 @@ social:
   image: atelier-social.png
 ---
 
+
+{{< topic-card-grid heading="Atelier Padonma" >}}
+
+Atelier to bootstrap the Padonma Network.
+
+The extremely decentralized design of the Padonma Network does mean
+that not all functions of a traditional CMO as satisfied. In
+particular there still needs to be authenticators of quality. Anyone
+can join the Network, so there is no quality control organization at
+the core off network because that would grant too much power to the
+confederation's bureaucracy. So, the quality control functionality is
+farmed out to entities within the Padonma Network, the prototype of
+which is Atelier Padonma.
+
+
+
+
+Within the context of the Padonma Network we have launched Atelier
+Podonma, a boutique fashion workshop which produces an extremely
+limited number of garments made of lotus fiber. Those garments are
+specifically based on traditional Burmese garment styles. Focusing on
+this niche focus keeps Atelier Padonma from competing with real
+fashion houses which will use lotus fiber and pays homage to the
+culture that invented lotus fiber.
+
+The primary goal of Atelier Padonma is to function as an example of
+how the Padonma Network is intended to work. Profit is not the main
+goal of Atelier Padonma; garments are produced with the main goal of
+getting artists in the luxury fashion world to have their first
+hands-on experiences with lotus fiber fashion. If Atelier Padonma
+finds an audience within the haute couture world, that will be a nice
+bonus serving to motivate the real lotus fiber suppliers.
+
+{{< topic-card ref="/topics/peoples/burma/burmese-fashion/fisherman-trousers" >}}
+
+{{< /topic-card-grid >}}
+
+
+
+# Earlier
+
 The Atelier serves primarily as a connector of small lotus fiber
 producers with the atelier's of the global fashion capitals. Curiously
 it is the Big Four (Paris, Milan, London, and New York) that need more

@@ -6,6 +6,69 @@ hero:
   image: "dotted-p-icon-r9.png"
 ---
 
+{{< topic-card-grid heading="Padonma Network" class="card-grid-dark" >}}
+
+The main takeaway of this project is the Padonma Network which is a
+global marketplace of lotus fiber, architectured to minimize the power
+of intermediaries and implemented as free open source software that
+runs on free Web services like Google Search and GitHub pages.
+
+## The goal
+
+The goal here is to engineer a start-up style situation to bootstrap a
+global supply chain but without building for an outcome like eBay
+which will devolve via enshitification based on the initial incentive
+structure. In other words, this is not about the money (well, not for
+the founders, as would normally be the case for a start-up).
+
+## The UX experience
+
+An artisan simply generates a new UUID for each handwoven garment and
+uses it twice:
+- Once as text in a webpage that Google indexes
+- Again as bits in a QR Code handwoven into a garment
+
+Later when the QR Code on the garment is scanned it leads to that
+webpage with the same UUID, which will be the artisans website.
+
+## The technical core
+
+From a technology perspective, the Padonma Network boils down to doing
+UUID look-up via Google Search, where the UUID to look-up is unique to
+an individual handwoven garment into which that UUID has been woven,
+encoded in a QR Code.
+
+The core of the Padonma Network is intentionally very simple. It is
+designed to enable solo entrepreneurs to fully self-represent in a
+global marketplace at zero cost and without loss of control to
+unnecessary intermediaries. It has been architected for decentralized
+control.
+
+## The business implications
+
+From a business perspective, the Padonma Network is very much like
+a traditional textile industry Collective Mark Organization (CMO) such
+as Woolmark or the Silk Mark Organization, serving as brand and
+enabling digital coordination. The Padonma Network does self-identify
+as a CMO, for the modern digital world.
+
+Technically the core of the Padonma Network is simple to
+understand and easy to participate within, but architecting a
+marketplace this way has all manner of interesting implications for
+the power dynamics of the textile industry.
+
+{{< topic-card ref="/topics/qr-codes/bandgrind" >}}
+{{< topic-card ref="/topics/lotus-fiber/companies" >}}
+
+
+{{< /topic-card-grid >}}
+
+
+
+
+
+# Earlier
+
 once have uuid, can do all manner of fancy stuff, like write it on a
 piece of paper, put that tame alpanumeric character sequence on a web
 page that google crawls, blockchain, etc
