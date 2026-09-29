@@ -2,7 +2,7 @@
 {{- $hasSectionCarousel := and .IsSection (.Resources.GetMatch "carousel.yaml") -}}
 {{- $isAtelier := eq .Layout "atelier" -}}
 {{- $stickyHeader := .Param "stickyHeader" -}}
-<html lang="{{ site.Language.LanguageCode | default "en" }}"
+<html lang="{{ site.Language.Locale | default "en" }}"
       {{ if .IsHome }}
           class="homepage homepage-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
       {{ else if $hasSectionCarousel }}
@@ -14,6 +14,7 @@
       {{ end }}>
 <head>
   <meta charset="utf-8">
+  {{ with site.Params.build.version }}<meta name="build-revision" content="{{ . }}">{{ end }}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   {{- $description := partial "page-description.html" . }}

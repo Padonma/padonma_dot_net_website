@@ -1,5 +1,5 @@
 baseURL = "https://padonma.net/"
-languageCode = "en-us"
+locale = "en-US"
 title = "Padonma"
 theme = "cardhaus"
 assetDir = "assets"

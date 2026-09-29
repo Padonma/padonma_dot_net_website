@@ -16,7 +16,7 @@
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ $page.Permalink }}">
 <meta property="og:site_name" content="{{ site.Title }}">
-<meta property="og:locale" content="{{ site.Language.LanguageCode | default "en" }}">
+<meta property="og:locale" content="{{ site.Language.Locale | default "en" }}">
 <meta property="og:type" content="{{ if $page.IsPage }}article{{ else }}website{{ end }}">
 <meta name="twitter:card" content="{{ if $socialImage }}summary_large_image{{ else }}summary{{ end }}">
 <meta name="twitter:title" content="{{ $title }}">
