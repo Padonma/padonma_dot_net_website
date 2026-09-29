@@ -7,6 +7,8 @@
   {{- $topic := site.GetPage $ref -}}
   {{- if not $topic -}}
     {{- errorf "topic-card shortcode could not resolve ref %q (%s)" $ref .Position -}}
+  {{- else if eq $topic .Page -}}
+    {{- errorf "topic-card shortcode cannot reference its own page %q (%s)" $ref .Position -}}
   {{- else -}}
     {{- with .Parent -}}
       {{- if eq .Name "topic-card-grid" -}}::CARDHAUS-TOPIC-CARD::{{- end -}}
