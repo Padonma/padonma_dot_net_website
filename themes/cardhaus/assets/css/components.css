@@ -935,6 +935,11 @@
   padding-block: 3rem;
 }
 
+.homepage.has-sticky-header .homepage-content {
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
+}
+
 /* The header remains in the opening view when the first panel is selected. */
 .homepage .hero-carousel {
   scroll-margin-top: var(--header-height);
