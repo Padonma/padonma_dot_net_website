@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 {{- $hasSectionCarousel := and .IsSection (.Resources.GetMatch "carousel.yaml") -}}
 {{- $isAtelier := eq .Layout "atelier" -}}
+{{- $stickyHeader := .Param "stickyHeader" -}}
 <html lang="{{ site.Language.LanguageCode | default "en" }}"
       {{ if .IsHome }}
-          class="homepage homepage-opening-snap"
+          class="homepage homepage-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
       {{ else if $hasSectionCarousel }}
-          class="topic-section-page topic-section-opening-snap"
+          class="topic-section-page topic-section-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
       {{ else if $isAtelier }}
-          class="atelier-page atelier-opening-snap"
+          class="atelier-page atelier-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
+      {{ else if $stickyHeader }}
+          class="has-sticky-header"
       {{ end }}>
 <head>
   <meta charset="utf-8">
@@ -401,7 +404,7 @@
       var homepage = root.classList.contains('homepage');
       var atelier = root.classList.contains('atelier-page');
       var firstPanel = homepage || atelier
-        ? document.querySelector(homepage ? '.homepage .billboard' : '.atelier-page .billboard')
+        ? document.querySelector(homepage ? '.homepage .hero-carousel' : '.atelier-page .billboard')
         : document.querySelector('.topic-section-page .hero-carousel');
       var finalPanel = homepage
         ? document.querySelector('.homepage .homepage-content')
@@ -412,6 +415,11 @@
       var lastSnapTarget = finalPanel || firstPanel;
 
       var isUpdating = false;
+      function snapPosition(panel) {
+        var scrollPaddingTop = parseFloat(window.getComputedStyle(root).scrollPaddingTop) || 0;
+        return Math.max(0, panel.offsetTop - scrollPaddingTop);
+      }
+
       function openingSnapClass() {
         if (homepage) return 'homepage-opening-snap';
         if (atelier) return 'atelier-opening-snap';
@@ -426,13 +434,13 @@
         isUpdating = false;
         // Once a reader has moved below the final landing point, the rest of the page
         // deliberately returns to normal document scrolling.
-        setOpeningSnap(window.scrollY <= lastSnapTarget.offsetTop + 1);
+        setOpeningSnap(window.scrollY <= snapPosition(lastSnapTarget) + 1);
       }
 
       window.addEventListener('scroll', function () {
         // Turn snapping off as soon as a downward gesture carries past the
         // last panel. This keeps the content below it free-flowing.
-        if (window.scrollY > lastSnapTarget.offsetTop + 16) {
+        if (window.scrollY > snapPosition(lastSnapTarget) + 16) {
           setOpeningSnap(false);
         }
         if (!isUpdating) {
@@ -444,7 +452,7 @@
       window.addEventListener('scrollend', function () {
         // Disable snapping after reaching the final landing point so the
         // remaining content stays in ordinary page flow.
-        if (finalPanel && Math.abs(window.scrollY - finalPanel.offsetTop) <= 1) {
+        if (finalPanel && Math.abs(window.scrollY - snapPosition(finalPanel)) <= 1) {
           setOpeningSnap(false);
         }
       });

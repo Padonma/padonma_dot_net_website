@@ -940,11 +940,7 @@
   min-height: calc(100dvh - var(--header-height));
 }
 
-/* The header remains in the opening view when the first panel is selected. */
-.homepage .hero-carousel {
-  scroll-margin-top: var(--header-height);
-}
-
+/* Non-sticky opening views reserve the header above their first panel. */
 .topic-section-page .hero-carousel {
   scroll-margin-top: var(--header-height);
 }

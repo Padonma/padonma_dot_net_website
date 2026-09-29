@@ -30,6 +30,15 @@
   overflow: hidden;
 }
 
+.has-sticky-header {
+  scroll-padding-top: var(--header-height);
+}
+
+.has-sticky-header .site-header {
+  position: sticky;
+  top: 0;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
