@@ -1,5 +1,5 @@
 ---
-title: rMQR experiments
+title: Weaving Experiments
 summary: We needed to prove that handwoven rMQRs codes would actually be scannable
 weight: 5
 hero:

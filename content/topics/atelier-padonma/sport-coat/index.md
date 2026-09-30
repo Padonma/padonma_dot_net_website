@@ -38,8 +38,9 @@ been very similar to the ones he sold for $5600 in 2012.
 
 The Norfolk jacket, which became prominent around the
 1860s–1880s. Removing the Norfolk jacket's belt and sporting details
-gets you quite close to the modern sport coat.
+gets you quite close to the modern sport coat. For example, here is F. Scott Fitzgerald sporting a Norfolk.
 
+[![](f-scott-fitzgerald-in-norfolk-suit.jpg)](https://www.gentlemansgazette.com/norfolk-jacket-guide/)
 
 ## British military tropical jackets
 
@@ -48,10 +49,12 @@ century (1826 to 1948). This provides us an excuse to dabble in
 some Western attire.
 
 [The bush jacket](https://sallyantiques.co.uk/product/british-ww2-era-royal-navy-khaki-drill-bush-shirt-tropical-tunic/)
-is sort of like a sport coat. Both came from the
-British of a certain period. Take a bush jacket, lose the chest
-pockets, belt, and epaulette and we are getting close to the original sport coat
-of 1800s England. Absolutely [no apaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ?t=160&feature=share) allowed.
+is sort of like a sport coat, as can be seen on Daniel Craig
+above. Both came from the British of a certain period. Take a bush
+jacket, lose the chest pockets, belt, and epaulette and we are getting
+close to the original sport coat of 1800s England. Absolutely [no
+apaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ?t=160&feature=share)
+allowed.
 
 [The white tropical jacket of the British Navy](https://www.awm.gov.au/collection/C109623?image=1)
 demonstrates the pattern design of an unstructured coat. Check the inside picture.
@@ -65,11 +68,13 @@ demonstrates the pattern design of an unstructured coat. Check the inside pictur
 - [Functional label](https://www.instagram.com/reel/DPMiPmBCNnJ/)
 - [Functional cuff](https://us.mossbros.com/inside-pocket/post/functional-cuffs-working-detail) with real buttons and buttonholes on the OG surgeon's cuff
 - English style double vents in the rear
-- Indigo dyed option?
+- Indigo dyed option? (getting close to a blue blazer)
 
 
 ### Exclude
 
-- No peaked lapel
-- No double breast
+- No double breasted
 - No [epaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ)
+- No peaked lapels
+- No chest patch pockets, maybe flap pockets at waiste
+- Sure bush jacket roots but not retro-styled to look like a costume piece

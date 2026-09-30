@@ -1,5 +1,5 @@
 ---
-title: Prior art
+title: Prior Art
 summary: Since rMQR codes can be narrow, they can be woven into bands easier that the original square QR codes.
 weight: 4
 hero:
