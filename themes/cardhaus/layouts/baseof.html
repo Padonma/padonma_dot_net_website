@@ -218,7 +218,8 @@
       var swiper = new Swiper(carousel, {
         slidesPerView: 'auto',
         centeredSlides: true,
-        spaceBetween: 0,
+        // Slight overlap prevents subpixel rasterization seams between images.
+        spaceBetween: -1,
         loop: false,
         initialSlide: (many ? slides.length : 0) + (requestedIndex >= 0 ? requestedIndex : 0),
         grabCursor: many,

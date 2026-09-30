@@ -1061,6 +1061,11 @@
   outline-offset: -4px;
 }
 
+.hero-carousel .hero-carousel-slide:focus,
+.hero-carousel .hero-carousel-slide:focus-visible {
+  outline: none;
+}
+
 .hero-carousel .swiper-wrapper,
 .hero-carousel .swiper-slide {
   border: none !important;
