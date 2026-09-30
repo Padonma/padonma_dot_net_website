@@ -14,10 +14,18 @@
     x: 0.5
     "y": 0.2
 
-- image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
-  hash: loro-pianan-jacket-full
-  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-full
-  alt: Loro Piana Lotus Jacket
+- image: /topics/lotus-fiber/companies/sanajing-sana-thambal/scarf-on-plant.webp
+  hash: scarf-on-plant
+  link: /topics/lotus-fiber/companies/sanajing-sana-thambal/#scarf-on-plant
+  alt: Sanajing Sana Thambal
+  focal:
+    x: 0.5
+    "y": 0.5
+
+- image: /topics/lotus-fiber/lotus-weaving/fiber-extraction.png
+  hash: fiber-extraction
+  link: /topics/lotus-fiber/lotus-weaving/#fiber-extraction
+  alt: Fiber extraction close up
   focal:
     x: 0.5
     "y": 0.0
@@ -28,7 +36,7 @@
   alt: Cambodian woman extracting lotus fiber
   focal:
     x: 0.5
-    "y": 1.0
+    "y": 0
 
 - image: /topics/qr-codes/bandgrind/six-bands-on-black.jpg
   hash: six-bands-on-black
@@ -46,13 +54,17 @@
     x: 1.0
     "y": 0.0
 
-- image: /topics/lotus-fiber/companies/sanajing-sana-thambal/scarf-on-plant.webp
-  hash: scarf-on-plant
-  link: /topics/lotus-fiber/companies/sanajing-sana-thambal/#scarf-on-plant
-  alt: Sanajing Sana Thambal
+- image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
+  hash: loro-pianan-jacket-full
+  link: /topics/lotus-fiber/companies/loro-piana/#loro-pianan-jacket-full
+  alt: Loro Piana Lotus Jacket
   focal:
     x: 0.5
-    "y": 0.5
+    "y": 0.0
+
+
+
+
 
 - image: /topics/lotus-fiber/companies/turquoise-mountain/ma-su.jpg
   hash: ma-su
@@ -70,14 +82,6 @@
     x: 0.5
     "y": 0.0
 
-- image: /topics/peoples/bangladesh/achhia-begum-scarf.avif
-  hash: acchia-begum
-  link: /topics/peoples/bangladesh/#acchia-begum
-  alt: Acchia Begum, Master Weaver of Bangladesh
-  focal:
-    x: 0.5
-    "y": 0.0
-
 - image: /topics/lotus-fiber/companies/hope/hat.png
   hash: hat
   link: /topics/lotus-fiber/companies/hope/#hat
@@ -86,10 +90,12 @@
     x: 0.5
     "y": 0.5
 
-- image: /topics/lotus-fiber/lotus-weaving/fiber-extraction.png
-  hash: fiber-extraction
-  link: /topics/lotus-fiber/lotus-weaving/#fiber-extraction
-  alt: Fiber extraction close up
+- image: /topics/peoples/bangladesh/achhia-begum-scarf.avif
+  hash: acchia-begum
+  link: /topics/peoples/bangladesh/#acchia-begum
+  alt: Acchia Begum, Master Weaver of Bangladesh
   focal:
     x: 0.5
     "y": 0.0
+
+
