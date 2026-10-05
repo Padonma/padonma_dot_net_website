@@ -5,6 +5,7 @@
 - image: six-bands-on-black.jpg
   alt: Six of the early bands
   hash: six-bands-on-black
+
 - image: /topics/qr-codes/bandgrind/bandgrind-experiments/qr_bands.5_of_earlies.jpeg
   hash: qr-bands-5-of-earlies
   link: /topics/qr-codes/bandgrind/bandgrind-experiments/#qr-bands-5-of-earlies
@@ -18,10 +19,3 @@
     x: 0.5
     "y": 0.5
 
-- image: /topics/weaving/bandweaving/r7_wide_band.png
-  hash: r7-wide-band
-  link: /topics/weaving/bandweaving/#r7-wide-band
-  alt: Wide woven band with an rMQR pattern
-  focal:
-    x: 0.5
-    "y": 0.5
