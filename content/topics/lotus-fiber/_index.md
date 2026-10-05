@@ -1,5 +1,5 @@
 ---
-title: Lotus Fiber
+title: Lotus Fabric
 summary: The history of using lotus fiber for clothing has a suprisingly short history
 hero:
   image: hanks-hanging.jpg
@@ -33,12 +33,16 @@ The most general Padonma the fiber, it's history and cultural context, productio
 {{< /topic-card-grid >}}
 
 
+## Intro shorts
+
+{{< youtube ntCwJx4rLRU >}}
 
 ## Extraction
 
 [Bijiyashanti Tongbram, Founder of Sanajing Sana Thambal]({{< ref "topics/lotus-fiber/companies/sanajing-sana-thambal/" >}})
 
 {{< youtube d23N7jIFhL4 >}}
+
 
 
 ## Sources

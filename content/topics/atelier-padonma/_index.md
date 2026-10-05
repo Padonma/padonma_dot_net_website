@@ -52,13 +52,21 @@ bonus serving to motivate the real lotus fiber suppliers.
 
 # Earlier
 
+As can be seen from the logo, Atelier Padonma is leading into the rMQR Codes
+as part of the brand identity, as there is an rMQR in the stem of the lotus.
+We also want to do this on some of the clothing. The band should be
+discretely visible to the observer. On skirts, the band runs along the
+inside of the outer edge of the fabric. The code can be seen peeking
+out as someone walks, or they can intentionally flip over that bit
+of the fabric to show the code to others. On scarfs the band is visible
+along one of the edges. 
+
 The Atelier serves primarily as a connector of small lotus fiber
-producers with the atelier's of the global fashion capitals. Curiously
+producers with the serious atelier's of the global fashion capitals. Curiously
 it is the Big Four (Paris, Milan, London, and New York) that need more
 educating than the newer Asian markets such as Tokyo, Seoul, Shanghai,
 Hong Kong which seemingly have a slightly more elevated awareness of
 how luxurious and exclusive lotus fiber is.
-!
 
 So, yes, Atelier Padonma does indeed produce lotus fiber apparel but
 with the intent of getting the fabric touched by artisans at true

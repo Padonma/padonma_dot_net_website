@@ -6,6 +6,28 @@ hero:
   image: "dotted-p-icon-r9.png"
 ---
 
+## Inbox
+ This tech allows folks to get that money in the global
+  marketplace without leaving home rather than going to grind in a
+  factory in a big city in nasty working conditions as a wage slave
+  (which nonetheless is a way to get SOME money, just rather
+  unpleasant).
+
+## Tech philosophy
+
+"There are two ways of constructing a software design: One way is to
+make it so simple that there are obviously no deficiencies, and the
+other way is to make it so complicated that there are no obvious
+deficiencies. The first method is far more complicated. "-- Tony Hoare
+
+The Padonma Network strives for the latter. Further, we believe deeply
+in Mr. Gameboy's idea of lateral thinking with weathered
+technology. Nothing about the Padonma Networks tech stack is novel,
+except the rMQR variant of QR Codes, the latter having been around
+since 1994 when the folks at a Toyota subsidiary invented that tech.
+
+## Old
+
 {{< topic-card-grid heading="Padonma Network" class="card-grid-dark" >}}
 
 The main takeaway of this project is the Padonma Network which is a

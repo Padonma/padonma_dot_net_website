@@ -5,14 +5,16 @@ hero:
   alt: Artisan Achhia Begum holding her hand-woven lotus silk fabric
 ---
 
+Bangladesh is a neighbor of Burma and has very recently decided it
+would like to get into the lotus fiber game.
 
 
-
-
-## A LinkedIn post
+# A LinkedIn post
 
 - [Lotus Silk Blossoms in Bangladeshi Looms](https://www.linkedin.com/pulse/lotus-silk-blossoms-bangladeshi-looms-shafiun-nahar-elma-ajh6c/)
 - December 10, 2025
+
+Quotes:
 
 A forward-thinking project named "Diversity, Usability, and
 Conservation of Lotus," initiated by Bengal Plants Research &
@@ -77,7 +79,7 @@ environmentally friendly. Its production requires no water, and
 because no fossil fuels are used, there is no carbon emission during
 its production, which attracts consumers.
 
-## The Daily Star article
+# The Daily Star article
 
 - [Bangladesh’s lotus silk: The fabric of the future](https://asianews.network/bangladeshs-lotus-silk-the-fabric-of-the-future/)
 - July 8, 2025
@@ -136,6 +138,11 @@ biggest advantages is that you can extract thread from a lotus plant
 up to four times a month without harming it.”
 
 
-## Sources
+# Futher readables
+
+- [Lotus Silk: Weaving possibilities in a fine fabric](https://en.prothomalo.com/bangladesh/good-day-bangladesh/oxikr5hr3n)
+  - Source of many of the images here
+
+# Sources
 
 - [Asiya Begum and her scarf, Katuni spinning, pit weaver](https://en.prothomalo.com/bangladesh/good-day-bangladesh/oxikr5hr3n)

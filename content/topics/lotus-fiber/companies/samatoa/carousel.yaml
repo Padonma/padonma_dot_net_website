@@ -37,3 +37,6 @@
   focal:
     x: 0.5
     "y": 0.5
+- image: "awen-delaval.png"
+  hash: "awen-delaval"
+  alt: "Founder Awen Delaval"
