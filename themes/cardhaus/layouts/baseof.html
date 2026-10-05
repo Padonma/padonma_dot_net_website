@@ -31,12 +31,23 @@
     (resources.Get "css/layout.css" | resources.ExecuteAsTemplate "css/layout.css" .)
     (resources.Get "css/components.css" | resources.ExecuteAsTemplate "css/components.css" .)
   }}
-  {{ $css := $styles | resources.Concat "css/main.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ if hugo.IsProduction }}
+    {{ $css := $styles | resources.Concat "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ else }}
+    {{ range $styles }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+  {{ end }}
   {{ with site.Params.cardhaus.customStylesheet }}
     {{ with resources.Get . }}
-      {{ $customCSS := . | resources.ExecuteAsTemplate .RelPermalink $ | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+      {{ $customCSS := . | resources.ExecuteAsTemplate .RelPermalink $ }}
+      {{ if hugo.IsProduction }}
+        {{ $customCSS = $customCSS | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+      {{ else }}
+        <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
+      {{ end }}
     {{ else }}
       {{ warnf "Cardhaus custom stylesheet %q was not found in assets" . }}
     {{ end }}
