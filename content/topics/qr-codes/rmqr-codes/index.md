@@ -10,8 +10,8 @@ hero:
 ---
 
 <figure width="75%">
-<img src="00-rmqr-padumma.png" />
-<figcaption>The rMQR Code for "<a href="https://padumma.com">https://padumma.com</a>"</figcaption>
+<img src="padonma-r9x43.png" />
+<figcaption>The rMQR Code for "Padonma"</figcaption>
 </figure>
 
 # rMQR Codes
