@@ -6,7 +6,7 @@ hero:
   image: "qr_bands.5_of_earlies.jpeg"
 ---
 
-The [Padonma Network](/topics/padonma-network/) project seeks to encode UUIDs in QR codes
+The [Padonma Network]({{< relref "/topics/padonma-network/" >}}) project seeks to encode UUIDs in QR codes
 handwoven into bands. This mini blog records various band weaving
 experiments carried out in order to discover how best to go about
 such encoding using a simple traditional rigid heddle, which the Sweeds
@@ -55,7 +55,7 @@ envelope versus letter). The follow illustrates only the structure part:
 
 As for why handwoven QR code bands would be useful
 (and why not just print the codes?), read the
-intro to the [Padonma Network](/topics/padonma-network/).
+intro to the [Padonma Network]({{< relref "/topics/padonma-network/" >}}).
 
 ## Testing tools
 
@@ -120,17 +120,17 @@ some experiments.
 
 ## Sessions
 
-- [Band #6](/topics/qr-codes/bandgrind/bandgrind-band-6/)
-- [Session #13](/topics/qr-codes/bandgrind/bandgrind-session-13/)
-- [Session #12](/topics/qr-codes/bandgrind/bandgrind-session-12/)
-- [Session #11](/topics/qr-codes/bandgrind/bandgrind-session-11/)
-- [Session #10](/topics/qr-codes/bandgrind/bandgrind-session-10/)
-- [Session #9](/topics/qr-codes/bandgrind/bandgrind-session-09/)
-- [Session #8](/topics/qr-codes/bandgrind/bandgrind-session-08/)
-- [Session #7](/topics/qr-codes/bandgrind/bandgrind-session-07/)
-- [Session #6](/topics/qr-codes/bandgrind/bandgrind-session-06/)
-- [Session #5](/topics/qr-codes/bandgrind/bandgrind-session-05/)
-- [Session #4](/topics/qr-codes/bandgrind/bandgrind-session-04/)
-- [Session #3](/topics/qr-codes/bandgrind/bandgrind-session-03/)
-- [Session #2](/topics/qr-codes/bandgrind/bandgrind-session-02/)
-- [Session #1](/topics/qr-codes/bandgrind/bandgrind-session-01/)
+- [Band #6]({{< relref "/topics/qr-codes/bandgrind/bandgrind-band-6/" >}})
+- [Session #13]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-13/" >}})
+- [Session #12]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-12/" >}})
+- [Session #11]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-11/" >}})
+- [Session #10]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-10/" >}})
+- [Session #9]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-09/" >}})
+- [Session #8]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-08/" >}})
+- [Session #7]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-07/" >}})
+- [Session #6]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-06/" >}})
+- [Session #5]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-05/" >}})
+- [Session #4]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-04/" >}})
+- [Session #3]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-03/" >}})
+- [Session #2]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-02/" >}})
+- [Session #1]({{< relref "/topics/qr-codes/bandgrind/bandgrind-session-01/" >}})

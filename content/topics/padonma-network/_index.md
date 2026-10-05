@@ -136,7 +136,7 @@ products globally traceable via handmade QR codes.
 
 The ancient handweaving technology of the rigid heddle loom seems like
 it may well be fit for the purpose of handweaving rMQR ID bands. Read
-the [Bandgrind Experiments](/topics/qr-codes/bandgrind/bandgrind-experiments/) pages for a log of ongoing experiments into
+the [Bandgrind Experiments]({{< relref "/topics/qr-codes/bandgrind/bandgrind-experiments/" >}}) pages for a log of ongoing experiments into
 weaving rMQR ID bands via a rigid heddle.
 
 [![](sami_heddles.jpg)](https://durhamweaver64.blogspot.com/2015/01/travels-around-baltic-sami-weaving.html)
