@@ -137,14 +137,14 @@
 }
 
 .breadcrumbs li:not(:last-child)::after {
-  content: "/";
+  content: "|";
   margin-left: 0.35rem;
   color: var(--outline);
 }
 
 .breadcrumbs a {
-  color: var(--primary);
-  text-underline-offset: 3px;
+  color: var(--on-surface-variant);
+  text-decoration: none;
 }
 
 .breadcrumbs [aria-current="page"] {
@@ -643,11 +643,7 @@
 }
 
 .topic-page .post-header-inner {
-  background: var(--paper);
-  padding: 32px var(--gutter);
-  border-radius: var(--radius-lg);
-  color: #f5f5f5;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 32px 0;
 }
 
 .topic-page .post-title {
@@ -667,8 +663,9 @@
 }
 
 .page-title {
-    padding-top: 3rem;
-    color: var(--primary);
+    font-size: 40px;
+    padding-top: 1rem;
+    color: var(--on-background);
     font-family: var(--font-display);
 }
 
@@ -734,9 +731,20 @@
   max-width: 720px;
 }
 
-.post-body h2 {
+.post-body h1 {
   font-family: var(--font-display);
   font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  color: var(--on-background);
+}
+
+.post-body h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
   font-weight: 700;
   line-height: 1.25;
   margin-top: 48px;

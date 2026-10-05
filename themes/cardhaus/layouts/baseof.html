@@ -107,11 +107,10 @@
       {{ end }}
     {{ end }}
     <div class="footer-inner">
-      <span class="footer-logo">{{ site.Title }}</span>
-      <span class="footer-copy">© {{ now.Year }}</span>
-      {{ with site.Params.build.version }}<span class="footer-build">Build {{ . }}</span>{{ end }}
+      <span class="footer-copy">©{{ now.Year }} {{ site.Title }}</span>
     </div>
   </footer>
+
   <script src="{{ "js/swiper.min.js?v=12.1.4" | relURL }}"></script>
   <script>
     document.querySelectorAll('.hero-carousel').forEach(function (carousel) {
