@@ -1,6 +1,6 @@
 ---
 title: The Hope
-summary: Burmese Brand with concept store in Bangcock
+summary: Burmese brand with concept store in Bangcock
 hero:
   image: reeler.png
   focal:

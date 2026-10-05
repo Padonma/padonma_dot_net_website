@@ -1,5 +1,5 @@
 ---
-title: "Mỹ Đức"
+title: "My Duc"
 summary: "Vietnamese lotus-silk producer led by artisan Phan Thị Thuận in Phùng Xá, Mỹ Đức."
 hero:
   image: "my_duc_vietnam_.jpg"

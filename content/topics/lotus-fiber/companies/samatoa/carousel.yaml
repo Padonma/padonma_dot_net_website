@@ -3,12 +3,12 @@
   alt: "Samatoa"
   focal:
     x: 0.5
-    "y": 0.5
+    "y": 0.0
 - image: "samatoa-tailor-696x1131.jpg"
   hash: "samatoa-tailor-696x1131"
   alt: "Samatoa"
   focal:
-    x: 0.5
+    x: 0.75
     "y": 0.5
 - image: "samatoa_textilers.png"
   hash: "samatoa-uniforms"

@@ -1,6 +1,12 @@
 ---
 title: Samatoa
 summary: In Cambodia, Samatoa started producing lotus fiber after a drought in 2008 destroyed the silk crop.
+hero:
+  image: "fiber-extraction.jpg"
+  alt: "Samatoa"
+  focal:
+    x: 0.5
+    "y": 1.0
 ---
 
 ## Deets
