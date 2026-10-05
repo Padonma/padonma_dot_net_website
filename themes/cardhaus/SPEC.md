@@ -80,8 +80,8 @@ and one at mobile widths. Consumers may override `tablet` and `mobile` under
 The homepage uses `content/carousel.yaml`. A branch or leaf page reads only the
 `carousel.yaml` resource in its own bundle. Bundles without that file have no
 carousel, even when they contain images. A configured carousel precedes the
-page's normal article presentation. Opening scroll snap applies only to the
-homepage and branch landing pages, never to leaf pages.
+page's normal article presentation. Opening scroll snap applies to the
+homepage and to branch or leaf pages whose carousel appears at the top.
 
 Every slide requires an explicit `image`, stable `hash`, and accessible `alt`.
 A relative image path resolves from the bundle containing `carousel.yaml`; a

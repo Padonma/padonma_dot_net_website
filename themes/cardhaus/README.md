@@ -213,8 +213,9 @@ to avoid recursively rendering the listing inside the card.
 
 Place `carousel.yaml` beside a branch bundle's `_index.md` or a leaf bundle's
 `index.md`. The homepage uses `content/carousel.yaml`. A bundle without that
-file has no carousel: sibling images are never discovered implicitly. Branch
-landing pages retain opening scroll snap; ordinary leaf pages never receive it.
+file has no carousel: sibling images are never discovered implicitly. Homepage,
+branch landing pages, and leaf pages with a top-of-page carousel receive
+opening scroll snap.
 
 ```yaml
 - image: supporting-image.jpg

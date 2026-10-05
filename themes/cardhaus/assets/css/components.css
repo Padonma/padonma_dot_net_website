@@ -919,13 +919,19 @@
   scroll-snap-type: y mandatory;
 }
 
+.leaf-opening-snap {
+  scroll-snap-type: y mandatory;
+}
+
 .homepage .hero-carousel,
 .homepage .billboard,
 .homepage .homepage-content,
 .topic-section-page .hero-carousel,
 .topic-section-page .topics-grid,
 .atelier-page .billboard,
-.atelier-page .atelier-content {
+.atelier-page .atelier-content,
+.leaf-page .hero-carousel,
+.leaf-page .topic-page {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -941,7 +947,8 @@
 }
 
 /* Non-sticky opening views reserve the header above their first panel. */
-.topic-section-page .hero-carousel {
+.topic-section-page .hero-carousel,
+.leaf-page .hero-carousel {
   scroll-margin-top: var(--header-height);
 }
 
@@ -1233,6 +1240,10 @@ button.hero-carousel-slide {
   }
 
   .atelier-opening-snap {
+    scroll-snap-type: none;
+  }
+
+  .leaf-opening-snap {
     scroll-snap-type: none;
   }
 

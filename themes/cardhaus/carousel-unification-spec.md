@@ -16,10 +16,9 @@ Sibling images alone must never cause a carousel to appear. This makes image
 selection and order explicit editorial data and removes the leaf layout's
 implicit resource discovery.
 
-Existing opening scroll-snap behavior remains limited to the homepage and
-branch landing pages. A leaf carousel uses the same renderer and client-side
-behavior, but an ordinary leaf page must not receive homepage or branch landing
-page scroll-snap classes.
+Opening scroll-snap behavior applies to the homepage and to branch and leaf
+pages with a carousel at the top. A leaf carousel snaps from the carousel to
+the page's normal article presentation.
 
 ## Goals
 
@@ -43,7 +42,7 @@ page scroll-snap classes.
   bundles.
 - Do not infer carousel membership after migration.
 - Do not add `link` to generated leaf entries.
-- Do not add opening scroll snap to leaf pages.
+- Add opening scroll snap around a top-of-page carousel on leaf pages.
 - Do not migrate AVIF files into leaf carousels.
 - Do not change unrelated page content, image files, or front matter.
 
@@ -166,12 +165,10 @@ presence must be tested with `.Resources.GetMatch "carousel.yaml"`, not with
   bundle contexts.
 - Carousel JavaScript must initialize every rendered `.hero-carousel` without
   depending on `.IsSection`.
-- The root `<html>` classes that enable opening scroll snap remain:
-  homepage classes for `.IsHome`, and branch landing-page classes only for a
-  section with a carousel.
-- A leaf page with a carousel receives neither `homepage-opening-snap` nor
-  `topic-section-opening-snap`, and must not acquire an equivalent leaf snap
-  class.
+- The root `<html>` classes that enable opening scroll snap cover the homepage,
+  a branch landing page with a carousel, and a leaf page with a carousel.
+- A leaf page with a carousel receives its own leaf opening-snap class. Its
+  carousel and article container are the two opening snap targets.
 
 ## Python generator contract
 
@@ -379,7 +376,7 @@ Update theme documentation in the same implementation change:
 
 - `themes/cardhaus/README.md`: rename “Add a branch carousel” to cover page
   bundles; explain leaf opt-in, no implicit discovery, generated leaf
-  lightboxes, generator usage, and the lack of leaf opening scroll snap.
+  lightboxes, generator usage, and leaf opening scroll snap.
 - `themes/cardhaus/SPEC.md`: replace the topic-gallery contract with the
   unified carousel contract; describe home/branch/leaf ownership, focal rules,
   and optional-link behavior.
@@ -442,8 +439,9 @@ Inspect desktop and mobile output for:
 
 For leaf carousels verify article content remains below the carousel, slide
 activation opens the correct full image, closing restores focus, controls and
-keyboard behavior work, and no slide navigates. Confirm ordinary leaf pages do
-not snap vertically on initial scrolling.
+keyboard behavior work, and no slide navigates. Confirm a leaf with a
+top-of-page carousel snaps from the carousel to its article, while a leaf
+without a carousel retains ordinary document scrolling.
 
 For the three established carousels verify links, deep links, view transitions,
 autoplay stopping rules, looping, focal positioning, and responsive preloads
@@ -461,8 +459,8 @@ Implementation is complete only when all of the following are true:
   coordinates; every generated alt equals its page title.
 - Generated leaf entries contain no `link` and open the hero-carousel
   lightbox.
-- Homepage and branch opening scroll snap still work; leaf pages do not receive
-  opening scroll snap.
+- Homepage and branch opening scroll snap still work; leaf pages with a
+  top-of-page carousel snap from the carousel to the article.
 - The three hand-authored carousels preserve their editorial image sequences
   and pass regression checks; image-preserving handoffs use explicit fragments
   and matching source/destination hashes.

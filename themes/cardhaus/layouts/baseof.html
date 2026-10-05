@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {{- $hasSectionCarousel := and .IsSection (.Resources.GetMatch "carousel.yaml") -}}
+{{- $hasLeafCarousel := and .IsPage (.Resources.GetMatch "carousel.yaml") -}}
 {{- $isAtelier := eq .Layout "atelier" -}}
 {{- $stickyHeader := .Param "stickyHeader" -}}
 <html lang="{{ site.Language.Locale | default "en" }}"
@@ -9,6 +10,8 @@
           class="topic-section-page topic-section-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
       {{ else if $isAtelier }}
           class="atelier-page atelier-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
+      {{ else if $hasLeafCarousel }}
+          class="leaf-page leaf-opening-snap{{ if $stickyHeader }} has-sticky-header{{ end }}"
       {{ else if $stickyHeader }}
           class="has-sticky-header"
       {{ end }}>
@@ -405,14 +408,21 @@
       var root = document.documentElement;
       var homepage = root.classList.contains('homepage');
       var atelier = root.classList.contains('atelier-page');
-      var firstPanel = homepage || atelier
-        ? document.querySelector(homepage ? '.homepage .hero-carousel' : '.atelier-page .billboard')
-        : document.querySelector('.topic-section-page .hero-carousel');
+      var leaf = root.classList.contains('leaf-page');
+      var firstPanel = homepage
+        ? document.querySelector('.homepage .hero-carousel')
+        : atelier
+          ? document.querySelector('.atelier-page .billboard')
+          : leaf
+            ? document.querySelector('.leaf-page .hero-carousel')
+            : document.querySelector('.topic-section-page .hero-carousel');
       var finalPanel = homepage
         ? document.querySelector('.homepage .homepage-content')
         : atelier
           ? document.querySelector('.atelier-page .atelier-content')
-          : document.querySelector('.topic-section-page .topics-grid');
+          : leaf
+            ? document.querySelector('.leaf-page .topic-page')
+            : document.querySelector('.topic-section-page .topics-grid');
       if (!firstPanel) return;
       var lastSnapTarget = finalPanel || firstPanel;
 
@@ -425,6 +435,7 @@
       function openingSnapClass() {
         if (homepage) return 'homepage-opening-snap';
         if (atelier) return 'atelier-opening-snap';
+        if (leaf) return 'leaf-opening-snap';
         return 'topic-section-opening-snap';
       }
 
