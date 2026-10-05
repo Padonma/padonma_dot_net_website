@@ -1,13 +1,119 @@
 ---
 title: Sport Coat
 summary: We want to make a classic sport coat, soft tailerer, unstructured, patch pockets
-hero:
-  NOT_image: /topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_full.jpg
 ---
 
-Atelier Padonma's collection is Burma inspired. And although we love the rich, rich
-sartorial history of Burma we keep away from the boisterous folkloric richly colored
-end of the spectrum.
+Atelier Padonma is trying to stay on theme with Burmese inspired
+fashion, while staying away from anything folkloric (despite the
+stunning richness of Burma's sartorial herritage). The goal of
+limiting ourselves to that niche/theme is to leave room for other
+fashion designers to go off in other areas of fashion. We want
+them to be able to benefit from the novelty. The Padonma Network
+is concerned about the "how" more than the "what" with the
+goal of empowering the lotus artisans.
+
+Fortunately for us, the British spent over a century in Burma doing
+what Britain used to do. So, designing a British inspired sport coat
+is arguably part of Burmese history. Indeed, those aristocratic inbred
+pinheads are exactly the folks who invented the sport coat in the
+nineteenth century, contemporanious with their nasty adventures in
+Southeast Asia. (Yay?)
+
+# Prior art: lotus jackets
+
+The actual first known example of lotus thread being used by a Western
+fashion house is the actual jacket on of the Loro Piana "kids" had
+made from lotus fabric once he learned of the fiber's existance. Supposedly
+he likes it so much that he wore it all summer.
+
+Then the produced their lotus jacket for customers, for $5600 USD in 2010.
+
+
+![Loro Piana lotus-fiber sport coat](/topics/lotus-fiber/companies/loro-piana/loro_pianan_jacket_most.jpg)
+
+We have also stumble upon the Hope Company's lotus jacket for women.
+
+![Hope's Jacket](/topics/lotus-fiber/companies/hope/jacket.png)
+
+Clearly, Loro Piana has sourced excellent lotus fabric (from Inle Lake, where lotus
+fiber was first used for textiles) and has better tailoring talent on hand at in their
+atelier.
+
+# Risks
+
+The core of the Padonma Network team is essentially just a software programmer with
+no textile experience besides handweaving QR Code ID bands. Atelier Padonma does
+have access to Burmese tailors living in the USA. This talent is being used to
+make longyi (the Burmese sarong) and fisherman trousers because they are have made
+
+
+- Tailoring talent and style of cut
+- Fabric weightiness/weave density for a suit not a scarf or saong
+- color consistence
+- thread quality: consistant gauge and degree of slubbiness
+- remote business loss (civil war, scams, etc)
+- Fraud: lots of folks claiming 100% lotus, but it aint necessaaily so
+- Ego, Samatoa
+
+  - [florentine cut sport coat - Google Search](https://www.google.com/search?num=10&sca_esv=65b7e97ddd6b1b65&sxsrf=APpeQntVH4BaW5TwHCAokl0Rndcv5XNSvw:1791111191873&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832SMIiTl3t-JZ4hGJOxPbHYRzcy6GgySVUpZky6o6nTl3OG98qpkeeTCM9JzouvaRJUa2eRuUWrmVKZaYAjAscHwsZsSxYn8wCYS6DqDecnx7T6u_vII1iSDx2pY3wzSrPAeAkgfdbsq6hdmufgD_hzq5hHcVW4Iu4fG0v7Ue2bHUstXEyA&q=florentine+cut+sport+coat&sa=X&ved=2ahUKEwjA1uCSmaCXAxXZHzQIHbxAGnYQtKgLegQIFhAB&biw=1271&bih=823&dpr=2)
+
+Shakeresque
+
+Italians cut is closer to what would have been going on in Burma that
+the suits one would find in Savile Row. Or one could argue that
+the soft-sholdered "drape cut" of Anderson & Sheppard is the historical reference.
+
+[How a Savile Row Suit is Really Made: The Rest Is History goes to Anderson & Sheppard - YouTube](https://www.youtube.com/watch?v=vUwp_ZYen8k)
+- [Dissing Craig](https://youtu.be/vUwp_ZYen8k?t=205)
+
+
+Note, this jaeger is made of linen. Lotus does not wrinkle like linen
+https://cdn.freesewing.eu/showcase/linnen-jaeger-by-paul/main.webp
+
+Part of the open source deliverables of the Padonma Networks is
+the pattern designs for the garments. This enables the artisans to have 
+plans to work off of sell, perhaps to Atelier Padonma. So, we come 
+up with the designs, bang out a few prototypes through the Atelier,
+and once debugged publish the pattern designs via the Network.
+
+Our styling is about classic timeless style not some short term
+fashion trend. This is well-made, expensive clothing that should stay
+current for years. Think [Allan Flussers Dressing The Man: Mastering the art of permanent fashion](https://www.realmenrealstyle.com/dressing-man-book-review-flusser/).
+
+TODO: book cover
+
+
+maybe the padonma license is attribution i.e. the wordmark yet
+no control is given up.
+
+Classic style not fast fashion. But neither should this be costume art
+bordering on steampunk. We want to make the finest clothing that folks
+can wear casually in a Westernized context (with inspiration from
+the history of Burma yet definitely not folkloric, including that of
+the British).
+
+
+The Italian cut is the sweet spot between the American "sack suit" and
+the stuffy, pretentious British cut.
+
+
+
+Oscar Wilde quiped about fashion trends: "Fashion is a form of
+ugliness so intolerable that we have to alter it every six months."
+Versus classics that never go out of style. This is was we are going
+with mid-width notched lapels. Super high notches, and wide or narrow
+lapels come and go as folks try to signal they are hip.  Lotus has no
+need to signal beyond being its elegant self. This also means our
+design patterns (the blueprints for a garment) will stay current
+and the loosely confederated lotus producers do not have to worry
+about their work going out of fashion. Lotus is slow to produce
+and slow to go out of fashion, the exact opposite of fast fasion.
+
+
+Atelier Padonma's collection is Burma inspired. And although we love
+the rich, rich sartorial history of Burma, in terms of design
+aesthetic Padonma intentionally keeps away from the boisterous
+folkloric richly colored end of the spectrum.
 
 Supposedly the first thing that the Loro Piana kid did when he found
 out about lotus fabric was make himself a sport coat, which must have
@@ -65,16 +171,32 @@ demonstrates the pattern design of an unstructured coat. Check the inside pictur
 
 ### Include
 
-- [Functional label](https://www.instagram.com/reel/DPMiPmBCNnJ/)
+- Color: natural only to start
+  - Later: indigo dyed blue blazer (again ref'ing the Brits in Burma)
+    Have some tasteful solid brass buttons made with lotus designs
+    which could be easily shipped around to lotus tailors. (The
+    Burmese has a long history of brassworks.)
+- Buttons
+  - For the natural colored coat, button color will match the fabric, see Loro Piana's example
+  - Front buttons: three rolled to two
+- [Functional lapel](https://www.instagram.com/reel/DPMiPmBCNnJ/)
+  - Yes, throat strap but not visible unless in use, or desired.
+  
+  - But not this from Flusser video: note the lapel is too archival,
+    yes functional but that strap nees to be hidden by folding and
+    attaching to a hidden button
 - [Functional cuff](https://us.mossbros.com/inside-pocket/post/functional-cuffs-working-detail) with real buttons and buttonholes on the OG surgeon's cuff
-- English style double vents in the rear
-- Indigo dyed option? (getting close to a blue blazer)
+- English style double vents in the rear, not American single vent
 
 
 ### Exclude
 
 - No double breasted
 - No [epaulettes](https://www.youtube.com/shorts/WPz0HGx4qwQ)
-- No peaked lapels
-- No chest patch pockets, maybe flap pockets at waiste
+- No peaked lapels, too archival or if going modern can come off as
+  pretentious. Also very on and off in terms of being au courant. While notched is more timeless.
+- No chest patch pockets, maybe flap pockets at waiste, maybe jetted
 - Sure bush jacket roots but not retro-styled to look like a costume piece
+- No visible throat latch: [Allan Flussers Dressing The Man](https://www.realmenrealstyle.com/dressing-man-book-review-flusser/)
+- No machined pick stitching, but maybe it truly handstitched
+

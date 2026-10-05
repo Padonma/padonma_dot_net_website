@@ -21,10 +21,11 @@
     x: 0.5
     "y": 0.0
 
-- image: craig-2.png 
-  hash: craing-2
-  alt: "Daniel Craig in a bush suit"
+- image: jaeger-by-paul.jpeg
+  hash: jaeger-by-paul
+  alt: "Jaeger sport coat by Paul"
   focal:
     x: 0.5
-    "y": 0.0
+    "y": 0.2
+
 
