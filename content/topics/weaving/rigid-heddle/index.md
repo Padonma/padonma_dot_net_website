@@ -14,8 +14,9 @@ of the Incan empire went about their business using [quipu](https://en.wikipedia
 from systems of knots on strings.
 
 <figure height="250px" data-align="center">
-<img src="quipo_in_cusco.jpg" />
-<figcaption>An Incan quipu</figcaption>
+  <img src="{{< relref "/topics/qr-codes/bandgrind" >}}quipu-in-cusco.jpg"
+       alt="An Incan quipu" />
+  <figcaption>An Incan quipu</figcaption>
 </figure>
 
 A bandweaving loom is about a simple as looms come, requiring only a
