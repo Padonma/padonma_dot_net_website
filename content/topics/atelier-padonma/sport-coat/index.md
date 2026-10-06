@@ -1,6 +1,6 @@
 ---
 title: Sport Coat
-summary: Atelier Padonma plans to release a classic sport coat
+summary: Atelier Padonma's classic sport coat made of 100% lotus
 footer:
   image: "/topics/weaving/backstrap-weaving/backstrap-weaving-in-shade-2.jpg"
   focal:

@@ -49,6 +49,17 @@ bonus serving to motivate the real lotus fiber suppliers.
 {{< /topic-card-grid >}}
 
 
+## The Padonma Atelier makes only apparel
+
+Many of these lotus farms and artisans create all manner of lotus
+products: teas, from the seeds they make
+the ["Cajun peanut"](https://lucec.loyno.edu/natural-history-writings/american-lotus-nelumbo-lutea-locally-known-graine-%C3%A0-voler) and bracelets, flower prints, the leaves are used as food wraps,
+etc. This is excellent, responsible, optimal natural resource usage
+and should be encouraged, but selling those under the same brand as
+the apparel is not the way to the ateliers of the haute couture world
+:)
+
+
 
 # Earlier
 
