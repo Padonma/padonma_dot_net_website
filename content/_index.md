@@ -1,6 +1,8 @@
 ---
 title: "Padonma"
 stickyHeader: true
+footer:
+  image: "fluff/women_in_hat_and_thanaka.jpg"
 ---
 
 
@@ -31,5 +33,4 @@ follows.
 >}}
 
 {{< /topic-card-grid >}}
-
 

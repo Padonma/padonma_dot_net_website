@@ -16,7 +16,6 @@ enableRobotsTXT = true
   billboardLogo = "temp/padonma_logo.png"
   billboardTitle = ["Atelier", "Padonma"]
   topicsHeading = "Introduction"
-  footerImage = "fluff/women_in_hat_and_thanaka.jpg"
 
   [params.cardhaus]
     customStylesheet = "css/padonma.css"

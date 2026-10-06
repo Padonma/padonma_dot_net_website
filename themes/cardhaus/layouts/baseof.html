@@ -85,27 +85,49 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer class="site-footer">
-    {{ if .IsHome }}
-      {{ with site.Params.footerImage }}
-        {{ $footerImage := resources.Get . }}
-        {{ with $footerImage }}
-          {{ $footerImage600 := .Resize "600x webp q80" }}
-          {{ $footerImage960 := .Resize "960x webp q80" }}
-          <div class="footer-bg">
-            <img
-              src="{{ $footerImage960.RelPermalink }}"
-              srcset="{{ $footerImage600.RelPermalink }} 600w, {{ $footerImage960.RelPermalink }} 960w"
-              sizes="100vw"
-              width="{{ $footerImage960.Width }}"
-              height="{{ $footerImage960.Height }}"
-              alt=""
-              class="footer-bg-img"
-              loading="lazy">
-          </div>
-        {{ end }}
-      {{ end }}
-    {{ end }}
+  {{- $footer := .Params.footer | default dict -}}
+  {{- $footerImage := false -}}
+  {{- with $footer.image -}}
+    {{- if strings.HasPrefix . "/" -}}
+      {{- $imagePath := strings.TrimPrefix "/" . -}}
+      {{- $resourcePage := site.GetPage (path.Dir $imagePath) -}}
+      {{- if $resourcePage -}}
+        {{- $footerImage = $resourcePage.Resources.GetMatch (path.Base $imagePath) -}}
+      {{- end -}}
+      {{- if not $footerImage -}}
+        {{- $footerImage = resources.Get $imagePath -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $footerImage = $.Resources.GetMatch . -}}
+      {{- if not $footerImage -}}
+        {{- $footerImage = resources.Get . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not $footerImage -}}
+      {{- errorf "Footer image %q was not found for %s (use a bundle-relative name, an absolute page-resource path, or an asset path)" . $.File.Path -}}
+    {{- end -}}
+  {{- end -}}
+  <footer class="site-footer{{ if $footerImage }} site-footer--image{{ end }}">
+    {{- with $footerImage -}}
+      {{- $footerImage600 := .Resize "600x webp q80" -}}
+      {{- $footerImage960 := .Resize "960x webp q80" -}}
+      {{- $footerImage1440 := .Resize "1440x webp q80" -}}
+      {{- $footerFocal := $footer.focal | default dict -}}
+      {{- $footerFocalX := $footerFocal.x | default 0.5 -}}
+      {{- $footerFocalY := index $footerFocal "y" | default 0.5 -}}
+      <div class="footer-bg">
+        <img
+          src="{{ $footerImage960.RelPermalink }}"
+          srcset="{{ $footerImage600.RelPermalink }} 600w, {{ $footerImage960.RelPermalink }} 960w, {{ $footerImage1440.RelPermalink }} 1440w"
+          sizes="100vw"
+          width="{{ $footerImage960.Width }}"
+          height="{{ $footerImage960.Height }}"
+          alt=""
+          class="footer-bg-img"
+          style="object-position: {{ mul $footerFocalX 100 }}% {{ mul $footerFocalY 100 }}%"
+          loading="lazy">
+      </div>
+    {{- end }}
     <div class="footer-inner">
       <span class="footer-copy">©{{ now.Year }} {{ site.Title }}</span>
     </div>

@@ -1270,10 +1270,14 @@ button.hero-carousel-slide {
 .site-footer {
     margin-top: 3rem;
   position: relative;
-  height: 500px;
+  height: auto;
   overflow: hidden;
   background: var(--surface-container-low);
   color: var(--paper);
+}
+
+.site-footer--image {
+  height: 500px;
 }
 
 .footer-bg {
@@ -1289,15 +1293,27 @@ button.hero-carousel-slide {
   display: block;
 }
 
+.footer-bg::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(transparent 55%, rgb(0 0 0 / 36%));
+  pointer-events: none;
+}
+
 .footer-inner {
   position: relative;
   z-index: 2;
-  height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--gutter);
-  padding: 0 var(--margin) 2rem;
+  padding: 0 var(--margin) 1rem;
+}
+
+.site-footer--image .footer-inner {
+  height: 100%;
+  padding-bottom: 2rem;
 }
 
 .footer-logo {

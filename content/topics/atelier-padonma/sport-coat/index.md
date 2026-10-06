@@ -1,6 +1,11 @@
 ---
 title: Sport Coat
 summary: Atelier Padonma plans to release a classic sport coat
+footer:
+  image: "/topics/weaving/backstrap-weaving/backstrap-weaving-in-shade-2.jpg"
+  focal:
+    x: 0.28
+    "y": 0.5
 social:
   image: "loro-piana-sport-coat.jpg"
   alt: "Loro Piana's lotus fabric sport coat"
