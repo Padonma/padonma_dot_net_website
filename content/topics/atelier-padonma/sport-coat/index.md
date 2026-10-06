@@ -30,9 +30,10 @@ make him a sport coat out of the fabric. We feel him.
 > clothing company, Mr. Loro Piana had the fabric made into a jacket. "I
 > wore it all fall," he says.
 
-He then produced a lotus jacket for customers, for $5600 USD in
-2010 (~$8,600 in 2026). This product is not currently listed on their site; perhaps the
-civil war in Burma has interrupted the supply of lotus fabric.
+He then produced a lotus jacket for customers, for $5600 USD in 2010
+(~$8,600 in 2026). This product is not currently listed on their site;
+perhaps the civil war in Burma has interrupted his supply of lotus
+fabric.
 
 # Atelier Padonma's sport coat plans
 
@@ -40,7 +41,7 @@ A sport coat is definitely on Atelier Padonma's short list for its
 open source collection. Yet such is not first-up as we want to reduce
 risk by starting simpler than with a sport coat. To wit, we are
 starting in-house with simpler, less constructed garments like wrap
-skirts (longyis, sarongs) and fisher's trousers. Nonetheless, we have
+skirts (longyis, sarongs) and fisherman trousers. Nonetheless, we have
 found existence proofs that sport coats can be made of lotus fabric.
 
 ![Loro Piana lotus-fiber sport coat](loro-piana-sport-coat.jpg)
@@ -54,8 +55,9 @@ Lake, where lotus fiber was first used for textiles) which is still
 slubby by nature, and has excellent tailoring talent on hand in their
 atelier.
 
-Further, we have identified an experienced lotus manufacturer, Samatoa
-of Cambodia, whose model is fully integrated, so quality is internally
+Further, we have identified an experienced lotus manufacturer, 
+[Samatoa of Cambodia]({{< relref "/topics/lotus-fiber/companies/samatoa/" >}}), 
+whose production model is fully integrated, so quality is internally
 controlled from farming lotus and harvesting stalks for yarn, through
 to finished garment, including custom tailoring. We have not yet
 confirmed that they have experience cutting suit jackets but from what
@@ -114,7 +116,10 @@ What would that cost? No idea, but if Loro Piana was selling 100%
 lotus sport coats for $5,600 in 2010 and Samatoa
 dresses were selling for three or four thousand in the same time
 period... take out the middlemen and the ludicrous pricing of
-haute couture... less than $2,000? No idea yet.
+haute couture... Possibly a lot less as they were advertising
+[off-the-rack ladies lotus jackets](https://web.archive.org/web/20241006140730/https://lotussilkfarm.com/product/lotus-silk-jacket/) for $390 [sic] in 2025.
+
+![](samatoa-jacket.jpg)
 
 # Details details
 
