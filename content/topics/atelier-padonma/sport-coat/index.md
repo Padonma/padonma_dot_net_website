@@ -38,23 +38,23 @@ civil war in Burma has interrupted the supply of lotus fabric.
 
 A sport coat is definitely on Atelier Padonma's short list for its
 open source collection. Yet such is not first-up as we want to reduce
-risk by starting simpler that with a sport coat. To whit, we are
+risk by starting simpler than with a sport coat. To wit, we are
 starting in-house with simpler, less constructed garments like wrap
 skirts (longyis, sarongs) and fisher's trousers. Nonetheless, we have
 found existence proofs that sport coats can be made of lotus fabric.
 
 ![Loro Piana lotus-fiber sport coat](loro-piana-sport-coat.jpg)
 
-We have also stumble upon the Hope Company's lotus jacket for women.
+We have also stumbled upon the Hope Company's lotus jacket for women.
 
 ![Hope's Jacket](/topics/lotus-fiber/companies/hope/jacket.png)
 
 Clearly, Loro Piana has sourced excellent lotus fabric (from Inle
 Lake, where lotus fiber was first used for textiles) which is still
-slubby by nature, and has excellent tailoring talent on hand at in their
+slubby by nature, and has excellent tailoring talent on hand in their
 atelier.
 
-Further, we have identified an experience lotus manufacturer, Samatoa
+Further, we have identified an experienced lotus manufacturer, Samatoa
 of Cambodia, whose model is fully integrated, so quality is internally
 controlled from farming lotus and harvesting stalks for yarn, through
 to finished garment, including custom tailoring. We have not yet
@@ -72,7 +72,7 @@ various lotus artisans with an open source catalog of Atelier
 Padonda's collection is one of the goals of the Padonma Network.)
  
 Note the following example of the Jaeger design is made of
-linen. Lotus has a similar color but unlike linen is does not wrinkle
+linen. Lotus has a similar color but unlike linen it does not wrinkle
 easily.
 
 ![](jaeger-by-paul.jpeg)
@@ -88,10 +88,10 @@ nothing to either the customer nor Samatoa.
 
 **Note:** Samatoa has not yet been directly contacted so maybe this
 plan is stillborn. So, Atelier Padonma has some pitching to do before
-we can proceed with them. There is no way they have of the Padonma
+we can proceed with them. There is no way they have heard of the Padonma
 Network yet.
  
-The guinea pig would go to their local tailer to get their
+The guinea pig would go to their local tailor to get their
 measurements taken. They would directly pay Samatoa (beware their lead
 time). The sport coat would be manufactured in Cambodia with inlays
 (bits of extra fabric so that a garment can be let out later). The
