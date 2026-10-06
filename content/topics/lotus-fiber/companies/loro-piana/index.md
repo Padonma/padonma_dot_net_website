@@ -9,6 +9,11 @@ hero:
   alt: "A cream lotus-fiber jacket by Loro Piana"
 ---
 
+Loro Piana is an Italian luxury clothing brand. The company positions
+itself as a specialist in rare natural fibers, specializing in the
+processing of cashmere, vicuña, extrafine wool, and dabbles in lotus
+fiber. They refer to themselves as a Maison and "the House."
+
 ## Loro Piana family
 
 [Source for image of PLLP](https://wwd.com/eye/people/pier-luigi-loro-piana-sailing-my-song-competition-music-1235656296/)

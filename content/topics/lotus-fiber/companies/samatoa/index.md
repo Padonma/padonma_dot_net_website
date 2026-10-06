@@ -13,8 +13,22 @@ hero:
 
 - [Facebook](https://www.facebook.com/lotussilkfarm.siem.reap/)
 - [Website](https://www.lotussilkfarm.com/en/index.html)
-- [Samatoa dresses go for $3,000 to $4,000 in 2015](https://youtu.be/P-emTaSUuS0?t=299), exported to the West, Singamore, Hong Kong -- 15
-  countries as of 2015.
+- [Samatoa dresses go for $3,000 to $4,000 in 2015](https://youtu.be/P-emTaSUuS0?t=299), exported to the West, Singamore, Hong Kong -- 15 countries as of 2015.
+
+- Founder: Awen Delaval, on [LinkedIn](https://www.linkedin.com/in/awendelaval/)
+- General email: contact@samatoa.com
+- Founder/GM email (Awen Delaval): gm@samatoa.com
+- Phone: +855 92 52 9001
+  - Alternate phone (older listing): +855 12 28 59 30
+- Websites:
+  - samatoa.com
+  - samatoa.lotus-flower-fabric.com
+  - lotussilkfarm.com
+- Address: 9 Road 63 (Russei Luk), Phnom Krom, Siem Reap 17250, Cambodia
+- Social:
+  - Twiter: [@Samatoa2003](https://x.com/Samatoa2003)
+  - LinkedIn: Samatoa Lotus Textiles
+
 
 ## Phrases
 
@@ -25,7 +39,7 @@ Quotes from their literature
   absorbency, and antimicrobial qualities. Naturally
   hypoallergenic and wrinkle-resistant,
 
-## EU report
+## EU report {#eu-report}
 
 [Samatoa: Circular Economy Business Case Studies In Southeast Asia](https://www.switch-asia.eu/site/assets/files/4087/samatoa_final-1.pdf?utm_source=chatgpt.com)
 > Samatoa was given

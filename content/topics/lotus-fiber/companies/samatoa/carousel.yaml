@@ -13,12 +13,6 @@
 - image: "samatoa_textilers.png"
   hash: "samatoa-uniforms"
   alt: "Samatoa folks watching a video"
-- image: "shop-lotus-silk-alt.webp"
-  hash: "shop-lotus-silk-alt"
-  alt: "Samatoa"
-  focal:
-    x: 0.5
-    "y": 0.5
 - image: "short-dress-close-up.jpeg"
   hash: "short-dress-close-up"
   alt: "Samatoa"
@@ -31,12 +25,16 @@
   focal:
     x: 0.5
     "y": 0.5
-- image: "wide-backstrap.png"
-  hash: "wide-backstrap"
+- image: "awen-delaval.png"
+  hash: "awen-delaval"
+  alt: "Founder Awen Delaval"
+- image: "samatoas-atelier.jpeg"
+  hash: "samatoas-atelier"
+  alt: "Samatoa's atelier"
+- image: "shop-lotus-silk-alt.webp"
+  hash: "shop-lotus-silk-alt"
   alt: "Samatoa"
   focal:
     x: 0.5
     "y": 0.5
-- image: "awen-delaval.png"
-  hash: "awen-delaval"
-  alt: "Founder Awen Delaval"
+  
