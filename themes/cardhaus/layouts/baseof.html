@@ -22,6 +22,7 @@
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
   {{- $description := partial "page-description.html" . }}
   <meta name="description" content="{{ $description }}">
+  {{ partial "favicons.html" . }}
   {{ partial "social-metadata.html" . }}
   {{ partial "hero-carousel-preloads.html" . }}
   <link rel="stylesheet" href="{{ "css/swiper.min.css" | relURL }}">

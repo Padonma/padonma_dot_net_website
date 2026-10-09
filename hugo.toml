@@ -23,6 +23,10 @@ enableRobotsTXT = true
     [params.cardhaus.social]
       image = "temp/thailand-lotus-lake.jpg"
 
+    [params.cardhaus.favicons]
+      source = "brand/dotted-p-r9-icon.pink-bg.png"
+      ico = "brand/padonma-network-favicon.ico"
+
 [menus]
   [[menus.main]]
     name = "HOME"

@@ -64,6 +64,38 @@ to override semantic CSS properties such as `--accent`, `--primary`, and
 `--font-display`. Breakpoints are unitless pixel values compiled into media
 queries.
 
+### Favicons and installable app icons
+
+Favicon support is optional and configured under `[params.cardhaus.favicons]`:
+
+```toml
+[params.cardhaus.favicons]
+  source = "brand/site-icon.png"
+  ico = "brand/site-icon.ico"
+  # name = "Site name for installation"
+  # shortName = "Short name"
+  # startURL = "/"
+  # scope = "/"
+  # display = "standalone"
+  # themeColor = "#b90055"
+```
+
+`source` is optional and names a square raster image in the consumer's global
+`assets/` directory. When set, Cardhaus uses Hugo's image pipeline to generate
+16, 32, and 48 pixel browser icons, a 180 pixel Apple touch icon, and 192 and
+512 pixel app icons. It also creates padded maskable variants of the app icons
+and publishes a `site.webmanifest` with both regular and maskable icons. Keep
+the important artwork centered within the maskable safe area. The manifest
+defaults its name to the site title, its launch URL and scope to the site root,
+and its display mode to `standalone`.
+
+`ico` is optional and names an ICO file beneath the consumer's `static/`
+directory; Cardhaus emits a link to it. If no `source` is set, Cardhaus does
+not generate PNG variants or a web manifest. `themeColor`, when provided, sets
+both the manifest's theme and background colors. These settings provide the
+icons and manifest metadata for installation; offline behavior requires a
+separate service worker.
+
 ### Glass rendering compatibility
 
 Cardhaus treats its SVG glass reflection as a progressive enhancement. Every
@@ -311,6 +343,7 @@ Key reusable source:
 - `layouts/_partials/hero-image.html` renders responsive canonical imagery.
 - `layouts/_partials/topic-card.html` renders every shared card.
 - `layouts/_partials/hero-carousel.html` is the single carousel and image-sequence renderer.
+- `layouts/_partials/favicons.html` emits configured browser icons and the optional app manifest.
 - `layouts/_partials/social-metadata.html` emits sharing metadata.
 - `layouts/shortcodes/` contains the author-facing card APIs.
 - `assets/css/` contains tokens, base rules, layouts, and components.
