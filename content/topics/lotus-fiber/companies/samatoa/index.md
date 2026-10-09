@@ -11,6 +11,9 @@ hero:
 
 ## Deets
 
+- [B2B inquiry page](https://www.lotussilkfarm.com/en/b2b-partner-in-sustainable-luxury.html)
+  > Are you a professional in need of a sustainable partner?
+  
 - [Facebook](https://www.facebook.com/lotussilkfarm.siem.reap/)
 - [Website](https://www.lotussilkfarm.com/en/index.html)
 - [Samatoa dresses go for $3,000 to $4,000 in 2015](https://youtu.be/P-emTaSUuS0?t=299), exported to the West, Singamore, Hong Kong -- 15 countries as of 2015.
@@ -18,7 +21,9 @@ hero:
 - Founder: Awen Delaval, on [LinkedIn](https://www.linkedin.com/in/awendelaval/)
 - General email: contact@samatoa.com
 - Founder/GM email (Awen Delaval): gm@samatoa.com
-- Phone: +855 92 52 9001
+- Phones: 
+  - 092 529 001 (Telegram)
+  - +855 92 52 9001 (website 2026)
   - Alternate phone (older listing): +855 12 28 59 30
 - Websites:
   - samatoa.com
