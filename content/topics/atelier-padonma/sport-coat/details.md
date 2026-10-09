@@ -1,4 +1,18 @@
-## TL
+## The model
+
+It is made to measure using open source parametric design patterns.
+A tailor still needs to take the measurements and someone has to
+cut the cloth and sew the pieces together with skill, and then
+there still need to be fittings. The initial cut and assemble part
+may well be outsourced.
+
+Tailors who insist on keeping those measurements private are simple
+overplaying their hands. For example, the Jaeger design pattern simply
+requires fourteen measurements. There is little to protect.  Their
+skill is still needing in the sewing and the judgement exercised
+during fittings.
+
+## Lots of goodies
 
 Samatoa is a social enterprise trying to generate income for Cambodian
 locals using a locally available resource, the lotus plant. So, not
